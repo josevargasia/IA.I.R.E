@@ -13,6 +13,9 @@
 /* ************************************************************************** */
 /* ************************************************************************** */
 
+/* This section lists the other files that are included in this file.
+ */
+
 #include "system_definitions.h"
 
 
@@ -22,6 +25,11 @@
 /* ************************************************************************** */
 /* ************************************************************************** */
 
+/*  A brief description of a section can be given directly below the section
+    banner.
+ */
+
+/* ************************************************************************** */
 APP_DATA appData;
 
 /* ************************************************************************** */
@@ -30,6 +38,11 @@ APP_DATA appData;
 /* ************************************************************************** */
 /* ************************************************************************** */
 
+/*  A brief description of a section can be given directly below the section
+    banner.
+ */
+
+/* ************************************************************************** */
 
 /* ************************************************************************** */
 /* ************************************************************************** */
@@ -37,6 +50,11 @@ APP_DATA appData;
 /* ************************************************************************** */
 /* ************************************************************************** */
 
+/*  A brief description of a section can be given directly below the section
+    banner.
+ */
+
+// *****************************************************************************
 void APP_init(void){
     appData.state = APP_STATE_INIT;
 }
@@ -54,7 +72,9 @@ void APP_Task(void){
         {
             if(appData.test_timeout == 0){
                 appData.test_timeout = 250;
-                sprintf(appData.bufferDisplay, "AN4: %d mV, ADC:%d, prom: %d mV", adcData.values_mv[0], adcData.values[0], adcData.values_2_prom);
+                sprintf(appData.bufferDisplay, "AN4: %d mV, ADC:%d, prom: %d mV", adcData.values_mv[0], adcData.values[0], adcData.values_2_prom[0]);
+                sci_ID1_send(appData.bufferDisplay);
+                sprintf(appData.bufferDisplay, "AN5: %d mV, ADC:%d, prom: %d mV, CO2: %d ppm", adcData.values_mv[1], adcData.values[1], adcData.values_2_prom[1], value_ppm_CO2);
                 sci_ID1_send(appData.bufferDisplay);
 //                sprintf(appData.bufferDisplay, "AN5: %d mV\n", adcData.values_mv[1]);
 //                sci_ID1_send(appData.bufferDisplay);
