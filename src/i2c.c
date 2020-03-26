@@ -1,9 +1,17 @@
 /* ************************************************************************** */
-/**
- * @file i2c.c
- * @author Ingeniería Apropiada
- * @date 26/03/2020
- * @brief File containing I2C driver.
+/** Descriptive File Name
+
+  @Company
+    Company Name
+
+  @File Name
+    i2c.c
+
+  @Summary
+    Brief description of the file.
+
+  @Description
+    Describe the purpose of this file.
  */
 /* ************************************************************************** */
 
@@ -13,6 +21,11 @@
 /* ************************************************************************** */
 /* ************************************************************************** */
 
+/* This section lists the other files that are included in this file.
+ */
+
+/* TODO:  Include other files here if needed. */
+
 #include "system_definitions.h"
 /* ************************************************************************** */
 /* ************************************************************************** */
@@ -20,12 +33,26 @@
 /* ************************************************************************** */
 /* ************************************************************************** */
 
+/*  A brief description of a section can be given directly below the section
+    banner.
+ */
+
+/* ************************************************************************** */
+
+
 
 /* ************************************************************************** */
 /* ************************************************************************** */
 // Section: Local Functions                                                   */
 /* ************************************************************************** */
 /* ************************************************************************** */
+
+/*  A brief description of a section can be given directly below the section
+    banner.
+ */
+
+/* ************************************************************************** */
+
 
 
 
@@ -35,6 +62,22 @@
 /* ************************************************************************** */
 /* ************************************************************************** */
 
+/*  A brief description of a section can be given directly below the section
+    banner.
+ */
+
+// *****************************************************************************
+
+/** 
+  @Function
+    void i2c_init (void)
+
+  @Summary
+    Brief one-line description of the function.
+
+  @Remarks
+    Refer to the example_file.h interface header for function usage details.
+ */
 void i2c_init (void){
     // I2C ID_1
     PIN_SCL1_OUT = 0;
@@ -53,6 +96,7 @@ void i2c_init (void){
 void i2c_ID_1_dly(void){
     delay_us(10);
 }
+
 void i2c_ID_1_startp(void){
   PIN_SDA1 = 1; //SDA = 1;             // i2c start bit sequence
   i2c_ID_1_dly();

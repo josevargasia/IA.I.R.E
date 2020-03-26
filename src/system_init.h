@@ -1,9 +1,17 @@
 /* ************************************************************************** */
-/**
- * @file system_init.h
- * @author Ingeniería Apropiada
- * @date 26/03/2020
- * @brief File containing system initializations.
+/** Descriptive File Name
+
+  @Company
+    Company Name
+
+  @File Name
+    filename.h
+
+  @Summary
+    Brief description of the file.
+
+  @Description
+    Describe the purpose of this file.
  */
 /* ************************************************************************** */
 
@@ -35,18 +43,45 @@ extern "C" {
     /* ************************************************************************** */
     /* ************************************************************************** */
 
-    #define PIN_IN          1               /**< Set direction GPIO PIN_IN port. */
-    #define PIN_OUT         0               /**< Set direction GPIO PIN_OUT port. */
+    /*  A brief description of a section can be given directly below the section
+        banner.
+     */
 
-    #define TEST_LEDStateIOSet(value)       (TRISBbits.TRISB15 = value)     /**< Set GPIO direction port. */
-    #define TEST_LEDStateGet()              PORTBbits.RB15                  /**< Get GPIO state port. */
-    #define TEST_LEDStateSet(value)         (LATBbits.LATB15 = value)       /**< Set GPIO state port. */
 
+    /* ************************************************************************** */
+    #define PIN_IN          1
+    #define PIN_OUT         0
+
+    #define TEST_LEDStateIOSet(value)       (TRISBbits.TRISB15 = value)
+    #define TEST_LEDStateGet()              PORTBbits.RB15
+    #define TEST_LEDStateSet(value)         (LATBbits.LATB15 = value)
+
+    
+    
+//    #define TEST_LED        LATBbits.LATB15
+
+    
+
+//    #define PIN_SCL1	 TRISGbits.TRISG2
+//    #define PIN_SDA1	 TRISGbits.TRISG3
+//
+//    #define PIN_SCL1_IN	 PORTGbits.RG2
+//    #define PIN_SDA1_IN	 PORTGbits.RG3
+//
+//    #define PIN_SCL1_OUT LATGbits.LATG2
+//    #define PIN_SDA1_OUT LATGbits.LATG3
 
     // *****************************************************************************
     // *****************************************************************************
     // Section: Data Types
     // *****************************************************************************
+    // *****************************************************************************
+
+    /*  A brief description of a section can be given directly below the section
+        banner.
+     */
+
+
     // *****************************************************************************
 
 
@@ -57,14 +92,13 @@ extern "C" {
     // Section: Interface Functions
     // *****************************************************************************
     // *****************************************************************************
-    /**
-     * @brief Initialize system configuration
+
+    /*  A brief description of a section can be given directly below the section
+        banner.
      */
+
+    // *****************************************************************************
     void system_init (void);
-    
-    /**
-     * @brief Initialize ports configuration
-     */
     void ports_init (void);
 
 

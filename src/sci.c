@@ -1,9 +1,17 @@
 /* ************************************************************************** */
-/**
- * @file sci.c
- * @author Ingeniería Apropiada
- * @date 26/03/2020
- * @brief File containing SCI driver that manage circular buffers.
+/** Descriptive File Name
+
+  @Company
+    Company Name
+
+  @File Name
+    filename.c
+
+  @Summary
+    Brief description of the file.
+
+  @Description
+    Describe the purpose of this file.
  */
 /* ************************************************************************** */
 
@@ -12,6 +20,9 @@
 /* Section: Included Files                                                    */
 /* ************************************************************************** */
 /* ************************************************************************** */
+
+/* This section lists the other files that are included in this file.
+ */
 
 #include "system_definitions.h"
 
@@ -22,6 +33,12 @@
 /* ************************************************************************** */
 /* ************************************************************************** */
 
+/*  A brief description of a section can be given directly below the section
+    banner.
+ */
+
+/* ************************************************************************** */
+SCI_DATA sciData;
 
 /* ************************************************************************** */
 /* ************************************************************************** */
@@ -29,6 +46,11 @@
 /* ************************************************************************** */
 /* ************************************************************************** */
 
+/*  A brief description of a section can be given directly below the section
+    banner.
+ */
+
+/* ************************************************************************** */
 uint16_t circBuffPush_sci(char data, uint8_t bufferID){
     __builtin_disable_interrupts();
     // next is where head will point to after this write.
@@ -80,6 +102,11 @@ void clean_buffer_sci(uint8_t bufferID){
 /* ************************************************************************** */
 /* ************************************************************************** */
 
+/*  A brief description of a section can be given directly below the section
+    banner.
+ */
+
+// *****************************************************************************
 void sci_init(void){
     sciData.buffer[BUFFER_TX_SCI_ID1] = buffer_tx_sci_ID1;
     sciData.buffer[BUFFER_RX_SCI_ID1] = buffer_rx_sci_ID1;
@@ -132,6 +159,8 @@ void sci_ID1_setup (uint32_t sci_baud, uint8_t rx_invert, uint8_t tx_invert, uin
     clean_buffer_sci(BUFFER_TX_SCI_ID1);
     clean_buffer_sci(BUFFER_RX_SCI_ID1);
 }
+
+
 
 void sci_ID1_sendbyte(char data){
     circBuffPush_sci(data, BUFFER_TX_SCI_ID1);
