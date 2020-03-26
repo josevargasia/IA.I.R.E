@@ -6,20 +6,24 @@
  * @brief File containing main function.
  */
 /* ************************************************************************** */
-/** @mainpage IA.I.R.E
+/** @mainpage IA.I.R.E - Ingeniería Apropiada
  *
  * @section intro_sec Introduction
  * Project for implement low cost mechanical ventilators.
  *
+ * @subsection inspiramed_subsec - #InspiraMED
+ * We are part of the initiative in Colombia called #InspiraMED, in which we are 
+ * working on the implementation of ventilation equipment for COVID-19 patients.
+ * 
  * @section components_sec Components Used
  * List of components used:
  * 
- * @subsection microcontroller_subsec Microcontroller
+ * @subsection microcontroller_subsec - Microcontroller
  * - Microchip PIC32MX370F512L
  * 
- * @subsection sensors_subsec Sensors
- * - Presion: 
- * - CO2: 
+ * @subsection sensors_subsec - Sensors
+ * - Gauge pressure: MPX5010GP and MPX2010DP
+ * - CO2: MG811
  */
 
 #ifndef _MAIN_H    /* Guard against multiple inclusion */

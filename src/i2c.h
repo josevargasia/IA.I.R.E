@@ -1,17 +1,9 @@
 /* ************************************************************************** */
-/** Descriptive File Name
-
-  @Company
-    Company Name
-
-  @File Name
-    filename.h
-
-  @Summary
-    Brief description of the file.
-
-  @Description
-    Describe the purpose of this file.
+/**
+ * @file i2c.h
+ * @author Ingeniería Apropiada
+ * @date 26/03/2020
+ * @brief File containing I2C driver.
  */
 /* ************************************************************************** */
 
@@ -24,9 +16,6 @@
 /* Section: Included Files                                                    */
 /* ************************************************************************** */
 /* ************************************************************************** */
-
-/* This section lists the other files that are included in this file.
- */
 
 #include "system_definitions.h"
 
@@ -43,43 +32,30 @@ extern "C" {
     /* ************************************************************************** */
     /* ************************************************************************** */
 
-    /*  A brief description of a section can be given directly below the section
-        banner.
-     */
-
-    /* ************************************************************************** */
     // I2C ID_1
-    #define PIN_SCL1	 TRISGbits.TRISG2
-    #define PIN_SDA1	 TRISGbits.TRISG3
+    #define PIN_SCL1	 TRISGbits.TRISG2   /**< Set GPIO direction port. */
+    #define PIN_SDA1	 TRISGbits.TRISG3   /**< Set GPIO direction port. */
 
-    #define PIN_SCL1_IN	 PORTGbits.RG2
-    #define PIN_SDA1_IN	 PORTGbits.RG3
+    #define PIN_SCL1_IN	 PORTGbits.RG2      /**< Get GPIO state port. */
+    #define PIN_SDA1_IN	 PORTGbits.RG3      /**< Get GPIO state port. */
 
-    #define PIN_SCL1_OUT LATGbits.LATG2
-    #define PIN_SDA1_OUT LATGbits.LATG3
+    #define PIN_SCL1_OUT LATGbits.LATG2     /**< Set GPIO state port. */
+    #define PIN_SDA1_OUT LATGbits.LATG3     /**< Set GPIO state port. */
 
     // I2C ID_2
-    #define PIN_SCL2	 TRISAbits.TRISA2
-    #define PIN_SDA2	 TRISAbits.TRISA3
+    #define PIN_SCL2	 TRISAbits.TRISA2   /**< Set GPIO direction port. */
+    #define PIN_SDA2	 TRISAbits.TRISA3   /**< Set GPIO direction port. */
 
-    #define PIN_SCL2_IN	 PORTAbits.RA2
-    #define PIN_SDA2_IN	 PORTAbits.RA3
+    #define PIN_SCL2_IN	 PORTAbits.RA2      /**< Get GPIO state port. */
+    #define PIN_SDA2_IN	 PORTAbits.RA3      /**< Get GPIO state port. */
 
-    #define PIN_SCL2_OUT LATAbits.LATA2
-    #define PIN_SDA2_OUT LATAbits.LATA3
+    #define PIN_SCL2_OUT LATAbits.LATA2     /**< Set GPIO state port. */
+    #define PIN_SDA2_OUT LATAbits.LATA3     /**< Set GPIO state port. */
     // *****************************************************************************
     // *****************************************************************************
     // Section: Data Types
     // *****************************************************************************
     // *****************************************************************************
-
-    /*  A brief description of a section can be given directly below the section
-        banner.
-     */
-
-
-    // *****************************************************************************
-
 
 
 
@@ -89,66 +65,79 @@ extern "C" {
     // *****************************************************************************
     // *****************************************************************************
 
-    /*  A brief description of a section can be given directly below the section
-        banner.
-     */
-
-    // *****************************************************************************
     /**
-      @Function
-        void i2c_init (void)
-
-      @Summary
-        Brief one-line description of the function.
-
-      @Description
-        Full description, explaining the purpose and usage of the function.
-        <p>
-        Additional description in consecutive paragraphs separated by HTML 
-        paragraph breaks, as necessary.
-        <p>
-        Type "JavaDoc" in the "How Do I?" IDE toolbar for more information on tags.
-
-      @Precondition
-        List and describe any required preconditions. If there are no preconditions,
-        enter "None."
-
-      @Parameters
-        @param param1 Describe the first parameter to the function.
-    
-        @param param2 Describe the second parameter to the function.
-
-      @Returns
-        List (if feasible) and describe the return values of the function.
-        <ul>
-          <li>1   Indicates an error occurred
-          <li>0   Indicates an error did not occur
-        </ul>
-
-      @Remarks
-        Describe any special behavior not described above.
-        <p>
-        Any additional remarks.
-
-      @Example
-        @code
-        if(ExampleFunctionName(1, 2) == 0)
-        {
-            return 3;
-        }
+     * @brief Initialize I2C configuration
      */
     void i2c_init (void);
     
+    /**
+     * @brief I2C1 period for comunication
+     */
     void i2c_ID_1_dly(void);
+    
+    /**
+     * @brief I2C1 start bit sequence
+     */
     void i2c_ID_1_startp(void);
+    
+    /**
+     * @brief I2C1 stop bit sequence
+     */
     void i2c_ID_1_stopp(void);
+    
+    /**
+     * @brief Write data in I2C1 comunication port
+     * @code
+     *      uint8_t ack = i2c_ID_1_writep(data);
+     * @endcode
+     * @param  d    
+     * @return Function return ACK    
+     */
     uint8_t i2c_ID_1_writep(uint8_t d);
+    
+    /**
+     * @brief Read data of I2C1 comunication port
+     * @code
+     *      uint8_t data = i2c_ID_1_readp(0);
+     * @endcode
+     * @param  ack  ACK to be put when read data, 1 for ACK and 0 for NO ACK   
+     * @return Function return data read    
+     */
     uint8_t i2c_ID_1_readp(uint8_t ack);
     
+    /**
+     * @brief I2C2 period for comunication
+     */
     void i2c_ID_2_dly(void);
+    
+    /**
+     * @brief I2C2 start bit sequence
+     */
     void i2c_ID_2_startp(void);
+    
+    /**
+     * @brief I2C2 stop bit sequence
+     */
     void i2c_ID_2_stopp(void);
+    
+    /**
+     * @brief Write data in I2C2 comunication port
+     * @code
+     *      uint8_t ack = i2c_ID_2_writep(data);
+     * @endcode
+     * @param  d    
+     * @return Function return ACK    
+     */
     uint8_t i2c_ID_2_writep(uint8_t d);
+    
+    /**
+     * @brief Read data of I2C2 comunication port
+     * @code
+     *      uint8_t data = i2c_ID_2_readp(0);
+     * @endcode
+     * @param  ack  ACK to be put when read data, 1 for ACK and 0 for NO ACK   
+     * @return Function return data read    
+     */
     uint8_t i2c_ID_2_readp(uint8_t ack);
 
 

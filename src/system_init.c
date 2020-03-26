@@ -1,17 +1,9 @@
 /* ************************************************************************** */
-/** Descriptive File Name
-
-  @Company
-    Company Name
-
-  @File Name
-    filename.c
-
-  @Summary
-    Brief description of the file.
-
-  @Description
-    Describe the purpose of this file.
+/**
+ * @file system_init.c
+ * @author Ingeniería Apropiada
+ * @date 26/03/2020
+ * @brief File containing system initializations.
  */
 /* ************************************************************************** */
 
@@ -43,7 +35,6 @@
 // Section: Interface Functions                                               */
 /* ************************************************************************** */
 /* ************************************************************************** */
-
 
 void system_init (void){
     

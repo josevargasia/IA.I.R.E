@@ -20,6 +20,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="logotipoIA2_red.jpg"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">IA.I.R.E
    &#160;<span id="projectnumber">1.0.0</span>
@@ -64,11 +65,15 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a>  </div>
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">i2c.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>File containing I2C driver.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="system__definitions_8h_source.html">system_definitions.h</a>&quot;</code><br />
 </div>
 <p><a href="i2c_8h_source.html">Go to the source code of this file.</a></p>
@@ -76,32 +81,83 @@ $(function() {
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a0692f17deb5bee9682fec5117fb28fd9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#a0692f17deb5bee9682fec5117fb28fd9">PIN_SCL1</a>&#160;&#160;&#160;TRISGbits.TRISG2</td></tr>
-<tr class="memdesc:a0692f17deb5bee9682fec5117fb28fd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Descriptive File Name.  <a href="i2c_8h.html#a0692f17deb5bee9682fec5117fb28fd9">More...</a><br /></td></tr>
+<tr class="memdesc:a0692f17deb5bee9682fec5117fb28fd9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set GPIO direction port.  <a href="i2c_8h.html#a0692f17deb5bee9682fec5117fb28fd9">More...</a><br /></td></tr>
 <tr class="separator:a0692f17deb5bee9682fec5117fb28fd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f2d0cc980237314bebb489fab5080c5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#a8f2d0cc980237314bebb489fab5080c5">PIN_SDA1</a>&#160;&#160;&#160;TRISGbits.TRISG3</td></tr>
+<tr class="memdesc:a8f2d0cc980237314bebb489fab5080c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set GPIO direction port.  <a href="i2c_8h.html#a8f2d0cc980237314bebb489fab5080c5">More...</a><br /></td></tr>
 <tr class="separator:a8f2d0cc980237314bebb489fab5080c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d7ac14de06f32f1d314f3a4c02f461e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#a3d7ac14de06f32f1d314f3a4c02f461e">PIN_SCL1_IN</a>&#160;&#160;&#160;PORTGbits.RG2</td></tr>
+<tr class="memdesc:a3d7ac14de06f32f1d314f3a4c02f461e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get GPIO state port.  <a href="i2c_8h.html#a3d7ac14de06f32f1d314f3a4c02f461e">More...</a><br /></td></tr>
 <tr class="separator:a3d7ac14de06f32f1d314f3a4c02f461e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ada56694982356e7431fc4ed5dddf4320"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#ada56694982356e7431fc4ed5dddf4320">PIN_SDA1_IN</a>&#160;&#160;&#160;PORTGbits.RG3</td></tr>
+<tr class="memdesc:ada56694982356e7431fc4ed5dddf4320"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get GPIO state port.  <a href="i2c_8h.html#ada56694982356e7431fc4ed5dddf4320">More...</a><br /></td></tr>
 <tr class="separator:ada56694982356e7431fc4ed5dddf4320"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad8d7e98ae17b47c1bade8bccb68e9a6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#aad8d7e98ae17b47c1bade8bccb68e9a6">PIN_SCL1_OUT</a>&#160;&#160;&#160;LATGbits.LATG2</td></tr>
+<tr class="memdesc:aad8d7e98ae17b47c1bade8bccb68e9a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set GPIO state port.  <a href="i2c_8h.html#aad8d7e98ae17b47c1bade8bccb68e9a6">More...</a><br /></td></tr>
 <tr class="separator:aad8d7e98ae17b47c1bade8bccb68e9a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0bedf6457c47205681c738a48bd6bc1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#af0bedf6457c47205681c738a48bd6bc1">PIN_SDA1_OUT</a>&#160;&#160;&#160;LATGbits.LATG3</td></tr>
+<tr class="memdesc:af0bedf6457c47205681c738a48bd6bc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set GPIO state port.  <a href="i2c_8h.html#af0bedf6457c47205681c738a48bd6bc1">More...</a><br /></td></tr>
 <tr class="separator:af0bedf6457c47205681c738a48bd6bc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66325ba29c15285c80992f108281dc74"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#a66325ba29c15285c80992f108281dc74">PIN_SCL2</a>&#160;&#160;&#160;TRISAbits.TRISA2</td></tr>
+<tr class="memdesc:a66325ba29c15285c80992f108281dc74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set GPIO direction port.  <a href="i2c_8h.html#a66325ba29c15285c80992f108281dc74">More...</a><br /></td></tr>
 <tr class="separator:a66325ba29c15285c80992f108281dc74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb3e2f00f10f2cc3fbe60e0311890329"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#acb3e2f00f10f2cc3fbe60e0311890329">PIN_SDA2</a>&#160;&#160;&#160;TRISAbits.TRISA3</td></tr>
+<tr class="memdesc:acb3e2f00f10f2cc3fbe60e0311890329"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set GPIO direction port.  <a href="i2c_8h.html#acb3e2f00f10f2cc3fbe60e0311890329">More...</a><br /></td></tr>
 <tr class="separator:acb3e2f00f10f2cc3fbe60e0311890329"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86f408189f889ca39148e1ca619b3b49"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#a86f408189f889ca39148e1ca619b3b49">PIN_SCL2_IN</a>&#160;&#160;&#160;PORTAbits.RA2</td></tr>
+<tr class="memdesc:a86f408189f889ca39148e1ca619b3b49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get GPIO state port.  <a href="i2c_8h.html#a86f408189f889ca39148e1ca619b3b49">More...</a><br /></td></tr>
 <tr class="separator:a86f408189f889ca39148e1ca619b3b49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afbe79e6817034e3186b3d0221ccca061"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#afbe79e6817034e3186b3d0221ccca061">PIN_SDA2_IN</a>&#160;&#160;&#160;PORTAbits.RA3</td></tr>
+<tr class="memdesc:afbe79e6817034e3186b3d0221ccca061"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get GPIO state port.  <a href="i2c_8h.html#afbe79e6817034e3186b3d0221ccca061">More...</a><br /></td></tr>
 <tr class="separator:afbe79e6817034e3186b3d0221ccca061"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17049503f8884b7b28131a5df7460d0c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#a17049503f8884b7b28131a5df7460d0c">PIN_SCL2_OUT</a>&#160;&#160;&#160;LATAbits.LATA2</td></tr>
+<tr class="memdesc:a17049503f8884b7b28131a5df7460d0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set GPIO state port.  <a href="i2c_8h.html#a17049503f8884b7b28131a5df7460d0c">More...</a><br /></td></tr>
 <tr class="separator:a17049503f8884b7b28131a5df7460d0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b87eced76df677ea4ddeff65ef4d03e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#a7b87eced76df677ea4ddeff65ef4d03e">PIN_SDA2_OUT</a>&#160;&#160;&#160;LATAbits.LATA3</td></tr>
+<tr class="memdesc:a7b87eced76df677ea4ddeff65ef4d03e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set GPIO state port.  <a href="i2c_8h.html#a7b87eced76df677ea4ddeff65ef4d03e">More...</a><br /></td></tr>
 <tr class="separator:a7b87eced76df677ea4ddeff65ef4d03e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a5730d9445429351b9f750084c5cb5aae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#a5730d9445429351b9f750084c5cb5aae">i2c_init</a> (void)</td></tr>
+<tr class="memdesc:a5730d9445429351b9f750084c5cb5aae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize I2C configuration.  <a href="i2c_8h.html#a5730d9445429351b9f750084c5cb5aae">More...</a><br /></td></tr>
+<tr class="separator:a5730d9445429351b9f750084c5cb5aae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab42558974db40cd099fad68bc3af9ac8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#ab42558974db40cd099fad68bc3af9ac8">i2c_ID_1_dly</a> (void)</td></tr>
+<tr class="memdesc:ab42558974db40cd099fad68bc3af9ac8"><td class="mdescLeft">&#160;</td><td class="mdescRight">I2C1 period for comunication.  <a href="i2c_8h.html#ab42558974db40cd099fad68bc3af9ac8">More...</a><br /></td></tr>
+<tr class="separator:ab42558974db40cd099fad68bc3af9ac8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa45aec5b70cb5d8759fc70d7bb0f8ec9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#aa45aec5b70cb5d8759fc70d7bb0f8ec9">i2c_ID_1_startp</a> (void)</td></tr>
+<tr class="memdesc:aa45aec5b70cb5d8759fc70d7bb0f8ec9"><td class="mdescLeft">&#160;</td><td class="mdescRight">I2C1 start bit sequence.  <a href="i2c_8h.html#aa45aec5b70cb5d8759fc70d7bb0f8ec9">More...</a><br /></td></tr>
+<tr class="separator:aa45aec5b70cb5d8759fc70d7bb0f8ec9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14a8ec6dec773a40d70c711c19841b0f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#a14a8ec6dec773a40d70c711c19841b0f">i2c_ID_1_stopp</a> (void)</td></tr>
+<tr class="memdesc:a14a8ec6dec773a40d70c711c19841b0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">I2C1 stop bit sequence.  <a href="i2c_8h.html#a14a8ec6dec773a40d70c711c19841b0f">More...</a><br /></td></tr>
+<tr class="separator:a14a8ec6dec773a40d70c711c19841b0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a843394a6c4533c92dd7e35cc5cb8cb"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#a8a843394a6c4533c92dd7e35cc5cb8cb">i2c_ID_1_writep</a> (uint8_t d)</td></tr>
+<tr class="memdesc:a8a843394a6c4533c92dd7e35cc5cb8cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write data in I2C1 comunication port.  <a href="i2c_8h.html#a8a843394a6c4533c92dd7e35cc5cb8cb">More...</a><br /></td></tr>
+<tr class="separator:a8a843394a6c4533c92dd7e35cc5cb8cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9c6bb8c78e3bab66723ffc103bd155ae"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#a9c6bb8c78e3bab66723ffc103bd155ae">i2c_ID_1_readp</a> (uint8_t ack)</td></tr>
+<tr class="memdesc:a9c6bb8c78e3bab66723ffc103bd155ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read data of I2C1 comunication port.  <a href="i2c_8h.html#a9c6bb8c78e3bab66723ffc103bd155ae">More...</a><br /></td></tr>
+<tr class="separator:a9c6bb8c78e3bab66723ffc103bd155ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a859127214d628a98ea88be2d456ddf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#a9a859127214d628a98ea88be2d456ddf">i2c_ID_2_dly</a> (void)</td></tr>
+<tr class="memdesc:a9a859127214d628a98ea88be2d456ddf"><td class="mdescLeft">&#160;</td><td class="mdescRight">I2C2 period for comunication.  <a href="i2c_8h.html#a9a859127214d628a98ea88be2d456ddf">More...</a><br /></td></tr>
+<tr class="separator:a9a859127214d628a98ea88be2d456ddf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa14f83ac6dde1a88ed7f94c77990329c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#aa14f83ac6dde1a88ed7f94c77990329c">i2c_ID_2_startp</a> (void)</td></tr>
+<tr class="memdesc:aa14f83ac6dde1a88ed7f94c77990329c"><td class="mdescLeft">&#160;</td><td class="mdescRight">I2C2 start bit sequence.  <a href="i2c_8h.html#aa14f83ac6dde1a88ed7f94c77990329c">More...</a><br /></td></tr>
+<tr class="separator:aa14f83ac6dde1a88ed7f94c77990329c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62faa25a6d19897b65989f91e7071352"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#a62faa25a6d19897b65989f91e7071352">i2c_ID_2_stopp</a> (void)</td></tr>
+<tr class="memdesc:a62faa25a6d19897b65989f91e7071352"><td class="mdescLeft">&#160;</td><td class="mdescRight">I2C2 stop bit sequence.  <a href="i2c_8h.html#a62faa25a6d19897b65989f91e7071352">More...</a><br /></td></tr>
+<tr class="separator:a62faa25a6d19897b65989f91e7071352"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20a8035aacddfeeb9156daa023fac82f"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#a20a8035aacddfeeb9156daa023fac82f">i2c_ID_2_writep</a> (uint8_t d)</td></tr>
+<tr class="memdesc:a20a8035aacddfeeb9156daa023fac82f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write data in I2C2 comunication port.  <a href="i2c_8h.html#a20a8035aacddfeeb9156daa023fac82f">More...</a><br /></td></tr>
+<tr class="separator:a20a8035aacddfeeb9156daa023fac82f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5387b859edede74e1005f66c6e3d8a6a"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#a5387b859edede74e1005f66c6e3d8a6a">i2c_ID_2_readp</a> (uint8_t ack)</td></tr>
+<tr class="memdesc:a5387b859edede74e1005f66c6e3d8a6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read data of I2C2 comunication port.  <a href="i2c_8h.html#a5387b859edede74e1005f66c6e3d8a6a">More...</a><br /></td></tr>
+<tr class="separator:a5387b859edede74e1005f66c6e3d8a6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>File containing I2C driver. </p>
+<dl class="section author"><dt>Author</dt><dd>Ingeniería Apropiada </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>26/03/2020 </dd></dl>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a0692f17deb5bee9682fec5117fb28fd9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0692f17deb5bee9682fec5117fb28fd9">&#9670;&nbsp;</a></span>PIN_SCL1</h2>
 
@@ -114,11 +170,7 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Descriptive File Name. </p>
-<p>@Company Company Name</p>
-<p>@File Name filename.h</p>
-<p>@Summary Brief description of the file.</p>
-<p>@Description Describe the purpose of this file. </p>
+<p>Set GPIO direction port. </p>
 
 </div>
 </div>
@@ -134,6 +186,8 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Get GPIO state port. </p>
+
 </div>
 </div>
 <a id="aad8d7e98ae17b47c1bade8bccb68e9a6"></a>
@@ -147,6 +201,8 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set GPIO state port. </p>
 
 </div>
 </div>
@@ -162,6 +218,8 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set GPIO direction port. </p>
+
 </div>
 </div>
 <a id="a86f408189f889ca39148e1ca619b3b49"></a>
@@ -175,6 +233,8 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Get GPIO state port. </p>
 
 </div>
 </div>
@@ -190,6 +250,8 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set GPIO state port. </p>
+
 </div>
 </div>
 <a id="a8f2d0cc980237314bebb489fab5080c5"></a>
@@ -203,6 +265,8 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set GPIO direction port. </p>
 
 </div>
 </div>
@@ -218,6 +282,8 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Get GPIO state port. </p>
+
 </div>
 </div>
 <a id="af0bedf6457c47205681c738a48bd6bc1"></a>
@@ -231,6 +297,8 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Set GPIO state port. </p>
 
 </div>
 </div>
@@ -246,6 +314,8 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set GPIO direction port. </p>
+
 </div>
 </div>
 <a id="afbe79e6817034e3186b3d0221ccca061"></a>
@@ -259,6 +329,8 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Get GPIO state port. </p>
 
 </div>
 </div>
@@ -274,12 +346,279 @@ Macros</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Set GPIO state port. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="ab42558974db40cd099fad68bc3af9ac8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab42558974db40cd099fad68bc3af9ac8">&#9670;&nbsp;</a></span>i2c_ID_1_dly()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void i2c_ID_1_dly </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>I2C1 period for comunication. </p>
+
+</div>
+</div>
+<a id="a9c6bb8c78e3bab66723ffc103bd155ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c6bb8c78e3bab66723ffc103bd155ae">&#9670;&nbsp;</a></span>i2c_ID_1_readp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t i2c_ID_1_readp </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>ack</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read data of I2C1 comunication port. </p>
+<div class="fragment"><div class="line">uint8_t data = <a class="code" href="i2c_8c.html#a9c6bb8c78e3bab66723ffc103bd155ae">i2c_ID_1_readp</a>(0);</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ack</td><td>ACK to be put when read data, 1 for ACK and 0 for NO ACK <br  />
+ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Function return data read <br  />
+ </dd></dl>
+
+</div>
+</div>
+<a id="aa45aec5b70cb5d8759fc70d7bb0f8ec9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa45aec5b70cb5d8759fc70d7bb0f8ec9">&#9670;&nbsp;</a></span>i2c_ID_1_startp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void i2c_ID_1_startp </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>I2C1 start bit sequence. </p>
+
+</div>
+</div>
+<a id="a14a8ec6dec773a40d70c711c19841b0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14a8ec6dec773a40d70c711c19841b0f">&#9670;&nbsp;</a></span>i2c_ID_1_stopp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void i2c_ID_1_stopp </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>I2C1 stop bit sequence. </p>
+
+</div>
+</div>
+<a id="a8a843394a6c4533c92dd7e35cc5cb8cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a843394a6c4533c92dd7e35cc5cb8cb">&#9670;&nbsp;</a></span>i2c_ID_1_writep()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t i2c_ID_1_writep </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>d</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write data in I2C1 comunication port. </p>
+<div class="fragment"><div class="line">uint8_t ack = <a class="code" href="i2c_8c.html#a8a843394a6c4533c92dd7e35cc5cb8cb">i2c_ID_1_writep</a>(data);</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">d</td><td><br  />
+ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Function return ACK <br  />
+ </dd></dl>
+
+</div>
+</div>
+<a id="a9a859127214d628a98ea88be2d456ddf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9a859127214d628a98ea88be2d456ddf">&#9670;&nbsp;</a></span>i2c_ID_2_dly()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void i2c_ID_2_dly </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>I2C2 period for comunication. </p>
+
+</div>
+</div>
+<a id="a5387b859edede74e1005f66c6e3d8a6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5387b859edede74e1005f66c6e3d8a6a">&#9670;&nbsp;</a></span>i2c_ID_2_readp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t i2c_ID_2_readp </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>ack</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read data of I2C2 comunication port. </p>
+<div class="fragment"><div class="line">uint8_t data = <a class="code" href="i2c_8c.html#a5387b859edede74e1005f66c6e3d8a6a">i2c_ID_2_readp</a>(0);</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ack</td><td>ACK to be put when read data, 1 for ACK and 0 for NO ACK <br  />
+ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Function return data read <br  />
+ </dd></dl>
+
+</div>
+</div>
+<a id="aa14f83ac6dde1a88ed7f94c77990329c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa14f83ac6dde1a88ed7f94c77990329c">&#9670;&nbsp;</a></span>i2c_ID_2_startp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void i2c_ID_2_startp </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>I2C2 start bit sequence. </p>
+
+</div>
+</div>
+<a id="a62faa25a6d19897b65989f91e7071352"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62faa25a6d19897b65989f91e7071352">&#9670;&nbsp;</a></span>i2c_ID_2_stopp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void i2c_ID_2_stopp </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>I2C2 stop bit sequence. </p>
+
+</div>
+</div>
+<a id="a20a8035aacddfeeb9156daa023fac82f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20a8035aacddfeeb9156daa023fac82f">&#9670;&nbsp;</a></span>i2c_ID_2_writep()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t i2c_ID_2_writep </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>d</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write data in I2C2 comunication port. </p>
+<div class="fragment"><div class="line">uint8_t ack = <a class="code" href="i2c_8c.html#a20a8035aacddfeeb9156daa023fac82f">i2c_ID_2_writep</a>(data);</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">d</td><td><br  />
+ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Function return ACK <br  />
+ </dd></dl>
+
+</div>
+</div>
+<a id="a5730d9445429351b9f750084c5cb5aae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5730d9445429351b9f750084c5cb5aae">&#9670;&nbsp;</a></span>i2c_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void i2c_init </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialize I2C configuration. </p>
+
 </div>
 </div>
 </div><!-- contents -->
+<div class="ttc" id="ai2c_8c_html_a20a8035aacddfeeb9156daa023fac82f"><div class="ttname"><a href="i2c_8c.html#a20a8035aacddfeeb9156daa023fac82f">i2c_ID_2_writep</a></div><div class="ttdeci">uint8_t i2c_ID_2_writep(uint8_t d)</div><div class="ttdoc">Write data in I2C2 comunication port.</div><div class="ttdef"><b>Definition:</b> i2c.c:151</div></div>
+<div class="ttc" id="ai2c_8c_html_a5387b859edede74e1005f66c6e3d8a6a"><div class="ttname"><a href="i2c_8c.html#a5387b859edede74e1005f66c6e3d8a6a">i2c_ID_2_readp</a></div><div class="ttdeci">uint8_t i2c_ID_2_readp(uint8_t ack)</div><div class="ttdoc">Read data of I2C2 comunication port.</div><div class="ttdef"><b>Definition:</b> i2c.c:172</div></div>
+<div class="ttc" id="ai2c_8c_html_a8a843394a6c4533c92dd7e35cc5cb8cb"><div class="ttname"><a href="i2c_8c.html#a8a843394a6c4533c92dd7e35cc5cb8cb">i2c_ID_1_writep</a></div><div class="ttdeci">uint8_t i2c_ID_1_writep(uint8_t d)</div><div class="ttdoc">Write data in I2C1 comunication port.</div><div class="ttdef"><b>Definition:</b> i2c.c:76</div></div>
+<div class="ttc" id="ai2c_8c_html_a9c6bb8c78e3bab66723ffc103bd155ae"><div class="ttname"><a href="i2c_8c.html#a9c6bb8c78e3bab66723ffc103bd155ae">i2c_ID_1_readp</a></div><div class="ttdeci">uint8_t i2c_ID_1_readp(uint8_t ack)</div><div class="ttdoc">Read data of I2C1 comunication port.</div><div class="ttdef"><b>Definition:</b> i2c.c:97</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 26 2020 11:56:03 for IA.I.R.E by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Mar 26 2020 16:09:54 for IA.I.R.E by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.17
 </small></address>

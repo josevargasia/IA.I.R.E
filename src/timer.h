@@ -1,17 +1,9 @@
 /* ************************************************************************** */
-/** Descriptive File Name
-
-  @Company
-    Company Name
-
-  @File Name
-    filename.h
-
-  @Summary
-    Brief description of the file.
-
-  @Description
-    Describe the purpose of this file.
+/**
+ * @file timer.h
+ * @author Ingeniería Apropiada
+ * @date 26/03/2020
+ * @brief File containing Timers driver.
  */
 /* ************************************************************************** */
 
@@ -24,9 +16,6 @@
 /* Section: Included Files                                                    */
 /* ************************************************************************** */
 /* ************************************************************************** */
-
-/* This section lists the other files that are included in this file.
- */
 
 #include "system_definitions.h"
 
@@ -43,12 +32,6 @@ extern "C" {
     /* ************************************************************************** */
     /* ************************************************************************** */
 
-    /*  A brief description of a section can be given directly below the section
-        banner.
-     */
-
-
-    /* ************************************************************************** */
 
 
     // *****************************************************************************
@@ -57,14 +40,6 @@ extern "C" {
     // *****************************************************************************
     // *****************************************************************************
 
-    /*  A brief description of a section can be given directly below the section
-        banner.
-     */
-
-
-    // *****************************************************************************
-
-
 
     // *****************************************************************************
     // *****************************************************************************
@@ -72,12 +47,18 @@ extern "C" {
     // *****************************************************************************
     // *****************************************************************************
 
-    /*  A brief description of a section can be given directly below the section
-        banner.
+    /**
+     * @brief Initialize timers configuration
      */
-
-    // *****************************************************************************
     void timer_init(void);
+    
+    /**
+     * @brief Initialize timer 4 configuration
+     * @code
+     *      timer_ID4_init(1);  // 1 ms
+     * @endcode
+     * @param timer4_period_ms    Number of miliseconds to set Timer 4 interription, 1ms < timer4_period_ms < 100ms
+     */
     void timer_ID4_init (uint16_t timer4_period_ms);
     
     /* Provide C++ Compatibility */

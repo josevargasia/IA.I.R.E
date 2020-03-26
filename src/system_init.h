@@ -1,17 +1,9 @@
 /* ************************************************************************** */
-/** Descriptive File Name
-
-  @Company
-    Company Name
-
-  @File Name
-    filename.h
-
-  @Summary
-    Brief description of the file.
-
-  @Description
-    Describe the purpose of this file.
+/**
+ * @file system_init.h
+ * @author Ingeniería Apropiada
+ * @date 26/03/2020
+ * @brief File containing system initializations.
  */
 /* ************************************************************************** */
 
@@ -43,12 +35,12 @@ extern "C" {
     /* ************************************************************************** */
     /* ************************************************************************** */
 
-    #define PIN_IN          1
-    #define PIN_OUT         0
+    #define PIN_IN          1               /**< Set direction GPIO PIN_IN port. */
+    #define PIN_OUT         0               /**< Set direction GPIO PIN_OUT port. */
 
-    #define TEST_LEDStateIOSet(value)       (TRISBbits.TRISB15 = value)
-    #define TEST_LEDStateGet()              PORTBbits.RB15
-    #define TEST_LEDStateSet(value)         (LATBbits.LATB15 = value)
+    #define TEST_LEDStateIOSet(value)       (TRISBbits.TRISB15 = value)     /**< Set GPIO direction port. */
+    #define TEST_LEDStateGet()              PORTBbits.RB15                  /**< Get GPIO state port. */
+    #define TEST_LEDStateSet(value)         (LATBbits.LATB15 = value)       /**< Set GPIO state port. */
 
 
     // *****************************************************************************
@@ -65,8 +57,14 @@ extern "C" {
     // Section: Interface Functions
     // *****************************************************************************
     // *****************************************************************************
-
+    /**
+     * @brief Initialize system configuration
+     */
     void system_init (void);
+    
+    /**
+     * @brief Initialize ports configuration
+     */
     void ports_init (void);
 
 
