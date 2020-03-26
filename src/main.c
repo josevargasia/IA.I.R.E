@@ -1,5 +1,11 @@
 /* ************************************************************************** */
-
+/**
+ * @file app.c
+ * @author Ingeniería Apropiada
+ * @date 26/03/2020
+ * @brief File containing principal state machine.
+ *
+ */
 /* ************************************************************************** */
 
 /** @mainpage Main Page
