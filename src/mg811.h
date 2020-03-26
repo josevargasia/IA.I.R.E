@@ -2,21 +2,21 @@
 /** Descriptive File Name
 
   @Company
-    Company Name
+    Ingeniería Apropiada
 
   @File Name
-    filename.h
+    mg811.h
 
   @Summary
-    Brief description of the file.
+    The file contains the functions of the MG811 (CO2 sensor).
 
   @Description
     Describe the purpose of this file.
  */
 /* ************************************************************************** */
 
-#ifndef _TIMER_H    /* Guard against multiple inclusion */
-#define _TIMER_H
+#ifndef _MG811_H    /* Guard against multiple inclusion */
+#define _MG811_H
 
 
 /* ************************************************************************** */
@@ -36,7 +36,6 @@
 extern "C" {
 #endif
 
-
     /* ************************************************************************** */
     /* ************************************************************************** */
     /* Section: Constants                                                         */
@@ -46,7 +45,6 @@ extern "C" {
     /*  A brief description of a section can be given directly below the section
         banner.
      */
-
 
     /* ************************************************************************** */
 
@@ -61,10 +59,10 @@ extern "C" {
         banner.
      */
 
-
     // *****************************************************************************
-
-
+    
+    extern uint32_t value_ppm_CO2;
+    
 
     // *****************************************************************************
     // *****************************************************************************
@@ -77,15 +75,16 @@ extern "C" {
      */
 
     // *****************************************************************************
-    void timer_init(void);
-    void timer_ID4_init (uint16_t timer4_period_ms);
-    
+
+    void get_sample_ppm_CO2(void);
+
+
     /* Provide C++ Compatibility */
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* _TIMER_H */
+#endif /* _EXAMPLE_FILE_NAME_H */
 
 /* *****************************************************************************
  End of File

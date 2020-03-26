@@ -1,9 +1,17 @@
 /* ************************************************************************** */
-/**
- * @file delay.c
- * @author Ingeniería Apropiada
- * @date 26/03/2020
- * @brief File containing delay time driver.
+/** Descriptive File Name
+
+  @Company
+    Company Name
+
+  @File Name
+    filename.c
+
+  @Summary
+    Brief description of the file.
+
+  @Description
+    Describe the purpose of this file.
  */
 /* ************************************************************************** */
 
@@ -13,13 +21,22 @@
 /* ************************************************************************** */
 /* ************************************************************************** */
 
-#include "system_definitions.h"
+/* This section lists the other files that are included in this file.
+ */
 
+/* TODO:  Include other files here if needed. */
+
+#include "system_definitions.h"
 /* ************************************************************************** */
 /* ************************************************************************** */
 /* Section: File Scope or Global Data                                         */
 /* ************************************************************************** */
 /* ************************************************************************** */
+
+/*  A brief description of a section can be given directly below the section
+    banner.
+ */
+
 
 
 /* ************************************************************************** */
@@ -28,12 +45,26 @@
 /* ************************************************************************** */
 /* ************************************************************************** */
 
+/*  A brief description of a section can be given directly below the section
+    banner.
+ */
+
+/* ************************************************************************** */
+
+
+
 
 /* ************************************************************************** */
 /* ************************************************************************** */
 // Section: Interface Functions                                               */
 /* ************************************************************************** */
 /* ************************************************************************** */
+
+/*  A brief description of a section can be given directly below the section
+    banner.
+ */
+
+// *****************************************************************************
 
 void delay_us (uint32_t us){
     // Convert microseconds us into how many clock ticks it will take
@@ -47,6 +78,8 @@ void delay_us (uint32_t us){
 void delay_ms (uint16_t ms){
     delay_us(ms * 1000);
 }
+
+
 
 /* *****************************************************************************
  End of File

@@ -1,9 +1,17 @@
 /* ************************************************************************** */
-/**
- * @file delay.h
- * @author Ingeniería Apropiada
- * @date 26/03/2020
- * @brief File containing delay time driver.
+/** Descriptive File Name
+
+  @Company
+    Company Name
+
+  @File Name
+    delay.h
+
+  @Summary
+    Brief description of the file.
+
+  @Description
+    Describe the purpose of this file.
  */
 /* ************************************************************************** */
 
@@ -16,6 +24,9 @@
 /* Section: Included Files                                                    */
 /* ************************************************************************** */
 /* ************************************************************************** */
+
+/* This section lists the other files that are included in this file.
+ */
 
 #include "system_definitions.h"
 
@@ -32,6 +43,14 @@ extern "C" {
     /* ************************************************************************** */
     /* ************************************************************************** */
 
+    /*  A brief description of a section can be given directly below the section
+        banner.
+     */
+
+
+    /* ************************************************************************** */
+
+
 
     // *****************************************************************************
     // *****************************************************************************
@@ -39,24 +58,28 @@ extern "C" {
     // *****************************************************************************
     // *****************************************************************************
 
-    
-    
+    /*  A brief description of a section can be given directly below the section
+        banner.
+     */
+
+
+    // *****************************************************************************
+
+
+
+
     // *****************************************************************************
     // *****************************************************************************
     // Section: Interface Functions
     // *****************************************************************************
     // *****************************************************************************
 
-    /**
-     * @brief Set delay time en microseconds
-     * @param us    Number of microseconds to set delay
+    /*  A brief description of a section can be given directly below the section
+        banner.
      */
+
+    // *****************************************************************************
     void delay_us (uint32_t us);
-    
-    /**
-     * @brief Set delay time en miliseconds
-     * @param ms    Number of miliseconds to set delay
-     */
     void delay_ms (uint16_t ms);
     
 

@@ -1,11 +1,22 @@
 /* ************************************************************************** */
-/**
- * @file main.c
- * @author Ingeniería Apropiada
- * @date 26/03/2020
- * @brief File containing main function.
- */
+
 /* ************************************************************************** */
+
+/** @mainpage Main Page
+ *
+ * @section intro_sec Introduction
+ * This is the introduction.
+ *
+ * @section components_sec Components Used
+ * List of components used:
+ * 
+ * @subsection microcontroller_subsec Microcontroller
+ * - Microchip PIC32MX370F512L
+ * 
+ * @subsection sensors_subsec Sensors
+ * - Presion: 
+ * - CO2: 
+ */
 
 /* ************************************************************************** */
 /* ************************************************************************** */
@@ -63,8 +74,14 @@
 
 /* ************************************************************************** */
 /* ************************************************************************** */
-// Section: Interface Functions                                               */
+// Section: Local Functions                                                   */
 /* ************************************************************************** */
+/* ************************************************************************** */
+
+/*  A brief description of a section can be given directly below the section
+    banner.
+ */
+
 /* ************************************************************************** */
 
 void main(void) {
