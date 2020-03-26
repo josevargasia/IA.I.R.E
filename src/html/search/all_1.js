@@ -12,10 +12,9 @@ var searchData=
   ['app_2eh_10',['app.h',['../app_8h.html',1,'']]],
   ['app_5fdata_11',['APP_DATA',['../struct_a_p_p___d_a_t_a.html',1,'']]],
   ['app_5finit_12',['APP_init',['../app_8c.html#a72f08d66d0b37cf7c4d539fbc2e2ce10',1,'APP_init(void):&#160;app.c'],['../app_8h.html#a72f08d66d0b37cf7c4d539fbc2e2ce10',1,'APP_init(void):&#160;app.c']]],
-  ['app_5fstate_5fdummy_13',['APP_STATE_DUMMY',['../app_8h.html#ac23e091bbd221d57ef9aa15bf099b871a475c20c59900b9502d022bc4766aced8',1,'app.h']]],
-  ['app_5fstate_5finit_14',['APP_STATE_INIT',['../app_8h.html#ac23e091bbd221d57ef9aa15bf099b871aee72936f6dda86ada3946d7c937a2297',1,'app.h']]],
-  ['app_5fstate_5fservice_5ftasks_15',['APP_STATE_SERVICE_TASKS',['../app_8h.html#ac23e091bbd221d57ef9aa15bf099b871a92f04718da45a34c069d899c657d1ac5',1,'app.h']]],
-  ['app_5fstates_16',['APP_STATES',['../app_8h.html#ac23e091bbd221d57ef9aa15bf099b871',1,'app.h']]],
-  ['app_5ftask_17',['APP_Task',['../app_8c.html#a1202d4955f41db0388418556d40e06af',1,'APP_Task(void):&#160;app.c'],['../app_8h.html#a1202d4955f41db0388418556d40e06af',1,'APP_Task(void):&#160;app.c']]],
-  ['appdata_18',['appData',['../app_8c.html#a4f18a2543252a3f61342104a531a0f3c',1,'appData():&#160;app.c'],['../app_8h.html#a4f18a2543252a3f61342104a531a0f3c',1,'appData():&#160;app.c']]]
+  ['app_5fstate_5finit_13',['APP_STATE_INIT',['../app_8h.html#ac23e091bbd221d57ef9aa15bf099b871aee72936f6dda86ada3946d7c937a2297',1,'app.h']]],
+  ['app_5fstate_5fservice_5ftasks_14',['APP_STATE_SERVICE_TASKS',['../app_8h.html#ac23e091bbd221d57ef9aa15bf099b871a92f04718da45a34c069d899c657d1ac5',1,'app.h']]],
+  ['app_5fstates_15',['APP_STATES',['../app_8h.html#ac23e091bbd221d57ef9aa15bf099b871',1,'app.h']]],
+  ['app_5ftask_16',['APP_Task',['../app_8c.html#a1202d4955f41db0388418556d40e06af',1,'APP_Task(void):&#160;app.c'],['../app_8h.html#a1202d4955f41db0388418556d40e06af',1,'APP_Task(void):&#160;app.c']]],
+  ['appdata_17',['appData',['../app_8c.html#a4f18a2543252a3f61342104a531a0f3c',1,'appData():&#160;app.c'],['../app_8h.html#a4f18a2543252a3f61342104a531a0f3c',1,'appData():&#160;app.c']]]
 ];

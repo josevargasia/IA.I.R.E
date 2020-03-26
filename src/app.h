@@ -51,9 +51,7 @@ extern "C" {
         /* Application's state machine's initial state. */
         APP_STATE_INIT=0,
         APP_STATE_SERVICE_TASKS,
-        APP_STATE_DUMMY,   
 
-        /* TODO: Define states used by the application state machine. */
 
     } APP_STATES;
     
@@ -74,7 +72,7 @@ extern "C" {
     typedef struct
     {
         /* The application's current state */
-        APP_STATES state;
+        APP_STATES state;           /**< States of states machine in app. */
         
         char bufferDisplay[50];
         
@@ -98,7 +96,16 @@ extern "C" {
      */
 
     // *****************************************************************************
+    /**
+     * @brief Init application state machine
+     * 
+     */
     void APP_init(void);
+    
+    /**
+     * @brief Application task, in this task you can put all system tasks.
+     * 
+     */
     void APP_Task(void);
     
     /* Provide C++ Compatibility */
