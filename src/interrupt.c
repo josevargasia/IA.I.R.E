@@ -1,17 +1,9 @@
 /* ************************************************************************** */
-/** Descriptive File Name
-
-  @Company
-    Company Name
-
-  @File Name
-    filename.c
-
-  @Summary
-    Brief description of the file.
-
-  @Description
-    Describe the purpose of this file.
+/**
+ * @file interrupt.c
+ * @author Ingeniería Apropiada
+ * @date 26/03/2020
+ * @brief File containing interrupt handler routines.
  */
 /* ************************************************************************** */
 
@@ -21,22 +13,13 @@
 /* ************************************************************************** */
 /* ************************************************************************** */
 
-/* This section lists the other files that are included in this file.
- */
-
-#include "system_definitions.h"
+#include "system_definitions.h" 
 
 
 /* ************************************************************************** */
 /* ************************************************************************** */
 /* Section: File Scope or Global Data                                         */
 /* ************************************************************************** */
-/* ************************************************************************** */
-
-/*  A brief description of a section can be given directly below the section
-    banner.
- */
-
 /* ************************************************************************** */
 
 
@@ -47,11 +30,9 @@
 /* ************************************************************************** */
 /* ************************************************************************** */
 
-/*  A brief description of a section can be given directly below the section
-    banner.
- */
-
-/* ************************************************************************** */
+/**
+* @brief Timer 4 interrupt handler routine
+*/
 void __ISR(_TIMER_4_VECTOR, ipl2) IntTimer4Handler(void)    // 1ms
 {
     adc_get_samples();
@@ -76,6 +57,9 @@ void __ISR(_TIMER_4_VECTOR, ipl2) IntTimer4Handler(void)    // 1ms
     IFS0bits.T4IF = 0; //Reset Timer4 interrupt flag and Return from ISR
 }
 
+/**
+* @brief UART 1 TX and RX interrupt handler routine
+*/
 void __ISR(_UART1_VECTOR, ipl2) IntUart1Handler(void)
 {
     /* Reading the transmit interrupt flag */
@@ -109,11 +93,6 @@ void __ISR(_UART1_VECTOR, ipl2) IntUart1Handler(void)
 /* ************************************************************************** */
 /* ************************************************************************** */
 
-/*  A brief description of a section can be given directly below the section
-    banner.
- */
-
-// *****************************************************************************
 
 
 
