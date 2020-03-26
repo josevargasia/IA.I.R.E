@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>IA.I.R.E: Data Structures</title>
+<title>IA.I.R.E: adc_set_ports</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -64,20 +64,25 @@ $(function() {
 
 <div class="header">
   <div class="headertitle">
-<div class="title">Data Structures</div>  </div>
+<div class="title">adc_set_ports</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock">Here are the data structures with brief descriptions:</div><div class="directory">
-<table class="directory">
-<tr id="row_0_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="struct_a_d_c___d_a_t_a.html" target="_self">ADC_DATA</a></td><td class="desc">ADC data structure </td></tr>
-<tr id="row_1_"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="struct_a_p_p___d_a_t_a.html" target="_self">APP_DATA</a></td><td class="desc">Application data structure </td></tr>
-<tr id="row_2_" class="even"><td class="entry"><span style="width:16px;display:inline-block;">&#160;</span><span class="icona"><span class="icon">C</span></span><a class="el" href="struct_s_c_i___d_a_t_a.html" target="_self">SCI_DATA</a></td><td class="desc"></td></tr>
-</table>
-</div><!-- directory -->
-</div><!-- contents -->
+<p>Configure ANx ports to sample</p>
+<div class="fragment"><div class="line"><a name="a0"></a><a class="code" href="adc_8c.html#a19bda3226f580be75879ee0ea6c1859a">adc_set_ports</a>(2, <a name="a1"></a><a class="code" href="adc_8h.html#a2dd0ab76cfa243e7354936ba5b066f71">PORT_AN4</a> | <a name="a2"></a><a class="code" href="adc_8h.html#a3541654239bbdf9f81fa1caea8b07486">PORT_AN5</a>);</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">number</td><td>Number of ports to sample </td></tr>
+    <tr><td class="paramname">ports</td><td>Variable with ports to sample</td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"></div><!-- fragment --> </div><!-- contents -->
+<div class="ttc" id="aadc_8h_html_a2dd0ab76cfa243e7354936ba5b066f71"><div class="ttname"><a href="adc_8h.html#a2dd0ab76cfa243e7354936ba5b066f71">PORT_AN4</a></div><div class="ttdeci">#define PORT_AN4</div><div class="ttdef"><b>Definition:</b> adc.h:44</div></div>
+<div class="ttc" id="aadc_8h_html_a3541654239bbdf9f81fa1caea8b07486"><div class="ttname"><a href="adc_8h.html#a3541654239bbdf9f81fa1caea8b07486">PORT_AN5</a></div><div class="ttdeci">#define PORT_AN5</div><div class="ttdef"><b>Definition:</b> adc.h:45</div></div>
+<div class="ttc" id="aadc_8c_html_a19bda3226f580be75879ee0ea6c1859a"><div class="ttname"><a href="adc_8c.html#a19bda3226f580be75879ee0ea6c1859a">adc_set_ports</a></div><div class="ttdeci">void adc_set_ports(uint8_t number, uint32_t ports)</div><div class="ttdef"><b>Definition:</b> adc.c:106</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 26 2020 11:56:03 for IA.I.R.E by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Mar 26 2020 11:42:36 for IA.I.R.E by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.17
 </small></address>

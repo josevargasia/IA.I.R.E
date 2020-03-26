@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?> 
 <project>                                  
-  <executable name="dist/default/production/IA.I.R.E.X.production.elf">                 
+  <executable name="dist/default/production/src.production.elf">                 
     <memory name="program">                 
       <units>bytes</units>                 
       <length>531968</length>                 
-      <used>17620</used>                     
-      <free>514348</free>                     
+      <used>16948</used>                     
+      <free>515020</free>                     
     </memory>                              
     <memory name="data">              
       <units>bytes</units>                 

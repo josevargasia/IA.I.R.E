@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['test_5fledstateget_254',['TEST_LEDStateGet',['../system__init_8h.html#a4152965d6c09489637e21439f0387541',1,'system_init.h']]],
-  ['test_5fledstateioset_255',['TEST_LEDStateIOSet',['../system__init_8h.html#a59e70484ae1c89a895b06eb4fbedc8fe',1,'system_init.h']]],
-  ['test_5fledstateset_256',['TEST_LEDStateSet',['../system__init_8h.html#a880b20872fb3a94196d4fc0a92b8fe88',1,'system_init.h']]],
-  ['tx_5finvert_5foff_257',['TX_INVERT_OFF',['../sci_8h.html#ad2995fb03f241e9c6bca5bc95b10bab6',1,'sci.h']]],
-  ['tx_5finvert_5fon_258',['TX_INVERT_ON',['../sci_8h.html#a679ff054f7992e5100fa43a18f0cf5ab',1,'sci.h']]]
+  ['stop_5fbit_5f1_249',['STOP_BIT_1',['../sci_8h.html#a22de6895caca557a97364a36572ca319',1,'sci.h']]],
+  ['stop_5fbit_5f2_250',['STOP_BIT_2',['../sci_8h.html#afa1ce323ca9ac6fe9181f9f25eeb7953',1,'sci.h']]],
+  ['sys_5fclk_5fbus_5fperipheral_251',['SYS_CLK_BUS_PERIPHERAL',['../system__definitions_8h.html#a1ff1676a8c4efdfc31e920165df0854f',1,'system_definitions.h']]],
+  ['sys_5fclk_5ffreq_252',['SYS_CLK_FREQ',['../system__definitions_8h.html#a42ac138ccc8baa8d0e63b0923397013d',1,'system_definitions.h']]],
+  ['sys_5fclk_5finternal_5ffreq_253',['SYS_CLK_INTERNAL_FREQ',['../system__definitions_8h.html#a4280e4f0c826ffc6b07727b094dc1423',1,'system_definitions.h']]]
 ];

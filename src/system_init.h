@@ -43,12 +43,6 @@ extern "C" {
     /* ************************************************************************** */
     /* ************************************************************************** */
 
-    /*  A brief description of a section can be given directly below the section
-        banner.
-     */
-
-
-    /* ************************************************************************** */
     #define PIN_IN          1
     #define PIN_OUT         0
 
@@ -56,32 +50,11 @@ extern "C" {
     #define TEST_LEDStateGet()              PORTBbits.RB15
     #define TEST_LEDStateSet(value)         (LATBbits.LATB15 = value)
 
-    
-    
-//    #define TEST_LED        LATBbits.LATB15
-
-    
-
-//    #define PIN_SCL1	 TRISGbits.TRISG2
-//    #define PIN_SDA1	 TRISGbits.TRISG3
-//
-//    #define PIN_SCL1_IN	 PORTGbits.RG2
-//    #define PIN_SDA1_IN	 PORTGbits.RG3
-//
-//    #define PIN_SCL1_OUT LATGbits.LATG2
-//    #define PIN_SDA1_OUT LATGbits.LATG3
 
     // *****************************************************************************
     // *****************************************************************************
     // Section: Data Types
     // *****************************************************************************
-    // *****************************************************************************
-
-    /*  A brief description of a section can be given directly below the section
-        banner.
-     */
-
-
     // *****************************************************************************
 
 
@@ -93,11 +66,6 @@ extern "C" {
     // *****************************************************************************
     // *****************************************************************************
 
-    /*  A brief description of a section can be given directly below the section
-        banner.
-     */
-
-    // *****************************************************************************
     void system_init (void);
     void ports_init (void);
 
