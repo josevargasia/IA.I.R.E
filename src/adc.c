@@ -1,19 +1,12 @@
 /* ************************************************************************** */
-/** Descriptive File Name
-
-  @Company
-    Company Name
-
-  @File Name
-    filename.c
-
-  @Summary
-    Brief description of the file.
-
-  @Description
-    Describe the purpose of this file.
+/**
+ * @file adc.c
+ * @author Ingeniería Apropiada
+ * @date 26/03/2020
+ * @brief File containing ADC driver.
  */
 /* ************************************************************************** */
+
 
 /* ************************************************************************** */
 /* ************************************************************************** */
@@ -33,23 +26,12 @@
 /* ************************************************************************** */
 /* ************************************************************************** */
 
-/*  A brief description of a section can be given directly below the section
-    banner.
- */
-
-/* ************************************************************************** */
 ADC_DATA adcData;
 
 /* ************************************************************************** */
 /* ************************************************************************** */
 // Section: Local Functions                                                   */
 /* ************************************************************************** */
-/* ************************************************************************** */
-
-/*  A brief description of a section can be given directly below the section
-    banner.
- */
-
 /* ************************************************************************** */
 
 
@@ -60,11 +42,6 @@ ADC_DATA adcData;
 /* ************************************************************************** */
 /* ************************************************************************** */
 
-/*  A brief description of a section can be given directly below the section
-    banner.
- */
-
-// *****************************************************************************
 void adc_init (void){
 //    AD1PCFG = 0x00;
     
@@ -132,8 +109,6 @@ void adc_set_ports(uint8_t number, uint32_t ports){
     AD1CSSL = ports;                // Ports for convert
 }
 
-#define ADC_MAX_NUM_SAMPLE  100
-
 void adc_get_samples(void){
         
     AD1CON1bits.SAMP = 1; // start Converting
@@ -145,77 +120,18 @@ void adc_get_samples(void){
     adcData.values_mv[0] = (adcData.values[0]*3300)/1024;
     adcData.values_mv[1] = (adcData.values[1]*3300)/1024;
     
-    adcData.values_2[0][adcData.values_2_count] = adcData.values_mv[0];
-    adcData.values_2[1][adcData.values_2_count++] = adcData.values_mv[1];
+    adcData.values_2[adcData.values_2_count++] = adcData.values_mv[0];
     
-    if(adcData.values_2_count >= ADC_MAX_NUM_SAMPLE){
+    if(adcData.values_2_count >= ADC_MAX_NUM_SAMPLE_PROM){
         adcData.values_2_count = 0;
-        adcData.values_2_prom[0] = 0;
-        adcData.values_2_prom[1] = 0;
+        adcData.values_2_prom = 0;
         int i;
-        for(i = 0; i < ADC_MAX_NUM_SAMPLE; i++){
-            adcData.values_2_prom[0] += adcData.values_2[0][i];
-            adcData.values_2_prom[1] += adcData.values_2[1][i];
+        for(i = 0; i < ADC_MAX_NUM_SAMPLE_PROM; i++){
+            adcData.values_2_prom += adcData.values_2[i];
         }
-        adcData.values_2_prom[0] /= ADC_MAX_NUM_SAMPLE; 
-        adcData.values_2_prom[1] /= ADC_MAX_NUM_SAMPLE; 
-        get_sample_ppm_CO2();
+        adcData.values_2_prom /= ADC_MAX_NUM_SAMPLE_PROM; 
     }
     
-    
-}
-
-void adc_get_samples_mV(uint16_t *adcValues, uint8_t number){
-    int i;
-    
-    AD1CON1bits.SAMP = 1; // start Converting
-    while (!(AD1CON1bits.DONE));// conversion done?
-        
-    switch(number){
-        case 5:
-        {
-            adcValues[0] = ADC1BUF0;
-            adcValues[1] = ADC1BUF1;
-            adcValues[2] = ADC1BUF2;
-            adcValues[3] = ADC1BUF3;
-            adcValues[4] = ADC1BUF4;
-            break;
-        }
-        case 4:
-        {
-            adcValues[0] = ADC1BUF0;
-            adcValues[1] = ADC1BUF1;
-            adcValues[2] = ADC1BUF2;
-            adcValues[3] = ADC1BUF3;
-            break;
-        }
-        case 3:
-        {
-            adcValues[0] = ADC1BUF0;
-            adcValues[1] = ADC1BUF1;
-            adcValues[2] = ADC1BUF2;
-            break;
-        }
-        case 2:
-        {
-            adcValues[0] = ADC1BUF0;
-            adcValues[1] = ADC1BUF1;
-            break;
-        }
-        case 1:
-        {
-            adcValues[0] = ADC1BUF0;
-            break;
-        }
-        default:
-        {
-            break;
-        }
-    }
-    
-    for(i = 0; i<number; i++){
-        adcValues[i] = (adcValues[i]*3300)/1024;
-    }
 }
 /* *****************************************************************************
  End of File
