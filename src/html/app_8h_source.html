@@ -71,93 +71,94 @@ $(function() {
 <a href="app_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* ************************************************************************** */</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">/* ************************************************************************** */</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef _APP_H    </span><span class="comment">/* Guard against multiple inclusion */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#define _APP_H</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#ifndef _APP_H    </span><span class="comment">/* Guard against multiple inclusion */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#define _APP_H</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">/* ************************************************************************** */</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">/* ************************************************************************** */</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">/* Section: Included Files                                                    */</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">/* ************************************************************************** */</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">/* ************************************************************************** */</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">/* Section: Included Files                                                    */</span></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">/* ************************************************************************** */</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="system__definitions_8h.html">system_definitions.h</a>&quot;</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">/* ************************************************************************** */</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="system__definitions_8h.html">system_definitions.h</a>&quot;</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">/* Provide C++ Compatibility */</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">/* Provide C++ Compatibility */</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="comment">/* ************************************************************************** */</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="comment">/* ************************************************************************** */</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="comment">/* Section: Constants                                                         */</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="comment">/* ************************************************************************** */</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="comment">/* ************************************************************************** */</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="comment">/* Section: Constants                                                         */</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="comment">/* ************************************************************************** */</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    </div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="app_8h.html#ac23e091bbd221d57ef9aa15bf099b871">   40</a></span>&#160;    <span class="keyword">typedef</span> <span class="keyword">enum</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="comment">/* Application&#39;s state machine&#39;s initial state. */</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="app_8h.html#ac23e091bbd221d57ef9aa15bf099b871aee72936f6dda86ada3946d7c937a2297">   43</a></span>&#160;        <a class="code" href="app_8h.html#ac23e091bbd221d57ef9aa15bf099b871aee72936f6dda86ada3946d7c937a2297">APP_STATE_INIT</a>=0,           </div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="app_8h.html#ac23e091bbd221d57ef9aa15bf099b871a92f04718da45a34c069d899c657d1ac5">   44</a></span>&#160;        <a class="code" href="app_8h.html#ac23e091bbd221d57ef9aa15bf099b871a92f04718da45a34c069d899c657d1ac5">APP_STATE_SERVICE_TASKS</a>,    </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    } <a class="code" href="app_8h.html#ac23e091bbd221d57ef9aa15bf099b871">APP_STATES</a>;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">/* ************************************************************************** */</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="app_8h.html#ac23e091bbd221d57ef9aa15bf099b871">   41</a></span>&#160;    <span class="keyword">typedef</span> <span class="keyword">enum</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="comment">/* Application&#39;s state machine&#39;s initial state. */</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="app_8h.html#ac23e091bbd221d57ef9aa15bf099b871aee72936f6dda86ada3946d7c937a2297">   44</a></span>&#160;        <a class="code" href="app_8h.html#ac23e091bbd221d57ef9aa15bf099b871aee72936f6dda86ada3946d7c937a2297">APP_STATE_INIT</a>=0,           </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="app_8h.html#ac23e091bbd221d57ef9aa15bf099b871a92f04718da45a34c069d899c657d1ac5">   45</a></span>&#160;        <a class="code" href="app_8h.html#ac23e091bbd221d57ef9aa15bf099b871a92f04718da45a34c069d899c657d1ac5">APP_STATE_SERVICE_TASKS</a>,    </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    } <a class="code" href="app_8h.html#ac23e091bbd221d57ef9aa15bf099b871">APP_STATES</a>;</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    </div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="comment">// *****************************************************************************</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    </div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="comment">// *****************************************************************************</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="comment">// Section: Data Types</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="comment">// *****************************************************************************</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="comment">// *****************************************************************************</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="comment">// Section: Data Types</span></div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="comment">// *****************************************************************************</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="struct_a_p_p___d_a_t_a.html">   62</a></span>&#160;    <span class="keyword">typedef</span> <span class="keyword">struct</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    {</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="comment">/* The application&#39;s current state */</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="struct_a_p_p___d_a_t_a.html#abbc3c9d5e3194848346e986069b88f44">   65</a></span>&#160;        <a class="code" href="app_8h.html#ac23e091bbd221d57ef9aa15bf099b871">APP_STATES</a> <a class="code" href="struct_a_p_p___d_a_t_a.html#abbc3c9d5e3194848346e986069b88f44">state</a>;           </div>
-<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="struct_a_p_p___d_a_t_a.html#a3762a7002d4e7912ab9566889f5fdb61">   67</a></span>&#160;        <span class="keywordtype">char</span> bufferDisplay[50];     </div>
-<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="struct_a_p_p___d_a_t_a.html#a0d139449869da6d91568f9077280e8aa">   69</a></span>&#160;        uint16_t <a class="code" href="struct_a_p_p___d_a_t_a.html#a0d139449869da6d91568f9077280e8aa">test_timeout</a>;      </div>
-<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="struct_a_p_p___d_a_t_a.html#a77c1b551689c0052a0f03f31bf4adc44">   70</a></span>&#160;        uint8_t <a class="code" href="struct_a_p_p___d_a_t_a.html#a77c1b551689c0052a0f03f31bf4adc44">test_led_timeout</a>;   </div>
-<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="struct_a_p_p___d_a_t_a.html#a700c7a30ee6486b7b9ac94637170e729">   71</a></span>&#160;        uint16_t <a class="code" href="struct_a_p_p___d_a_t_a.html#a700c7a30ee6486b7b9ac94637170e729">timeout_1seg</a>;      </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    } <a class="code" href="struct_a_p_p___d_a_t_a.html">APP_DATA</a>;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keyword">extern</span> <a class="code" href="struct_a_p_p___d_a_t_a.html">APP_DATA</a> <a class="code" href="app_8h.html#a4f18a2543252a3f61342104a531a0f3c">appData</a>;    </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="comment">// *****************************************************************************</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="comment">// *****************************************************************************</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="struct_a_p_p___d_a_t_a.html">   63</a></span>&#160;    <span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="comment">/* The application&#39;s current state */</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="struct_a_p_p___d_a_t_a.html#abbc3c9d5e3194848346e986069b88f44">   66</a></span>&#160;        <a class="code" href="app_8h.html#ac23e091bbd221d57ef9aa15bf099b871">APP_STATES</a> <a class="code" href="struct_a_p_p___d_a_t_a.html#abbc3c9d5e3194848346e986069b88f44">state</a>;           </div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="struct_a_p_p___d_a_t_a.html#a3762a7002d4e7912ab9566889f5fdb61">   68</a></span>&#160;        <span class="keywordtype">char</span> bufferDisplay[50];     </div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="struct_a_p_p___d_a_t_a.html#a0d139449869da6d91568f9077280e8aa">   70</a></span>&#160;        uint16_t <a class="code" href="struct_a_p_p___d_a_t_a.html#a0d139449869da6d91568f9077280e8aa">test_timeout</a>;      </div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="struct_a_p_p___d_a_t_a.html#a77c1b551689c0052a0f03f31bf4adc44">   71</a></span>&#160;        uint8_t <a class="code" href="struct_a_p_p___d_a_t_a.html#a77c1b551689c0052a0f03f31bf4adc44">test_led_timeout</a>;   </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="struct_a_p_p___d_a_t_a.html#a700c7a30ee6486b7b9ac94637170e729">   72</a></span>&#160;        uint16_t <a class="code" href="struct_a_p_p___d_a_t_a.html#a700c7a30ee6486b7b9ac94637170e729">timeout_1seg</a>;      </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    } <a class="code" href="struct_a_p_p___d_a_t_a.html">APP_DATA</a>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keyword">extern</span> <a class="code" href="struct_a_p_p___d_a_t_a.html">APP_DATA</a> <a class="code" href="app_8h.html#a4f18a2543252a3f61342104a531a0f3c">appData</a>;    </div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="comment">// *****************************************************************************</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="comment">// Section: Interface Functions</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="comment">// *****************************************************************************</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="comment">// *****************************************************************************</span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="comment">// Section: Interface Functions</span></div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="comment">// *****************************************************************************</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="app_8h.html#a72f08d66d0b37cf7c4d539fbc2e2ce10">APP_init</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="app_8h.html#a1202d4955f41db0388418556d40e06af">APP_Task</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="comment">/* Provide C++ Compatibility */</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;}</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _APP_H */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">/* *****************************************************************************</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment"> End of File</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="comment">// *****************************************************************************</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="app_8h.html#a72f08d66d0b37cf7c4d539fbc2e2ce10">APP_init</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="app_8h.html#a1202d4955f41db0388418556d40e06af">APP_Task</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    </div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="comment">/* Provide C++ Compatibility */</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _APP_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">/* *****************************************************************************</span></div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment"> End of File</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment"> */</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aapp_8h_html_ac23e091bbd221d57ef9aa15bf099b871"><div class="ttname"><a href="app_8h.html#ac23e091bbd221d57ef9aa15bf099b871">APP_STATES</a></div><div class="ttdeci">APP_STATES</div><div class="ttdoc">Use enum for define states of states machine in application.</div><div class="ttdef"><b>Definition:</b> app.h:40</div></div>
-<div class="ttc" id="astruct_a_p_p___d_a_t_a_html_abbc3c9d5e3194848346e986069b88f44"><div class="ttname"><a href="struct_a_p_p___d_a_t_a.html#abbc3c9d5e3194848346e986069b88f44">APP_DATA::state</a></div><div class="ttdeci">APP_STATES state</div><div class="ttdoc">States of states machine in app.</div><div class="ttdef"><b>Definition:</b> app.h:65</div></div>
-<div class="ttc" id="astruct_a_p_p___d_a_t_a_html"><div class="ttname"><a href="struct_a_p_p___d_a_t_a.html">APP_DATA</a></div><div class="ttdoc">Application data structure.</div><div class="ttdef"><b>Definition:</b> app.h:62</div></div>
-<div class="ttc" id="aapp_8h_html_a1202d4955f41db0388418556d40e06af"><div class="ttname"><a href="app_8h.html#a1202d4955f41db0388418556d40e06af">APP_Task</a></div><div class="ttdeci">void APP_Task(void)</div><div class="ttdoc">Application task, in this task you can put all system tasks.</div><div class="ttdef"><b>Definition:</b> app.c:44</div></div>
-<div class="ttc" id="astruct_a_p_p___d_a_t_a_html_a77c1b551689c0052a0f03f31bf4adc44"><div class="ttname"><a href="struct_a_p_p___d_a_t_a.html#a77c1b551689c0052a0f03f31bf4adc44">APP_DATA::test_led_timeout</a></div><div class="ttdeci">uint8_t test_led_timeout</div><div class="ttdoc">Test timeout for led blink.</div><div class="ttdef"><b>Definition:</b> app.h:70</div></div>
+<div class="ttc" id="aapp_8h_html_ac23e091bbd221d57ef9aa15bf099b871"><div class="ttname"><a href="app_8h.html#ac23e091bbd221d57ef9aa15bf099b871">APP_STATES</a></div><div class="ttdeci">APP_STATES</div><div class="ttdoc">Use enum for define states of states machine in application.</div><div class="ttdef"><b>Definition:</b> app.h:41</div></div>
+<div class="ttc" id="astruct_a_p_p___d_a_t_a_html_abbc3c9d5e3194848346e986069b88f44"><div class="ttname"><a href="struct_a_p_p___d_a_t_a.html#abbc3c9d5e3194848346e986069b88f44">APP_DATA::state</a></div><div class="ttdeci">APP_STATES state</div><div class="ttdoc">States of states machine in app.</div><div class="ttdef"><b>Definition:</b> app.h:66</div></div>
+<div class="ttc" id="astruct_a_p_p___d_a_t_a_html"><div class="ttname"><a href="struct_a_p_p___d_a_t_a.html">APP_DATA</a></div><div class="ttdoc">Application data structure.</div><div class="ttdef"><b>Definition:</b> app.h:63</div></div>
+<div class="ttc" id="aapp_8h_html_a1202d4955f41db0388418556d40e06af"><div class="ttname"><a href="app_8h.html#a1202d4955f41db0388418556d40e06af">APP_Task</a></div><div class="ttdeci">void APP_Task(void)</div><div class="ttdoc">Application task, in this task you can put all system tasks.</div><div class="ttdef"><b>Definition:</b> app.c:45</div></div>
+<div class="ttc" id="astruct_a_p_p___d_a_t_a_html_a77c1b551689c0052a0f03f31bf4adc44"><div class="ttname"><a href="struct_a_p_p___d_a_t_a.html#a77c1b551689c0052a0f03f31bf4adc44">APP_DATA::test_led_timeout</a></div><div class="ttdeci">uint8_t test_led_timeout</div><div class="ttdoc">Test timeout for led blink.</div><div class="ttdef"><b>Definition:</b> app.h:71</div></div>
 <div class="ttc" id="aapp_8h_html_a4f18a2543252a3f61342104a531a0f3c"><div class="ttname"><a href="app_8h.html#a4f18a2543252a3f61342104a531a0f3c">appData</a></div><div class="ttdeci">APP_DATA appData</div><div class="ttdoc">Manage all variables that application can be use.</div><div class="ttdef"><b>Definition:</b> app.c:25</div></div>
 <div class="ttc" id="asystem__definitions_8h_html"><div class="ttname"><a href="system__definitions_8h.html">system_definitions.h</a></div><div class="ttdoc">File containing main system definitions.</div></div>
-<div class="ttc" id="aapp_8h_html_ac23e091bbd221d57ef9aa15bf099b871aee72936f6dda86ada3946d7c937a2297"><div class="ttname"><a href="app_8h.html#ac23e091bbd221d57ef9aa15bf099b871aee72936f6dda86ada3946d7c937a2297">APP_STATE_INIT</a></div><div class="ttdeci">@ APP_STATE_INIT</div><div class="ttdoc">Initial state.</div><div class="ttdef"><b>Definition:</b> app.h:43</div></div>
-<div class="ttc" id="astruct_a_p_p___d_a_t_a_html_a700c7a30ee6486b7b9ac94637170e729"><div class="ttname"><a href="struct_a_p_p___d_a_t_a.html#a700c7a30ee6486b7b9ac94637170e729">APP_DATA::timeout_1seg</a></div><div class="ttdeci">uint16_t timeout_1seg</div><div class="ttdoc">Timeout for count one second in timer 4 interruption.</div><div class="ttdef"><b>Definition:</b> app.h:71</div></div>
-<div class="ttc" id="aapp_8h_html_ac23e091bbd221d57ef9aa15bf099b871a92f04718da45a34c069d899c657d1ac5"><div class="ttname"><a href="app_8h.html#ac23e091bbd221d57ef9aa15bf099b871a92f04718da45a34c069d899c657d1ac5">APP_STATE_SERVICE_TASKS</a></div><div class="ttdeci">@ APP_STATE_SERVICE_TASKS</div><div class="ttdoc">State to manage secondary system tasks.</div><div class="ttdef"><b>Definition:</b> app.h:44</div></div>
-<div class="ttc" id="aapp_8h_html_a72f08d66d0b37cf7c4d539fbc2e2ce10"><div class="ttname"><a href="app_8h.html#a72f08d66d0b37cf7c4d539fbc2e2ce10">APP_init</a></div><div class="ttdeci">void APP_init(void)</div><div class="ttdoc">Init application state machine.</div><div class="ttdef"><b>Definition:</b> app.c:40</div></div>
-<div class="ttc" id="astruct_a_p_p___d_a_t_a_html_a0d139449869da6d91568f9077280e8aa"><div class="ttname"><a href="struct_a_p_p___d_a_t_a.html#a0d139449869da6d91568f9077280e8aa">APP_DATA::test_timeout</a></div><div class="ttdeci">uint16_t test_timeout</div><div class="ttdoc">Test timeout.</div><div class="ttdef"><b>Definition:</b> app.h:69</div></div>
+<div class="ttc" id="aapp_8h_html_ac23e091bbd221d57ef9aa15bf099b871aee72936f6dda86ada3946d7c937a2297"><div class="ttname"><a href="app_8h.html#ac23e091bbd221d57ef9aa15bf099b871aee72936f6dda86ada3946d7c937a2297">APP_STATE_INIT</a></div><div class="ttdeci">@ APP_STATE_INIT</div><div class="ttdoc">Initial state.</div><div class="ttdef"><b>Definition:</b> app.h:44</div></div>
+<div class="ttc" id="astruct_a_p_p___d_a_t_a_html_a700c7a30ee6486b7b9ac94637170e729"><div class="ttname"><a href="struct_a_p_p___d_a_t_a.html#a700c7a30ee6486b7b9ac94637170e729">APP_DATA::timeout_1seg</a></div><div class="ttdeci">uint16_t timeout_1seg</div><div class="ttdoc">Timeout for count one second in timer 4 interruption.</div><div class="ttdef"><b>Definition:</b> app.h:72</div></div>
+<div class="ttc" id="aapp_8h_html_ac23e091bbd221d57ef9aa15bf099b871a92f04718da45a34c069d899c657d1ac5"><div class="ttname"><a href="app_8h.html#ac23e091bbd221d57ef9aa15bf099b871a92f04718da45a34c069d899c657d1ac5">APP_STATE_SERVICE_TASKS</a></div><div class="ttdeci">@ APP_STATE_SERVICE_TASKS</div><div class="ttdoc">State to manage secondary system tasks.</div><div class="ttdef"><b>Definition:</b> app.h:45</div></div>
+<div class="ttc" id="aapp_8h_html_a72f08d66d0b37cf7c4d539fbc2e2ce10"><div class="ttname"><a href="app_8h.html#a72f08d66d0b37cf7c4d539fbc2e2ce10">APP_init</a></div><div class="ttdeci">void APP_init(void)</div><div class="ttdoc">Init application state machine.</div><div class="ttdef"><b>Definition:</b> app.c:41</div></div>
+<div class="ttc" id="astruct_a_p_p___d_a_t_a_html_a0d139449869da6d91568f9077280e8aa"><div class="ttname"><a href="struct_a_p_p___d_a_t_a.html#a0d139449869da6d91568f9077280e8aa">APP_DATA::test_timeout</a></div><div class="ttdeci">uint16_t test_timeout</div><div class="ttdoc">Test timeout.</div><div class="ttdef"><b>Definition:</b> app.h:70</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 26 2020 16:09:53 for IA.I.R.E by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Mar 26 2020 19:17:15 for IA.I.R.E by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.17
 </small></address>
