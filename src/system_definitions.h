@@ -40,7 +40,7 @@
 #include "adc.h"
 #include "timer.h"
 #include "app.h"
-
+#include "mg811.h"
 
 
 /* Provide C++ Compatibility */

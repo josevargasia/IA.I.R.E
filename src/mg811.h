@@ -1,19 +1,12 @@
 /* ************************************************************************** */
-/** Descriptive File Name
-
-  @Company
-    Ingeniería Apropiada
-
-  @File Name
-    mg811.h
-
-  @Summary
-    The file contains the functions of the MG811 (CO2 sensor).
-
-  @Description
-    Describe the purpose of this file.
+/**
+ * @file mg811.h
+ * @author Ingeniería Apropiada
+ * @date 26/03/2020
+ * @brief File containing main system definitions.
  */
 /* ************************************************************************** */
+
 
 #ifndef _MG811_H    /* Guard against multiple inclusion */
 #define _MG811_H
@@ -25,8 +18,6 @@
 /* ************************************************************************** */
 /* ************************************************************************** */
 
-/* This section lists the other files that are included in this file.
- */
 
 #include "system_definitions.h"
 
@@ -42,40 +33,27 @@ extern "C" {
     /* ************************************************************************** */
     /* ************************************************************************** */
 
-    /*  A brief description of a section can be given directly below the section
-        banner.
-     */
-
-    /* ************************************************************************** */
-
-
+    
     // *****************************************************************************
     // *****************************************************************************
     // Section: Data Types
     // *****************************************************************************
     // *****************************************************************************
-
-    /*  A brief description of a section can be given directly below the section
-        banner.
-     */
-
-    // *****************************************************************************
     
     extern uint32_t value_ppm_CO2;
     
-
     // *****************************************************************************
     // *****************************************************************************
     // Section: Interface Functions
     // *****************************************************************************
     // *****************************************************************************
-
-    /*  A brief description of a section can be given directly below the section
-        banner.
+    
+     /**
+     * @brief Function to get ppm CO2.
+     * 
+     * Calculate the CO2 ppm value.
+     * 
      */
-
-    // *****************************************************************************
-
     void get_sample_ppm_CO2(void);
 
 

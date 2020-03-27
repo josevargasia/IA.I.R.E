@@ -70,9 +70,9 @@ extern "C" {
         uint16_t values[5];         /**< Save values sampled for ADC. */
         uint16_t values_mv[5];      /**< Save values sampled for ADC in mV. */
         
-        uint16_t values_2[1000];    /**< Save values sampled for avergae. */
+        uint16_t values_2[5][1000]; /**< Save values sampled for avergae. */
         uint16_t values_2_count;    /**< Count samples for avergae. */
-        uint32_t values_2_prom;     /**< Save the average of sample. */
+        uint32_t values_2_prom[5];  /**< Save the average of sample. */
 
     } ADC_DATA;
 

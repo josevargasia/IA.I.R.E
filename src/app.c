@@ -55,7 +55,9 @@ void APP_Task(void){
         {
             if(appData.test_timeout == 0){
                 appData.test_timeout = 250;
-                sprintf(appData.bufferDisplay, "AN4: %d mV, ADC:%d, prom: %d mV", adcData.values_mv[0], adcData.values[0], adcData.values_2_prom);
+                sprintf(appData.bufferDisplay, "AN4: %d mV, ADC:%d, prom: %d mV", adcData.values_mv[0], adcData.values[0], adcData.values_2_prom[0]);
+                sci_ID1_send(appData.bufferDisplay);
+                sprintf(appData.bufferDisplay, "AN5: %d mV, ADC:%d, prom: %d mV, CO2: %d ppm", adcData.values_mv[1], adcData.values[1], adcData.values_2_prom[1], value_ppm_CO2);
                 sci_ID1_send(appData.bufferDisplay);
 //                sprintf(appData.bufferDisplay, "AN5: %d mV\n", adcData.values_mv[1]);
 //                sci_ID1_send(appData.bufferDisplay);

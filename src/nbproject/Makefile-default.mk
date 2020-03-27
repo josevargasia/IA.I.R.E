@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=main.c i2c.c delay.c sci.c system_init.c interrupt.c adc.c timer.c app.c
+SOURCEFILES_QUOTED_IF_SPACED=main.c i2c.c delay.c sci.c system_init.c interrupt.c adc.c timer.c app.c mg811.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/i2c.o ${OBJECTDIR}/delay.o ${OBJECTDIR}/sci.o ${OBJECTDIR}/system_init.o ${OBJECTDIR}/interrupt.o ${OBJECTDIR}/adc.o ${OBJECTDIR}/timer.o ${OBJECTDIR}/app.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/i2c.o.d ${OBJECTDIR}/delay.o.d ${OBJECTDIR}/sci.o.d ${OBJECTDIR}/system_init.o.d ${OBJECTDIR}/interrupt.o.d ${OBJECTDIR}/adc.o.d ${OBJECTDIR}/timer.o.d ${OBJECTDIR}/app.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/i2c.o ${OBJECTDIR}/delay.o ${OBJECTDIR}/sci.o ${OBJECTDIR}/system_init.o ${OBJECTDIR}/interrupt.o ${OBJECTDIR}/adc.o ${OBJECTDIR}/timer.o ${OBJECTDIR}/app.o ${OBJECTDIR}/mg811.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/i2c.o.d ${OBJECTDIR}/delay.o.d ${OBJECTDIR}/sci.o.d ${OBJECTDIR}/system_init.o.d ${OBJECTDIR}/interrupt.o.d ${OBJECTDIR}/adc.o.d ${OBJECTDIR}/timer.o.d ${OBJECTDIR}/app.o.d ${OBJECTDIR}/mg811.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/i2c.o ${OBJECTDIR}/delay.o ${OBJECTDIR}/sci.o ${OBJECTDIR}/system_init.o ${OBJECTDIR}/interrupt.o ${OBJECTDIR}/adc.o ${OBJECTDIR}/timer.o ${OBJECTDIR}/app.o
+OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/i2c.o ${OBJECTDIR}/delay.o ${OBJECTDIR}/sci.o ${OBJECTDIR}/system_init.o ${OBJECTDIR}/interrupt.o ${OBJECTDIR}/adc.o ${OBJECTDIR}/timer.o ${OBJECTDIR}/app.o ${OBJECTDIR}/mg811.o
 
 # Source Files
-SOURCEFILES=main.c i2c.c delay.c sci.c system_init.c interrupt.c adc.c timer.c app.c
+SOURCEFILES=main.c i2c.c delay.c sci.c system_init.c interrupt.c adc.c timer.c app.c mg811.c
 
 
 CFLAGS=
@@ -160,6 +160,12 @@ ${OBJECTDIR}/app.o: app.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/app.o 
 	@${FIXDEPS} "${OBJECTDIR}/app.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -DICD3PlatformTool=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/app.o.d" -o ${OBJECTDIR}/app.o app.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
+${OBJECTDIR}/mg811.o: mg811.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/mg811.o.d 
+	@${RM} ${OBJECTDIR}/mg811.o 
+	@${FIXDEPS} "${OBJECTDIR}/mg811.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -DICD3PlatformTool=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/mg811.o.d" -o ${OBJECTDIR}/mg811.o mg811.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	
 else
 ${OBJECTDIR}/main.o: main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -214,6 +220,12 @@ ${OBJECTDIR}/app.o: app.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/app.o.d 
 	@${RM} ${OBJECTDIR}/app.o 
 	@${FIXDEPS} "${OBJECTDIR}/app.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/app.o.d" -o ${OBJECTDIR}/app.o app.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/mg811.o: mg811.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/mg811.o.d 
+	@${RM} ${OBJECTDIR}/mg811.o 
+	@${FIXDEPS} "${OBJECTDIR}/mg811.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/mg811.o.d" -o ${OBJECTDIR}/mg811.o mg811.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
 endif
 
