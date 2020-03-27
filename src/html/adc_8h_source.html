@@ -99,7 +99,7 @@ $(function() {
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">/* ************************************************************************** */</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="comment">/* ************************************************************************** */</span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="adc_8h.html#a2a5765ec72cf780dc54c9367a1b51684">   38</a></span>&#160;<span class="preprocessor">    #define ADC_MAX_NUM_SAMPLE_PROM  100        </span></div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="adc_8h.html#a2a5765ec72cf780dc54c9367a1b51684">   38</a></span>&#160;<span class="preprocessor">    #define ADC_MAX_NUM_SAMPLE_PROM  1000        </span></div>
 <div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="adc_8h.html#a2cbb851586a0f07cf14eb2a145a1dfe3">   40</a></span>&#160;<span class="preprocessor">    #define PORT_AN0    0b0000000000000001      </span></div>
 <div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="adc_8h.html#a083062153f421d6a16b52eab2b1ca409">   41</a></span>&#160;<span class="preprocessor">    #define PORT_AN1    0b0000000000000010      </span></div>
 <div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="adc_8h.html#a7be80ba36340f684a8ca52a7ff64ee0f">   42</a></span>&#160;<span class="preprocessor">    #define PORT_AN2    0b0000000000000100      </span></div>
@@ -127,7 +127,7 @@ $(function() {
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    {</div>
 <div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="struct_a_d_c___d_a_t_a.html#ae2f132ef1c7da506b5836d957bd8a1b2">   70</a></span>&#160;        uint16_t values[5];         </div>
 <div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="struct_a_d_c___d_a_t_a.html#a2d70aa466bcb5742cdd7bd08d0ff7dfe">   71</a></span>&#160;        uint16_t values_mv[5];      </div>
-<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="struct_a_d_c___d_a_t_a.html#ac9f63b7cc31059393459f83c06bcac4b">   73</a></span>&#160;        uint16_t values_2[5][1000]; </div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="struct_a_d_c___d_a_t_a.html#a1decb45da6c96fb71a7d63e0aee64bc5">   73</a></span>&#160;        uint16_t values_2[5][<a class="code" href="adc_8h.html#a2a5765ec72cf780dc54c9367a1b51684">ADC_MAX_NUM_SAMPLE_PROM</a>]; </div>
 <div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="struct_a_d_c___d_a_t_a.html#acb41519d39b6e9e84cf37a485fc3df20">   74</a></span>&#160;        uint16_t <a class="code" href="struct_a_d_c___d_a_t_a.html#acb41519d39b6e9e84cf37a485fc3df20">values_2_count</a>;    </div>
 <div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="struct_a_d_c___d_a_t_a.html#a0d6d4986e447bc2e759a014694943fe9">   75</a></span>&#160;        uint32_t values_2_prom[5];  </div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    } <a class="code" href="struct_a_d_c___d_a_t_a.html">ADC_DATA</a>;</div>
@@ -158,6 +158,7 @@ $(function() {
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="astruct_a_d_c___d_a_t_a_html_acb41519d39b6e9e84cf37a485fc3df20"><div class="ttname"><a href="struct_a_d_c___d_a_t_a.html#acb41519d39b6e9e84cf37a485fc3df20">ADC_DATA::values_2_count</a></div><div class="ttdeci">uint16_t values_2_count</div><div class="ttdoc">Count samples for avergae.</div><div class="ttdef"><b>Definition:</b> adc.h:74</div></div>
 <div class="ttc" id="aadc_8h_html_a0ce09cb9ff193e61c08f5f604a467380"><div class="ttname"><a href="adc_8h.html#a0ce09cb9ff193e61c08f5f604a467380">adc_get_samples</a></div><div class="ttdeci">void adc_get_samples(void)</div><div class="ttdoc">Function to ged ADC samples.</div><div class="ttdef"><b>Definition:</b> adc.c:112</div></div>
+<div class="ttc" id="aadc_8h_html_a2a5765ec72cf780dc54c9367a1b51684"><div class="ttname"><a href="adc_8h.html#a2a5765ec72cf780dc54c9367a1b51684">ADC_MAX_NUM_SAMPLE_PROM</a></div><div class="ttdeci">#define ADC_MAX_NUM_SAMPLE_PROM</div><div class="ttdoc">maximum number of samples to calculate average.</div><div class="ttdef"><b>Definition:</b> adc.h:38</div></div>
 <div class="ttc" id="aadc_8h_html_a19bda3226f580be75879ee0ea6c1859a"><div class="ttname"><a href="adc_8h.html#a19bda3226f580be75879ee0ea6c1859a">adc_set_ports</a></div><div class="ttdeci">void adc_set_ports(uint8_t number, uint32_t ports)</div><div class="ttdoc">Configure ANx ports to sample.</div><div class="ttdef"><b>Definition:</b> adc.c:107</div></div>
 <div class="ttc" id="aadc_8h_html_a228113d68672e13d25f27d71d010cb03"><div class="ttname"><a href="adc_8h.html#a228113d68672e13d25f27d71d010cb03">adcData</a></div><div class="ttdeci">ADC_DATA adcData</div><div class="ttdoc">Manage all variables that ADC driver can use.</div><div class="ttdef"><b>Definition:</b> adc.c:29</div></div>
 <div class="ttc" id="asystem__definitions_8h_html"><div class="ttname"><a href="system__definitions_8h.html">system_definitions.h</a></div><div class="ttdoc">File containing main system definitions.</div></div>
@@ -165,7 +166,7 @@ $(function() {
 <div class="ttc" id="astruct_a_d_c___d_a_t_a_html"><div class="ttname"><a href="struct_a_d_c___d_a_t_a.html">ADC_DATA</a></div><div class="ttdoc">ADC data structure.</div><div class="ttdef"><b>Definition:</b> adc.h:68</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Mar 27 2020 11:00:19 for IA.I.R.E by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Mar 27 2020 13:41:08 for IA.I.R.E by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.17
 </small></address>
