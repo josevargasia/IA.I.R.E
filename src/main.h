@@ -6,6 +6,7 @@
  * @brief File containing main function.
  */
 /* ************************************************************************** */
+
 /** @mainpage IA.I.R.E - Ingeniería Apropiada
  *
  * @section intro_sec Introduction

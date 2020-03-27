@@ -17,11 +17,7 @@
 /* ************************************************************************** */
 /* ************************************************************************** */
 
-/* This section lists the other files that are included in this file.
- */
-
-/* TODO:  Include other files here if needed. */
-
+#include "system_definitions.h"
 
 /* Provide C++ Compatibility */
 #ifdef __cplusplus
