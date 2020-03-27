@@ -32,9 +32,29 @@
 /* ************************************************************************** */
 
 /**
+* @brief Timer 2 interrupt handler routine
+*/
+void __ISR(_TIMER_2_VECTOR, ipl2) IntTimer2Handler(void)    // 100us
+{
+    if(appData.PWM1_period_count >= PWM1_PERIOD){
+        appData.PWM1_period_count = 0;
+    }else{
+        appData.PWM1_period_count++;
+    }
+    
+    if(appData.PWM1_period_count >= ((appData.PWM1_duty*PWM1_PERIOD)/100)){
+        PWM1StateSet(1);
+    }else{
+        PWM1StateSet(0);
+    }
+    
+    IFS0bits.T2IF = 0; //Reset Timer3 interrupt flag and Return from ISR
+}
+
+/**
 * @brief Timer 3 interrupt handler routine
 */
-void __ISR(_TIMER_3_VECTOR, ipl2) IntTimer3Handler(void)    // 1us
+void __ISR(_TIMER_3_VECTOR, ipl2) IntTimer3Handler(void)    // 100us
 {
     adc_get_samples();
     

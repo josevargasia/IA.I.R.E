@@ -67,9 +67,18 @@ extern "C" {
      * @code
      *      timer_ID3_init_us(1);  // 1 us
      * @endcode
-     * @param period_us    Number of microseconds to set Timer 4 interription, 1us < period_us < 3200us
+     * @param period_us    Number of microseconds to set Timer 3 interription, 1us < period_us < 3200us
      */
     void timer_ID3_init_us (uint16_t period_us);
+    
+    /**
+     * @brief Initialize timer 2 configuration in us
+     * @code
+     *      timer_ID2_init_us(1);  // 1 us
+     * @endcode
+     * @param period_us    Number of microseconds to set Timer 2 interription, 1us < period_us < 3200us
+     */    
+    void timer_ID2_init_us (uint16_t period_us);
     /* Provide C++ Compatibility */
 #ifdef __cplusplus
 }

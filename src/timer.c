@@ -39,8 +39,9 @@
 /* ************************************************************************** */
 
 void timer_init(void){
-    timer_ID4_init_ms(1);
-    timer_ID3_init_us(100);
+    timer_ID4_init_ms(1);       // For timeouts
+    timer_ID3_init_us(100);     // For ADC
+    timer_ID2_init_us(100);     // For PWM1
 }
 
 void timer_ID4_init_ms (uint16_t period_ms){ 
@@ -78,6 +79,25 @@ void timer_ID3_init_us (uint16_t period_us){
     IFS0bits.T3IF = 0;                          // Clear the Timer interrupt status flag
     IEC0bits.T3IE = 1;                          // Enable Timer interrupts
     T3CONbits.TON = 1;                          // Start Timer
+}
+
+void timer_ID2_init_us (uint16_t period_us){ 
+    /* clock source set to the internal instruction cycle
+     * PR2 = (period_us * SYS_CLK_BUS_PERIPHERAL)/(TCKPS)    
+     * for 1 us -> PR2 = (1/1000000) *(SYS_CLK_BUS_PERIPHERAL/TCKPS)
+     * PR2 = period_us * ((SYS_CLK_BUS_PERIPHERAL/1000000)/TCKPS)
+     */
+    
+    T2CON = 0x00;                               // Stops the Timer and reset control reg.
+    TMR2 = 0;                                   // Clear contents of the timer register
+    PR2 =  period_us * ((SYS_CLK_BUS_PERIPHERAL/1000000)/8);  //    
+    T2CONbits.TCKPS = 0b011;                    // 011 = 8, Timer Input Clock Prescale Select bits
+    T2CONbits.TCS = 0;                          // Set internal clock source 
+    IPC2bits.T2IP = 2;                          // Interrupt priority
+    IPC2bits.T2IS = 0;                          // Interrupt sub-priority
+    IFS0bits.T2IF = 0;                          // Clear the Timer interrupt status flag
+    IEC0bits.T2IE = 1;                          // Enable Timer interrupts
+    T2CONbits.TON = 1;                          // Start Timer
 }
 
 /* *****************************************************************************

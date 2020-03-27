@@ -34,10 +34,14 @@ extern "C" {
     #define PIN_IN          1               /**< Set direction GPIO PIN_IN port. */
     #define PIN_OUT         0               /**< Set direction GPIO PIN_OUT port. */
 
+    // GPIO OUT
     #define TEST_LEDStateIOSet(value)       (TRISBbits.TRISB15 = value)     /**< Set GPIO direction port. */
     #define TEST_LEDStateGet()              PORTBbits.RB15                  /**< Get GPIO state port. */
     #define TEST_LEDStateSet(value)         (LATBbits.LATB15 = value)       /**< Set GPIO state port. */
 
+    #define PWM1StateIOSet(value)       (TRISBbits.TRISB10 = value)     /**< Set GPIO direction port. */
+    #define PWM1StateGet()              PORTBbits.RB10                  /**< Get GPIO state port. */
+    #define PWM1StateSet(value)         (LATBbits.LATB10 = value)       /**< Set GPIO state port. */
 
     
     // *****************************************************************************

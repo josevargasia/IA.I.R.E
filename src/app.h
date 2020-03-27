@@ -34,6 +34,8 @@ extern "C" {
     /* ************************************************************************** */
     /* ************************************************************************** */
     
+    #define PWM1_PERIOD  100    /**< PWM1 PERIOD. */
+    
     /**
     * @brief Use enum for define states of states machine in application.
     *
@@ -70,7 +72,10 @@ extern "C" {
         uint16_t test_timeout;      /**< Test timeout. */
         uint8_t test_led_timeout;   /**< Test timeout for led blink. */
         uint16_t timeout_1seg;      /**< Timeout for count one second in timer 4 interruption. */
-
+        
+        uint16_t PWM1_period_count;       /**< Timeout for PWM1. */
+        uint16_t PWM1_duty;               /**< Duty for PWM1 in percent. */
+        
     } APP_DATA;
 
     extern APP_DATA appData;    /**< Manage all variables that application can be use. */
@@ -91,6 +96,11 @@ extern "C" {
      * @brief Application task, in this task you can put all system tasks.
      */
     void APP_Task(void);
+    
+    /**
+     * @brief Init PWM1
+     */
+    void PWM1_init(void);
     
     /* Provide C++ Compatibility */
 #ifdef __cplusplus
