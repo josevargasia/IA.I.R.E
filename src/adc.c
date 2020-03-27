@@ -125,6 +125,9 @@ void adc_get_samples(void){
     
     if(adcData.values_2_count >= ADC_MAX_NUM_SAMPLE_PROM){
         adcData.values_2_count = 0;
+    }
+    
+    if(adcData.values_2_count%10 == 0){ // 1ms
         adcData.values_2_prom[0] = 0;
         adcData.values_2_prom[1] = 0;
         int i;

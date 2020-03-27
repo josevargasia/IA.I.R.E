@@ -127,9 +127,9 @@ $(function() {
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    {</div>
 <div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="struct_a_d_c___d_a_t_a.html#ae2f132ef1c7da506b5836d957bd8a1b2">   70</a></span>&#160;        uint16_t values[5];         </div>
 <div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="struct_a_d_c___d_a_t_a.html#a2d70aa466bcb5742cdd7bd08d0ff7dfe">   71</a></span>&#160;        uint16_t values_mv[5];      </div>
-<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="struct_a_d_c___d_a_t_a.html#a1b397e75ddce6b932f461add23afe9a9">   73</a></span>&#160;        uint16_t values_2[1000];    </div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="struct_a_d_c___d_a_t_a.html#ac9f63b7cc31059393459f83c06bcac4b">   73</a></span>&#160;        uint16_t values_2[5][1000]; </div>
 <div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="struct_a_d_c___d_a_t_a.html#acb41519d39b6e9e84cf37a485fc3df20">   74</a></span>&#160;        uint16_t <a class="code" href="struct_a_d_c___d_a_t_a.html#acb41519d39b6e9e84cf37a485fc3df20">values_2_count</a>;    </div>
-<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="struct_a_d_c___d_a_t_a.html#a174a2684e1867385a24bd2228fdda342">   75</a></span>&#160;        uint32_t <a class="code" href="struct_a_d_c___d_a_t_a.html#a174a2684e1867385a24bd2228fdda342">values_2_prom</a>;     </div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="struct_a_d_c___d_a_t_a.html#a0d6d4986e447bc2e759a014694943fe9">   75</a></span>&#160;        uint32_t values_2_prom[5];  </div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    } <a class="code" href="struct_a_d_c___d_a_t_a.html">ADC_DATA</a>;</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keyword">extern</span> <a class="code" href="struct_a_d_c___d_a_t_a.html">ADC_DATA</a> <a class="code" href="adc_8h.html#a228113d68672e13d25f27d71d010cb03">adcData</a>;    </div>
@@ -159,14 +159,13 @@ $(function() {
 <div class="ttc" id="astruct_a_d_c___d_a_t_a_html_acb41519d39b6e9e84cf37a485fc3df20"><div class="ttname"><a href="struct_a_d_c___d_a_t_a.html#acb41519d39b6e9e84cf37a485fc3df20">ADC_DATA::values_2_count</a></div><div class="ttdeci">uint16_t values_2_count</div><div class="ttdoc">Count samples for avergae.</div><div class="ttdef"><b>Definition:</b> adc.h:74</div></div>
 <div class="ttc" id="aadc_8h_html_a0ce09cb9ff193e61c08f5f604a467380"><div class="ttname"><a href="adc_8h.html#a0ce09cb9ff193e61c08f5f604a467380">adc_get_samples</a></div><div class="ttdeci">void adc_get_samples(void)</div><div class="ttdoc">Function to ged ADC samples.</div><div class="ttdef"><b>Definition:</b> adc.c:112</div></div>
 <div class="ttc" id="aadc_8h_html_a19bda3226f580be75879ee0ea6c1859a"><div class="ttname"><a href="adc_8h.html#a19bda3226f580be75879ee0ea6c1859a">adc_set_ports</a></div><div class="ttdeci">void adc_set_ports(uint8_t number, uint32_t ports)</div><div class="ttdoc">Configure ANx ports to sample.</div><div class="ttdef"><b>Definition:</b> adc.c:107</div></div>
-<div class="ttc" id="astruct_a_d_c___d_a_t_a_html_a174a2684e1867385a24bd2228fdda342"><div class="ttname"><a href="struct_a_d_c___d_a_t_a.html#a174a2684e1867385a24bd2228fdda342">ADC_DATA::values_2_prom</a></div><div class="ttdeci">uint32_t values_2_prom</div><div class="ttdoc">Save the average of sample.</div><div class="ttdef"><b>Definition:</b> adc.h:75</div></div>
 <div class="ttc" id="aadc_8h_html_a228113d68672e13d25f27d71d010cb03"><div class="ttname"><a href="adc_8h.html#a228113d68672e13d25f27d71d010cb03">adcData</a></div><div class="ttdeci">ADC_DATA adcData</div><div class="ttdoc">Manage all variables that ADC driver can use.</div><div class="ttdef"><b>Definition:</b> adc.c:29</div></div>
 <div class="ttc" id="asystem__definitions_8h_html"><div class="ttname"><a href="system__definitions_8h.html">system_definitions.h</a></div><div class="ttdoc">File containing main system definitions.</div></div>
 <div class="ttc" id="aadc_8h_html_a2b815e6730e8723a6d1d06d9ef8f31c0"><div class="ttname"><a href="adc_8h.html#a2b815e6730e8723a6d1d06d9ef8f31c0">adc_init</a></div><div class="ttdeci">void adc_init(void)</div><div class="ttdoc">Initialize ADC configuration.</div><div class="ttdef"><b>Definition:</b> adc.c:45</div></div>
 <div class="ttc" id="astruct_a_d_c___d_a_t_a_html"><div class="ttname"><a href="struct_a_d_c___d_a_t_a.html">ADC_DATA</a></div><div class="ttdoc">ADC data structure.</div><div class="ttdef"><b>Definition:</b> adc.h:68</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Mar 26 2020 19:17:15 for IA.I.R.E by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Mar 27 2020 11:00:19 for IA.I.R.E by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.17
 </small></address>

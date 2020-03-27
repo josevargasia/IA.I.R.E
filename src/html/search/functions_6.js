@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ports_5finit_174',['ports_init',['../system__init_8c.html#a80519238a10406ae511c026a78714b44',1,'ports_init(void):&#160;system_init.c'],['../system__init_8h.html#a80519238a10406ae511c026a78714b44',1,'ports_init(void):&#160;system_init.c']]]
+  ['main_180',['main',['../main_8c.html#a6288eba0f8e8ad3ab1544ad731eb7667',1,'main(void):&#160;main.c'],['../main_8h.html#a6288eba0f8e8ad3ab1544ad731eb7667',1,'main(void):&#160;main.c']]]
 ];

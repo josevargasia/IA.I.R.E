@@ -32,12 +32,20 @@
 /* ************************************************************************** */
 
 /**
-* @brief Timer 4 interrupt handler routine
+* @brief Timer 3 interrupt handler routine
 */
-void __ISR(_TIMER_4_VECTOR, ipl2) IntTimer4Handler(void)    // 1ms
+void __ISR(_TIMER_3_VECTOR, ipl2) IntTimer3Handler(void)    // 1us
 {
     adc_get_samples();
     
+    IFS0bits.T3IF = 0; //Reset Timer3 interrupt flag and Return from ISR
+}
+
+/**
+* @brief Timer 4 interrupt handler routine
+*/
+void __ISR(_TIMER_4_VECTOR, ipl2) IntTimer4Handler(void)    // 1ms
+{    
     appData.timeout_1seg++;
     if(appData.timeout_1seg >= 1000){
         appData.timeout_1seg = 0;

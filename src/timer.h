@@ -54,14 +54,22 @@ extern "C" {
     void timer_init(void);
     
     /**
-     * @brief Initialize timer 4 configuration
+     * @brief Initialize timer 4 configuration in ms
      * @code
-     *      timer_ID4_init(1);  // 1 ms
+     *      timer_ID4_init_ms(1);  // 1 ms
      * @endcode
-     * @param timer4_period_ms    Number of miliseconds to set Timer 4 interription, 1ms < timer4_period_ms < 100ms
+     * @param period_ms    Number of miliseconds to set Timer 4 interription, 1ms < period_ms < 100ms
      */
-    void timer_ID4_init (uint16_t timer4_period_ms);
+    void timer_ID4_init_ms (uint16_t period_ms);
     
+    /**
+     * @brief Initialize timer 3 configuration in us
+     * @code
+     *      timer_ID3_init_us(1);  // 1 us
+     * @endcode
+     * @param period_us    Number of microseconds to set Timer 4 interription, 1us < period_us < 3200us
+     */
+    void timer_ID3_init_us (uint16_t period_us);
     /* Provide C++ Compatibility */
 #ifdef __cplusplus
 }

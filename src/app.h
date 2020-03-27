@@ -65,7 +65,7 @@ extern "C" {
         /* The application's current state */
         APP_STATES state;           /**< States of states machine in app. */
         
-        char bufferDisplay[50];     /**< Buffer debbug for display messages in UART. */
+        char bufferDisplay[80];     /**< Buffer debbug for display messages in UART. */
         
         uint16_t test_timeout;      /**< Test timeout. */
         uint8_t test_led_timeout;   /**< Test timeout for led blink. */
