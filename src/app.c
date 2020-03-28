@@ -45,6 +45,20 @@ void APP_init(void){
     configData.inspiration_time = read_int_eeprom(ADDR_INSPIRATION_TIME, INT16);
     configData.expiration_time = read_int_eeprom(ADDR_EXPIRATION_TIME, INT16);
     
+    configData.pwm5_frec = read_int_eeprom(ADDR_PWM5_FREC, INT32);
+    if(configData.pwm5_frec < 10000 && configData.pwm5_frec > 50000){
+        configData.pwm5_frec == 10000;
+        write_int_eeprom(ADDR_PWM5_FREC, configData.pwm5_frec, INT32);
+    }
+    timer_ID2_set_frecuency(configData.pwm5_frec);
+    
+    configData.pwm5_duty = read_int_eeprom(ADDR_PWM5_DUTY, INT8);
+    if(configData.pwm5_duty > 100){
+        configData.pwm5_duty = 5;
+        write_int_eeprom(ADDR_PWM5_FREC, configData.pwm5_duty, INT8);
+    }
+    pwm_ID5_duty_set(configData.pwm5_duty);
+    
     appData.state = APP_STATE_INIT;
 }
 

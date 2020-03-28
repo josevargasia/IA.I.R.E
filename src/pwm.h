@@ -50,7 +50,8 @@ extern "C" {
     // *****************************************************************************
 
     void pwm_init(void);
-    void pwm_ID1_init(void);
+    void pwm_ID5_init(void);
+    void pwm_ID5_duty_set(uint8_t duty);
 
     /* Provide C++ Compatibility */
 #ifdef __cplusplus

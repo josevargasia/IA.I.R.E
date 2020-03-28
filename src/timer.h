@@ -79,6 +79,8 @@ extern "C" {
      * @param period_us    Number of microseconds to set Timer 2 interription, 1us < period_us < 3200us
      */    
     void timer_ID2_init_us (uint16_t period_us);
+    
+    void timer_ID2_set_frecuency(uint32_t frec);
     /* Provide C++ Compatibility */
 #ifdef __cplusplus
 }

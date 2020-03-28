@@ -73,14 +73,18 @@ extern "C" {
     
     //-------------------- PAGE 0 ----------------------------------------------
     
-    #define MAX_PRESSURE_MAX      MAX_16_BITS
-    #define MAX_INSPIRATION_TIME  MAX_16_BITS     
-    #define MAX_EXPIRATION_TIME   MAX_16_BITS    
-    
-    #define INIT_PAGE_0           0                                 // page 0 * 128
-    #define ADDR_PRESSURE_MAX     INIT_PAGE_0                        
-    #define ADDR_INSPIRATION_TIME INIT_PAGE_0+MAX_PRESSURE_MAX
-    #define ADDR_EXPIRATION_TIME  INIT_PAGE_0+MAX_PRESSURE_MAX+MAX_INSPIRATION_TIME
+    #define MAX_PRESSURE_MAX        MAX_16_BITS
+    #define MAX_INSPIRATION_TIME    MAX_16_BITS     
+    #define MAX_EXPIRATION_TIME     MAX_16_BITS    
+    #define MAX_PWM5_DUTY           MAX_8_BITS
+    #define MAX_PWM5_FREC           MAX_32_BITS
+
+    #define INIT_PAGE_0             0                                 // page 0 * 128
+    #define ADDR_PRESSURE_MAX       INIT_PAGE_0                        
+    #define ADDR_INSPIRATION_TIME   INIT_PAGE_0+MAX_PRESSURE_MAX
+    #define ADDR_EXPIRATION_TIME    INIT_PAGE_0+MAX_PRESSURE_MAX+MAX_INSPIRATION_TIME
+    #define ADDR_PWM5_DUTY          INIT_PAGE_0+MAX_PRESSURE_MAX+MAX_INSPIRATION_TIME+MAX_EXPIRATION_TIME
+    #define ADDR_PWM5_FREC          INIT_PAGE_0+MAX_PRESSURE_MAX+MAX_INSPIRATION_TIME+MAX_EXPIRATION_TIME+MAX_PWM5_DUTY
 
     // *****************************************************************************
     // *****************************************************************************

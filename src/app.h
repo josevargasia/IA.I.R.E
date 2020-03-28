@@ -87,7 +87,8 @@ extern "C" {
         uint16_t pressure_max;
         uint16_t inspiration_time;
         uint16_t expiration_time;
-        
+        uint8_t pwm5_duty;
+        uint32_t pwm5_frec;
     } CONFIG_DATA;
 
     extern CONFIG_DATA configData;    

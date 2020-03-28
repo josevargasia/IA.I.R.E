@@ -39,21 +39,28 @@
 /* ************************************************************************** */
 
 void pwm_init(void){
-    pwm_ID1_init();
+    pwm_ID5_init();
 }
 
-void pwm_ID1_init(void){
+void pwm_ID5_init(void){
     // Pin
     
     // Configuration
-    OC1CON = 0;
+    OC5CON = 0;
     
-    OC1CONbits.OCM = 0b110 ;    // PWM mode
-    OC1CONbits.OCTSEL = 0;      // Timer2 is the clock source
-    OC1RS = 50;
-    OC1R = 50;
+    OC5CONbits.OCM = 0b110 ;    // PWM mode
+    OC5CONbits.OCTSEL = 0;      // Timer2 is the clock source
+    OC5RS = (uint32_t)(50*PR2)/100;
+    OC5R = (uint32_t)(50*PR2)/100;
     
-    OC1CONbits.ON = 1;          // ON PWM
+    OC5CONbits.ON = 1;          // ON PWM
+}
+
+void pwm_ID5_duty_set(uint8_t duty){
+//    OC5CONbits.ON = 0;          // ON PWM
+    OC5RS = (uint32_t)(duty*PR2)/100;
+    OC5R = (uint32_t)(duty*PR2)/100;
+//    OC5CONbits.ON = 1;          // ON PWM 
 }
 /* *****************************************************************************
  End of File
