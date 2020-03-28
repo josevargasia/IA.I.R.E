@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=main.c i2c.c delay.c sci.c system_init.c interrupt.c adc.c timer.c app.c mg811.c bluetooth.c
+SOURCEFILES_QUOTED_IF_SPACED=main.c i2c.c delay.c sci.c system_init.c interrupt.c adc.c timer.c app.c mg811.c bluetooth.c pwm.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/i2c.o ${OBJECTDIR}/delay.o ${OBJECTDIR}/sci.o ${OBJECTDIR}/system_init.o ${OBJECTDIR}/interrupt.o ${OBJECTDIR}/adc.o ${OBJECTDIR}/timer.o ${OBJECTDIR}/app.o ${OBJECTDIR}/mg811.o ${OBJECTDIR}/bluetooth.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/i2c.o.d ${OBJECTDIR}/delay.o.d ${OBJECTDIR}/sci.o.d ${OBJECTDIR}/system_init.o.d ${OBJECTDIR}/interrupt.o.d ${OBJECTDIR}/adc.o.d ${OBJECTDIR}/timer.o.d ${OBJECTDIR}/app.o.d ${OBJECTDIR}/mg811.o.d ${OBJECTDIR}/bluetooth.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/i2c.o ${OBJECTDIR}/delay.o ${OBJECTDIR}/sci.o ${OBJECTDIR}/system_init.o ${OBJECTDIR}/interrupt.o ${OBJECTDIR}/adc.o ${OBJECTDIR}/timer.o ${OBJECTDIR}/app.o ${OBJECTDIR}/mg811.o ${OBJECTDIR}/bluetooth.o ${OBJECTDIR}/pwm.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/i2c.o.d ${OBJECTDIR}/delay.o.d ${OBJECTDIR}/sci.o.d ${OBJECTDIR}/system_init.o.d ${OBJECTDIR}/interrupt.o.d ${OBJECTDIR}/adc.o.d ${OBJECTDIR}/timer.o.d ${OBJECTDIR}/app.o.d ${OBJECTDIR}/mg811.o.d ${OBJECTDIR}/bluetooth.o.d ${OBJECTDIR}/pwm.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/i2c.o ${OBJECTDIR}/delay.o ${OBJECTDIR}/sci.o ${OBJECTDIR}/system_init.o ${OBJECTDIR}/interrupt.o ${OBJECTDIR}/adc.o ${OBJECTDIR}/timer.o ${OBJECTDIR}/app.o ${OBJECTDIR}/mg811.o ${OBJECTDIR}/bluetooth.o
+OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/i2c.o ${OBJECTDIR}/delay.o ${OBJECTDIR}/sci.o ${OBJECTDIR}/system_init.o ${OBJECTDIR}/interrupt.o ${OBJECTDIR}/adc.o ${OBJECTDIR}/timer.o ${OBJECTDIR}/app.o ${OBJECTDIR}/mg811.o ${OBJECTDIR}/bluetooth.o ${OBJECTDIR}/pwm.o
 
 # Source Files
-SOURCEFILES=main.c i2c.c delay.c sci.c system_init.c interrupt.c adc.c timer.c app.c mg811.c bluetooth.c
+SOURCEFILES=main.c i2c.c delay.c sci.c system_init.c interrupt.c adc.c timer.c app.c mg811.c bluetooth.c pwm.c
 
 
 CFLAGS=
@@ -172,6 +172,12 @@ ${OBJECTDIR}/bluetooth.o: bluetooth.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/bluetooth.o 
 	@${FIXDEPS} "${OBJECTDIR}/bluetooth.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -DICD3PlatformTool=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/bluetooth.o.d" -o ${OBJECTDIR}/bluetooth.o bluetooth.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
+${OBJECTDIR}/pwm.o: pwm.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/pwm.o.d 
+	@${RM} ${OBJECTDIR}/pwm.o 
+	@${FIXDEPS} "${OBJECTDIR}/pwm.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -DICD3PlatformTool=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/pwm.o.d" -o ${OBJECTDIR}/pwm.o pwm.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	
 else
 ${OBJECTDIR}/main.o: main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -238,6 +244,12 @@ ${OBJECTDIR}/bluetooth.o: bluetooth.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/bluetooth.o.d 
 	@${RM} ${OBJECTDIR}/bluetooth.o 
 	@${FIXDEPS} "${OBJECTDIR}/bluetooth.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/bluetooth.o.d" -o ${OBJECTDIR}/bluetooth.o bluetooth.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/pwm.o: pwm.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/pwm.o.d 
+	@${RM} ${OBJECTDIR}/pwm.o 
+	@${FIXDEPS} "${OBJECTDIR}/pwm.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/pwm.o.d" -o ${OBJECTDIR}/pwm.o pwm.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
 endif
 

@@ -118,7 +118,7 @@ void BLUETOOTH_Task(void){
                 
                 adc_get_sample_average();
                 
-                sprintf(send_frame, "A%d,B%dmV,C,D,", value_ppm_CO2, adcData.values_2_prom[1]);
+                sprintf(send_frame, "A%d,B%dmV,C%d,D,", value_ppm_CO2, adcData.values_2_prom[1], (uint16_t)pow(4,2));
                 BLUETOOTH_send_frame(send_frame);
                 
 //                sprintf(appData.bufferDisplay, "AN5: %d mV, CO2: %d ppm\r\n", adcData.values_2_prom[1], value_ppm_CO2);

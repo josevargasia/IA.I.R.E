@@ -76,10 +76,6 @@ void APP_Task(void){
     }
 }
 
-void PWM1_init (void){
-    appData.PWM1_duty = 50; // 50%
-}
-
 
 /* *****************************************************************************
  End of File

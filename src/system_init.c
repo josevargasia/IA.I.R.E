@@ -46,7 +46,7 @@ void system_init (void){
     timer_init();
     
     // PWM
-    PWM1_init();
+    pwm_init();
     
     // I2C
     i2c_init();

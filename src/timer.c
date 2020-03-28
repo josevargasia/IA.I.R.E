@@ -41,7 +41,7 @@
 void timer_init(void){
     timer_ID4_init_ms(1);       // For timeouts
     timer_ID3_init_us(100);     // For ADC
-//    timer_ID2_init_us(100);     // For PWM1
+    timer_ID2_init_us(100);     // For PWM1
 }
 
 void timer_ID4_init_ms (uint16_t period_ms){ 

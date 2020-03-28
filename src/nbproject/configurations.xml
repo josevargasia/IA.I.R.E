@@ -16,6 +16,7 @@
       <itemPath>app.h</itemPath>
       <itemPath>mg811.h</itemPath>
       <itemPath>bluetooth.h</itemPath>
+      <itemPath>pwm.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -35,6 +36,7 @@
       <itemPath>app.c</itemPath>
       <itemPath>mg811.c</itemPath>
       <itemPath>bluetooth.c</itemPath>
+      <itemPath>pwm.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -55,7 +57,7 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>ICD3PlatformTool</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>2.10</languageToolchainVersion>
+        <languageToolchainVersion>2.05</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <compileType>
@@ -250,6 +252,7 @@
         <property key="UART4" value="true"/>
         <property key="UART5" value="true"/>
         <property key="debugoptions.useswbreakpoints" value="false"/>
+        <property key="firmware.download.all" value="false"/>
         <property key="hwtoolclock.frcindebug" value="false"/>
         <property key="memories.aux" value="false"/>
         <property key="memories.bootflash" value="false"/>
@@ -290,7 +293,7 @@
         <targetPluginBoard></targetPluginBoard>
         <platformTool>ICD3PlatformTool</platformTool>
         <languageToolchain>XC32</languageToolchain>
-        <languageToolchainVersion>2.10</languageToolchainVersion>
+        <languageToolchainVersion>2.05</languageToolchainVersion>
         <platform>3</platform>
       </toolsSet>
       <compileType>
