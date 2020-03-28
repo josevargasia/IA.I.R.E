@@ -1,14 +1,14 @@
 /* ************************************************************************** */
 /**
- * @file system_init.h
+ * @file bluetooth.h
  * @author Ingeniería Apropiada
- * @date 26/03/2020
- * @brief File containing system initializations.
+ * @date 27/03/2020
+ * @brief File containing Bluetooth driver.
  */
 /* ************************************************************************** */
 
-#ifndef _SYSTEM_INIT_H    /* Guard against multiple inclusion */
-#define _SYSTEM_INIT_H
+#ifndef _EXAMPLE_FILE_NAME_H    /* Guard against multiple inclusion */
+#define _EXAMPLE_FILE_NAME_H
 
 
 /* ************************************************************************** */
@@ -18,6 +18,7 @@
 /* ************************************************************************** */
 
 #include "system_definitions.h"
+
 
 /* Provide C++ Compatibility */
 #ifdef __cplusplus
@@ -30,30 +31,49 @@ extern "C" {
     /* Section: Constants                                                         */
     /* ************************************************************************** */
     /* ************************************************************************** */
+    #define BLUETOOTH_FRAME_SEND_TIME   500       // in ms
+    /**
+    * @brief Use enum for define states of states machine.
+    */
+    typedef enum
+    {
+        /* Application's state machine's initial state. */
+        BLUETOOTH_STATE_INIT=0,           /**< Initial state. */
+        BLUETOOTH_STATE_SERVICE_TASKS,    /**< State to manage secondary system tasks. */
+        BLUETOOTH_STATE_WRITE,
+        BLUETOOTH_STATE_READ,
+                
+                
+        FRAME_STATE_HEADER_INIT_1,
+        FRAME_STATE_HEADER_INIT_2,
+        FRAME_STATE_HEADER_BODY,
+        FRAME_STATE_HEADER_END_1,
+    } BLUETOOTH_STATES;
 
-    #define PIN_IN          1               /**< Set direction GPIO PIN_IN port. */
-    #define PIN_OUT         0               /**< Set direction GPIO PIN_OUT port. */
 
-    // GPIO OUT
-    #define TEST_LEDStateIOSet(value)       (TRISBbits.TRISB15 = value)     /**< Set GPIO direction port. */
-    #define TEST_LEDStateGet()              PORTBbits.RB15                  /**< Get GPIO state port. */
-    #define TEST_LEDStateSet(value)         (LATBbits.LATB15 = value)       /**< Set GPIO state port. */
-
-    #define PWM1StateIOSet(value)       (TRISBbits.TRISB10 = value)     /**< Set GPIO direction port. */
-    #define PWM1StateGet()              PORTBbits.RB10                  /**< Get GPIO state port. */
-    #define PWM1StateSet(value)         (LATBbits.LATB10 = value)       /**< Set GPIO state port. */
-
-    // GPIO IN
-    #define STATE_BLUETOOTHStateIOSet(value)       (TRISBbits.TRISB10 = value)     /**< Set GPIO direction port. */
-    #define STATE_BLUETOOTHStateGet()              PORTBbits.RB10                  /**< Get GPIO state port. */
-    
     // *****************************************************************************
     // *****************************************************************************
     // Section: Data Types
     // *****************************************************************************
     // *****************************************************************************
 
+    /**
+     * @brief Bluetooth data structure.
+     */
+    typedef struct
+    {
+        /* The application's current state */
+        BLUETOOTH_STATES state;           /**< States of states machine. */
+        
+        uint16_t timeout;               /**< Timeout. */
+        
+        char readBuff[100];
+        uint8_t index_readBuff;
+        BLUETOOTH_STATES frame_state;
+    } BLUETOOTH_DATA;
 
+    extern BLUETOOTH_DATA bluetoothData;    /**< Manage all variables that bluetooth can use. */
+    
 
 
     // *****************************************************************************
@@ -61,23 +81,25 @@ extern "C" {
     // Section: Interface Functions
     // *****************************************************************************
     // *****************************************************************************
+
     /**
-     * @brief Initialize system configuration
+     * @brief Init bluetooth state machine
      */
-    void system_init (void);
+    void BLUETOOTH_init(void);
     
     /**
-     * @brief Initialize ports configuration
+     * @brief Bluetooth task.
      */
-    void ports_init (void);
-
+    void BLUETOOTH_Task(void);
+    
+    void BLUETOOTH_process_frame(char * frame, uint8_t len);
 
     /* Provide C++ Compatibility */
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* _SYSTEM_INIT_H */
+#endif /* _EXAMPLE_FILE_NAME_H */
 
 /* *****************************************************************************
  End of File

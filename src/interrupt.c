@@ -54,7 +54,7 @@ void __ISR(_TIMER_2_VECTOR, ipl2) IntTimer2Handler(void)    // 100us
 /**
 * @brief Timer 3 interrupt handler routine
 */
-void __ISR(_TIMER_3_VECTOR, ipl2) IntTimer3Handler(void)    // 100us
+void __ISR(_TIMER_3_VECTOR, ipl2) IntTimer3Handler(void)    // 500us
 {
     adc_get_samples();
     
@@ -64,8 +64,11 @@ void __ISR(_TIMER_3_VECTOR, ipl2) IntTimer3Handler(void)    // 100us
 /**
 * @brief Timer 4 interrupt handler routine
 */
-void __ISR(_TIMER_4_VECTOR, ipl2) IntTimer4Handler(void)    // 1ms
+void __ISR(_TIMER_4_VECTOR, ipl3) IntTimer4Handler(void)    // 1ms
 {    
+    
+//    adc_get_samples();
+    
     appData.timeout_1seg++;
     if(appData.timeout_1seg >= 1000){
         appData.timeout_1seg = 0;
@@ -83,13 +86,16 @@ void __ISR(_TIMER_4_VECTOR, ipl2) IntTimer4Handler(void)    // 1ms
     if(appData.test_timeout)
         appData.test_timeout--;
     
+    if(bluetoothData.timeout)
+        bluetoothData.timeout--;
+    
     IFS0bits.T4IF = 0; //Reset Timer4 interrupt flag and Return from ISR
 }
 
 /**
 * @brief UART 1 TX and RX interrupt handler routine
 */
-void __ISR(_UART1_VECTOR, ipl2) IntUart1Handler(void)
+void __ISR(_UART1_VECTOR, ipl1) IntUart1Handler(void)
 {
     /* Reading the transmit interrupt flag */
     if(IFS1bits.U1TXIF == 1)

@@ -67,7 +67,7 @@ extern "C" {
         /* The application's current state */
         APP_STATES state;           /**< States of states machine in app. */
         
-        char bufferDisplay[80];     /**< Buffer debbug for display messages in UART. */
+        char bufferDisplay[100];     /**< Buffer debbug for display messages in UART. */
         
         uint16_t test_timeout;      /**< Test timeout. */
         uint8_t test_led_timeout;   /**< Test timeout for led blink. */
@@ -80,6 +80,17 @@ extern "C" {
 
     extern APP_DATA appData;    /**< Manage all variables that application can be use. */
     
+    typedef struct
+    {
+        /* The application's current state */
+        
+        uint16_t pressure_max;
+        uint16_t inspiration_time;
+        uint16_t expiration_time;
+        
+    } CONFIG_DATA;
+
+    extern CONFIG_DATA configData;    
     
     // *****************************************************************************
     // *****************************************************************************

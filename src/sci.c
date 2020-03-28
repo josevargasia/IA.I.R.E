@@ -29,6 +29,9 @@
 // Section: Local Functions                                                   */
 /* ************************************************************************** */
 /* ************************************************************************** */
+uint16_t circBuffGetCount_sci(uint8_t bufferID){
+    return sciData.buffer_count[bufferID];
+}
 
 uint16_t circBuffPush_sci(char data, uint8_t bufferID){
     __builtin_disable_interrupts();
@@ -49,7 +52,7 @@ uint16_t circBuffPush_sci(char data, uint8_t bufferID){
 }
 
 uint16_t circBuffPop_sci(char *data, uint8_t bufferID){   
-    __builtin_disable_interrupts();
+//    __builtin_disable_interrupts();
     // if the head isn't ahead of the tail, we don't have any characters
     if (sciData.buffer_head[bufferID] == sciData.buffer_tail[bufferID])         // check if circular buffer is empty
         return 0;           // and return with an error
@@ -62,7 +65,7 @@ uint16_t circBuffPop_sci(char *data, uint8_t bufferID){
     *data = *(sciData.buffer[bufferID] + sciData.buffer_tail[bufferID]);             // Read data and then move
     sciData.buffer_tail[bufferID] = sciData.buffer_next[bufferID];              // tail to next data offset.	
     sciData.buffer_count[bufferID]--;                   // Retun number of bytes in buffer
-__builtin_enable_interrupts();
+//__builtin_enable_interrupts();
     return 1;  // return success to indicate successful push. 
 }
     
@@ -117,11 +120,11 @@ void sci_ID1_setup (uint32_t sci_baud, uint8_t rx_invert, uint8_t tx_invert, uin
     U1MODEbits.STSEL = stop_bits;
             
     // Interrupt
-    IPC7bits.U1IP = 2;      //Interrupt priority
+    IPC7bits.U1IP = 1;      //Interrupt priority
     IPC7bits.U1IS = 0;      //Interrupt sub-priority
     
     IFS1bits.U1RXIF = 0;    //clear interrupt flag
-    IEC1bits.U1RXIE = 0;    //Enable UART1 RX interrupt
+    IEC1bits.U1RXIE = 1;    //Enable UART1 RX interrupt
     IFS1bits.U1TXIF = 0;    //clear interrupt flag
     IEC1bits.U1TXIE = 0;    //Disable UART1 TX interrupt
     
@@ -150,9 +153,13 @@ void sci_ID1_send(char * string){
 uint16_t sci_ID1_get(char * data){
     uint16_t ret;
     
-    IEC1bits.U1RXIE = 0;
-	ret = circBuffPop_sci(data, BUFFER_RX_SCI_ID1);
-    IEC1bits.U1RXIE = 1;
+//    IEC1bits.U1RXIE = 0;
+    if(circBuffGetCount_sci(BUFFER_RX_SCI_ID1) != 0){
+        ret = circBuffPop_sci(data, BUFFER_RX_SCI_ID1);
+    }else{
+        ret = 0;
+    }
+//    IEC1bits.U1RXIE = 1;
     
     return ret;
 }

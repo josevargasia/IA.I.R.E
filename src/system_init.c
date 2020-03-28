@@ -68,12 +68,15 @@ void system_init (void){
 
 void ports_init (void){
     
-    // GPIO
+    // GPIO OUT
     TEST_LEDStateIOSet(PIN_OUT);
     TEST_LEDStateSet(0);
     
     PWM1StateIOSet(PIN_OUT);
     PWM1StateSet(0);
+    
+    // GPIO IN
+    STATE_BLUETOOTHStateIOSet(PIN_IN);
     
     // ADC
     ANSELBbits.ANSB4 = 0;   // Turn ON Anlog functions in port RB4 - AN4

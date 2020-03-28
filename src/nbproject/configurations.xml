@@ -15,6 +15,7 @@
       <itemPath>timer.h</itemPath>
       <itemPath>app.h</itemPath>
       <itemPath>mg811.h</itemPath>
+      <itemPath>bluetooth.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -33,6 +34,7 @@
       <itemPath>timer.c</itemPath>
       <itemPath>app.c</itemPath>
       <itemPath>mg811.c</itemPath>
+      <itemPath>bluetooth.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

@@ -85,6 +85,7 @@ extern "C" {
     // *****************************************************************************
     // *****************************************************************************
     
+    uint16_t circBuffGetCount_sci(uint8_t bufferID);
     
     /**
      * @brief Save a character in a specific circular buffer

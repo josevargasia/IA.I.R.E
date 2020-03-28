@@ -41,7 +41,7 @@
 void timer_init(void){
     timer_ID4_init_ms(1);       // For timeouts
     timer_ID3_init_us(100);     // For ADC
-    timer_ID2_init_us(100);     // For PWM1
+//    timer_ID2_init_us(100);     // For PWM1
 }
 
 void timer_ID4_init_ms (uint16_t period_ms){ 
@@ -55,7 +55,7 @@ void timer_ID4_init_ms (uint16_t period_ms){
     PR4 =  period_ms * (SYS_CLK_BUS_PERIPHERAL/(256*1000));  //    
     T4CONbits.TCKPS = 0b111;                    // 111 = 256, Timer Input Clock Prescale Select bits
     T4CONbits.TCS = 0;                          // Set internal clock source 
-    IPC4bits.T4IP = 2;                          // Interrupt priority
+    IPC4bits.T4IP = 3;                          // Interrupt priority
     IPC4bits.T4IS = 0;                          // Interrupt sub-priority
     IFS0bits.T4IF = 0;                          // Clear the Timer interrupt status flag
     IEC0bits.T4IE = 1;                          // Enable Timer interrupts

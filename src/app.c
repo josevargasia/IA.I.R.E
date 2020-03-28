@@ -23,6 +23,7 @@
 /* ************************************************************************** */
 
 APP_DATA appData;
+CONFIG_DATA configData;
 
 /* ************************************************************************** */
 /* ************************************************************************** */
@@ -48,19 +49,17 @@ void APP_Task(void){
         case APP_STATE_INIT:
         {   
             sci_ID1_send("<---------- Init App ---------->\n");
+            BLUETOOTH_init();
             appData.state = APP_STATE_SERVICE_TASKS;
             break;
         }
         case APP_STATE_SERVICE_TASKS:
         {
+            BLUETOOTH_Task();
+            
             if(appData.test_timeout == 0){
-                appData.test_timeout = 250;
-                sprintf(appData.bufferDisplay, "\nAN4: %d mV, ADC:%d, prom: %d mV\n", adcData.values_mv[0], adcData.values[0], adcData.values_2_prom[0]);
-                sci_ID1_send(appData.bufferDisplay);
-                sprintf(appData.bufferDisplay, "AN5: %d mV, ADC:%d, prom: %d mV, CO2: %d ppm\n", adcData.values_mv[1], adcData.values[1], adcData.values_2_prom[1], value_ppm_CO2);
-                sci_ID1_send(appData.bufferDisplay);
-//                sprintf(appData.bufferDisplay, "AN5: %d mV\n", adcData.values_mv[1]);
-//                sci_ID1_send(appData.bufferDisplay);
+                
+                appData.test_timeout = 500;
             }
             break;
         }
