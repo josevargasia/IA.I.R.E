@@ -113,12 +113,13 @@ void BLUETOOTH_Task(void){
         case BLUETOOTH_STATE_WRITE:
         {
             if(bluetoothData.timeout == 0){
+                char send_frame[50];
+                
+                
                 adc_get_sample_average();
-                sci_ID1_send("aa,");
-
-                sprintf(appData.bufferDisplay, "A%d,B%dmV,C,D,", value_ppm_CO2, adcData.values_2_prom[1]);
-                sci_ID1_send(appData.bufferDisplay);
-                sci_ID1_send("zz\r\n");
+                
+                sprintf(send_frame, "A%d,B%dmV,C,D,", value_ppm_CO2, adcData.values_2_prom[1]);
+                BLUETOOTH_send_frame(send_frame);
                 
 //                sprintf(appData.bufferDisplay, "AN5: %d mV, CO2: %d ppm\r\n", adcData.values_2_prom[1], value_ppm_CO2);
 //                sci_ID1_send(appData.bufferDisplay);
@@ -142,8 +143,6 @@ void BLUETOOTH_process_frame(char * frame, uint8_t len){
     char data[20], response_frame[100];
     uint8_t index_data, index_response_frame = 0;
     
-    index_response_frame += sprintf(&response_frame[index_response_frame], "aa,");
-    
     for(i = 0; i < len; i++){
         if(frame[i] == ','){
             i++;
@@ -160,9 +159,10 @@ void BLUETOOTH_process_frame(char * frame, uint8_t len){
                     if(index_data != 0){
                         //Save
                         configData.pressure_max = atoi(data);
+                        write_int_eeprom(ADDR_PRESSURE_MAX, configData.pressure_max, INT16);
                     }
                     //load
-
+                    configData.pressure_max = read_int_eeprom(ADDR_PRESSURE_MAX, INT16);
                     //Response
                     index_response_frame += sprintf(&response_frame[index_response_frame], "P%d,", configData.pressure_max);
                     break;
@@ -172,9 +172,10 @@ void BLUETOOTH_process_frame(char * frame, uint8_t len){
                     if(index_data != 0){
                         //Save
                         configData.inspiration_time = atoi(data);
+                        write_int_eeprom(ADDR_INSPIRATION_TIME, configData.inspiration_time, INT16);
                     }
                     //load
-
+                    configData.inspiration_time = read_int_eeprom(ADDR_INSPIRATION_TIME, INT16);
                     //Response
                     index_response_frame += sprintf(&response_frame[index_response_frame], "Q%d,", configData.inspiration_time);
                     break;
@@ -184,9 +185,10 @@ void BLUETOOTH_process_frame(char * frame, uint8_t len){
                     if(index_data != 0){
                         //Save
                         configData.expiration_time = atoi(data);
+                        write_int_eeprom(ADDR_EXPIRATION_TIME, configData.expiration_time, INT16);
                     }
                     //load
-
+                    configData.expiration_time = read_int_eeprom(ADDR_EXPIRATION_TIME, INT16);
                     //Response
                     index_response_frame += sprintf(&response_frame[index_response_frame], "R%d,", configData.expiration_time);
                     break;
@@ -203,13 +205,16 @@ void BLUETOOTH_process_frame(char * frame, uint8_t len){
         }
     }
     
-    index_response_frame += sprintf(&response_frame[index_response_frame], "zz\r\n");
-    sci_ID1_send(response_frame);
+    // Send response frame
+    BLUETOOTH_send_frame(response_frame);
     
-//    sprintf(appData.bufferDisplay, "Data: %s, %d\r\n", data, configData.pressure_max);
-//    sci_ID1_send(appData.bufferDisplay);
 }
 
+void BLUETOOTH_send_frame(char * data){
+    sci_ID1_send("aa,");
+    sci_ID1_send(data);
+    sci_ID1_send("zz\r\n");
+}
 /* *****************************************************************************
  End of File
  */

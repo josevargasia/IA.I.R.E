@@ -124,6 +124,14 @@ uint8_t i2c_ID_1_readp(uint8_t ack){
   return d;
 }
 
+uint8_t ext_eeprom_ready_ID_1(char direccion) {
+   uint8_t ack;
+   i2c_ID_1_startp();            // If the write command is acknowledged,
+   ack = i2c_ID_1_writep(direccion);  // then the device is ready.
+   i2c_ID_1_stopp();
+   return !ack;
+}
+
 // I2C ID_2
 void i2c_ID_2_dly(void){
     delay_us(10);
@@ -197,6 +205,210 @@ uint8_t i2c_ID_2_readp(uint8_t ack){
   PIN_SDA2 = 1; //SDA = 1;
   i2c_ID_2_dly();             // send (N)ACK bit
   return d;
+}
+
+void write_string_eeprom(uint32_t address, char * string, uint16_t string_length)
+{		
+    int k = 0;
+    uint16_t numCharsToSend, numCharsSended = 0;
+    
+    // Calculate number of pages to write
+    uint16_t numFirsPageToWrite = address / EEPROM_PAGE_LENGTH;                         // From which page write  
+    uint16_t numLastPageToWrite = ((address + string_length) / EEPROM_PAGE_LENGTH) + 1; // Until which page write 
+    
+    // Calculate space available in first page to write
+    uint8_t first_page_space = EEPROM_PAGE_LENGTH - (address % EEPROM_PAGE_LENGTH);     // Number of chars to write in first page
+       
+    // Calculate space available in last page to write
+    uint8_t last_page_space = (address + string_length) % EEPROM_PAGE_LENGTH;           // Number of chars to write in last page
+     
+    if(numFirsPageToWrite == (numLastPageToWrite - 1)){
+        numCharsToSend = string_length;
+        write_string_eeprom_w(address, &string[numCharsSended], numCharsToSend);
+    }else{
+        for(k = numFirsPageToWrite; k < numLastPageToWrite; k++){                           // Write from first to last page
+            if(k == numFirsPageToWrite){
+                numCharsToSend = first_page_space;
+            }else if(k == (numLastPageToWrite-1)){
+                numCharsToSend = last_page_space;
+            }else{
+                numCharsToSend = EEPROM_PAGE_LENGTH;
+            }
+
+            write_string_eeprom_w(address, &string[numCharsSended], numCharsToSend);
+            address += numCharsToSend;
+            numCharsSended += numCharsToSend;
+        }
+    }
+}
+
+void write_string_eeprom_w(uint32_t address, char * string, uint16_t string_length)
+{		
+    uint16_t i;
+	
+    if(address > 0xFFFF){
+        deviceAddressSlave1=EEPROM_SLAVE_ADDRESS_2;
+    }else{
+        deviceAddressSlave1=EEPROM_SLAVE_ADDRESS_1;
+    }
+    
+    while(!ext_eeprom_ready_ID_1(deviceAddressSlave1));
+    i2c_ID_1_startp();
+    i2c_ID_1_writep(deviceAddressSlave1);
+    i2c_ID_1_writep(address>>8);
+    i2c_ID_1_writep(address);
+    for(i = 0; i < string_length; i++){
+        i2c_ID_1_writep(string[i]);
+    }
+    i2c_ID_1_stopp();
+}
+
+void read_string_eeprom(uint32_t address, char * string, uint16_t string_length)
+{	
+    uint16_t i;
+    for(i = 0; i < string_length; i++){
+        string[i] = read_string_eeprom_w(address+i);
+    }	
+}
+
+char read_string_eeprom_w(uint32_t address){
+    uint16_t i;
+    char byteRead;
+    
+    if(address > 0xFFFF){
+        deviceAddressSlave1=EEPROM_SLAVE_ADDRESS_2;
+    }else{
+        deviceAddressSlave1=EEPROM_SLAVE_ADDRESS_1;
+    }
+	
+    while(!ext_eeprom_ready_ID_1(deviceAddressSlave1));
+    i2c_ID_1_startp();
+    i2c_ID_1_writep(deviceAddressSlave1);
+    i2c_ID_1_writep(address>>8);
+    i2c_ID_1_writep(address);
+    i2c_ID_1_startp();
+    i2c_ID_1_writep(deviceAddressSlave1|0x01);
+    byteRead = i2c_ID_1_readp(0);
+    i2c_ID_1_stopp();
+    
+    return byteRead;
+}
+
+void write_int_eeprom(uint32_t address, uint32_t number, uint8_t int_length)
+{	
+	uint8_t eepromBuff[4];
+	uint16_t eepromBuffLen = 0;
+    
+	switch(int_length){
+		case 32:
+		{
+			eepromBuff[0] = (uint8_t)(number>>24);
+			eepromBuff[1] = (uint8_t)(number>>16);
+			eepromBuff[2] = (uint8_t)(number>>8);
+			eepromBuff[3] = (uint8_t)(number);
+			eepromBuffLen = 4;
+			break;
+		}
+		case 16:
+		{
+			eepromBuff[0] = (uint8_t)(number>>8);
+			eepromBuff[1] = (uint8_t)(number);
+			eepromBuffLen = 2;
+			break;
+		}	
+		case 8:
+		{
+			eepromBuff[0] = (uint8_t)(number);
+			eepromBuffLen = 1;
+			break;
+		}
+		default:
+			eepromBuffLen = 0;
+			break;
+	}
+    
+    write_string_eeprom(address, eepromBuff, eepromBuffLen);
+	
+
+}
+
+uint32_t read_int_eeprom(uint32_t address, uint8_t int_length)
+{	
+	uint32_t number = 0;
+	
+	uint8_t eepromBuff[4];
+	uint16_t eepromBuffLen = 0;
+    
+//    char der[200];
+	
+	switch(int_length){
+		case 32:
+		{
+			eepromBuffLen = 4;
+			break;
+		}
+		case 16:
+		{
+			eepromBuffLen = 2;
+			break;
+		}	
+		case 8:
+		{
+			eepromBuffLen = 1;
+			break;
+		}
+		default:
+			eepromBuffLen = 0;
+			break;
+	}
+    
+//    sprintf(der, "int_r: LEN: %d\n",eepromBuffLen);
+//    send_sci5(der);
+    
+    read_string_eeprom(address, eepromBuff, eepromBuffLen);
+    
+    
+//    sprintf(der, "int_r: %d.%d.%d.%d - %d\n", eepromBuff[0],eepromBuff[1],eepromBuff[2],eepromBuff[3], eepromBuffLen);
+//    send_sci5(der);
+    
+	   
+	switch(int_length){
+		case 32:
+		{
+			number = (eepromBuff[0]<<24);
+			number |= (eepromBuff[1]<<16);
+			number |= (eepromBuff[2]<<8);
+			number |= (eepromBuff[3]);
+            
+//            sprintf(der, "int_r32: data: %d.%d.%d.%d - len: %d\n", eepromBuff[0],eepromBuff[1],eepromBuff[2],eepromBuff[3], int_length);
+			break;
+		}
+		case 16:
+		{
+			number = (eepromBuff[0]<<8);
+			number |= (eepromBuff[1]);
+            
+//            sprintf(der, "int_r16: data: %d.%d - len: %d\n", eepromBuff[0],eepromBuff[1], int_length);
+			break;
+		}	
+		case 8:
+		{
+			number = (eepromBuff[0]);
+            
+//            sprintf(der, "int_r8: data: %d - len: %d\n", eepromBuff[0], int_length);
+			break;
+		}
+		default:
+			break;
+	}
+    
+//    send_sci5(der);
+    
+//    char der[20];
+//    sprintf(der, "int_r2: %u\n", number);
+//    send_sci5(der);
+	
+	return number;
 }
 /* *****************************************************************************
  End of File

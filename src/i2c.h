@@ -51,13 +51,44 @@ extern "C" {
 
     #define PIN_SCL2_OUT LATAbits.LATA2     /**< Set GPIO state port. */
     #define PIN_SDA2_OUT LATAbits.LATA3     /**< Set GPIO state port. */
+
+    #define EEPROM_PAGE_LENGTH      128
+
+    #define EEPROM_SLAVE_ADDRESS_1  0xA0    // 1010 0000
+    #define EEPROM_SLAVE_ADDRESS_2  0xA8    // 1010 1000
+
+    //Length in bytes of numeric values 
+    #define MAX_32_BITS     4
+    #define MAX_16_BITS     2
+    #define MAX_8_BITS      1
+
+    //length of numeric values
+    #define INT32       32
+    #define INT16       16
+    #define INT8        8
+
+    //**************************************************
+    // First address part - From 0x0000 to 0xFFFF
+    //**************************************************
+    
+    //-------------------- PAGE 0 ----------------------------------------------
+    
+    #define MAX_PRESSURE_MAX      MAX_16_BITS
+    #define MAX_INSPIRATION_TIME  MAX_16_BITS     
+    #define MAX_EXPIRATION_TIME   MAX_16_BITS    
+    
+    #define INIT_PAGE_0           0                                 // page 0 * 128
+    #define ADDR_PRESSURE_MAX     INIT_PAGE_0                        
+    #define ADDR_INSPIRATION_TIME INIT_PAGE_0+MAX_PRESSURE_MAX
+    #define ADDR_EXPIRATION_TIME  INIT_PAGE_0+MAX_PRESSURE_MAX+MAX_INSPIRATION_TIME
+
     // *****************************************************************************
     // *****************************************************************************
     // Section: Data Types
     // *****************************************************************************
     // *****************************************************************************
-
-
+    
+    uint16_t deviceAddressSlave1;
 
     // *****************************************************************************
     // *****************************************************************************
@@ -105,6 +136,8 @@ extern "C" {
      */
     uint8_t i2c_ID_1_readp(uint8_t ack);
     
+    uint8_t ext_eeprom_ready_ID_1(char direccion);
+    
     /**
      * @brief I2C2 period for comunication
      */
@@ -140,6 +173,18 @@ extern "C" {
      */
     uint8_t i2c_ID_2_readp(uint8_t ack);
 
+    
+    void write_string_eeprom(uint32_t address, char * string, uint16_t string_length);
+
+    void write_string_eeprom_w(uint32_t address, char * string, uint16_t string_length);
+
+    void read_string_eeprom(uint32_t address, char * string, uint16_t string_length);
+
+    char read_string_eeprom_w(uint32_t address);
+
+    void write_int_eeprom(uint32_t address, uint32_t number, uint8_t int_length);
+
+    uint32_t read_int_eeprom(uint32_t address, uint8_t int_length);
 
     
     /* Provide C++ Compatibility */

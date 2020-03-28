@@ -93,6 +93,8 @@ extern "C" {
     void BLUETOOTH_Task(void);
     
     void BLUETOOTH_process_frame(char * frame, uint8_t len);
+    
+    void BLUETOOTH_send_frame(char * data);
 
     /* Provide C++ Compatibility */
 #ifdef __cplusplus

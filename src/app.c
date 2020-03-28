@@ -40,6 +40,11 @@ CONFIG_DATA configData;
 
 
 void APP_init(void){
+    
+    configData.pressure_max = read_int_eeprom(ADDR_PRESSURE_MAX, INT16);
+    configData.inspiration_time = read_int_eeprom(ADDR_INSPIRATION_TIME, INT16);
+    configData.expiration_time = read_int_eeprom(ADDR_EXPIRATION_TIME, INT16);
+    
     appData.state = APP_STATE_INIT;
 }
 
