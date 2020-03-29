@@ -54,6 +54,7 @@ void i2c_init (void){
 void i2c_ID_1_dly(void){
     delay_us(10);
 }
+
 void i2c_ID_1_startp(void){
   PIN_SDA1 = 1; //SDA = 1;             // i2c start bit sequence
   i2c_ID_1_dly();
@@ -124,10 +125,10 @@ uint8_t i2c_ID_1_readp(uint8_t ack){
   return d;
 }
 
-uint8_t ext_eeprom_ready_ID_1(char direccion) {
+uint8_t ext_eeprom_ready_ID_1(char addr) {
    uint8_t ack;
    i2c_ID_1_startp();            // If the write command is acknowledged,
-   ack = i2c_ID_1_writep(direccion);  // then the device is ready.
+   ack = i2c_ID_1_writep(addr);  // then the device is ready.
    i2c_ID_1_stopp();
    return !ack;
 }

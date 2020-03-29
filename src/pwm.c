@@ -2,7 +2,7 @@
 /**
  * @file pwm.c
  * @author Ingeniería Apropiada
- * @date 26/03/2020
+ * @date 28/03/2020
  * @brief File containing PWM driver.
  */
 /* ************************************************************************** */

@@ -97,41 +97,44 @@ $(function() {
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="comment">/* ************************************************************************** */</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="comment">/* ************************************************************************** */</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="comment">// *****************************************************************************</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="comment">// *****************************************************************************</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="comment">// Section: Data Types</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="comment">// *****************************************************************************</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="mg811_8h.html#a8735f8b0921aab8b635e3cb41a04fad6">   36</a></span>&#160;<span class="preprocessor">    #define DC_GAIN             8.5     </span></div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="mg811_8h.html#a3cc919c3c29c855a96e535321de90184">   37</a></span>&#160;<span class="preprocessor">    #define ZERO_POINT_VOLTAGE  0.306   </span></div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="mg811_8h.html#a48f6439896b6d3a4b685f6f832f98662">   38</a></span>&#160;<span class="preprocessor">    #define REACTION_VOLTGAE    0.030   </span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">    // *****************************************************************************</span></div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="comment">// *****************************************************************************</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">extern</span> uint32_t <a class="code" href="mg811_8h.html#ae2b583ee183729dbd37985d0a431165e">value_ppm_CO2</a>;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="comment">// *****************************************************************************</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="comment">// *****************************************************************************</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="comment">// Section: Interface Functions</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="comment">// *****************************************************************************</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="comment">// Section: Data Types</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="comment">// *****************************************************************************</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="comment">// *****************************************************************************</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">extern</span> uint32_t <a class="code" href="mg811_8h.html#ae2b583ee183729dbd37985d0a431165e">value_ppm_CO2</a>;  </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">extern</span> <span class="keywordtype">float</span> <a class="code" href="mg811_8h.html#ad9bfac4bd906c8c90eb953425f682064">CO2Curve</a>[3];       </div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="comment">// *****************************************************************************</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="mg811_8h.html#afe764160bd1e60881cdc482bfef676f4">get_sample_ppm_CO2</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="comment">/* Provide C++ Compatibility */</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;}</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _EXAMPLE_FILE_NAME_H */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">/* *****************************************************************************</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment"> End of File</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="comment">// *****************************************************************************</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="comment">// Section: Interface Functions</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="comment">// *****************************************************************************</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="comment">// *****************************************************************************</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="mg811_8h.html#afe764160bd1e60881cdc482bfef676f4">get_sample_ppm_CO2</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="comment">/* Provide C++ Compatibility */</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _EXAMPLE_FILE_NAME_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">/* *****************************************************************************</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment"> End of File</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment"> */</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="amg811_8h_html_ae2b583ee183729dbd37985d0a431165e"><div class="ttname"><a href="mg811_8h.html#ae2b583ee183729dbd37985d0a431165e">value_ppm_CO2</a></div><div class="ttdeci">uint32_t value_ppm_CO2</div><div class="ttdef"><b>Definition:</b> mg811.c:29</div></div>
+<div class="ttc" id="amg811_8h_html_ae2b583ee183729dbd37985d0a431165e"><div class="ttname"><a href="mg811_8h.html#ae2b583ee183729dbd37985d0a431165e">value_ppm_CO2</a></div><div class="ttdeci">uint32_t value_ppm_CO2</div><div class="ttdoc">Calculated CO2 ppm value.</div><div class="ttdef"><b>Definition:</b> mg811.c:29</div></div>
 <div class="ttc" id="asystem__definitions_8h_html"><div class="ttname"><a href="system__definitions_8h.html">system_definitions.h</a></div><div class="ttdoc">File containing main system definitions.</div></div>
-<div class="ttc" id="amg811_8h_html_afe764160bd1e60881cdc482bfef676f4"><div class="ttname"><a href="mg811_8h.html#afe764160bd1e60881cdc482bfef676f4">get_sample_ppm_CO2</a></div><div class="ttdeci">void get_sample_ppm_CO2(void)</div><div class="ttdoc">Function to get ppm CO2.</div><div class="ttdef"><b>Definition:</b> mg811.c:45</div></div>
+<div class="ttc" id="amg811_8h_html_afe764160bd1e60881cdc482bfef676f4"><div class="ttname"><a href="mg811_8h.html#afe764160bd1e60881cdc482bfef676f4">get_sample_ppm_CO2</a></div><div class="ttdeci">void get_sample_ppm_CO2(void)</div><div class="ttdoc">Function to get ppm CO2.</div><div class="ttdef"><b>Definition:</b> mg811.c:46</div></div>
+<div class="ttc" id="amg811_8h_html_ad9bfac4bd906c8c90eb953425f682064"><div class="ttname"><a href="mg811_8h.html#ad9bfac4bd906c8c90eb953425f682064">CO2Curve</a></div><div class="ttdeci">float CO2Curve[3]</div><div class="ttdoc">Data format:{ x, y, slope}, a line is formed which is &quot;approximately equivalent&quot; to the original curv...</div><div class="ttdef"><b>Definition:</b> mg811.c:30</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Mar 27 2020 13:41:08 for IA.I.R.E by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Mar 29 2020 13:03:46 for IA.I.R.E by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.17
 </small></address>

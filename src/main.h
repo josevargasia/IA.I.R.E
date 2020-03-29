@@ -12,8 +12,8 @@
  * @section intro_sec Introduction
  * Project for implement low cost mechanical ventilators.
  *
- * @subsection inspiramed_subsec - #InspiraMED
- * We are part of the initiative in Colombia called #InspiraMED, in which we are 
+ * @subsection inspiramed_subsec - #InnspiraMED
+ * We are part of the initiative in Colombia called #InnspiraMED, in which we are 
  * working on the implementation of ventilation equipment for COVID-19 patients.
  * 
  * @section components_sec Components Used

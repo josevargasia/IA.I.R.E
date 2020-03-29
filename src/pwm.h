@@ -2,7 +2,7 @@
 /**
  * @file pwm.h
  * @author Ingeniería Apropiada
- * @date 26/03/2020
+ * @date 28/03/2020
  * @brief File containing PWM driver.
  */
 /* ************************************************************************** */
@@ -49,8 +49,23 @@ extern "C" {
     // *****************************************************************************
     // *****************************************************************************
 
+    /**
+     * @brief Initialize PWM configuration
+     */
     void pwm_init(void);
+    
+    /**
+     * @brief Initialize PWM ID5 configuration
+     */
     void pwm_ID5_init(void);
+    
+    /**
+     * @brief Set percent of duty cycle in PWM ID5
+     * @code
+     *      pwm_ID5_duty_set(25);   // 25% of duty cycle
+     * @endcode
+     * @param duty Duty cycle in percent
+     */
     void pwm_ID5_duty_set(uint8_t duty);
 
     /* Provide C++ Compatibility */

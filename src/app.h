@@ -34,8 +34,6 @@ extern "C" {
     /* ************************************************************************** */
     /* ************************************************************************** */
     
-    #define PWM1_PERIOD  100    /**< PWM1 PERIOD. */
-    
     /**
     * @brief Use enum for define states of states machine in application.
     *
@@ -59,8 +57,6 @@ extern "C" {
 
     /**
      * @brief Application data structure.
-     * 
-     * 
      */
     typedef struct
     {
@@ -73,25 +69,23 @@ extern "C" {
         uint8_t test_led_timeout;   /**< Test timeout for led blink. */
         uint16_t timeout_1seg;      /**< Timeout for count one second in timer 4 interruption. */
         
-        uint16_t PWM1_period_count;       /**< Timeout for PWM1. */
-        uint16_t PWM1_duty;               /**< Duty for PWM1 in percent. */
-        
     } APP_DATA;
 
     extern APP_DATA appData;    /**< Manage all variables that application can be use. */
     
+    /**
+     * @brief Configuration data structure.
+     */
     typedef struct
     {
-        /* The application's current state */
-        
-        uint16_t pressure_max;
-        uint16_t inspiration_time;
-        uint16_t expiration_time;
-        uint8_t pwm5_duty;
-        uint32_t pwm5_frec;
+        uint16_t pressure_max;          /**< Configure pressure max. */
+        uint16_t inspiration_time;      /**< Configure inspiration time. */
+        uint16_t expiration_time;       /**< Configure expiration time. */
+        uint8_t pwm5_duty;              /**< Configure Duty cycle of PWM pump. */
+        uint32_t pwm5_frec;             /**< Configure frecuency of PWM pump. */
     } CONFIG_DATA;
 
-    extern CONFIG_DATA configData;    
+    extern CONFIG_DATA configData;    /**< Manage all variables that application can be use to configure system. */
     
     // *****************************************************************************
     // *****************************************************************************
@@ -108,11 +102,7 @@ extern "C" {
      * @brief Application task, in this task you can put all system tasks.
      */
     void APP_Task(void);
-    
-    /**
-     * @brief Init PWM1
-     */
-    void PWM1_init(void);
+
     
     /* Provide C++ Compatibility */
 #ifdef __cplusplus

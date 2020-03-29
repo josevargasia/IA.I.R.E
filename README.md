@@ -3,8 +3,8 @@
 ## Introduction
 Project for implement low cost mechanical ventilators.
 
-## #InspiraMED
-We are part of the initiative in Colombia called #InspiraMED, in which we are working on the implementation of ventilation equipment for COVID-19 patients.
+## #InnspiraMED
+We are part of the initiative in Colombia called #InnspiraMED, in which we are working on the implementation of ventilation equipment for COVID-19 patients.
 
 ## Components Used
 List of components used:

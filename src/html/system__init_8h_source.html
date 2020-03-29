@@ -97,45 +97,52 @@ $(function() {
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
 <div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="system__init_8h.html#a9e5857d5e9389748b6b19455f15c4ecb">   34</a></span>&#160;<span class="preprocessor">    #define PIN_IN          1               </span></div>
 <div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="system__init_8h.html#aec15c10e43f4f390f5689bd5a764c80b">   35</a></span>&#160;<span class="preprocessor">    #define PIN_OUT         0               </span></div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="system__init_8h.html#a59e70484ae1c89a895b06eb4fbedc8fe">   37</a></span>&#160;<span class="preprocessor">    #define TEST_LEDStateIOSet(value)       (TRISBbits.TRISB15 = value)     </span></div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="system__init_8h.html#a4152965d6c09489637e21439f0387541">   38</a></span>&#160;<span class="preprocessor">    #define TEST_LEDStateGet()              PORTBbits.RB15                  </span></div>
-<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="system__init_8h.html#a880b20872fb3a94196d4fc0a92b8fe88">   39</a></span>&#160;<span class="preprocessor">    #define TEST_LEDStateSet(value)         (LATBbits.LATB15 = value)       </span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">    // *****************************************************************************</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="comment">// *****************************************************************************</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="comment">// Section: Data Types</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="comment">// *****************************************************************************</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="comment">// *****************************************************************************</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="comment">// *****************************************************************************</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">    // GPIO OUT</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="system__init_8h.html#a59e70484ae1c89a895b06eb4fbedc8fe">   38</a></span>&#160;<span class="preprocessor">    #define TEST_LEDStateIOSet(value)       (TRISBbits.TRISB15 = value)     </span></div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="system__init_8h.html#a4152965d6c09489637e21439f0387541">   39</a></span>&#160;<span class="preprocessor">    #define TEST_LEDStateGet()              PORTBbits.RB15                  </span></div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="system__init_8h.html#a880b20872fb3a94196d4fc0a92b8fe88">   40</a></span>&#160;<span class="preprocessor">    #define TEST_LEDStateSet(value)         (LATBbits.LATB15 = value)       </span></div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="system__init_8h.html#afd06654355cb0c5fc331e981c384ceeb">   42</a></span>&#160;<span class="preprocessor">    #define PWM1StateIOSet(value)       (TRISBbits.TRISB10 = value)     </span></div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="system__init_8h.html#a5b372f02d0d54d2b5c5048931da35a2c">   43</a></span>&#160;<span class="preprocessor">    #define PWM1StateGet()              PORTBbits.RB10                  </span></div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="system__init_8h.html#aa1bf1b526148935f9fb27c65addc69be">   44</a></span>&#160;<span class="preprocessor">    #define PWM1StateSet(value)         (LATBbits.LATB10 = value)       </span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">    // GPIO IN</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="system__init_8h.html#af09cfdb54d0452843a9b4ace1a3dea9a">   47</a></span>&#160;<span class="preprocessor">    #define STATE_BLUETOOTHStateIOSet(value)       (TRISBbits.TRISB10 = value)     </span></div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="system__init_8h.html#a2fd8275fd8d8c1c348a1e987588578ac">   48</a></span>&#160;<span class="preprocessor">    #define STATE_BLUETOOTHStateGet()              PORTBbits.RB10                  </span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">    // *****************************************************************************</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="comment">// *****************************************************************************</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="comment">// Section: Data Types</span></div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="comment">// *****************************************************************************</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="comment">// Section: Interface Functions</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="comment">// *****************************************************************************</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="comment">// *****************************************************************************</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment"></span>    <span class="keywordtype">void</span> <a class="code" href="system__init_8h.html#a43f5e0d6db0fb41a437cc9096b32e9b5">system_init</a> (<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="system__init_8h.html#a80519238a10406ae511c026a78714b44">ports_init</a> (<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="comment">/* Provide C++ Compatibility */</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;}</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _SYSTEM_INIT_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="comment">// *****************************************************************************</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="comment">// *****************************************************************************</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="comment">// *****************************************************************************</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="comment">// Section: Interface Functions</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="comment">// *****************************************************************************</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="comment">// *****************************************************************************</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment"></span>    <span class="keywordtype">void</span> <a class="code" href="system__init_8h.html#a43f5e0d6db0fb41a437cc9096b32e9b5">system_init</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="system__init_8h.html#a80519238a10406ae511c026a78714b44">ports_init</a> (<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">/* *****************************************************************************</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment"> End of File</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="comment">/* Provide C++ Compatibility */</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;}</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _SYSTEM_INIT_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">/* *****************************************************************************</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment"> End of File</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment"> */</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="asystem__init_8h_html_a80519238a10406ae511c026a78714b44"><div class="ttname"><a href="system__init_8h.html#a80519238a10406ae511c026a78714b44">ports_init</a></div><div class="ttdeci">void ports_init(void)</div><div class="ttdoc">Initialize ports configuration.</div><div class="ttdef"><b>Definition:</b> system_init.c:69</div></div>
 <div class="ttc" id="asystem__definitions_8h_html"><div class="ttname"><a href="system__definitions_8h.html">system_definitions.h</a></div><div class="ttdoc">File containing main system definitions.</div></div>
 <div class="ttc" id="asystem__init_8h_html_a43f5e0d6db0fb41a437cc9096b32e9b5"><div class="ttname"><a href="system__init_8h.html#a43f5e0d6db0fb41a437cc9096b32e9b5">system_init</a></div><div class="ttdeci">void system_init(void)</div><div class="ttdoc">Initialize system configuration.</div><div class="ttdef"><b>Definition:</b> system_init.c:40</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Mar 27 2020 13:41:08 for IA.I.R.E by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Mar 29 2020 13:03:46 for IA.I.R.E by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.17
 </small></address>

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['get_5fsample_5fppm_5fco2_169',['get_sample_ppm_CO2',['../mg811_8c.html#afe764160bd1e60881cdc482bfef676f4',1,'get_sample_ppm_CO2(void):&#160;mg811.c'],['../mg811_8h.html#afe764160bd1e60881cdc482bfef676f4',1,'get_sample_ppm_CO2(void):&#160;mg811.c']]]
+  ['delay_5fms_253',['delay_ms',['../delay_8c.html#aa0dce6d249d81fb85b082273270ba710',1,'delay_ms(uint16_t ms):&#160;delay.c'],['../delay_8h.html#aa0dce6d249d81fb85b082273270ba710',1,'delay_ms(uint16_t ms):&#160;delay.c']]],
+  ['delay_5fus_254',['delay_us',['../delay_8c.html#ab33ebb2c5ca2d80d259c64a9d658589f',1,'delay_us(uint32_t us):&#160;delay.c'],['../delay_8h.html#ab33ebb2c5ca2d80d259c64a9d658589f',1,'delay_us(uint32_t us):&#160;delay.c']]]
 ];

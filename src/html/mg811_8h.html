@@ -65,6 +65,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
@@ -72,12 +73,24 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>File containing main system definitions.  
+<p>File containing MG811 driver.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="system__definitions_8h_source.html">system_definitions.h</a>&quot;</code><br />
 </div>
 <p><a href="mg811_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a8735f8b0921aab8b635e3cb41a04fad6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mg811_8h.html#a8735f8b0921aab8b635e3cb41a04fad6">DC_GAIN</a>&#160;&#160;&#160;8.5</td></tr>
+<tr class="memdesc:a8735f8b0921aab8b635e3cb41a04fad6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define the DC gain of amplifier.  <a href="mg811_8h.html#a8735f8b0921aab8b635e3cb41a04fad6">More...</a><br /></td></tr>
+<tr class="separator:a8735f8b0921aab8b635e3cb41a04fad6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3cc919c3c29c855a96e535321de90184"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mg811_8h.html#a3cc919c3c29c855a96e535321de90184">ZERO_POINT_VOLTAGE</a>&#160;&#160;&#160;0.306</td></tr>
+<tr class="memdesc:a3cc919c3c29c855a96e535321de90184"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define the output of the sensor in volts when the concentration of CO2 is 400PPM.  <a href="mg811_8h.html#a3cc919c3c29c855a96e535321de90184">More...</a><br /></td></tr>
+<tr class="separator:a3cc919c3c29c855a96e535321de90184"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48f6439896b6d3a4b685f6f832f98662"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mg811_8h.html#a48f6439896b6d3a4b685f6f832f98662">REACTION_VOLTGAE</a>&#160;&#160;&#160;0.030</td></tr>
+<tr class="memdesc:a48f6439896b6d3a4b685f6f832f98662"><td class="mdescLeft">&#160;</td><td class="mdescRight">Define the voltage drop of the sensor when move the sensor from air into 1000ppm CO2.  <a href="mg811_8h.html#a48f6439896b6d3a4b685f6f832f98662">More...</a><br /></td></tr>
+<tr class="separator:a48f6439896b6d3a4b685f6f832f98662"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:afe764160bd1e60881cdc482bfef676f4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mg811_8h.html#afe764160bd1e60881cdc482bfef676f4">get_sample_ppm_CO2</a> (void)</td></tr>
@@ -87,13 +100,66 @@ Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:ae2b583ee183729dbd37985d0a431165e"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mg811_8h.html#ae2b583ee183729dbd37985d0a431165e">value_ppm_CO2</a></td></tr>
+<tr class="memdesc:ae2b583ee183729dbd37985d0a431165e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculated CO2 ppm value.  <a href="mg811_8h.html#ae2b583ee183729dbd37985d0a431165e">More...</a><br /></td></tr>
 <tr class="separator:ae2b583ee183729dbd37985d0a431165e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9bfac4bd906c8c90eb953425f682064"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mg811_8h.html#ad9bfac4bd906c8c90eb953425f682064">CO2Curve</a> [3]</td></tr>
+<tr class="memdesc:ad9bfac4bd906c8c90eb953425f682064"><td class="mdescLeft">&#160;</td><td class="mdescRight">Data format:{ x, y, slope}, a line is formed which is "approximately equivalent" to the original curve.  <a href="mg811_8h.html#ad9bfac4bd906c8c90eb953425f682064">More...</a><br /></td></tr>
+<tr class="separator:ad9bfac4bd906c8c90eb953425f682064"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>File containing main system definitions. </p>
+<div class="textblock"><p>File containing MG811 driver. </p>
 <dl class="section author"><dt>Author</dt><dd>Ingeniería Apropiada </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>26/03/2020 </dd></dl>
-</div><h2 class="groupheader">Function Documentation</h2>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a8735f8b0921aab8b635e3cb41a04fad6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8735f8b0921aab8b635e3cb41a04fad6">&#9670;&nbsp;</a></span>DC_GAIN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define DC_GAIN&#160;&#160;&#160;8.5</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Define the DC gain of amplifier. </p>
+
+</div>
+</div>
+<a id="a48f6439896b6d3a4b685f6f832f98662"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48f6439896b6d3a4b685f6f832f98662">&#9670;&nbsp;</a></span>REACTION_VOLTGAE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define REACTION_VOLTGAE&#160;&#160;&#160;0.030</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Define the voltage drop of the sensor when move the sensor from air into 1000ppm CO2. </p>
+
+</div>
+</div>
+<a id="a3cc919c3c29c855a96e535321de90184"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3cc919c3c29c855a96e535321de90184">&#9670;&nbsp;</a></span>ZERO_POINT_VOLTAGE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ZERO_POINT_VOLTAGE&#160;&#160;&#160;0.306</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Define the output of the sensor in volts when the concentration of CO2 is 400PPM. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
 <a id="afe764160bd1e60881cdc482bfef676f4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afe764160bd1e60881cdc482bfef676f4">&#9670;&nbsp;</a></span>get_sample_ppm_CO2()</h2>
 
@@ -113,12 +179,29 @@ Variables</h2></td></tr>
 <p>Function to get ppm CO2. </p>
 <p>Calculate the CO2 ppm value. </p>
 <p>&lt; Calculate the CO2 ppm value.</p>
-<p>&lt; Input: 550 - 3320 mV</p>
-<p>&lt; Output: 350 - 10000 ppm</p>
+<p>&lt; Input: volts - MG811 output measured in volts</p>
+<p>&lt; Output: ppm of the target gas</p>
+<p>&lt; Remarks: By using the slope and a point of the line. The x(logarithmic value of ppm) of the line could be derived if y(MG-811 output) is provided. As it is a logarithmic coordinate, power of 10 is used to convert the result to non-logarithmic value.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
+<a id="ad9bfac4bd906c8c90eb953425f682064"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9bfac4bd906c8c90eb953425f682064">&#9670;&nbsp;</a></span>CO2Curve</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float CO2Curve[3]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Data format:{ x, y, slope}, a line is formed which is "approximately equivalent" to the original curve. </p>
+
+</div>
+</div>
 <a id="ae2b583ee183729dbd37985d0a431165e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae2b583ee183729dbd37985d0a431165e">&#9670;&nbsp;</a></span>value_ppm_CO2</h2>
 
@@ -131,12 +214,14 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Calculated CO2 ppm value. </p>
+
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Mar 27 2020 13:41:08 for IA.I.R.E by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Mar 29 2020 13:03:46 for IA.I.R.E by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.17
 </small></address>

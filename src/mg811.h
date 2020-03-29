@@ -3,7 +3,7 @@
  * @file mg811.h
  * @author Ingeniería Apropiada
  * @date 26/03/2020
- * @brief File containing main system definitions.
+ * @brief File containing MG811 driver.
  */
 /* ************************************************************************** */
 

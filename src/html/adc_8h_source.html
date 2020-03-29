@@ -99,7 +99,7 @@ $(function() {
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">/* ************************************************************************** */</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="comment">/* ************************************************************************** */</span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="adc_8h.html#a2a5765ec72cf780dc54c9367a1b51684">   38</a></span>&#160;<span class="preprocessor">    #define ADC_MAX_NUM_SAMPLE_PROM  1000        </span></div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="adc_8h.html#a2a5765ec72cf780dc54c9367a1b51684">   38</a></span>&#160;<span class="preprocessor">    #define ADC_MAX_NUM_SAMPLE_PROM  500        </span></div>
 <div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="adc_8h.html#a2cbb851586a0f07cf14eb2a145a1dfe3">   40</a></span>&#160;<span class="preprocessor">    #define PORT_AN0    0b0000000000000001      </span></div>
 <div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="adc_8h.html#a083062153f421d6a16b52eab2b1ca409">   41</a></span>&#160;<span class="preprocessor">    #define PORT_AN1    0b0000000000000010      </span></div>
 <div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="adc_8h.html#a7be80ba36340f684a8ca52a7ff64ee0f">   42</a></span>&#160;<span class="preprocessor">    #define PORT_AN2    0b0000000000000100      </span></div>
@@ -145,16 +145,18 @@ $(function() {
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    </div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="adc_8h.html#a0ce09cb9ff193e61c08f5f604a467380">adc_get_samples</a>(<span class="keywordtype">void</span>);</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    </div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="comment">/* Provide C++ Compatibility */</span></div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;}</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _ADC_H */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment">/* *****************************************************************************</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment"> End of File</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="adc_8h.html#a5da0d9815c732d9b2f325c51d18e6785">adc_get_sample_average</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="comment">/* Provide C++ Compatibility */</span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;}</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _ADC_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="comment">/* *****************************************************************************</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="comment"> End of File</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="comment"> */</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="astruct_a_d_c___d_a_t_a_html_acb41519d39b6e9e84cf37a485fc3df20"><div class="ttname"><a href="struct_a_d_c___d_a_t_a.html#acb41519d39b6e9e84cf37a485fc3df20">ADC_DATA::values_2_count</a></div><div class="ttdeci">uint16_t values_2_count</div><div class="ttdoc">Count samples for avergae.</div><div class="ttdef"><b>Definition:</b> adc.h:74</div></div>
 <div class="ttc" id="aadc_8h_html_a0ce09cb9ff193e61c08f5f604a467380"><div class="ttname"><a href="adc_8h.html#a0ce09cb9ff193e61c08f5f604a467380">adc_get_samples</a></div><div class="ttdeci">void adc_get_samples(void)</div><div class="ttdoc">Function to ged ADC samples.</div><div class="ttdef"><b>Definition:</b> adc.c:112</div></div>
@@ -163,10 +165,11 @@ $(function() {
 <div class="ttc" id="aadc_8h_html_a228113d68672e13d25f27d71d010cb03"><div class="ttname"><a href="adc_8h.html#a228113d68672e13d25f27d71d010cb03">adcData</a></div><div class="ttdeci">ADC_DATA adcData</div><div class="ttdoc">Manage all variables that ADC driver can use.</div><div class="ttdef"><b>Definition:</b> adc.c:29</div></div>
 <div class="ttc" id="asystem__definitions_8h_html"><div class="ttname"><a href="system__definitions_8h.html">system_definitions.h</a></div><div class="ttdoc">File containing main system definitions.</div></div>
 <div class="ttc" id="aadc_8h_html_a2b815e6730e8723a6d1d06d9ef8f31c0"><div class="ttname"><a href="adc_8h.html#a2b815e6730e8723a6d1d06d9ef8f31c0">adc_init</a></div><div class="ttdeci">void adc_init(void)</div><div class="ttdoc">Initialize ADC configuration.</div><div class="ttdef"><b>Definition:</b> adc.c:45</div></div>
+<div class="ttc" id="aadc_8h_html_a5da0d9815c732d9b2f325c51d18e6785"><div class="ttname"><a href="adc_8h.html#a5da0d9815c732d9b2f325c51d18e6785">adc_get_sample_average</a></div><div class="ttdeci">void adc_get_sample_average(void)</div><div class="ttdoc">Function to ged ADC samples average.</div><div class="ttdef"><b>Definition:</b> adc.c:135</div></div>
 <div class="ttc" id="astruct_a_d_c___d_a_t_a_html"><div class="ttname"><a href="struct_a_d_c___d_a_t_a.html">ADC_DATA</a></div><div class="ttdoc">ADC data structure.</div><div class="ttdef"><b>Definition:</b> adc.h:68</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Mar 27 2020 13:41:08 for IA.I.R.E by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Mar 29 2020 13:03:46 for IA.I.R.E by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.17
 </small></address>

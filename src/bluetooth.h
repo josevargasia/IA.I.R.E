@@ -31,7 +31,7 @@ extern "C" {
     /* Section: Constants                                                         */
     /* ************************************************************************** */
     /* ************************************************************************** */
-    #define BLUETOOTH_FRAME_SEND_TIME   500       // in ms
+    #define BLUETOOTH_FRAME_SEND_TIME   500       /**< Send time to bluetooth in miliseconds. */
     /**
     * @brief Use enum for define states of states machine.
     */
@@ -39,15 +39,14 @@ extern "C" {
     {
         /* Application's state machine's initial state. */
         BLUETOOTH_STATE_INIT=0,           /**< Initial state. */
-        BLUETOOTH_STATE_SERVICE_TASKS,    /**< State to manage secondary system tasks. */
-        BLUETOOTH_STATE_WRITE,
-        BLUETOOTH_STATE_READ,
+        BLUETOOTH_STATE_WRITE,            /**< State to write frames to bluetooth. */
+        BLUETOOTH_STATE_READ,             /**< State to read frames from bluetooth. */
                 
                 
-        FRAME_STATE_HEADER_INIT_1,
-        FRAME_STATE_HEADER_INIT_2,
-        FRAME_STATE_HEADER_BODY,
-        FRAME_STATE_HEADER_END_1,
+        FRAME_STATE_HEADER_INIT_1,          /**< State to read header start 1. */
+        FRAME_STATE_HEADER_INIT_2,          /**< State to read header start 2. */
+        FRAME_STATE_HEADER_BODY,            /**< State to read body frame. */
+        FRAME_STATE_HEADER_END_1,           /**< State to read header end 1. */
     } BLUETOOTH_STATES;
 
 
@@ -63,13 +62,15 @@ extern "C" {
     typedef struct
     {
         /* The application's current state */
-        BLUETOOTH_STATES state;           /**< States of states machine. */
+        BLUETOOTH_STATES state;             /**< States of state machine. */
+            
+        BLUETOOTH_STATES frame_state;       /**< States of read frame state machine. */
         
-        uint16_t timeout;               /**< Timeout. */
+        uint16_t timeout;                   /**< Timeout. */
         
-        char readBuff[100];
-        uint8_t index_readBuff;
-        BLUETOOTH_STATES frame_state;
+        char readBuff[100];                 /**< Array to save read frame from bluetooth. */
+        uint8_t index_readBuff;             /**< Index of array to save read frame from bluetooth. */
+        
     } BLUETOOTH_DATA;
 
     extern BLUETOOTH_DATA bluetoothData;    /**< Manage all variables that bluetooth can use. */
@@ -92,8 +93,20 @@ extern "C" {
      */
     void BLUETOOTH_Task(void);
     
+    /**
+     * @brief Process frame from bluetooth
+     * @param  frame    Frame to process     
+     * @param  len      Length of frame to process
+     */
     void BLUETOOTH_process_frame(char * frame, uint8_t len);
     
+    /**
+     * @brief Send string to bluetooth
+     * @code
+     *      BLUETOOTH_send_frame("Hello...");
+     * @endcode
+     * @param  data Pointer of string to send to bluetooth     
+     */
     void BLUETOOTH_send_frame(char * data);
 
     /* Provide C++ Compatibility */

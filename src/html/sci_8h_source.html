@@ -136,53 +136,55 @@ $(function() {
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="comment">// *****************************************************************************</span></div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="comment">// *****************************************************************************</span></div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    uint16_t <a class="code" href="sci_8h.html#aea1047604ff43a4381a7e50d667a80a5">circBuffPush_sci</a>(<span class="keywordtype">char</span> data, uint8_t bufferID);</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    </div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    uint16_t <a class="code" href="sci_8h.html#a13cec953c8024c8562f14b895ba98a9e">circBuffPop_sci</a>(<span class="keywordtype">char</span> *data, uint8_t bufferID);    </div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    </div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="sci_8h.html#aabb876a231622edb849c3ebf0624a956">clean_buffer_sci</a>(uint8_t bufferID);</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    </div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="sci_8h.html#abb34553ebf2d296b6d14cad6ac810351">sci_init</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    </div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="sci_8h.html#ad652ceebf53c28eec50c3eda4311819b">sci_ID1_setup</a> (uint32_t sci_baud, uint8_t rx_invert, uint8_t tx_invert, uint8_t parity_nbits, uint8_t stop_bits);</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    </div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="sci_8h.html#a4e47ed895ce7ce418fa101dc5443e739">sci_ID1_sendbyte</a>(<span class="keywordtype">char</span> data);</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    </div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="sci_8h.html#a7b5a6f14f666a3ae0b2ece9755b8328d">sci_ID1_send</a>(<span class="keywordtype">char</span> * <span class="keywordtype">string</span>);</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    </div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    uint16_t <a class="code" href="sci_8h.html#a50423d2bde06db25ba6f6bd4c460aacc">sci_ID1_get</a>(<span class="keywordtype">char</span> * data);</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="comment">/* Provide C++ Compatibility */</span></div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;}</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _SCI_H */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="comment">/* *****************************************************************************</span></div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="comment"> End of File</span></div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    uint16_t <a class="code" href="sci_8h.html#a47030e9c0b4ca02c32b0e4b3dc8b9c38">circBuffGetCount_sci</a>(uint8_t bufferID);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    uint16_t <a class="code" href="sci_8h.html#aea1047604ff43a4381a7e50d667a80a5">circBuffPush_sci</a>(<span class="keywordtype">char</span> data, uint8_t bufferID);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    uint16_t <a class="code" href="sci_8h.html#a13cec953c8024c8562f14b895ba98a9e">circBuffPop_sci</a>(<span class="keywordtype">char</span> *data, uint8_t bufferID);    </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="sci_8h.html#aabb876a231622edb849c3ebf0624a956">clean_buffer_sci</a>(uint8_t bufferID);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="sci_8h.html#abb34553ebf2d296b6d14cad6ac810351">sci_init</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    </div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="sci_8h.html#ad652ceebf53c28eec50c3eda4311819b">sci_ID1_setup</a> (uint32_t sci_baud, uint8_t rx_invert, uint8_t tx_invert, uint8_t parity_nbits, uint8_t stop_bits);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="sci_8h.html#a4e47ed895ce7ce418fa101dc5443e739">sci_ID1_sendbyte</a>(<span class="keywordtype">char</span> data);</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    </div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="sci_8h.html#a7b5a6f14f666a3ae0b2ece9755b8328d">sci_ID1_send</a>(<span class="keywordtype">char</span> * <span class="keywordtype">string</span>);</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    </div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    uint16_t <a class="code" href="sci_8h.html#a50423d2bde06db25ba6f6bd4c460aacc">sci_ID1_get</a>(<span class="keywordtype">char</span> * data);</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="comment">/* Provide C++ Compatibility */</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;}</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160; </div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _SCI_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="comment">/* *****************************************************************************</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="comment"> End of File</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="comment"> */</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="asci_8h_html_a13cec953c8024c8562f14b895ba98a9e"><div class="ttname"><a href="sci_8h.html#a13cec953c8024c8562f14b895ba98a9e">circBuffPop_sci</a></div><div class="ttdeci">uint16_t circBuffPop_sci(char *data, uint8_t bufferID)</div><div class="ttdoc">Load a character in a specific circular buffer.</div><div class="ttdef"><b>Definition:</b> sci.c:51</div></div>
+<div class="ttc" id="asci_8h_html_a13cec953c8024c8562f14b895ba98a9e"><div class="ttname"><a href="sci_8h.html#a13cec953c8024c8562f14b895ba98a9e">circBuffPop_sci</a></div><div class="ttdeci">uint16_t circBuffPop_sci(char *data, uint8_t bufferID)</div><div class="ttdoc">Load a character in a specific circular buffer.</div><div class="ttdef"><b>Definition:</b> sci.c:54</div></div>
 <div class="ttc" id="asci_8h_html_a596a4ae15468a313742439099e8e5750"><div class="ttname"><a href="sci_8h.html#a596a4ae15468a313742439099e8e5750">sciData</a></div><div class="ttdeci">SCI_DATA sciData</div><div class="ttdoc">Manage all variables that SCI driver can use.</div><div class="ttdef"><b>Definition:</b> sci.h:80</div></div>
-<div class="ttc" id="asci_8h_html_aabb876a231622edb849c3ebf0624a956"><div class="ttname"><a href="sci_8h.html#aabb876a231622edb849c3ebf0624a956">clean_buffer_sci</a></div><div class="ttdeci">void clean_buffer_sci(uint8_t bufferID)</div><div class="ttdoc">Erase all characters in a specific circular buffer.</div><div class="ttdef"><b>Definition:</b> sci.c:69</div></div>
+<div class="ttc" id="asci_8h_html_aabb876a231622edb849c3ebf0624a956"><div class="ttname"><a href="sci_8h.html#aabb876a231622edb849c3ebf0624a956">clean_buffer_sci</a></div><div class="ttdeci">void clean_buffer_sci(uint8_t bufferID)</div><div class="ttdoc">Erase all characters in a specific circular buffer.</div><div class="ttdef"><b>Definition:</b> sci.c:72</div></div>
 <div class="ttc" id="asci_8h_html_af503eec85ff5cb695ac49036162b1200"><div class="ttname"><a href="sci_8h.html#af503eec85ff5cb695ac49036162b1200">BUFFER_RX_SCI_ID1_SIZE</a></div><div class="ttdeci">#define BUFFER_RX_SCI_ID1_SIZE</div><div class="ttdoc">Size of SCI buffer RX for UART1 comunication.</div><div class="ttdef"><b>Definition:</b> sci.h:41</div></div>
 <div class="ttc" id="asci_8h_html_aa6d58c597bb37e8e31b42e77f6dcb788"><div class="ttname"><a href="sci_8h.html#aa6d58c597bb37e8e31b42e77f6dcb788">buffer_rx_sci_ID1</a></div><div class="ttdeci">char buffer_rx_sci_ID1[BUFFER_RX_SCI_ID1_SIZE]</div><div class="ttdoc">SCI buffer RX for UART1 comunication.</div><div class="ttdef"><b>Definition:</b> sci.h:65</div></div>
-<div class="ttc" id="asci_8h_html_aea1047604ff43a4381a7e50d667a80a5"><div class="ttname"><a href="sci_8h.html#aea1047604ff43a4381a7e50d667a80a5">circBuffPush_sci</a></div><div class="ttdeci">uint16_t circBuffPush_sci(char data, uint8_t bufferID)</div><div class="ttdoc">Save a character in a specific circular buffer.</div><div class="ttdef"><b>Definition:</b> sci.c:33</div></div>
-<div class="ttc" id="asci_8h_html_a4e47ed895ce7ce418fa101dc5443e739"><div class="ttname"><a href="sci_8h.html#a4e47ed895ce7ce418fa101dc5443e739">sci_ID1_sendbyte</a></div><div class="ttdeci">void sci_ID1_sendbyte(char data)</div><div class="ttdoc">Write a byte in UART1 TX port.</div><div class="ttdef"><b>Definition:</b> sci.c:137</div></div>
+<div class="ttc" id="asci_8h_html_aea1047604ff43a4381a7e50d667a80a5"><div class="ttname"><a href="sci_8h.html#aea1047604ff43a4381a7e50d667a80a5">circBuffPush_sci</a></div><div class="ttdeci">uint16_t circBuffPush_sci(char data, uint8_t bufferID)</div><div class="ttdoc">Save a character in a specific circular buffer.</div><div class="ttdef"><b>Definition:</b> sci.c:36</div></div>
+<div class="ttc" id="asci_8h_html_a4e47ed895ce7ce418fa101dc5443e739"><div class="ttname"><a href="sci_8h.html#a4e47ed895ce7ce418fa101dc5443e739">sci_ID1_sendbyte</a></div><div class="ttdeci">void sci_ID1_sendbyte(char data)</div><div class="ttdoc">Write a byte in UART1 TX port.</div><div class="ttdef"><b>Definition:</b> sci.c:140</div></div>
 <div class="ttc" id="asci_8h_html_a1952e3f390f9e77def7639c52d6d0f59"><div class="ttname"><a href="sci_8h.html#a1952e3f390f9e77def7639c52d6d0f59">NUMBER_OF_SCI_BUFFERS</a></div><div class="ttdeci">#define NUMBER_OF_SCI_BUFFERS</div><div class="ttdoc">Numer of SCI buffers.</div><div class="ttdef"><b>Definition:</b> sci.h:35</div></div>
 <div class="ttc" id="asci_8h_html_ab022d4e8d257cea46a38a92456576a17"><div class="ttname"><a href="sci_8h.html#ab022d4e8d257cea46a38a92456576a17">buffer_tx_sci_ID1</a></div><div class="ttdeci">char buffer_tx_sci_ID1[BUFFER_TX_SCI_ID1_SIZE]</div><div class="ttdoc">SCI buffer TX for UART1 comunication.</div><div class="ttdef"><b>Definition:</b> sci.h:64</div></div>
 <div class="ttc" id="asci_8h_html_a7a8913b1b31f60a2a3c452ed3065cb66"><div class="ttname"><a href="sci_8h.html#a7a8913b1b31f60a2a3c452ed3065cb66">BUFFER_TX_SCI_ID1_SIZE</a></div><div class="ttdeci">#define BUFFER_TX_SCI_ID1_SIZE</div><div class="ttdoc">Size of SCI buffer TX for UART1 comunication.</div><div class="ttdef"><b>Definition:</b> sci.h:40</div></div>
-<div class="ttc" id="asci_8h_html_a7b5a6f14f666a3ae0b2ece9755b8328d"><div class="ttname"><a href="sci_8h.html#a7b5a6f14f666a3ae0b2ece9755b8328d">sci_ID1_send</a></div><div class="ttdeci">void sci_ID1_send(char *string)</div><div class="ttdoc">Write a string in UART1 TX port.</div><div class="ttdef"><b>Definition:</b> sci.c:142</div></div>
-<div class="ttc" id="asci_8h_html_ad652ceebf53c28eec50c3eda4311819b"><div class="ttname"><a href="sci_8h.html#ad652ceebf53c28eec50c3eda4311819b">sci_ID1_setup</a></div><div class="ttdeci">void sci_ID1_setup(uint32_t sci_baud, uint8_t rx_invert, uint8_t tx_invert, uint8_t parity_nbits, uint8_t stop_bits)</div><div class="ttdoc">Configure UART 1 comunication.</div><div class="ttdef"><b>Definition:</b> sci.c:102</div></div>
+<div class="ttc" id="asci_8h_html_a7b5a6f14f666a3ae0b2ece9755b8328d"><div class="ttname"><a href="sci_8h.html#a7b5a6f14f666a3ae0b2ece9755b8328d">sci_ID1_send</a></div><div class="ttdeci">void sci_ID1_send(char *string)</div><div class="ttdoc">Write a string in UART1 TX port.</div><div class="ttdef"><b>Definition:</b> sci.c:145</div></div>
+<div class="ttc" id="asci_8h_html_ad652ceebf53c28eec50c3eda4311819b"><div class="ttname"><a href="sci_8h.html#ad652ceebf53c28eec50c3eda4311819b">sci_ID1_setup</a></div><div class="ttdeci">void sci_ID1_setup(uint32_t sci_baud, uint8_t rx_invert, uint8_t tx_invert, uint8_t parity_nbits, uint8_t stop_bits)</div><div class="ttdoc">Configure UART 1 comunication.</div><div class="ttdef"><b>Definition:</b> sci.c:105</div></div>
 <div class="ttc" id="asystem__definitions_8h_html"><div class="ttname"><a href="system__definitions_8h.html">system_definitions.h</a></div><div class="ttdoc">File containing main system definitions.</div></div>
-<div class="ttc" id="asci_8h_html_abb34553ebf2d296b6d14cad6ac810351"><div class="ttname"><a href="sci_8h.html#abb34553ebf2d296b6d14cad6ac810351">sci_init</a></div><div class="ttdeci">void sci_init(void)</div><div class="ttdoc">Initialize SCI configuration.</div><div class="ttdef"><b>Definition:</b> sci.c:84</div></div>
-<div class="ttc" id="asci_8h_html_a50423d2bde06db25ba6f6bd4c460aacc"><div class="ttname"><a href="sci_8h.html#a50423d2bde06db25ba6f6bd4c460aacc">sci_ID1_get</a></div><div class="ttdeci">uint16_t sci_ID1_get(char *data)</div><div class="ttdoc">Read a byte of UART1 RX port.</div><div class="ttdef"><b>Definition:</b> sci.c:150</div></div>
+<div class="ttc" id="asci_8h_html_a47030e9c0b4ca02c32b0e4b3dc8b9c38"><div class="ttname"><a href="sci_8h.html#a47030e9c0b4ca02c32b0e4b3dc8b9c38">circBuffGetCount_sci</a></div><div class="ttdeci">uint16_t circBuffGetCount_sci(uint8_t bufferID)</div><div class="ttdef"><b>Definition:</b> sci.c:32</div></div>
+<div class="ttc" id="asci_8h_html_abb34553ebf2d296b6d14cad6ac810351"><div class="ttname"><a href="sci_8h.html#abb34553ebf2d296b6d14cad6ac810351">sci_init</a></div><div class="ttdeci">void sci_init(void)</div><div class="ttdoc">Initialize SCI configuration.</div><div class="ttdef"><b>Definition:</b> sci.c:87</div></div>
+<div class="ttc" id="asci_8h_html_a50423d2bde06db25ba6f6bd4c460aacc"><div class="ttname"><a href="sci_8h.html#a50423d2bde06db25ba6f6bd4c460aacc">sci_ID1_get</a></div><div class="ttdeci">uint16_t sci_ID1_get(char *data)</div><div class="ttdoc">Read a byte of UART1 RX port.</div><div class="ttdef"><b>Definition:</b> sci.c:153</div></div>
 <div class="ttc" id="astruct_s_c_i___d_a_t_a_html"><div class="ttname"><a href="struct_s_c_i___d_a_t_a.html">SCI_DATA</a></div><div class="ttdoc">SCI data structure.</div><div class="ttdef"><b>Definition:</b> sci.h:70</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Mar 27 2020 13:41:08 for IA.I.R.E by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Mar 29 2020 13:03:46 for IA.I.R.E by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.17
 </small></address>

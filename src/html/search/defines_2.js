@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['even_5fparity_5f8_5fbit_222',['EVEN_PARITY_8_BIT',['../sci_8h.html#a80a0897ad2e799c636ac493c2ea1546c',1,'sci.h']]]
+  ['dc_5fgain_347',['DC_GAIN',['../mg811_8h.html#a8735f8b0921aab8b635e3cb41a04fad6',1,'mg811.h']]]
 ];

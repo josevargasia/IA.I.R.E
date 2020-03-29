@@ -95,6 +95,21 @@ Macros</h2></td></tr>
 <tr class="memitem:a880b20872fb3a94196d4fc0a92b8fe88"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="system__init_8h.html#a880b20872fb3a94196d4fc0a92b8fe88">TEST_LEDStateSet</a>(value)&#160;&#160;&#160;(LATBbits.LATB15 = value)</td></tr>
 <tr class="memdesc:a880b20872fb3a94196d4fc0a92b8fe88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set GPIO state port.  <a href="system__init_8h.html#a880b20872fb3a94196d4fc0a92b8fe88">More...</a><br /></td></tr>
 <tr class="separator:a880b20872fb3a94196d4fc0a92b8fe88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd06654355cb0c5fc331e981c384ceeb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="system__init_8h.html#afd06654355cb0c5fc331e981c384ceeb">PWM1StateIOSet</a>(value)&#160;&#160;&#160;(TRISBbits.TRISB10 = value)</td></tr>
+<tr class="memdesc:afd06654355cb0c5fc331e981c384ceeb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set GPIO direction port.  <a href="system__init_8h.html#afd06654355cb0c5fc331e981c384ceeb">More...</a><br /></td></tr>
+<tr class="separator:afd06654355cb0c5fc331e981c384ceeb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b372f02d0d54d2b5c5048931da35a2c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="system__init_8h.html#a5b372f02d0d54d2b5c5048931da35a2c">PWM1StateGet</a>()&#160;&#160;&#160;PORTBbits.RB10</td></tr>
+<tr class="memdesc:a5b372f02d0d54d2b5c5048931da35a2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get GPIO state port.  <a href="system__init_8h.html#a5b372f02d0d54d2b5c5048931da35a2c">More...</a><br /></td></tr>
+<tr class="separator:a5b372f02d0d54d2b5c5048931da35a2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1bf1b526148935f9fb27c65addc69be"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="system__init_8h.html#aa1bf1b526148935f9fb27c65addc69be">PWM1StateSet</a>(value)&#160;&#160;&#160;(LATBbits.LATB10 = value)</td></tr>
+<tr class="memdesc:aa1bf1b526148935f9fb27c65addc69be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set GPIO state port.  <a href="system__init_8h.html#aa1bf1b526148935f9fb27c65addc69be">More...</a><br /></td></tr>
+<tr class="separator:aa1bf1b526148935f9fb27c65addc69be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af09cfdb54d0452843a9b4ace1a3dea9a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="system__init_8h.html#af09cfdb54d0452843a9b4ace1a3dea9a">STATE_BLUETOOTHStateIOSet</a>(value)&#160;&#160;&#160;(TRISBbits.TRISB10 = value)</td></tr>
+<tr class="memdesc:af09cfdb54d0452843a9b4ace1a3dea9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set GPIO direction port.  <a href="system__init_8h.html#af09cfdb54d0452843a9b4ace1a3dea9a">More...</a><br /></td></tr>
+<tr class="separator:af09cfdb54d0452843a9b4ace1a3dea9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2fd8275fd8d8c1c348a1e987588578ac"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="system__init_8h.html#a2fd8275fd8d8c1c348a1e987588578ac">STATE_BLUETOOTHStateGet</a>()&#160;&#160;&#160;PORTBbits.RB10</td></tr>
+<tr class="memdesc:a2fd8275fd8d8c1c348a1e987588578ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get GPIO state port.  <a href="system__init_8h.html#a2fd8275fd8d8c1c348a1e987588578ac">More...</a><br /></td></tr>
+<tr class="separator:a2fd8275fd8d8c1c348a1e987588578ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -139,6 +154,104 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Set direction GPIO PIN_OUT port. </p>
+
+</div>
+</div>
+<a id="a5b372f02d0d54d2b5c5048931da35a2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b372f02d0d54d2b5c5048931da35a2c">&#9670;&nbsp;</a></span>PWM1StateGet</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PWM1StateGet</td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td>&#160;&#160;&#160;PORTBbits.RB10</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get GPIO state port. </p>
+
+</div>
+</div>
+<a id="afd06654355cb0c5fc331e981c384ceeb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd06654355cb0c5fc331e981c384ceeb">&#9670;&nbsp;</a></span>PWM1StateIOSet</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PWM1StateIOSet</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">value</td><td>)</td>
+          <td>&#160;&#160;&#160;(TRISBbits.TRISB10 = value)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set GPIO direction port. </p>
+
+</div>
+</div>
+<a id="aa1bf1b526148935f9fb27c65addc69be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1bf1b526148935f9fb27c65addc69be">&#9670;&nbsp;</a></span>PWM1StateSet</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PWM1StateSet</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">value</td><td>)</td>
+          <td>&#160;&#160;&#160;(LATBbits.LATB10 = value)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set GPIO state port. </p>
+
+</div>
+</div>
+<a id="a2fd8275fd8d8c1c348a1e987588578ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fd8275fd8d8c1c348a1e987588578ac">&#9670;&nbsp;</a></span>STATE_BLUETOOTHStateGet</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define STATE_BLUETOOTHStateGet</td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td>&#160;&#160;&#160;PORTBbits.RB10</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get GPIO state port. </p>
+
+</div>
+</div>
+<a id="af09cfdb54d0452843a9b4ace1a3dea9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af09cfdb54d0452843a9b4ace1a3dea9a">&#9670;&nbsp;</a></span>STATE_BLUETOOTHStateIOSet</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define STATE_BLUETOOTHStateIOSet</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">value</td><td>)</td>
+          <td>&#160;&#160;&#160;(TRISBbits.TRISB10 = value)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set GPIO direction port. </p>
 
 </div>
 </div>
@@ -245,7 +358,7 @@ Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Mar 27 2020 13:41:09 for IA.I.R.E by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Mar 29 2020 13:03:46 for IA.I.R.E by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.17
 </small></address>

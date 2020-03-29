@@ -80,6 +80,13 @@ extern "C" {
      */    
     void timer_ID2_init_us (uint16_t period_us);
     
+    /**
+     * @brief Set frecuency of PWM ID 5
+     * @code
+     *      timer_ID2_set_frecuency(10000);  // 10kHz
+     * @endcode
+     * @param frec    Set frecuency of timer 2 in Hz, 10k < frec < 50k
+     */ 
     void timer_ID2_set_frecuency(uint32_t frec);
     /* Provide C++ Compatibility */
 #ifdef __cplusplus

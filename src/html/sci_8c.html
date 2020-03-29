@@ -77,6 +77,8 @@ $(function() {
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a47030e9c0b4ca02c32b0e4b3dc8b9c38"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sci_8c.html#a47030e9c0b4ca02c32b0e4b3dc8b9c38">circBuffGetCount_sci</a> (uint8_t bufferID)</td></tr>
+<tr class="separator:a47030e9c0b4ca02c32b0e4b3dc8b9c38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aea1047604ff43a4381a7e50d667a80a5"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="sci_8c.html#aea1047604ff43a4381a7e50d667a80a5">circBuffPush_sci</a> (char data, uint8_t bufferID)</td></tr>
 <tr class="memdesc:aea1047604ff43a4381a7e50d667a80a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Save a character in a specific circular buffer.  <a href="sci_8c.html#aea1047604ff43a4381a7e50d667a80a5">More...</a><br /></td></tr>
 <tr class="separator:aea1047604ff43a4381a7e50d667a80a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -107,6 +109,24 @@ Functions</h2></td></tr>
 <dl class="section author"><dt>Author</dt><dd>Ingeniería Apropiada </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>26/03/2020 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="a47030e9c0b4ca02c32b0e4b3dc8b9c38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47030e9c0b4ca02c32b0e4b3dc8b9c38">&#9670;&nbsp;</a></span>circBuffGetCount_sci()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t circBuffGetCount_sci </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>bufferID</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a13cec953c8024c8562f14b895ba98a9e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a13cec953c8024c8562f14b895ba98a9e">&#9670;&nbsp;</a></span>circBuffPop_sci()</h2>
 
@@ -373,22 +393,22 @@ Functions</h2></td></tr>
 </div>
 </div>
 </div><!-- contents -->
-<div class="ttc" id="asci_8c_html_ad652ceebf53c28eec50c3eda4311819b"><div class="ttname"><a href="sci_8c.html#ad652ceebf53c28eec50c3eda4311819b">sci_ID1_setup</a></div><div class="ttdeci">void sci_ID1_setup(uint32_t sci_baud, uint8_t rx_invert, uint8_t tx_invert, uint8_t parity_nbits, uint8_t stop_bits)</div><div class="ttdoc">Configure UART 1 comunication.</div><div class="ttdef"><b>Definition:</b> sci.c:102</div></div>
-<div class="ttc" id="asci_8c_html_a13cec953c8024c8562f14b895ba98a9e"><div class="ttname"><a href="sci_8c.html#a13cec953c8024c8562f14b895ba98a9e">circBuffPop_sci</a></div><div class="ttdeci">uint16_t circBuffPop_sci(char *data, uint8_t bufferID)</div><div class="ttdoc">Load a character in a specific circular buffer.</div><div class="ttdef"><b>Definition:</b> sci.c:51</div></div>
+<div class="ttc" id="asci_8c_html_ad652ceebf53c28eec50c3eda4311819b"><div class="ttname"><a href="sci_8c.html#ad652ceebf53c28eec50c3eda4311819b">sci_ID1_setup</a></div><div class="ttdeci">void sci_ID1_setup(uint32_t sci_baud, uint8_t rx_invert, uint8_t tx_invert, uint8_t parity_nbits, uint8_t stop_bits)</div><div class="ttdoc">Configure UART 1 comunication.</div><div class="ttdef"><b>Definition:</b> sci.c:105</div></div>
+<div class="ttc" id="asci_8c_html_a13cec953c8024c8562f14b895ba98a9e"><div class="ttname"><a href="sci_8c.html#a13cec953c8024c8562f14b895ba98a9e">circBuffPop_sci</a></div><div class="ttdeci">uint16_t circBuffPop_sci(char *data, uint8_t bufferID)</div><div class="ttdoc">Load a character in a specific circular buffer.</div><div class="ttdef"><b>Definition:</b> sci.c:54</div></div>
 <div class="ttc" id="asci_8h_html_a53024caf8412a56d31f47dd7a386cf8d"><div class="ttname"><a href="sci_8h.html#a53024caf8412a56d31f47dd7a386cf8d">BUFFER_TX_SCI_ID1</a></div><div class="ttdeci">#define BUFFER_TX_SCI_ID1</div><div class="ttdoc">ID of SCI buffer TX for UART1 comunication.</div><div class="ttdef"><b>Definition:</b> sci.h:37</div></div>
-<div class="ttc" id="asci_8c_html_aabb876a231622edb849c3ebf0624a956"><div class="ttname"><a href="sci_8c.html#aabb876a231622edb849c3ebf0624a956">clean_buffer_sci</a></div><div class="ttdeci">void clean_buffer_sci(uint8_t bufferID)</div><div class="ttdoc">Erase all characters in a specific circular buffer.</div><div class="ttdef"><b>Definition:</b> sci.c:69</div></div>
+<div class="ttc" id="asci_8c_html_aabb876a231622edb849c3ebf0624a956"><div class="ttname"><a href="sci_8c.html#aabb876a231622edb849c3ebf0624a956">clean_buffer_sci</a></div><div class="ttdeci">void clean_buffer_sci(uint8_t bufferID)</div><div class="ttdoc">Erase all characters in a specific circular buffer.</div><div class="ttdef"><b>Definition:</b> sci.c:72</div></div>
 <div class="ttc" id="asci_8h_html_a3fbe2b1c155750b4b5fc0b7055cb012d"><div class="ttname"><a href="sci_8h.html#a3fbe2b1c155750b4b5fc0b7055cb012d">RX_INVERT_OFF</a></div><div class="ttdeci">#define RX_INVERT_OFF</div><div class="ttdoc">Set NO INVERT UART polarity for RX pin.</div><div class="ttdef"><b>Definition:</b> sci.h:44</div></div>
 <div class="ttc" id="asci_8h_html_ad2995fb03f241e9c6bca5bc95b10bab6"><div class="ttname"><a href="sci_8h.html#ad2995fb03f241e9c6bca5bc95b10bab6">TX_INVERT_OFF</a></div><div class="ttdeci">#define TX_INVERT_OFF</div><div class="ttdoc">Set NO INVERT UART polarity for TX pin.</div><div class="ttdef"><b>Definition:</b> sci.h:47</div></div>
 <div class="ttc" id="asci_8h_html_a22de6895caca557a97364a36572ca319"><div class="ttname"><a href="sci_8h.html#a22de6895caca557a97364a36572ca319">STOP_BIT_1</a></div><div class="ttdeci">#define STOP_BIT_1</div><div class="ttdoc">Set 1 Stop bits for UART comunication.</div><div class="ttdef"><b>Definition:</b> sci.h:54</div></div>
-<div class="ttc" id="asci_8c_html_aea1047604ff43a4381a7e50d667a80a5"><div class="ttname"><a href="sci_8c.html#aea1047604ff43a4381a7e50d667a80a5">circBuffPush_sci</a></div><div class="ttdeci">uint16_t circBuffPush_sci(char data, uint8_t bufferID)</div><div class="ttdoc">Save a character in a specific circular buffer.</div><div class="ttdef"><b>Definition:</b> sci.c:33</div></div>
-<div class="ttc" id="asci_8c_html_a7b5a6f14f666a3ae0b2ece9755b8328d"><div class="ttname"><a href="sci_8c.html#a7b5a6f14f666a3ae0b2ece9755b8328d">sci_ID1_send</a></div><div class="ttdeci">void sci_ID1_send(char *string)</div><div class="ttdoc">Write a string in UART1 TX port.</div><div class="ttdef"><b>Definition:</b> sci.c:142</div></div>
+<div class="ttc" id="asci_8c_html_aea1047604ff43a4381a7e50d667a80a5"><div class="ttname"><a href="sci_8c.html#aea1047604ff43a4381a7e50d667a80a5">circBuffPush_sci</a></div><div class="ttdeci">uint16_t circBuffPush_sci(char data, uint8_t bufferID)</div><div class="ttdoc">Save a character in a specific circular buffer.</div><div class="ttdef"><b>Definition:</b> sci.c:36</div></div>
+<div class="ttc" id="asci_8c_html_a7b5a6f14f666a3ae0b2ece9755b8328d"><div class="ttname"><a href="sci_8c.html#a7b5a6f14f666a3ae0b2ece9755b8328d">sci_ID1_send</a></div><div class="ttdeci">void sci_ID1_send(char *string)</div><div class="ttdoc">Write a string in UART1 TX port.</div><div class="ttdef"><b>Definition:</b> sci.c:145</div></div>
 <div class="ttc" id="asci_8h_html_aba1de33543ba14e7c427882fcf48cf71"><div class="ttname"><a href="sci_8h.html#aba1de33543ba14e7c427882fcf48cf71">NO_PARITY_8_BIT</a></div><div class="ttdeci">#define NO_PARITY_8_BIT</div><div class="ttdoc">Set 8-bit data, no parity for UART comunication.</div><div class="ttdef"><b>Definition:</b> sci.h:49</div></div>
-<div class="ttc" id="asci_8c_html_a4e47ed895ce7ce418fa101dc5443e739"><div class="ttname"><a href="sci_8c.html#a4e47ed895ce7ce418fa101dc5443e739">sci_ID1_sendbyte</a></div><div class="ttdeci">void sci_ID1_sendbyte(char data)</div><div class="ttdoc">Write a byte in UART1 TX port.</div><div class="ttdef"><b>Definition:</b> sci.c:137</div></div>
-<div class="ttc" id="asci_8c_html_a50423d2bde06db25ba6f6bd4c460aacc"><div class="ttname"><a href="sci_8c.html#a50423d2bde06db25ba6f6bd4c460aacc">sci_ID1_get</a></div><div class="ttdeci">uint16_t sci_ID1_get(char *data)</div><div class="ttdoc">Read a byte of UART1 RX port.</div><div class="ttdef"><b>Definition:</b> sci.c:150</div></div>
+<div class="ttc" id="asci_8c_html_a4e47ed895ce7ce418fa101dc5443e739"><div class="ttname"><a href="sci_8c.html#a4e47ed895ce7ce418fa101dc5443e739">sci_ID1_sendbyte</a></div><div class="ttdeci">void sci_ID1_sendbyte(char data)</div><div class="ttdoc">Write a byte in UART1 TX port.</div><div class="ttdef"><b>Definition:</b> sci.c:140</div></div>
+<div class="ttc" id="asci_8c_html_a50423d2bde06db25ba6f6bd4c460aacc"><div class="ttname"><a href="sci_8c.html#a50423d2bde06db25ba6f6bd4c460aacc">sci_ID1_get</a></div><div class="ttdeci">uint16_t sci_ID1_get(char *data)</div><div class="ttdoc">Read a byte of UART1 RX port.</div><div class="ttdef"><b>Definition:</b> sci.c:153</div></div>
 <div class="ttc" id="asci_8h_html_a265ae3205a9837cc0255fc1d1b1bf35d"><div class="ttname"><a href="sci_8h.html#a265ae3205a9837cc0255fc1d1b1bf35d">BUFFER_RX_SCI_ID1</a></div><div class="ttdeci">#define BUFFER_RX_SCI_ID1</div><div class="ttdoc">ID of SCI buffer RX for UART1 comunication.</div><div class="ttdef"><b>Definition:</b> sci.h:38</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Mar 27 2020 13:41:09 for IA.I.R.E by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Mar 29 2020 13:03:46 for IA.I.R.E by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.17
 </small></address>

@@ -66,7 +66,8 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#define-members">Macros</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">i2c.h File Reference</div>  </div>
 </div><!--header-->
@@ -116,6 +117,66 @@ Macros</h2></td></tr>
 <tr class="memitem:a7b87eced76df677ea4ddeff65ef4d03e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#a7b87eced76df677ea4ddeff65ef4d03e">PIN_SDA2_OUT</a>&#160;&#160;&#160;LATAbits.LATA3</td></tr>
 <tr class="memdesc:a7b87eced76df677ea4ddeff65ef4d03e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set GPIO state port.  <a href="i2c_8h.html#a7b87eced76df677ea4ddeff65ef4d03e">More...</a><br /></td></tr>
 <tr class="separator:a7b87eced76df677ea4ddeff65ef4d03e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af77a2094c95c7b040a28cb53cd641e8a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#af77a2094c95c7b040a28cb53cd641e8a">EEPROM_PAGE_LENGTH</a>&#160;&#160;&#160;128</td></tr>
+<tr class="memdesc:af77a2094c95c7b040a28cb53cd641e8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Length of page in EEPROM used.  <a href="i2c_8h.html#af77a2094c95c7b040a28cb53cd641e8a">More...</a><br /></td></tr>
+<tr class="separator:af77a2094c95c7b040a28cb53cd641e8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac05c571589090a432a0d912a90b19ede"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#ac05c571589090a432a0d912a90b19ede">EEPROM_SLAVE_ADDRESS_1</a>&#160;&#160;&#160;0xA0</td></tr>
+<tr class="memdesc:ac05c571589090a432a0d912a90b19ede"><td class="mdescLeft">&#160;</td><td class="mdescRight">EEPROM slave address 1.  <a href="i2c_8h.html#ac05c571589090a432a0d912a90b19ede">More...</a><br /></td></tr>
+<tr class="separator:ac05c571589090a432a0d912a90b19ede"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0181b92f7b8af8f47207cc8141b4a05a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#a0181b92f7b8af8f47207cc8141b4a05a">EEPROM_SLAVE_ADDRESS_2</a>&#160;&#160;&#160;0xA8</td></tr>
+<tr class="memdesc:a0181b92f7b8af8f47207cc8141b4a05a"><td class="mdescLeft">&#160;</td><td class="mdescRight">EEPROM slave address 2.  <a href="i2c_8h.html#a0181b92f7b8af8f47207cc8141b4a05a">More...</a><br /></td></tr>
+<tr class="separator:a0181b92f7b8af8f47207cc8141b4a05a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33f1874244e668041f09cbc59fef0bf4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#a33f1874244e668041f09cbc59fef0bf4">MAX_32_BITS</a>&#160;&#160;&#160;4</td></tr>
+<tr class="memdesc:a33f1874244e668041f09cbc59fef0bf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Length in bytes of 32 bits integer.  <a href="i2c_8h.html#a33f1874244e668041f09cbc59fef0bf4">More...</a><br /></td></tr>
+<tr class="separator:a33f1874244e668041f09cbc59fef0bf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54dbd96e05c057ae48311103400f2119"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#a54dbd96e05c057ae48311103400f2119">MAX_16_BITS</a>&#160;&#160;&#160;2</td></tr>
+<tr class="memdesc:a54dbd96e05c057ae48311103400f2119"><td class="mdescLeft">&#160;</td><td class="mdescRight">Length in bytes of 16 bits integer.  <a href="i2c_8h.html#a54dbd96e05c057ae48311103400f2119">More...</a><br /></td></tr>
+<tr class="separator:a54dbd96e05c057ae48311103400f2119"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7f4629206ffed72e10140ed7c79abe5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#ac7f4629206ffed72e10140ed7c79abe5">MAX_8_BITS</a>&#160;&#160;&#160;1</td></tr>
+<tr class="memdesc:ac7f4629206ffed72e10140ed7c79abe5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Length in bytes of 8 bits integer.  <a href="i2c_8h.html#ac7f4629206ffed72e10140ed7c79abe5">More...</a><br /></td></tr>
+<tr class="separator:ac7f4629206ffed72e10140ed7c79abe5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac92c5ec332dafe0abb24688dad1b795"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#aac92c5ec332dafe0abb24688dad1b795">INT32</a>&#160;&#160;&#160;32</td></tr>
+<tr class="memdesc:aac92c5ec332dafe0abb24688dad1b795"><td class="mdescLeft">&#160;</td><td class="mdescRight">Length in bits of 32 bits integer.  <a href="i2c_8h.html#aac92c5ec332dafe0abb24688dad1b795">More...</a><br /></td></tr>
+<tr class="separator:aac92c5ec332dafe0abb24688dad1b795"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc743ce126c3ada10501baffb3ca2295"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#abc743ce126c3ada10501baffb3ca2295">INT16</a>&#160;&#160;&#160;16</td></tr>
+<tr class="memdesc:abc743ce126c3ada10501baffb3ca2295"><td class="mdescLeft">&#160;</td><td class="mdescRight">Length in bits of 16 bits integer.  <a href="i2c_8h.html#abc743ce126c3ada10501baffb3ca2295">More...</a><br /></td></tr>
+<tr class="separator:abc743ce126c3ada10501baffb3ca2295"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e125472d65b57f10905accbed140b99"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#a7e125472d65b57f10905accbed140b99">INT8</a>&#160;&#160;&#160;8</td></tr>
+<tr class="memdesc:a7e125472d65b57f10905accbed140b99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Length in bits of 8 bits integer.  <a href="i2c_8h.html#a7e125472d65b57f10905accbed140b99">More...</a><br /></td></tr>
+<tr class="separator:a7e125472d65b57f10905accbed140b99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a469601067c5679d10f06591982e101"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#a3a469601067c5679d10f06591982e101">MAX_PRESSURE_MAX</a>&#160;&#160;&#160;<a class="el" href="i2c_8h.html#a54dbd96e05c057ae48311103400f2119">MAX_16_BITS</a></td></tr>
+<tr class="memdesc:a3a469601067c5679d10f06591982e101"><td class="mdescLeft">&#160;</td><td class="mdescRight">Length in bytes of numeric values.  <a href="i2c_8h.html#a3a469601067c5679d10f06591982e101">More...</a><br /></td></tr>
+<tr class="separator:a3a469601067c5679d10f06591982e101"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53631d5a2e4eb25a5976c975b30b481a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#a53631d5a2e4eb25a5976c975b30b481a">MAX_INSPIRATION_TIME</a>&#160;&#160;&#160;<a class="el" href="i2c_8h.html#a54dbd96e05c057ae48311103400f2119">MAX_16_BITS</a></td></tr>
+<tr class="memdesc:a53631d5a2e4eb25a5976c975b30b481a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Length in bytes of numeric values.  <a href="i2c_8h.html#a53631d5a2e4eb25a5976c975b30b481a">More...</a><br /></td></tr>
+<tr class="separator:a53631d5a2e4eb25a5976c975b30b481a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f07de16f4d4f4454522bb4b532868cd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#a3f07de16f4d4f4454522bb4b532868cd">MAX_EXPIRATION_TIME</a>&#160;&#160;&#160;<a class="el" href="i2c_8h.html#a54dbd96e05c057ae48311103400f2119">MAX_16_BITS</a></td></tr>
+<tr class="memdesc:a3f07de16f4d4f4454522bb4b532868cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Length in bytes of numeric values.  <a href="i2c_8h.html#a3f07de16f4d4f4454522bb4b532868cd">More...</a><br /></td></tr>
+<tr class="separator:a3f07de16f4d4f4454522bb4b532868cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a982414fc7d07c04d538514d7ad086a77"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#a982414fc7d07c04d538514d7ad086a77">MAX_PWM5_DUTY</a>&#160;&#160;&#160;<a class="el" href="i2c_8h.html#ac7f4629206ffed72e10140ed7c79abe5">MAX_8_BITS</a></td></tr>
+<tr class="memdesc:a982414fc7d07c04d538514d7ad086a77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Length in bytes of numeric values.  <a href="i2c_8h.html#a982414fc7d07c04d538514d7ad086a77">More...</a><br /></td></tr>
+<tr class="separator:a982414fc7d07c04d538514d7ad086a77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bc1610d6dde2d4b28790221785eb04f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#a5bc1610d6dde2d4b28790221785eb04f">MAX_PWM5_FREC</a>&#160;&#160;&#160;<a class="el" href="i2c_8h.html#a33f1874244e668041f09cbc59fef0bf4">MAX_32_BITS</a></td></tr>
+<tr class="memdesc:a5bc1610d6dde2d4b28790221785eb04f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Length in bytes of numeric values.  <a href="i2c_8h.html#a5bc1610d6dde2d4b28790221785eb04f">More...</a><br /></td></tr>
+<tr class="separator:a5bc1610d6dde2d4b28790221785eb04f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a241024445f5e6a7fefdc0af462218a07"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#a241024445f5e6a7fefdc0af462218a07">INIT_PAGE_0</a>&#160;&#160;&#160;0</td></tr>
+<tr class="memdesc:a241024445f5e6a7fefdc0af462218a07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Start address of page 0 in EEPROM.  <a href="i2c_8h.html#a241024445f5e6a7fefdc0af462218a07">More...</a><br /></td></tr>
+<tr class="separator:a241024445f5e6a7fefdc0af462218a07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a409ff2ba12a2345b8952f42c34821368"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#a409ff2ba12a2345b8952f42c34821368">ADDR_PRESSURE_MAX</a>&#160;&#160;&#160;<a class="el" href="i2c_8h.html#a241024445f5e6a7fefdc0af462218a07">INIT_PAGE_0</a></td></tr>
+<tr class="memdesc:a409ff2ba12a2345b8952f42c34821368"><td class="mdescLeft">&#160;</td><td class="mdescRight">Address of variable.  <a href="i2c_8h.html#a409ff2ba12a2345b8952f42c34821368">More...</a><br /></td></tr>
+<tr class="separator:a409ff2ba12a2345b8952f42c34821368"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fb45728ea3f978a4c0bbb39488246e4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#a1fb45728ea3f978a4c0bbb39488246e4">ADDR_INSPIRATION_TIME</a>&#160;&#160;&#160;<a class="el" href="i2c_8h.html#a241024445f5e6a7fefdc0af462218a07">INIT_PAGE_0</a>+<a class="el" href="i2c_8h.html#a3a469601067c5679d10f06591982e101">MAX_PRESSURE_MAX</a></td></tr>
+<tr class="memdesc:a1fb45728ea3f978a4c0bbb39488246e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Address of variable.  <a href="i2c_8h.html#a1fb45728ea3f978a4c0bbb39488246e4">More...</a><br /></td></tr>
+<tr class="separator:a1fb45728ea3f978a4c0bbb39488246e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32bf377ef12a61a45e83303fab1aebdd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#a32bf377ef12a61a45e83303fab1aebdd">ADDR_EXPIRATION_TIME</a>&#160;&#160;&#160;<a class="el" href="i2c_8h.html#a241024445f5e6a7fefdc0af462218a07">INIT_PAGE_0</a>+<a class="el" href="i2c_8h.html#a3a469601067c5679d10f06591982e101">MAX_PRESSURE_MAX</a>+<a class="el" href="i2c_8h.html#a53631d5a2e4eb25a5976c975b30b481a">MAX_INSPIRATION_TIME</a></td></tr>
+<tr class="memdesc:a32bf377ef12a61a45e83303fab1aebdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Address of variable.  <a href="i2c_8h.html#a32bf377ef12a61a45e83303fab1aebdd">More...</a><br /></td></tr>
+<tr class="separator:a32bf377ef12a61a45e83303fab1aebdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbad8ef8adb084c74c935066b054a4f3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#adbad8ef8adb084c74c935066b054a4f3">ADDR_PWM5_DUTY</a>&#160;&#160;&#160;<a class="el" href="i2c_8h.html#a241024445f5e6a7fefdc0af462218a07">INIT_PAGE_0</a>+<a class="el" href="i2c_8h.html#a3a469601067c5679d10f06591982e101">MAX_PRESSURE_MAX</a>+<a class="el" href="i2c_8h.html#a53631d5a2e4eb25a5976c975b30b481a">MAX_INSPIRATION_TIME</a>+<a class="el" href="i2c_8h.html#a3f07de16f4d4f4454522bb4b532868cd">MAX_EXPIRATION_TIME</a></td></tr>
+<tr class="memdesc:adbad8ef8adb084c74c935066b054a4f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Address of variable.  <a href="i2c_8h.html#adbad8ef8adb084c74c935066b054a4f3">More...</a><br /></td></tr>
+<tr class="separator:adbad8ef8adb084c74c935066b054a4f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0df17cb12e5e7186115b66614112954f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#a0df17cb12e5e7186115b66614112954f">ADDR_PWM5_FREC</a>&#160;&#160;&#160;<a class="el" href="i2c_8h.html#a241024445f5e6a7fefdc0af462218a07">INIT_PAGE_0</a>+<a class="el" href="i2c_8h.html#a3a469601067c5679d10f06591982e101">MAX_PRESSURE_MAX</a>+<a class="el" href="i2c_8h.html#a53631d5a2e4eb25a5976c975b30b481a">MAX_INSPIRATION_TIME</a>+<a class="el" href="i2c_8h.html#a3f07de16f4d4f4454522bb4b532868cd">MAX_EXPIRATION_TIME</a>+<a class="el" href="i2c_8h.html#a982414fc7d07c04d538514d7ad086a77">MAX_PWM5_DUTY</a></td></tr>
+<tr class="memdesc:a0df17cb12e5e7186115b66614112954f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Address of variable.  <a href="i2c_8h.html#a0df17cb12e5e7186115b66614112954f">More...</a><br /></td></tr>
+<tr class="separator:a0df17cb12e5e7186115b66614112954f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -137,6 +198,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a9c6bb8c78e3bab66723ffc103bd155ae"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#a9c6bb8c78e3bab66723ffc103bd155ae">i2c_ID_1_readp</a> (uint8_t ack)</td></tr>
 <tr class="memdesc:a9c6bb8c78e3bab66723ffc103bd155ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read data of I2C1 comunication port.  <a href="i2c_8h.html#a9c6bb8c78e3bab66723ffc103bd155ae">More...</a><br /></td></tr>
 <tr class="separator:a9c6bb8c78e3bab66723ffc103bd155ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeaf89317a77d0a0ffaa8b64a3bc7faa1"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#aeaf89317a77d0a0ffaa8b64a3bc7faa1">ext_eeprom_ready_ID_1</a> (char addr)</td></tr>
+<tr class="memdesc:aeaf89317a77d0a0ffaa8b64a3bc7faa1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if EEPROM is ready for comunication.  <a href="i2c_8h.html#aeaf89317a77d0a0ffaa8b64a3bc7faa1">More...</a><br /></td></tr>
+<tr class="separator:aeaf89317a77d0a0ffaa8b64a3bc7faa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a859127214d628a98ea88be2d456ddf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#a9a859127214d628a98ea88be2d456ddf">i2c_ID_2_dly</a> (void)</td></tr>
 <tr class="memdesc:a9a859127214d628a98ea88be2d456ddf"><td class="mdescLeft">&#160;</td><td class="mdescRight">I2C2 period for comunication.  <a href="i2c_8h.html#a9a859127214d628a98ea88be2d456ddf">More...</a><br /></td></tr>
 <tr class="separator:a9a859127214d628a98ea88be2d456ddf"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -152,12 +216,356 @@ Functions</h2></td></tr>
 <tr class="memitem:a5387b859edede74e1005f66c6e3d8a6a"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#a5387b859edede74e1005f66c6e3d8a6a">i2c_ID_2_readp</a> (uint8_t ack)</td></tr>
 <tr class="memdesc:a5387b859edede74e1005f66c6e3d8a6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read data of I2C2 comunication port.  <a href="i2c_8h.html#a5387b859edede74e1005f66c6e3d8a6a">More...</a><br /></td></tr>
 <tr class="separator:a5387b859edede74e1005f66c6e3d8a6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a465ba65e6dcc01c40acaff7a5135d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#a4a465ba65e6dcc01c40acaff7a5135d0">write_string_eeprom</a> (uint32_t address, char *string, uint16_t string_length)</td></tr>
+<tr class="memdesc:a4a465ba65e6dcc01c40acaff7a5135d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write string in EEPROM.  <a href="i2c_8h.html#a4a465ba65e6dcc01c40acaff7a5135d0">More...</a><br /></td></tr>
+<tr class="separator:a4a465ba65e6dcc01c40acaff7a5135d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a392088217164969fedc6ab01e98889df"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#a392088217164969fedc6ab01e98889df">write_string_eeprom_w</a> (uint32_t address, char *string, uint16_t string_length)</td></tr>
+<tr class="memdesc:a392088217164969fedc6ab01e98889df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write string in EEPROM, this function write a single page.  <a href="i2c_8h.html#a392088217164969fedc6ab01e98889df">More...</a><br /></td></tr>
+<tr class="separator:a392088217164969fedc6ab01e98889df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0fa3b698ea0d176831fdda7ca7c2999d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#a0fa3b698ea0d176831fdda7ca7c2999d">read_string_eeprom</a> (uint32_t address, char *string, uint16_t string_length)</td></tr>
+<tr class="memdesc:a0fa3b698ea0d176831fdda7ca7c2999d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read string from EEPROM.  <a href="i2c_8h.html#a0fa3b698ea0d176831fdda7ca7c2999d">More...</a><br /></td></tr>
+<tr class="separator:a0fa3b698ea0d176831fdda7ca7c2999d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b76fbd74180b6ef5adb8471fcb257cf"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#a5b76fbd74180b6ef5adb8471fcb257cf">read_string_eeprom_w</a> (uint32_t address)</td></tr>
+<tr class="memdesc:a5b76fbd74180b6ef5adb8471fcb257cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read a single address in EEPROM.  <a href="i2c_8h.html#a5b76fbd74180b6ef5adb8471fcb257cf">More...</a><br /></td></tr>
+<tr class="separator:a5b76fbd74180b6ef5adb8471fcb257cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa442edf6ff4fc05b627fbf721a69c00"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#afa442edf6ff4fc05b627fbf721a69c00">write_int_eeprom</a> (uint32_t address, uint32_t number, uint8_t int_length)</td></tr>
+<tr class="memdesc:afa442edf6ff4fc05b627fbf721a69c00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write integer of 8, 16 or 32 bits.  <a href="i2c_8h.html#afa442edf6ff4fc05b627fbf721a69c00">More...</a><br /></td></tr>
+<tr class="separator:afa442edf6ff4fc05b627fbf721a69c00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9ad2d620db2c93b9cc21a84314b074a"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#ab9ad2d620db2c93b9cc21a84314b074a">read_int_eeprom</a> (uint32_t address, uint8_t int_length)</td></tr>
+<tr class="memdesc:ab9ad2d620db2c93b9cc21a84314b074a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read integer of 8, 16 or 32 bits.  <a href="i2c_8h.html#ab9ad2d620db2c93b9cc21a84314b074a">More...</a><br /></td></tr>
+<tr class="separator:ab9ad2d620db2c93b9cc21a84314b074a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a6ae4e72615d019f849559ddb3583e8ae"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="i2c_8h.html#a6ae4e72615d019f849559ddb3583e8ae">deviceAddressSlave1</a></td></tr>
+<tr class="memdesc:a6ae4e72615d019f849559ddb3583e8ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">EEPROM slave address.  <a href="i2c_8h.html#a6ae4e72615d019f849559ddb3583e8ae">More...</a><br /></td></tr>
+<tr class="separator:a6ae4e72615d019f849559ddb3583e8ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>File containing I2C driver. </p>
 <dl class="section author"><dt>Author</dt><dd>Ingeniería Apropiada </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>26/03/2020 </dd></dl>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a32bf377ef12a61a45e83303fab1aebdd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32bf377ef12a61a45e83303fab1aebdd">&#9670;&nbsp;</a></span>ADDR_EXPIRATION_TIME</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ADDR_EXPIRATION_TIME&#160;&#160;&#160;<a class="el" href="i2c_8h.html#a241024445f5e6a7fefdc0af462218a07">INIT_PAGE_0</a>+<a class="el" href="i2c_8h.html#a3a469601067c5679d10f06591982e101">MAX_PRESSURE_MAX</a>+<a class="el" href="i2c_8h.html#a53631d5a2e4eb25a5976c975b30b481a">MAX_INSPIRATION_TIME</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Address of variable. </p>
+
+</div>
+</div>
+<a id="a1fb45728ea3f978a4c0bbb39488246e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fb45728ea3f978a4c0bbb39488246e4">&#9670;&nbsp;</a></span>ADDR_INSPIRATION_TIME</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ADDR_INSPIRATION_TIME&#160;&#160;&#160;<a class="el" href="i2c_8h.html#a241024445f5e6a7fefdc0af462218a07">INIT_PAGE_0</a>+<a class="el" href="i2c_8h.html#a3a469601067c5679d10f06591982e101">MAX_PRESSURE_MAX</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Address of variable. </p>
+
+</div>
+</div>
+<a id="a409ff2ba12a2345b8952f42c34821368"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a409ff2ba12a2345b8952f42c34821368">&#9670;&nbsp;</a></span>ADDR_PRESSURE_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ADDR_PRESSURE_MAX&#160;&#160;&#160;<a class="el" href="i2c_8h.html#a241024445f5e6a7fefdc0af462218a07">INIT_PAGE_0</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Address of variable. </p>
+
+</div>
+</div>
+<a id="adbad8ef8adb084c74c935066b054a4f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbad8ef8adb084c74c935066b054a4f3">&#9670;&nbsp;</a></span>ADDR_PWM5_DUTY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ADDR_PWM5_DUTY&#160;&#160;&#160;<a class="el" href="i2c_8h.html#a241024445f5e6a7fefdc0af462218a07">INIT_PAGE_0</a>+<a class="el" href="i2c_8h.html#a3a469601067c5679d10f06591982e101">MAX_PRESSURE_MAX</a>+<a class="el" href="i2c_8h.html#a53631d5a2e4eb25a5976c975b30b481a">MAX_INSPIRATION_TIME</a>+<a class="el" href="i2c_8h.html#a3f07de16f4d4f4454522bb4b532868cd">MAX_EXPIRATION_TIME</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Address of variable. </p>
+
+</div>
+</div>
+<a id="a0df17cb12e5e7186115b66614112954f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0df17cb12e5e7186115b66614112954f">&#9670;&nbsp;</a></span>ADDR_PWM5_FREC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ADDR_PWM5_FREC&#160;&#160;&#160;<a class="el" href="i2c_8h.html#a241024445f5e6a7fefdc0af462218a07">INIT_PAGE_0</a>+<a class="el" href="i2c_8h.html#a3a469601067c5679d10f06591982e101">MAX_PRESSURE_MAX</a>+<a class="el" href="i2c_8h.html#a53631d5a2e4eb25a5976c975b30b481a">MAX_INSPIRATION_TIME</a>+<a class="el" href="i2c_8h.html#a3f07de16f4d4f4454522bb4b532868cd">MAX_EXPIRATION_TIME</a>+<a class="el" href="i2c_8h.html#a982414fc7d07c04d538514d7ad086a77">MAX_PWM5_DUTY</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Address of variable. </p>
+
+</div>
+</div>
+<a id="af77a2094c95c7b040a28cb53cd641e8a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af77a2094c95c7b040a28cb53cd641e8a">&#9670;&nbsp;</a></span>EEPROM_PAGE_LENGTH</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EEPROM_PAGE_LENGTH&#160;&#160;&#160;128</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Length of page in EEPROM used. </p>
+
+</div>
+</div>
+<a id="ac05c571589090a432a0d912a90b19ede"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac05c571589090a432a0d912a90b19ede">&#9670;&nbsp;</a></span>EEPROM_SLAVE_ADDRESS_1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EEPROM_SLAVE_ADDRESS_1&#160;&#160;&#160;0xA0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>EEPROM slave address 1. </p>
+
+</div>
+</div>
+<a id="a0181b92f7b8af8f47207cc8141b4a05a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0181b92f7b8af8f47207cc8141b4a05a">&#9670;&nbsp;</a></span>EEPROM_SLAVE_ADDRESS_2</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EEPROM_SLAVE_ADDRESS_2&#160;&#160;&#160;0xA8</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>EEPROM slave address 2. </p>
+
+</div>
+</div>
+<a id="a241024445f5e6a7fefdc0af462218a07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a241024445f5e6a7fefdc0af462218a07">&#9670;&nbsp;</a></span>INIT_PAGE_0</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define INIT_PAGE_0&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Start address of page 0 in EEPROM. </p>
+
+</div>
+</div>
+<a id="abc743ce126c3ada10501baffb3ca2295"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc743ce126c3ada10501baffb3ca2295">&#9670;&nbsp;</a></span>INT16</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define INT16&#160;&#160;&#160;16</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Length in bits of 16 bits integer. </p>
+
+</div>
+</div>
+<a id="aac92c5ec332dafe0abb24688dad1b795"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac92c5ec332dafe0abb24688dad1b795">&#9670;&nbsp;</a></span>INT32</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define INT32&#160;&#160;&#160;32</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Length in bits of 32 bits integer. </p>
+
+</div>
+</div>
+<a id="a7e125472d65b57f10905accbed140b99"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e125472d65b57f10905accbed140b99">&#9670;&nbsp;</a></span>INT8</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define INT8&#160;&#160;&#160;8</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Length in bits of 8 bits integer. </p>
+
+</div>
+</div>
+<a id="a54dbd96e05c057ae48311103400f2119"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54dbd96e05c057ae48311103400f2119">&#9670;&nbsp;</a></span>MAX_16_BITS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_16_BITS&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Length in bytes of 16 bits integer. </p>
+
+</div>
+</div>
+<a id="a33f1874244e668041f09cbc59fef0bf4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33f1874244e668041f09cbc59fef0bf4">&#9670;&nbsp;</a></span>MAX_32_BITS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_32_BITS&#160;&#160;&#160;4</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Length in bytes of 32 bits integer. </p>
+
+</div>
+</div>
+<a id="ac7f4629206ffed72e10140ed7c79abe5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7f4629206ffed72e10140ed7c79abe5">&#9670;&nbsp;</a></span>MAX_8_BITS</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_8_BITS&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Length in bytes of 8 bits integer. </p>
+
+</div>
+</div>
+<a id="a3f07de16f4d4f4454522bb4b532868cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f07de16f4d4f4454522bb4b532868cd">&#9670;&nbsp;</a></span>MAX_EXPIRATION_TIME</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_EXPIRATION_TIME&#160;&#160;&#160;<a class="el" href="i2c_8h.html#a54dbd96e05c057ae48311103400f2119">MAX_16_BITS</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Length in bytes of numeric values. </p>
+
+</div>
+</div>
+<a id="a53631d5a2e4eb25a5976c975b30b481a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53631d5a2e4eb25a5976c975b30b481a">&#9670;&nbsp;</a></span>MAX_INSPIRATION_TIME</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_INSPIRATION_TIME&#160;&#160;&#160;<a class="el" href="i2c_8h.html#a54dbd96e05c057ae48311103400f2119">MAX_16_BITS</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Length in bytes of numeric values. </p>
+
+</div>
+</div>
+<a id="a3a469601067c5679d10f06591982e101"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a469601067c5679d10f06591982e101">&#9670;&nbsp;</a></span>MAX_PRESSURE_MAX</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_PRESSURE_MAX&#160;&#160;&#160;<a class="el" href="i2c_8h.html#a54dbd96e05c057ae48311103400f2119">MAX_16_BITS</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Length in bytes of numeric values. </p>
+
+</div>
+</div>
+<a id="a982414fc7d07c04d538514d7ad086a77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a982414fc7d07c04d538514d7ad086a77">&#9670;&nbsp;</a></span>MAX_PWM5_DUTY</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_PWM5_DUTY&#160;&#160;&#160;<a class="el" href="i2c_8h.html#ac7f4629206ffed72e10140ed7c79abe5">MAX_8_BITS</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Length in bytes of numeric values. </p>
+
+</div>
+</div>
+<a id="a5bc1610d6dde2d4b28790221785eb04f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5bc1610d6dde2d4b28790221785eb04f">&#9670;&nbsp;</a></span>MAX_PWM5_FREC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MAX_PWM5_FREC&#160;&#160;&#160;<a class="el" href="i2c_8h.html#a33f1874244e668041f09cbc59fef0bf4">MAX_32_BITS</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Length in bytes of numeric values. </p>
+
+</div>
+</div>
 <a id="a0692f17deb5bee9682fec5117fb28fd9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0692f17deb5bee9682fec5117fb28fd9">&#9670;&nbsp;</a></span>PIN_SCL1</h2>
 
@@ -351,6 +759,35 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="aeaf89317a77d0a0ffaa8b64a3bc7faa1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeaf89317a77d0a0ffaa8b64a3bc7faa1">&#9670;&nbsp;</a></span>ext_eeprom_ready_ID_1()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t ext_eeprom_ready_ID_1 </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>addr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check if EEPROM is ready for comunication. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">addr</td><td>Address to check <br  />
+ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>return ACK if EEPROM is ready <br  />
+ </dd></dl>
+
+</div>
+</div>
 <a id="ab42558974db40cd099fad68bc3af9ac8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab42558974db40cd099fad68bc3af9ac8">&#9670;&nbsp;</a></span>i2c_ID_1_dly()</h2>
 
@@ -611,14 +1048,294 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="ab9ad2d620db2c93b9cc21a84314b074a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab9ad2d620db2c93b9cc21a84314b074a">&#9670;&nbsp;</a></span>read_int_eeprom()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t read_int_eeprom </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>address</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>int_length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read integer of 8, 16 or 32 bits. </p>
+<div class="fragment"><div class="line">uint32_t data = <a class="code" href="i2c_8c.html#ab9ad2d620db2c93b9cc21a84314b074a">read_int_eeprom</a>(<a class="code" href="i2c_8h.html#a0df17cb12e5e7186115b66614112954f">ADDR_PWM5_FREC</a>, <a class="code" href="i2c_8h.html#aac92c5ec332dafe0abb24688dad1b795">INT32</a>);</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">address</td><td>Address in EEPROM to read <br  />
+ </td></tr>
+    <tr><td class="paramname">int_length</td><td>Length in bits of integer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Return integer readed <br  />
+ </dd></dl>
+
+</div>
+</div>
+<a id="a0fa3b698ea0d176831fdda7ca7c2999d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0fa3b698ea0d176831fdda7ca7c2999d">&#9670;&nbsp;</a></span>read_string_eeprom()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void read_string_eeprom </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>address</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>string</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>string_length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read string from EEPROM. </p>
+<div class="fragment"><div class="line"><a class="code" href="i2c_8c.html#a0fa3b698ea0d176831fdda7ca7c2999d">read_string_eeprom</a>(<a class="code" href="i2c_8h.html#a0df17cb12e5e7186115b66614112954f">ADDR_PWM5_FREC</a>, 10000, <a class="code" href="i2c_8h.html#aac92c5ec332dafe0abb24688dad1b795">INT32</a>);</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">address</td><td>Address in EEPROM to start read <br  />
+ </td></tr>
+    <tr><td class="paramname">string</td><td>Array to tut string readed </td></tr>
+    <tr><td class="paramname">int_length</td><td>Length in bytes of string to read </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5b76fbd74180b6ef5adb8471fcb257cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b76fbd74180b6ef5adb8471fcb257cf">&#9670;&nbsp;</a></span>read_string_eeprom_w()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char read_string_eeprom_w </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>address</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read a single address in EEPROM. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">address</td><td>Address in EEPROM to read <br  />
+ </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Return value of address readed <br  />
+ </dd></dl>
+
+</div>
+</div>
+<a id="afa442edf6ff4fc05b627fbf721a69c00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa442edf6ff4fc05b627fbf721a69c00">&#9670;&nbsp;</a></span>write_int_eeprom()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void write_int_eeprom </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>address</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>number</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>int_length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write integer of 8, 16 or 32 bits. </p>
+<div class="fragment"><div class="line"><a class="code" href="i2c_8c.html#afa442edf6ff4fc05b627fbf721a69c00">write_int_eeprom</a>(<a class="code" href="i2c_8h.html#a0df17cb12e5e7186115b66614112954f">ADDR_PWM5_FREC</a>, 10000, <a class="code" href="i2c_8h.html#aac92c5ec332dafe0abb24688dad1b795">INT32</a>);</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">address</td><td>Address in EEPROM to write <br  />
+ </td></tr>
+    <tr><td class="paramname">number</td><td>Integer to wirte </td></tr>
+    <tr><td class="paramname">int_length</td><td>Length in bits of integer <br  />
+ </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4a465ba65e6dcc01c40acaff7a5135d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a465ba65e6dcc01c40acaff7a5135d0">&#9670;&nbsp;</a></span>write_string_eeprom()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void write_string_eeprom </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>address</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>string</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>string_length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write string in EEPROM. </p>
+<div class="fragment"><div class="line"><a class="code" href="i2c_8c.html#a4a465ba65e6dcc01c40acaff7a5135d0">write_string_eeprom</a>(<a class="code" href="i2c_8h.html#a0df17cb12e5e7186115b66614112954f">ADDR_PWM5_FREC</a>, <span class="stringliteral">&quot;Hello&quot;</span>, 5);</div>
+</div><!-- fragment --> <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">address</td><td>Address in EEPROM to start write <br  />
+ </td></tr>
+    <tr><td class="paramname">string</td><td>String to wirte </td></tr>
+    <tr><td class="paramname">int_length</td><td>Length in bytes of string <br  />
+ </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a392088217164969fedc6ab01e98889df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a392088217164969fedc6ab01e98889df">&#9670;&nbsp;</a></span>write_string_eeprom_w()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void write_string_eeprom_w </td>
+          <td>(</td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>address</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>string</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>string_length</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Write string in EEPROM, this function write a single page. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">address</td><td>Address in EEPROM to write <br  />
+ </td></tr>
+    <tr><td class="paramname">string</td><td>String to write <br  />
+ </td></tr>
+    <tr><td class="paramname">string_length</td><td>Address in EEPROM to read <br  />
+ </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a6ae4e72615d019f849559ddb3583e8ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6ae4e72615d019f849559ddb3583e8ae">&#9670;&nbsp;</a></span>deviceAddressSlave1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t deviceAddressSlave1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>EEPROM slave address. </p>
+
+</div>
+</div>
 </div><!-- contents -->
-<div class="ttc" id="ai2c_8c_html_a20a8035aacddfeeb9156daa023fac82f"><div class="ttname"><a href="i2c_8c.html#a20a8035aacddfeeb9156daa023fac82f">i2c_ID_2_writep</a></div><div class="ttdeci">uint8_t i2c_ID_2_writep(uint8_t d)</div><div class="ttdoc">Write data in I2C2 comunication port.</div><div class="ttdef"><b>Definition:</b> i2c.c:152</div></div>
-<div class="ttc" id="ai2c_8c_html_a5387b859edede74e1005f66c6e3d8a6a"><div class="ttname"><a href="i2c_8c.html#a5387b859edede74e1005f66c6e3d8a6a">i2c_ID_2_readp</a></div><div class="ttdeci">uint8_t i2c_ID_2_readp(uint8_t ack)</div><div class="ttdoc">Read data of I2C2 comunication port.</div><div class="ttdef"><b>Definition:</b> i2c.c:173</div></div>
-<div class="ttc" id="ai2c_8c_html_a8a843394a6c4533c92dd7e35cc5cb8cb"><div class="ttname"><a href="i2c_8c.html#a8a843394a6c4533c92dd7e35cc5cb8cb">i2c_ID_1_writep</a></div><div class="ttdeci">uint8_t i2c_ID_1_writep(uint8_t d)</div><div class="ttdoc">Write data in I2C1 comunication port.</div><div class="ttdef"><b>Definition:</b> i2c.c:77</div></div>
-<div class="ttc" id="ai2c_8c_html_a9c6bb8c78e3bab66723ffc103bd155ae"><div class="ttname"><a href="i2c_8c.html#a9c6bb8c78e3bab66723ffc103bd155ae">i2c_ID_1_readp</a></div><div class="ttdeci">uint8_t i2c_ID_1_readp(uint8_t ack)</div><div class="ttdoc">Read data of I2C1 comunication port.</div><div class="ttdef"><b>Definition:</b> i2c.c:98</div></div>
+<div class="ttc" id="ai2c_8c_html_a20a8035aacddfeeb9156daa023fac82f"><div class="ttname"><a href="i2c_8c.html#a20a8035aacddfeeb9156daa023fac82f">i2c_ID_2_writep</a></div><div class="ttdeci">uint8_t i2c_ID_2_writep(uint8_t d)</div><div class="ttdoc">Write data in I2C2 comunication port.</div><div class="ttdef"><b>Definition:</b> i2c.c:161</div></div>
+<div class="ttc" id="ai2c_8c_html_ab9ad2d620db2c93b9cc21a84314b074a"><div class="ttname"><a href="i2c_8c.html#ab9ad2d620db2c93b9cc21a84314b074a">read_int_eeprom</a></div><div class="ttdeci">uint32_t read_int_eeprom(uint32_t address, uint8_t int_length)</div><div class="ttdoc">Read integer of 8, 16 or 32 bits.</div><div class="ttdef"><b>Definition:</b> i2c.c:336</div></div>
+<div class="ttc" id="ai2c_8c_html_a0fa3b698ea0d176831fdda7ca7c2999d"><div class="ttname"><a href="i2c_8c.html#a0fa3b698ea0d176831fdda7ca7c2999d">read_string_eeprom</a></div><div class="ttdeci">void read_string_eeprom(uint32_t address, char *string, uint16_t string_length)</div><div class="ttdoc">Read string from EEPROM.</div><div class="ttdef"><b>Definition:</b> i2c.c:267</div></div>
+<div class="ttc" id="ai2c_8c_html_a5387b859edede74e1005f66c6e3d8a6a"><div class="ttname"><a href="i2c_8c.html#a5387b859edede74e1005f66c6e3d8a6a">i2c_ID_2_readp</a></div><div class="ttdeci">uint8_t i2c_ID_2_readp(uint8_t ack)</div><div class="ttdoc">Read data of I2C2 comunication port.</div><div class="ttdef"><b>Definition:</b> i2c.c:182</div></div>
+<div class="ttc" id="ai2c_8c_html_a8a843394a6c4533c92dd7e35cc5cb8cb"><div class="ttname"><a href="i2c_8c.html#a8a843394a6c4533c92dd7e35cc5cb8cb">i2c_ID_1_writep</a></div><div class="ttdeci">uint8_t i2c_ID_1_writep(uint8_t d)</div><div class="ttdoc">Write data in I2C1 comunication port.</div><div class="ttdef"><b>Definition:</b> i2c.c:78</div></div>
+<div class="ttc" id="ai2c_8c_html_a4a465ba65e6dcc01c40acaff7a5135d0"><div class="ttname"><a href="i2c_8c.html#a4a465ba65e6dcc01c40acaff7a5135d0">write_string_eeprom</a></div><div class="ttdeci">void write_string_eeprom(uint32_t address, char *string, uint16_t string_length)</div><div class="ttdoc">Write string in EEPROM.</div><div class="ttdef"><b>Definition:</b> i2c.c:211</div></div>
+<div class="ttc" id="ai2c_8h_html_a0df17cb12e5e7186115b66614112954f"><div class="ttname"><a href="i2c_8h.html#a0df17cb12e5e7186115b66614112954f">ADDR_PWM5_FREC</a></div><div class="ttdeci">#define ADDR_PWM5_FREC</div><div class="ttdoc">Address of variable.</div><div class="ttdef"><b>Definition:</b> i2c.h:87</div></div>
+<div class="ttc" id="ai2c_8c_html_afa442edf6ff4fc05b627fbf721a69c00"><div class="ttname"><a href="i2c_8c.html#afa442edf6ff4fc05b627fbf721a69c00">write_int_eeprom</a></div><div class="ttdeci">void write_int_eeprom(uint32_t address, uint32_t number, uint8_t int_length)</div><div class="ttdoc">Write integer of 8, 16 or 32 bits.</div><div class="ttdef"><b>Definition:</b> i2c.c:298</div></div>
+<div class="ttc" id="ai2c_8h_html_aac92c5ec332dafe0abb24688dad1b795"><div class="ttname"><a href="i2c_8h.html#aac92c5ec332dafe0abb24688dad1b795">INT32</a></div><div class="ttdeci">#define INT32</div><div class="ttdoc">Length in bits of 32 bits integer.</div><div class="ttdef"><b>Definition:</b> i2c.h:66</div></div>
+<div class="ttc" id="ai2c_8c_html_a9c6bb8c78e3bab66723ffc103bd155ae"><div class="ttname"><a href="i2c_8c.html#a9c6bb8c78e3bab66723ffc103bd155ae">i2c_ID_1_readp</a></div><div class="ttdeci">uint8_t i2c_ID_1_readp(uint8_t ack)</div><div class="ttdoc">Read data of I2C1 comunication port.</div><div class="ttdef"><b>Definition:</b> i2c.c:99</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Mar 27 2020 13:41:08 for IA.I.R.E by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Mar 29 2020 13:03:46 for IA.I.R.E by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.17
 </small></address>
