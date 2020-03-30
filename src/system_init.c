@@ -71,7 +71,8 @@ void ports_init (void){
     // GPIO OUT
     TEST_LEDStateIOSet(PIN_OUT);
     TEST_LEDStateSet(0);
-    
+    HBridge_IN1_StateIOSet(PIN_OUT);
+    HBridge_IN1_StateSet(0);
     
     // GPIO IN
     STATE_BLUETOOTHStateIOSet(PIN_IN);
@@ -86,7 +87,7 @@ void ports_init (void){
     U1RXRbits.U1RXR = 0b1101;   //Assign RPA14 pin as Input pin for U1RX
  
     // PWM
-    RPB0Rbits.RPB0R = 0b1011;   //Assign RPB0 pin as Output pin for OC4
+    RPB0Rbits.RPB0R = 0b1011;   //Assign RPB0 pin as Output pin for OC5
 }
 
 
