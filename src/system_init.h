@@ -43,6 +43,10 @@ extern "C" {
     #define PWM1StateGet()              PORTBbits.RB10                  /**< Get GPIO state port. */
     #define PWM1StateSet(value)         (LATBbits.LATB10 = value)       /**< Set GPIO state port. */
 
+    #define HBridge_IN1_StateIOSet(value)       (TRISBbits.TRISB3 = value)
+    #define HBridge_IN1_StateGet()              PORTBbits.RB3
+    #define HBridge_IN1_StateSet(value)         (LATBbits.LATB15 = value)
+    
     // GPIO IN
     #define STATE_BLUETOOTHStateIOSet(value)       (TRISBbits.TRISB10 = value)     /**< Set GPIO direction port. */
     #define STATE_BLUETOOTHStateGet()              PORTBbits.RB10                  /**< Get GPIO state port. */

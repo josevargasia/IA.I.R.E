@@ -115,6 +115,7 @@ void adc_get_samples(void){
     while (!(AD1CON1bits.DONE));// conversion done?
         
     adcData.values[0] = ADC1BUF0;
+    pressure_prom_int_values(&adcData.values[0]);
     adcData.values[1] = ADC1BUF1;
     
     adcData.values_mv[0] = (adcData.values[0]*3300)/1024;
