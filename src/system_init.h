@@ -45,7 +45,11 @@ extern "C" {
 
     #define HBridge_IN1_StateIOSet(value)       (TRISBbits.TRISB3 = value)
     #define HBridge_IN1_StateGet()              PORTBbits.RB3
-    #define HBridge_IN1_StateSet(value)         (LATBbits.LATB15 = value)
+    #define HBridge_IN1_StateSet(value)         (LATBbits.LATB3 = value)
+    
+    #define HBridge_IN2_StateIOSet(value)       (TRISBbits.TRISB2 = value)
+    #define HBridge_IN2_StateGet()              PORTBbits.RB2
+    #define HBridge_IN2_StateSet(value)         (LATBbits.LATB2 = value)
     
     // GPIO IN
     #define STATE_BLUETOOTHStateIOSet(value)       (TRISBbits.TRISB10 = value)     /**< Set GPIO direction port. */

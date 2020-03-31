@@ -13,6 +13,8 @@
 /* ************************************************************************** */
 /* ************************************************************************** */
 
+#include <proc/p32mx370f512l.h>
+
 #include "system_definitions.h"
 
 /* ************************************************************************** */
@@ -46,12 +48,12 @@ void pwm_ID5_init(void){
     // Pin
     
     // Configuration
-    OC5CON = 0;
+    OC3CON = 0;
     
-    OC5CONbits.OCM = 0b110 ;    // PWM mode
-    OC5CONbits.OCTSEL = 0;      // Timer2 is the clock source
-    OC5RS = (uint32_t)(50*PR2)/100;
-    OC5R = (uint32_t)(50*PR2)/100;
+    OC3CONbits.OCM = 0b110 ;    // PWM mode
+    OC3CONbits.OCTSEL = 0;      // Timer2 is the clock source
+    OC3RS = (uint32_t)(50*PR2)/100;
+    OC3R = (uint32_t)(50*PR2)/100;
     
     OC5CONbits.ON = 1;          // ON PWM
 }
