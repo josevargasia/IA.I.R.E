@@ -69,6 +69,10 @@ void __ISR(_TIMER_4_VECTOR, ipl3) IntTimer4Handler(void)    // 1ms
     if(bluetoothData.timeout)
         bluetoothData.timeout--;
     
+    if(pidData.timeout){
+        pidData.timeout--;
+    }
+    
     IFS0bits.T4IF = 0; //Reset Timer4 interrupt flag and Return from ISR
 }
 
