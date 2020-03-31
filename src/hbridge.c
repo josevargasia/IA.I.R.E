@@ -20,9 +20,8 @@
 /* Section: Included Files                                                    */
 /* ************************************************************************** */
 /* ************************************************************************** */
-
-/* This section lists the other files that are included in this file.
- */
+#include "hbridge.h"
+#include "pwm.h"
 
 /* TODO:  Include other files here if needed. */
 
@@ -54,19 +53,13 @@
   @Remarks
     Any additional remarks
  */
-int global_data;
+HBRIDGE_DATA hbridgeData;
 
 
 /* ************************************************************************** */
 /* ************************************************************************** */
 // Section: Local Functions                                                   */
 /* ************************************************************************** */
-/* ************************************************************************** */
-
-/*  A brief description of a section can be given directly below the section
-    banner.
- */
-
 /* ************************************************************************** */
 
 /** 
@@ -112,37 +105,58 @@ int global_data;
         return 3;
     }
  */
-static int ExampleLocalFunction(int param1, int param2) {
-    return 0;
+void MotorOn(void){
+    HBridge_IN1_StateSet(0);
+    HBridge_IN2_StateSet(1);
+    OC5CONbits.ON = 1;          // ON PWM
 }
 
+void MotorOff(void){
+    OC5CONbits.ON = 0;          // OFF PWM
+    HBridge_IN1_StateSet(0);
+    HBridge_IN2_StateSet(0);
+}
 
+void MotorBreak(void){
+    HBridge_IN1_StateSet(0);
+    HBridge_IN2_StateSet(0);
+    OC5CONbits.ON = 1;
+}
+
+void SetTimeRamp(uint16_t _time){
+    hbridgeData.timeout = _time/20;
+}
+    
+void MotorRamp(void){
+    hbridgeData.counter++;
+    if(hbridgeData.counter <= 20){
+        pwm_ID5_duty_set(hbridgeData.setted_ramp*hbridgeData.counter);
+    }
+    
+    else{
+        hbridgeData.counter = 0;
+    }
+}
+
+void HBRIDGE_Task(void){
+    if(hbridgeData.timeout==0){
+        
+        pwm_ID5_duty_set(30);
+        
+        T2CONbits.ON = 1;
+        MotorOn();
+    }
+}
 /* ************************************************************************** */
 /* ************************************************************************** */
 // Section: Interface Functions                                               */
 /* ************************************************************************** */
 /* ************************************************************************** */
 
+
 /*  A brief description of a section can be given directly below the section
     banner.
  */
-
-// *****************************************************************************
-
-/** 
-  @Function
-    int ExampleInterfaceFunctionName ( int param1, int param2 ) 
-
-  @Summary
-    Brief one-line description of the function.
-
-  @Remarks
-    Refer to the example_file.h interface header for function usage details.
- */
-int ExampleInterfaceFunction(int param1, int param2) {
-    return 0;
-}
-
 
 /* *****************************************************************************
  End of File

@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=src/adc.c src/app.c src/bluetooth.c src/delay.c src/i2c.c src/interrupt.c src/main.c src/mg811.c src/mpx5010.c src/pwm.c src/sci.c src/system_init.c src/timer.c src/hbridge.c
+SOURCEFILES_QUOTED_IF_SPACED=src/adc.c src/app.c src/bluetooth.c src/delay.c src/i2c.c src/interrupt.c src/main.c src/mg811.c src/mpx5010.c src/pwm.c src/sci.c src/system_init.c src/timer.c src/hbridge.c src/pid.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/src/adc.o ${OBJECTDIR}/src/app.o ${OBJECTDIR}/src/bluetooth.o ${OBJECTDIR}/src/delay.o ${OBJECTDIR}/src/i2c.o ${OBJECTDIR}/src/interrupt.o ${OBJECTDIR}/src/main.o ${OBJECTDIR}/src/mg811.o ${OBJECTDIR}/src/mpx5010.o ${OBJECTDIR}/src/pwm.o ${OBJECTDIR}/src/sci.o ${OBJECTDIR}/src/system_init.o ${OBJECTDIR}/src/timer.o ${OBJECTDIR}/src/hbridge.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/src/adc.o.d ${OBJECTDIR}/src/app.o.d ${OBJECTDIR}/src/bluetooth.o.d ${OBJECTDIR}/src/delay.o.d ${OBJECTDIR}/src/i2c.o.d ${OBJECTDIR}/src/interrupt.o.d ${OBJECTDIR}/src/main.o.d ${OBJECTDIR}/src/mg811.o.d ${OBJECTDIR}/src/mpx5010.o.d ${OBJECTDIR}/src/pwm.o.d ${OBJECTDIR}/src/sci.o.d ${OBJECTDIR}/src/system_init.o.d ${OBJECTDIR}/src/timer.o.d ${OBJECTDIR}/src/hbridge.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/src/adc.o ${OBJECTDIR}/src/app.o ${OBJECTDIR}/src/bluetooth.o ${OBJECTDIR}/src/delay.o ${OBJECTDIR}/src/i2c.o ${OBJECTDIR}/src/interrupt.o ${OBJECTDIR}/src/main.o ${OBJECTDIR}/src/mg811.o ${OBJECTDIR}/src/mpx5010.o ${OBJECTDIR}/src/pwm.o ${OBJECTDIR}/src/sci.o ${OBJECTDIR}/src/system_init.o ${OBJECTDIR}/src/timer.o ${OBJECTDIR}/src/hbridge.o ${OBJECTDIR}/src/pid.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/src/adc.o.d ${OBJECTDIR}/src/app.o.d ${OBJECTDIR}/src/bluetooth.o.d ${OBJECTDIR}/src/delay.o.d ${OBJECTDIR}/src/i2c.o.d ${OBJECTDIR}/src/interrupt.o.d ${OBJECTDIR}/src/main.o.d ${OBJECTDIR}/src/mg811.o.d ${OBJECTDIR}/src/mpx5010.o.d ${OBJECTDIR}/src/pwm.o.d ${OBJECTDIR}/src/sci.o.d ${OBJECTDIR}/src/system_init.o.d ${OBJECTDIR}/src/timer.o.d ${OBJECTDIR}/src/hbridge.o.d ${OBJECTDIR}/src/pid.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/src/adc.o ${OBJECTDIR}/src/app.o ${OBJECTDIR}/src/bluetooth.o ${OBJECTDIR}/src/delay.o ${OBJECTDIR}/src/i2c.o ${OBJECTDIR}/src/interrupt.o ${OBJECTDIR}/src/main.o ${OBJECTDIR}/src/mg811.o ${OBJECTDIR}/src/mpx5010.o ${OBJECTDIR}/src/pwm.o ${OBJECTDIR}/src/sci.o ${OBJECTDIR}/src/system_init.o ${OBJECTDIR}/src/timer.o ${OBJECTDIR}/src/hbridge.o
+OBJECTFILES=${OBJECTDIR}/src/adc.o ${OBJECTDIR}/src/app.o ${OBJECTDIR}/src/bluetooth.o ${OBJECTDIR}/src/delay.o ${OBJECTDIR}/src/i2c.o ${OBJECTDIR}/src/interrupt.o ${OBJECTDIR}/src/main.o ${OBJECTDIR}/src/mg811.o ${OBJECTDIR}/src/mpx5010.o ${OBJECTDIR}/src/pwm.o ${OBJECTDIR}/src/sci.o ${OBJECTDIR}/src/system_init.o ${OBJECTDIR}/src/timer.o ${OBJECTDIR}/src/hbridge.o ${OBJECTDIR}/src/pid.o
 
 # Source Files
-SOURCEFILES=src/adc.c src/app.c src/bluetooth.c src/delay.c src/i2c.c src/interrupt.c src/main.c src/mg811.c src/mpx5010.c src/pwm.c src/sci.c src/system_init.c src/timer.c src/hbridge.c
+SOURCEFILES=src/adc.c src/app.c src/bluetooth.c src/delay.c src/i2c.c src/interrupt.c src/main.c src/mg811.c src/mpx5010.c src/pwm.c src/sci.c src/system_init.c src/timer.c src/hbridge.c src/pid.c
 
 
 CFLAGS=
@@ -190,6 +190,12 @@ ${OBJECTDIR}/src/hbridge.o: src/hbridge.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/src/hbridge.o 
 	@${FIXDEPS} "${OBJECTDIR}/src/hbridge.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -DICD3PlatformTool=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/hbridge.o.d" -o ${OBJECTDIR}/src/hbridge.o src/hbridge.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
+${OBJECTDIR}/src/pid.o: src/pid.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/pid.o.d 
+	@${RM} ${OBJECTDIR}/src/pid.o 
+	@${FIXDEPS} "${OBJECTDIR}/src/pid.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -DICD3PlatformTool=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/pid.o.d" -o ${OBJECTDIR}/src/pid.o src/pid.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	
 else
 ${OBJECTDIR}/src/adc.o: src/adc.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/src" 
@@ -274,6 +280,12 @@ ${OBJECTDIR}/src/hbridge.o: src/hbridge.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/src/hbridge.o.d 
 	@${RM} ${OBJECTDIR}/src/hbridge.o 
 	@${FIXDEPS} "${OBJECTDIR}/src/hbridge.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/hbridge.o.d" -o ${OBJECTDIR}/src/hbridge.o src/hbridge.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/src/pid.o: src/pid.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/src" 
+	@${RM} ${OBJECTDIR}/src/pid.o.d 
+	@${RM} ${OBJECTDIR}/src/pid.o 
+	@${FIXDEPS} "${OBJECTDIR}/src/pid.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/src/pid.o.d" -o ${OBJECTDIR}/src/pid.o src/pid.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
 endif
 

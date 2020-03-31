@@ -14,6 +14,7 @@
 /* ************************************************************************** */
 
 #include "system_definitions.h"
+#include "pwm.h"
 
 
 /* ************************************************************************** */
@@ -74,8 +75,9 @@ void APP_Task(void){
         }
         case APP_STATE_SERVICE_TASKS:
         {
-            BLUETOOTH_Task();
-            
+            //BLUETOOTH_Task();
+//            pwm_ID5_duty_set(25);
+            HBRIDGE_Task();
             if(appData.test_timeout == 0){
                 
                 appData.test_timeout = 500;

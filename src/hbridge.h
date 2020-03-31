@@ -52,7 +52,7 @@
   @Remarks
     Any additional remarks
  */
-#define EXAMPLE_CONSTANT 0
+
 
 
 // *****************************************************************************
@@ -61,9 +61,20 @@
 // *****************************************************************************
 // *****************************************************************************
 
-/*  A brief description of a section can be given directly below the section
-    banner.
- */
+    /**
+     * @brief H-Bridge data structure.
+     */
+    typedef struct
+    {
+        /* The application's current state */
+        
+        uint16_t timeout;                   /**< Timeout. */
+        uint16_t counter;
+        uint16_t setted_ramp;
+    } HBRIDGE_DATA;
+
+    extern HBRIDGE_DATA hbridgeData;    /**< Manage all variables that bluetooth can use. */
+    
 
 
 // *****************************************************************************
@@ -87,14 +98,7 @@
     Describe enumeration elements and structure and union members above each 
     element or member.
  */
-typedef struct _example_struct_t {
-    /* Describe structure member. */
-    int some_number;
 
-    /* Describe structure member. */
-    bool some_flag;
-
-} example_struct_t;
 
 
 // *****************************************************************************
@@ -103,10 +107,11 @@ typedef struct _example_struct_t {
 // *****************************************************************************
 // *****************************************************************************
 
-/*  A brief description of a section can be given directly below the section
-    banner.
- */
-
+void MotorOn(void);
+void MotorOff(void);
+void MotorBreak(void);
+void MotorRamp(void);
+void HBRIDGE_Task(void);
 // *****************************************************************************
 /**
   @Function
@@ -151,8 +156,6 @@ typedef struct _example_struct_t {
         return 3;
     }
  */
-int ExampleFunction(int param1, int param2);
-
 
 
 #endif /* _EXAMPLE_FILE_NAME_H */
