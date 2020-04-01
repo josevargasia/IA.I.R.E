@@ -39,10 +39,6 @@ extern "C" {
     #define TEST_LEDStateGet()              PORTBbits.RB15                  /**< Get GPIO state port. */
     #define TEST_LEDStateSet(value)         (LATBbits.LATB15 = value)       /**< Set GPIO state port. */
 
-    #define PWM1StateIOSet(value)       (TRISBbits.TRISB10 = value)     /**< Set GPIO direction port. */
-    #define PWM1StateGet()              PORTBbits.RB10                  /**< Get GPIO state port. */
-    #define PWM1StateSet(value)         (LATBbits.LATB10 = value)       /**< Set GPIO state port. */
-
     #define HBridge_IN1_StateIOSet(value)       (TRISBbits.TRISB3 = value)
     #define HBridge_IN1_StateGet()              PORTBbits.RB3
     #define HBridge_IN1_StateSet(value)         (LATBbits.LATB3 = value)
@@ -50,7 +46,11 @@ extern "C" {
     #define HBridge_IN2_StateIOSet(value)       (TRISBbits.TRISB2 = value)
     #define HBridge_IN2_StateGet()              PORTBbits.RB2
     #define HBridge_IN2_StateSet(value)         (LATBbits.LATB2 = value)
-    
+
+    #define TRIG_StateIOSet(value)       (TRISBbits.TRISB11 = value)
+    #define TRIG_StateGet()              PORTBbits.RB11
+    #define TRIG_StateSet(value)         (LATBbits.LATB11 = value)
+
     // GPIO IN
     #define STATE_BLUETOOTHStateIOSet(value)       (TRISBbits.TRISB10 = value)     /**< Set GPIO direction port. */
     #define STATE_BLUETOOTHStateGet()              PORTBbits.RB10                  /**< Get GPIO state port. */

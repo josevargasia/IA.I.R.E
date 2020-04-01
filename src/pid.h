@@ -11,10 +11,15 @@ extern "C" {
 #endif
 
     
-    #define     k_ctrl  15
-    #define     tao     20
-    #define     theta   30 
-    #define     T       40
+//    #define     k_ctrl  7.02
+//    #define     tao     120
+//    #define     theta   30 
+//    #define     T       11
+
+    #define     k_ctrl  0.62
+    #define     tao     220
+    #define     theta   60 
+    #define     T       11
 
 
     typedef struct

@@ -117,7 +117,7 @@ void BLUETOOTH_Task(void){
                 
                 adc_get_sample_average();
                 
-                sprintf(send_frame, "A%d,B%dmV,S%d,T%d,", value_ppm_CO2, adcData.values_2_prom[1], configData.pwm5_frec, configData.pwm5_duty);
+                sprintf(send_frame, "A%04d,B%04dmV,S,T%03d,", configData.pressure_max, adcData.values_2_prom[1], configData.pwm5_duty);
                 BLUETOOTH_send_frame(send_frame);
                 
 //                sprintf(appData.bufferDisplay, "AN5: %d mV, CO2: %d ppm\r\n", adcData.values_2_prom[1], value_ppm_CO2);
@@ -197,7 +197,7 @@ void BLUETOOTH_process_frame(char * frame, uint8_t len){
                     if(index_data != 0){
                         //Save
                         configData.pwm5_frec = atoi(data);
-                        if(configData.pwm5_frec >= 10000 && configData.pwm5_frec <= 50000){
+                        if(configData.pwm5_frec >= 1000 && configData.pwm5_frec <= 50000){
                             write_int_eeprom(ADDR_PWM5_FREC, configData.pwm5_frec, INT32);
                             timer_ID2_set_frecuency(configData.pwm5_frec);
                         }
@@ -207,7 +207,6 @@ void BLUETOOTH_process_frame(char * frame, uint8_t len){
                     //Response
                     index_response_frame += sprintf(&response_frame[index_response_frame], "S%d,", configData.pwm5_frec);
                     break;
-                    break;
                 }
                 case 'T':
                 {
@@ -216,6 +215,12 @@ void BLUETOOTH_process_frame(char * frame, uint8_t len){
                         configData.pwm5_duty = atoi(data);
                         if(configData.pwm5_duty <= 100){
                             write_int_eeprom(ADDR_PWM5_DUTY, configData.pwm5_duty, INT8);
+                            if(configData.pwm5_duty == 15){
+                                TRIG_StateSet(0);
+                            }else{
+                                TRIG_StateSet(1);
+                            }
+                            
                             pwm_ID5_duty_set(configData.pwm5_duty);
                         }
                     }
@@ -223,7 +228,6 @@ void BLUETOOTH_process_frame(char * frame, uint8_t len){
                     configData.pwm5_duty = read_int_eeprom(ADDR_PWM5_DUTY, INT8);
                     //Response
                     index_response_frame += sprintf(&response_frame[index_response_frame], "T%d,", configData.pwm5_duty);
-                    break;
                     break;
                 }
                 default:

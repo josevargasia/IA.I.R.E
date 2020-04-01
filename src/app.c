@@ -14,7 +14,6 @@
 /* ************************************************************************** */
 
 #include "system_definitions.h"
-#include "pwm.h"
 
 
 /* ************************************************************************** */
@@ -76,6 +75,9 @@ void APP_Task(void){
         case APP_STATE_SERVICE_TASKS:
         {
             BLUETOOTH_Task();
+            
+            
+            pid_task(configData.pressure_max);
             
             if(appData.test_timeout == 0){
                 

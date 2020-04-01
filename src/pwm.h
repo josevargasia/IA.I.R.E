@@ -55,11 +55,6 @@ extern "C" {
     void pwm_init(void);
     
     /**
-     * @brief Enable PWM function
-     */
-    void pwm_en(void);
-    
-    /**
      * @brief Initialize PWM ID5 configuration
      */
     void pwm_ID5_init(void);
@@ -71,7 +66,7 @@ extern "C" {
      * @endcode
      * @param duty Duty cycle in percent
      */
-    void pwm_ID5_duty_set(uint32_t duty);
+    void pwm_ID5_duty_set(uint8_t duty);
 
     /* Provide C++ Compatibility */
 #ifdef __cplusplus

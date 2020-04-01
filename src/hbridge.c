@@ -20,8 +20,7 @@
 /* Section: Included Files                                                    */
 /* ************************************************************************** */
 /* ************************************************************************** */
-#include "hbridge.h"
-#include "pwm.h"
+#include "system_definitions.h"
 
 /* TODO:  Include other files here if needed. */
 

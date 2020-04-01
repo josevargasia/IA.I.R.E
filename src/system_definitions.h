@@ -42,9 +42,9 @@
 #include "app.h"
 #include "mg811.h"
 #include "bluetooth.h"
-#include "mpx5010.h"
 #include "hbridge.h"
 #include "pid.h"
+#include "mpx5010.h"
 
 
 /* Provide C++ Compatibility */
