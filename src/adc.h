@@ -35,7 +35,7 @@ extern "C" {
     /* ************************************************************************** */
     /* ************************************************************************** */
 
-    #define ADC_MAX_NUM_SAMPLE_PROM  500        /**< maximum number of samples to calculate average. */
+    #define ADC_MAX_NUM_SAMPLE_PROM  1000        /**< maximum number of samples to calculate average. */
     
     #define PORT_AN0    0b0000000000000001      /**< Set ADC port AN0. */
     #define PORT_AN1    0b0000000000000010      /**< Set ADC port AN1. */

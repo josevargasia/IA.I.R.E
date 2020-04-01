@@ -17,6 +17,8 @@
       <itemPath>mg811.h</itemPath>
       <itemPath>bluetooth.h</itemPath>
       <itemPath>pwm.h</itemPath>
+      <itemPath>hbridge.h</itemPath>
+      <itemPath>pid.h</itemPath>
       <itemPath>mpx5010.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
@@ -38,6 +40,8 @@
       <itemPath>mg811.c</itemPath>
       <itemPath>bluetooth.c</itemPath>
       <itemPath>pwm.c</itemPath>
+      <itemPath>hbridge.c</itemPath>
+      <itemPath>pid.c</itemPath>
       <itemPath>mpx5010.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
