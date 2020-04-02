@@ -245,7 +245,26 @@ extern "C" {
      */
     uint32_t read_int_eeprom(uint32_t address, uint8_t int_length);
 
+    /**
+     * @brief Write float
+     * Only save 2 decimals
+     * @code
+     *      write_float_eeprom(ADDR_PRESSURE_INS, 100.69);
+     * @endcode
+     * @param  address      Address in EEPROM to write   
+     * @param  number       Float to wirte
+     */
+    void write_float_eeprom(uint32_t address, float number);
     
+    /**
+     * @brief Read float
+     * @code
+     *      float data = read_float_eeprom(ADDR_PRESSURE_INS);
+     * @endcode
+     * @param  address      Address in EEPROM to read   
+     * @return Return float readed   
+     */
+    float read_float_eeprom(uint32_t address);
     /* Provide C++ Compatibility */
 #ifdef __cplusplus
 }

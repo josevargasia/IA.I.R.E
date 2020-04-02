@@ -41,8 +41,8 @@ CONFIG_DATA configData;
 
 void APP_init(void){
     
-    respiraData.sp_insp = (float)read_int_eeprom(ADDR_PRESSURE_INS, INT32);
-    respiraData.sp_exp = (float)read_int_eeprom(ADDR_PRESSURE_EXP, INT32);
+    respiraData.sp_insp = read_float_eeprom(ADDR_PRESSURE_INS);
+    respiraData.sp_exp = read_float_eeprom(ADDR_PRESSURE_EXP);
     respiraData.t_insp = read_int_eeprom(ADDR_INSPIRATION_TIME, INT16);
     respiraData.t_exp = read_int_eeprom(ADDR_EXPIRATION_TIME, INT16);
     
@@ -68,7 +68,7 @@ void APP_Task(void){
     {
         case APP_STATE_INIT:
         {   
-            sci_ID1_send("<---------- Init App ---------->\n");
+            sci_ID5_send("<---------- Init App ---------->\n");
             BLUETOOTH_init();
             respira_init();
             appData.test_timeout = 1000;

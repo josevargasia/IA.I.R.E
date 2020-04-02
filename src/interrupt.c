@@ -82,32 +82,32 @@ void __ISR(_TIMER_4_VECTOR, ipl3) IntTimer4Handler(void)    // 1ms
 }
 
 /**
-* @brief UART 1 TX and RX interrupt handler routine
+* @brief UART 5 TX and RX interrupt handler routine
 */
-void __ISR(_UART1_VECTOR, ipl1) IntUart1Handler(void)
+void __ISR(_UART_5_VECTOR, ipl1) IntUart5Handler(void)
 {
     /* Reading the transmit interrupt flag */
-    if(IFS1bits.U1TXIF == 1)
+    if(IFS2bits.U5TXIF == 1)
     {
         char data;
-        while(U1STAbits.UTXBF);
-        if(circBuffPop_sci(&data, BUFFER_TX_SCI_ID1)){
-			U1TXREG = data;
-            U1STAbits.OERR = 0;
-            IFS1bits.U1TXIF = 0;
+        while(U5STAbits.UTXBF);
+        if(circBuffPop_sci(&data, BUFFER_TX_SCI_ID5)){
+			U5TXREG = data;
+            U5STAbits.OERR = 0;
+            IFS2bits.U5TXIF = 0;
         }else{
-            IFS1bits.U1TXIF = 0;
-            IEC1bits.U1TXIE = 0;
+            IFS2bits.U5TXIF = 0;
+            IEC2bits.U5TXIE = 0;
         }
     }
     
-    if(IFS1bits.U1RXIF == 1)
+    if(IFS2bits.U5RXIF == 1)
     {
         char data;
-        data = U1RXREG;
-        circBuffPush_sci(data, BUFFER_RX_SCI_ID1);
+        data = U5RXREG;
+        circBuffPush_sci(data, BUFFER_RX_SCI_ID5);
         /* Clear up the interrupt flag */
-        IFS1bits.U1RXIF = 0;
+        IFS2bits.U5RXIF = 0;
     }
 }
 

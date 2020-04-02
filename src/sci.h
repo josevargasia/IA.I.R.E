@@ -34,11 +34,11 @@ extern "C" {
 
     #define NUMBER_OF_SCI_BUFFERS       2       /**< Numer of SCI buffers. */
     
-    #define BUFFER_TX_SCI_ID1           0       /**< ID of SCI buffer TX for UART1 comunication. */
-    #define BUFFER_RX_SCI_ID1           1       /**< ID of SCI buffer RX for UART1 comunication. */
+    #define BUFFER_TX_SCI_ID5           0       /**< ID of SCI buffer TX for UART5 comunication. */
+    #define BUFFER_RX_SCI_ID5           1       /**< ID of SCI buffer RX for UART5 comunication. */
 
-    #define BUFFER_TX_SCI_ID1_SIZE      200     /**< Size of SCI buffer TX for UART1 comunication. */
-    #define BUFFER_RX_SCI_ID1_SIZE      200     /**< Size of SCI buffer RX for UART1 comunication. */
+    #define BUFFER_TX_SCI_ID5_SIZE      200     /**< Size of SCI buffer TX for UART5 comunication. */
+    #define BUFFER_RX_SCI_ID5_SIZE      200     /**< Size of SCI buffer RX for UART5 comunication. */
 
     #define RX_INVERT_ON            1   /**< Set INVERT UART polarity for RX pin. */
     #define RX_INVERT_OFF           0   /**< Set NO INVERT UART polarity for RX pin. */
@@ -61,8 +61,8 @@ extern "C" {
     // *****************************************************************************
     // *****************************************************************************
 
-    char buffer_tx_sci_ID1[BUFFER_TX_SCI_ID1_SIZE];       /**< SCI buffer TX for UART1 comunication. */
-    char buffer_rx_sci_ID1[BUFFER_RX_SCI_ID1_SIZE];       /**< SCI buffer RX for UART1 comunication. */
+    char buffer_tx_sci_ID5[BUFFER_TX_SCI_ID5_SIZE];       /**< SCI buffer TX for UART5 comunication. */
+    char buffer_rx_sci_ID5[BUFFER_RX_SCI_ID5_SIZE];       /**< SCI buffer RX for UART5 comunication. */
     
     /**
      * @brief SCI data structure.
@@ -90,7 +90,7 @@ extern "C" {
     /**
      * @brief Save a character in a specific circular buffer
      * @code
-     *      circBuffPush_sci(data, BUFFER_TX_SCI_ID1);
+     *      circBuffPush_sci(data, BUFFER_TX_SCI_ID5);
      * @endcode
      * @param data          Character to be saved in buffer
      * @param bufferID      ID of buffer to be saved
@@ -101,7 +101,7 @@ extern "C" {
     /**
      * @brief Load a character in a specific circular buffer
      * @code
-     *      uint16_t ret = circBuffPop_sci(&data, BUFFER_RX_SCI_ID1);
+     *      uint16_t ret = circBuffPop_sci(&data, BUFFER_RX_SCI_ID5);
      * @endcode
      * @param  data          Pointer of character to be loaded of buffer
      * @param  bufferID      ID of buffer to be loaded
@@ -112,7 +112,7 @@ extern "C" {
     /**
      * @brief Erase all characters in a specific circular buffer
      * @code
-     *      clean_buffer_sci(BUFFER_TX_SCI_ID1);
+     *      clean_buffer_sci(BUFFER_TX_SCI_ID5);
      * @endcode
      * @param  bufferID      ID of buffer to be erased
      */
@@ -124,9 +124,9 @@ extern "C" {
     void sci_init(void);
     
     /**
-     * @brief Configure UART 1 comunication
+     * @brief Configure UART 5 comunication
      * @code
-     *      sci_ID1_setup(115200, RX_INVERT_OFF, TX_INVERT_OFF, NO_PARITY_8_BIT, STOP_BIT_1);
+     *      sci_ID5_setup(115200, RX_INVERT_OFF, TX_INVERT_OFF, NO_PARITY_8_BIT, STOP_BIT_1);
      * @endcode
      * @param  sci_baud       Configure SCI baud rate
      * @param  rx_invert      Configure polariti of RX
@@ -134,34 +134,34 @@ extern "C" {
      * @param  parity_nbits   Configure parity and number of bits
      * @param  stop_bits      Configure stops bits
      */
-    void sci_ID1_setup (uint32_t sci_baud, uint8_t rx_invert, uint8_t tx_invert, uint8_t parity_nbits, uint8_t stop_bits);
+    void sci_ID5_setup (uint32_t sci_baud, uint8_t rx_invert, uint8_t tx_invert, uint8_t parity_nbits, uint8_t stop_bits);
     
     /**
-     * @brief Write a byte in UART1 TX port
+     * @brief Write a byte in UART5 TX port
      * @code
-     *      sci_ID1_sendbyte('H');
+     *      sci_ID5_sendbyte('H');
      * @endcode
-     * @param  data      Character to be put in UART1 TX port
+     * @param  data      Character to be put in UART5 TX port
      */
-    void sci_ID1_sendbyte(char data);
+    void sci_ID5_sendbyte(char data);
     
     /**
-     * @brief Write a string in UART1 TX port
+     * @brief Write a string in UART5 TX port
      * @code
-     *      sci_ID1_send("Hello world...");
+     *      sci_ID5_send("Hello world...");
      * @endcode
-     * @param  string   String to be put in UART1 TX port
+     * @param  string   String to be put in UART5 TX port
      */
-    void sci_ID1_send(char * string);
+    void sci_ID5_send(char * string);
     
     /**
-     * @brief Read a byte of UART1 RX port
+     * @brief Read a byte of UART5 RX port
      * @code
-     *      sci_ID1_get(&data);
+     *      sci_ID5_get(&data);
      * @endcode
-     * @param  data     Pointer of character to be read of UART1 RX port
+     * @param  data     Pointer of character to be read of UART5 RX port
      */
-    uint16_t sci_ID1_get(char * data);
+    uint16_t sci_ID5_get(char * data);
 
     /* Provide C++ Compatibility */
 #ifdef __cplusplus

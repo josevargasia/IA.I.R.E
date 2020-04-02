@@ -85,81 +85,79 @@ void clean_buffer_sci(uint8_t bufferID){
 /* ************************************************************************** */
 
 void sci_init(void){
-    sciData.buffer[BUFFER_TX_SCI_ID1] = buffer_tx_sci_ID1;
-    sciData.buffer[BUFFER_RX_SCI_ID1] = buffer_rx_sci_ID1;
+    sciData.buffer[BUFFER_TX_SCI_ID5] = buffer_tx_sci_ID5;
+    sciData.buffer[BUFFER_RX_SCI_ID5] = buffer_rx_sci_ID5;
     
-    sciData.buffer_size[BUFFER_TX_SCI_ID1] = BUFFER_TX_SCI_ID1_SIZE;
-    sciData.buffer_size[BUFFER_RX_SCI_ID1] = BUFFER_RX_SCI_ID1_SIZE;
+    sciData.buffer_size[BUFFER_TX_SCI_ID5] = BUFFER_TX_SCI_ID5_SIZE;
+    sciData.buffer_size[BUFFER_RX_SCI_ID5] = BUFFER_RX_SCI_ID5_SIZE;
     
     memset(sciData.buffer_head, 0x00, NUMBER_OF_SCI_BUFFERS);
     memset(sciData.buffer_tail, 0x00, NUMBER_OF_SCI_BUFFERS);
     memset(sciData.buffer_next, 0x00, NUMBER_OF_SCI_BUFFERS);
     memset(sciData.buffer_count, 0x00, NUMBER_OF_SCI_BUFFERS);
     
-    sci_ID1_setup(115200, RX_INVERT_OFF, TX_INVERT_OFF, NO_PARITY_8_BIT, STOP_BIT_1);
+    sci_ID5_setup(115200, RX_INVERT_OFF, TX_INVERT_OFF, NO_PARITY_8_BIT, STOP_BIT_1);
 }
 
 /**********************************************
  ************ SCI ID1 FUNCTIONS ***************     
  **********************************************/
-void sci_ID1_setup (uint32_t sci_baud, uint8_t rx_invert, uint8_t tx_invert, uint8_t parity_nbits, uint8_t stop_bits){
+void sci_ID5_setup (uint32_t sci_baud, uint8_t rx_invert, uint8_t tx_invert, uint8_t parity_nbits, uint8_t stop_bits){
     // TX RA15
     // RX RA14
     
-    U1MODEbits.ON = 0;
+    U5MODEbits.ON = 0;
     
     // Setup
-    U1MODE = 0b0000000000000000;
-    U1STA = 0b0000000000000000;
+    U5MODE = 0b0000000000000000;
+    U5STA = 0b0000000000000000;
     
-    U1BRG = ((SYS_CLK_BUS_PERIPHERAL/16)/sci_baud) - 1;   // Baud Rate
+    U5BRG = ((SYS_CLK_BUS_PERIPHERAL/16)/sci_baud) - 1;   // Baud Rate
     
-    U1MODEbits.RXINV = rx_invert;
-    U1STAbits.UTXINV = tx_invert;
-    U1MODEbits.PDSEL = parity_nbits;
-    U1MODEbits.STSEL = stop_bits;
+    U5MODEbits.RXINV = rx_invert;
+    U5STAbits.UTXINV = tx_invert;
+    U5MODEbits.PDSEL = parity_nbits;
+    U5MODEbits.STSEL = stop_bits;
             
     // Interrupt
-    IPC7bits.U1IP = 1;      //Interrupt priority
-    IPC7bits.U1IS = 0;      //Interrupt sub-priority
+    IPC10bits.U5IP = 1;      //Interrupt priority
+    IPC10bits.U5IS = 0;      //Interrupt sub-priority
     
-    IFS1bits.U1RXIF = 0;    //clear interrupt flag
-    IEC1bits.U1RXIE = 1;    //Enable UART1 RX interrupt
-    IFS1bits.U1TXIF = 0;    //clear interrupt flag
-    IEC1bits.U1TXIE = 0;    //Disable UART1 TX interrupt
+    IFS2bits.U5RXIF = 0;    //clear interrupt flag
+    IEC2bits.U5RXIE = 1;    //Enable UART1 RX interrupt
+    IFS2bits.U5TXIF = 0;    //clear interrupt flag
+    IEC2bits.U5TXIE = 0;    //Disable UART1 TX interrupt
     
-    U1STAbits.UTXEN = 1;
-    U1STAbits.URXEN = 1;
-    U1MODEbits.ON = 1;
+    U5STAbits.UTXEN = 1;
+    U5STAbits.URXEN = 1;
+    U5MODEbits.ON = 1;
     
     // Buffers    
-    clean_buffer_sci(BUFFER_TX_SCI_ID1);
-    clean_buffer_sci(BUFFER_RX_SCI_ID1);
+    clean_buffer_sci(BUFFER_TX_SCI_ID5);
+    clean_buffer_sci(BUFFER_RX_SCI_ID5);
 }
 
-void sci_ID1_sendbyte(char data){
-    circBuffPush_sci(data, BUFFER_TX_SCI_ID1);
-    IEC1bits.U1TXIE = 1;
+void sci_ID5_sendbyte(char data){
+    circBuffPush_sci(data, BUFFER_TX_SCI_ID5);
+    IEC2bits.U5TXIE = 1;
 }
 
-void sci_ID1_send(char * string){	  
+void sci_ID5_send(char * string){	  
 	uint16_t i;
     uint16_t len = strlen(string);
 	for (i = 0; i < len || (len == 0 && string[i] != 0); i++){
-		sci_ID1_sendbyte(string[i]);
+		sci_ID5_sendbyte(string[i]);
 	}
 }
 
-uint16_t sci_ID1_get(char * data){
+uint16_t sci_ID5_get(char * data){
     uint16_t ret;
     
-//    IEC1bits.U1RXIE = 0;
-    if(circBuffGetCount_sci(BUFFER_RX_SCI_ID1) != 0){
-        ret = circBuffPop_sci(data, BUFFER_RX_SCI_ID1);
+    if(circBuffGetCount_sci(BUFFER_RX_SCI_ID5) != 0){
+        ret = circBuffPop_sci(data, BUFFER_RX_SCI_ID5);
     }else{
         ret = 0;
     }
-//    IEC1bits.U1RXIE = 1;
     
     return ret;
 }

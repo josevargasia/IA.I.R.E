@@ -94,8 +94,12 @@ void ports_init (void){
     
     // Ports - Peripheral Pin Select
     // UART1
-    RPA15Rbits.RPA15R = 0b0011; //Assign RPA15 pin as Output pin for U1TX  
-    U1RXRbits.U1RXR = 0b1101;   //Assign RPA14 pin as Input pin for U1RX
+//    RPA15Rbits.RPA15R = 0b0011; //Assign RPA15 pin as Output pin for U1TX  
+//    U1RXRbits.U1RXR = 0b1101;   //Assign RPA14 pin as Input pin for U1RX
+    
+    // UART5
+    RPE9Rbits.RPE9R = 0b0100;   //Assign RPE9 pin as Output pin for U5TX  
+    U5RXRbits.U5RXR = 0b1101;   //Assign RPE8 pin as Input pin for U5RX
  
     // PWM
     RPB0Rbits.RPB0R = 0b1011;   //Assign RPD2 pin as Output pin for OC5

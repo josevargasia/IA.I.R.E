@@ -411,6 +411,20 @@ uint32_t read_int_eeprom(uint32_t address, uint8_t int_length)
 	
 	return number;
 }
+
+void write_float_eeprom(uint32_t address, float number)
+{	
+    write_int_eeprom(address, (uint32_t)(number*100), INT32);
+
+}
+
+float read_float_eeprom(uint32_t address){
+    float ret;
+    
+    ret = (float)read_int_eeprom(address, INT32)/100;
+    
+    return ret;
+}
 /* *****************************************************************************
  End of File
  */
