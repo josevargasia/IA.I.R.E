@@ -41,9 +41,10 @@ CONFIG_DATA configData;
 
 void APP_init(void){
     
-    configData.pressure_max = read_int_eeprom(ADDR_PRESSURE_MAX, INT16);
-    configData.inspiration_time = read_int_eeprom(ADDR_INSPIRATION_TIME, INT16);
-    configData.expiration_time = read_int_eeprom(ADDR_EXPIRATION_TIME, INT16);
+    respiraData.sp_insp = (float)read_int_eeprom(ADDR_PRESSURE_INS, INT32);
+    respiraData.sp_exp = (float)read_int_eeprom(ADDR_PRESSURE_EXP, INT32);
+    respiraData.t_insp = read_int_eeprom(ADDR_INSPIRATION_TIME, INT16);
+    respiraData.t_exp = read_int_eeprom(ADDR_EXPIRATION_TIME, INT16);
     
     configData.pwm5_frec = read_int_eeprom(ADDR_PWM5_FREC, INT32);
     if(configData.pwm5_frec < 10000 && configData.pwm5_frec > 50000){
@@ -57,7 +58,7 @@ void APP_init(void){
         configData.pwm5_duty = 5;
         write_int_eeprom(ADDR_PWM5_FREC, configData.pwm5_duty, INT8);
     }
-    pwm_ID5_duty_set(configData.pwm5_duty);
+    pwm_ID5_duty_set(0);
     
     appData.state = APP_STATE_INIT;
 }
@@ -69,6 +70,11 @@ void APP_Task(void){
         {   
             sci_ID1_send("<---------- Init App ---------->\n");
             BLUETOOTH_init();
+            respira_init();
+            appData.test_timeout = 1000;
+            appData.test_count = 0;
+            appData.test_enable = 0;
+            configData.pwm5_duty = 0;
             appData.state = APP_STATE_SERVICE_TASKS;
             break;
         }
@@ -76,13 +82,27 @@ void APP_Task(void){
         {
             BLUETOOTH_Task();
             
+            respira_task();
+//            pid_task();
             
-            pid_task(configData.pressure_max);
+//            if(appData.test_timeout == 0 && appData.test_enable == 1){
+//                adc_get_sample_average();
+//                appData.test_adc[appData.test_count++] = adcData.values_2_prom[0];
+//                if(appData.test_count == 1000){
+//                    appData.test_count = 0;
+//                }
+//                appData.test_timeout = 5;
+//            }
             
-            if(appData.test_timeout == 0){
-                
-                appData.test_timeout = 500;
-            }
+//            if(appData.test_timeout == 0){
+//                
+//                if(configData.pwm5_duty < 100){
+//                    configData.pwm5_duty++;
+//                    OC3RS = (uint32_t)((configData.pwm5_duty*PR2)/100);
+//                    OC3R = (uint32_t)((configData.pwm5_duty*PR2)/100);
+//                }
+//                appData.test_timeout = 100;
+//            }
             break;
         }
         default:

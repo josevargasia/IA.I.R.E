@@ -47,7 +47,7 @@ void pid_init(void){
     ti=(float)2*(float)theta;
     td=(float)0.5*(float)theta; 
     
-    kp = 0.8;
+    kp = 0.6;
     ti = 120;
     td = 1; 
     
@@ -58,9 +58,8 @@ void pid_init(void){
     pidData.timeout = 100;
 }
 
-float yM, e, e_1, e_2, u, u_1, ctrl_duty;
 
-void pid_task(float SetP){
+void pid_task(void){
   
   //*************************************************************************//
    //*****************   SINTONIA POR ZIEGLER y NICHOLS    *******************//
@@ -74,34 +73,35 @@ void pid_task(float SetP){
 
         adc_get_sample_average();
         
-        yM = (float)adcData.values_2_prom[1];
-        e = SetP-yM;
+        pidData.yM = (float)adcData.values_2_prom[0];
+        pidData.e = pidData.SetP-pidData.yM;
 
         // Controle PID
-        u = u_1 + pidData.q0*e + pidData.q1*e_1 + pidData.q2*e_2; //Ley del controlador PID discreto
+        //Ley del controlador PID discreto
+        
+        pidData.u = pidData.u_1 + pidData.q0*pidData.e + pidData.q1*pidData.e_1 + pidData.q2*pidData.e_2; 
 
-        if (u >= 1700.0)        //Saturo la accion de control 'uT' en un tope maximo y minimo
-            u = 1700.0;
+        if (pidData.u >= 1700.0)        //Saturo la accion de control 'uT' en un tope maximo y minimo
+            pidData.u = 1700.0;
 
-        if (u <= 0.0)
-            u = 0.0;
+        if (pidData.u <= 0.0)
+            pidData.u = 0.0;
 
         //escalizo la u de mV a bits, en el caso del PWM ser a 1Khz con una resolucion de 10
         //el valor máximo del pwm es de 1000
-        ctrl_duty=u*100/1700;
+        pidData.ctrl_duty = pidData.u*100/1700;
 
         //Retorno a los valores reales
-        e_2=e_1;
-        e_1=e;
-        u_1=u;
+        pidData.e_2 = pidData.e_1;
+        pidData.e_1 = pidData.e;
+        pidData.u_1 = pidData.u;
 
         //La accion calculada la transformo en PWM
-        configData.pwm5_duty = ctrl_duty;
-        pwm_ID5_duty_set(ctrl_duty);
+        configData.pwm5_duty = pidData.ctrl_duty;
+        pwm_ID5_duty_set(configData.pwm5_duty);
 
     }
 }
-
 /* *****************************************************************************
  End of File
  */

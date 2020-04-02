@@ -66,6 +66,10 @@ extern "C" {
         char bufferDisplay[100];     /**< Buffer debbug for display messages in UART. */
         
         uint16_t test_timeout;      /**< Test timeout. */
+        uint16_t test_count;      /**< Test. */
+        uint8_t test_enable;       /**< Test. */
+        uint32_t test_adc[1000];      /**< Test. */
+        
         uint8_t test_led_timeout;   /**< Test timeout for led blink. */
         uint16_t timeout_1seg;      /**< Timeout for count one second in timer 4 interruption. */
         
@@ -78,7 +82,7 @@ extern "C" {
      */
     typedef struct
     {
-        uint16_t pressure_max;          /**< Configure pressure max. */
+        uint16_t pressure_max;          /**< Configure pressure. */
         uint16_t inspiration_time;      /**< Configure inspiration time. */
         uint16_t expiration_time;       /**< Configure expiration time. */
         uint8_t pwm5_duty;              /**< Configure Duty cycle of PWM pump. */

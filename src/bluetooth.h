@@ -31,7 +31,7 @@ extern "C" {
     /* Section: Constants                                                         */
     /* ************************************************************************** */
     /* ************************************************************************** */
-    #define BLUETOOTH_FRAME_SEND_TIME   200       /**< Send time to bluetooth in miliseconds. */
+    #define BLUETOOTH_FRAME_SEND_TIME   50       /**< Send time to bluetooth in miliseconds. */
     /**
     * @brief Use enum for define states of states machine.
     */

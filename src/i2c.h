@@ -78,6 +78,8 @@ extern "C" {
     #define MAX_EXPIRATION_TIME     MAX_16_BITS     /**< Length in bytes of numeric values. */
     #define MAX_PWM5_DUTY           MAX_8_BITS      /**< Length in bytes of numeric values. */
     #define MAX_PWM5_FREC           MAX_32_BITS     /**< Length in bytes of numeric values. */
+    #define MAX_PRESSURE_INS        MAX_32_BITS     /**< Length in bytes of numeric values. */
+    #define MAX_PRESSURE_EXP        MAX_32_BITS     /**< Length in bytes of numeric values. */
 
     #define INIT_PAGE_0             0               /**< Start address of page 0 in EEPROM. */ 
     #define ADDR_PRESSURE_MAX       INIT_PAGE_0     /**< Address of variable. */                    
@@ -85,6 +87,8 @@ extern "C" {
     #define ADDR_EXPIRATION_TIME    INIT_PAGE_0+MAX_PRESSURE_MAX+MAX_INSPIRATION_TIME   /**< Address of variable. */
     #define ADDR_PWM5_DUTY          INIT_PAGE_0+MAX_PRESSURE_MAX+MAX_INSPIRATION_TIME+MAX_EXPIRATION_TIME   /**< Address of variable. */
     #define ADDR_PWM5_FREC          INIT_PAGE_0+MAX_PRESSURE_MAX+MAX_INSPIRATION_TIME+MAX_EXPIRATION_TIME+MAX_PWM5_DUTY /**< Address of variable. */
+    #define ADDR_PRESSURE_INS       INIT_PAGE_0+MAX_PRESSURE_MAX+MAX_INSPIRATION_TIME+MAX_EXPIRATION_TIME+MAX_PWM5_DUTY+MAX_PWM5_FREC   /**< Address of variable. */
+    #define ADDR_PRESSURE_EXP       INIT_PAGE_0+MAX_PRESSURE_MAX+MAX_INSPIRATION_TIME+MAX_EXPIRATION_TIME+MAX_PWM5_DUTY+MAX_PWM5_FREC+MAX_PRESSURE_INS /**< Address of variable. */
 
     // *****************************************************************************
     // *****************************************************************************

@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=main.c i2c.c delay.c sci.c system_init.c interrupt.c adc.c timer.c app.c mg811.c bluetooth.c pwm.c hbridge.c pid.c mpx5010.c
+SOURCEFILES_QUOTED_IF_SPACED=main.c i2c.c delay.c sci.c system_init.c interrupt.c adc.c timer.c app.c mg811.c bluetooth.c pwm.c hbridge.c pid.c mpx5010.c respira.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/i2c.o ${OBJECTDIR}/delay.o ${OBJECTDIR}/sci.o ${OBJECTDIR}/system_init.o ${OBJECTDIR}/interrupt.o ${OBJECTDIR}/adc.o ${OBJECTDIR}/timer.o ${OBJECTDIR}/app.o ${OBJECTDIR}/mg811.o ${OBJECTDIR}/bluetooth.o ${OBJECTDIR}/pwm.o ${OBJECTDIR}/hbridge.o ${OBJECTDIR}/pid.o ${OBJECTDIR}/mpx5010.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/i2c.o.d ${OBJECTDIR}/delay.o.d ${OBJECTDIR}/sci.o.d ${OBJECTDIR}/system_init.o.d ${OBJECTDIR}/interrupt.o.d ${OBJECTDIR}/adc.o.d ${OBJECTDIR}/timer.o.d ${OBJECTDIR}/app.o.d ${OBJECTDIR}/mg811.o.d ${OBJECTDIR}/bluetooth.o.d ${OBJECTDIR}/pwm.o.d ${OBJECTDIR}/hbridge.o.d ${OBJECTDIR}/pid.o.d ${OBJECTDIR}/mpx5010.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/i2c.o ${OBJECTDIR}/delay.o ${OBJECTDIR}/sci.o ${OBJECTDIR}/system_init.o ${OBJECTDIR}/interrupt.o ${OBJECTDIR}/adc.o ${OBJECTDIR}/timer.o ${OBJECTDIR}/app.o ${OBJECTDIR}/mg811.o ${OBJECTDIR}/bluetooth.o ${OBJECTDIR}/pwm.o ${OBJECTDIR}/hbridge.o ${OBJECTDIR}/pid.o ${OBJECTDIR}/mpx5010.o ${OBJECTDIR}/respira.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/i2c.o.d ${OBJECTDIR}/delay.o.d ${OBJECTDIR}/sci.o.d ${OBJECTDIR}/system_init.o.d ${OBJECTDIR}/interrupt.o.d ${OBJECTDIR}/adc.o.d ${OBJECTDIR}/timer.o.d ${OBJECTDIR}/app.o.d ${OBJECTDIR}/mg811.o.d ${OBJECTDIR}/bluetooth.o.d ${OBJECTDIR}/pwm.o.d ${OBJECTDIR}/hbridge.o.d ${OBJECTDIR}/pid.o.d ${OBJECTDIR}/mpx5010.o.d ${OBJECTDIR}/respira.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/i2c.o ${OBJECTDIR}/delay.o ${OBJECTDIR}/sci.o ${OBJECTDIR}/system_init.o ${OBJECTDIR}/interrupt.o ${OBJECTDIR}/adc.o ${OBJECTDIR}/timer.o ${OBJECTDIR}/app.o ${OBJECTDIR}/mg811.o ${OBJECTDIR}/bluetooth.o ${OBJECTDIR}/pwm.o ${OBJECTDIR}/hbridge.o ${OBJECTDIR}/pid.o ${OBJECTDIR}/mpx5010.o
+OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/i2c.o ${OBJECTDIR}/delay.o ${OBJECTDIR}/sci.o ${OBJECTDIR}/system_init.o ${OBJECTDIR}/interrupt.o ${OBJECTDIR}/adc.o ${OBJECTDIR}/timer.o ${OBJECTDIR}/app.o ${OBJECTDIR}/mg811.o ${OBJECTDIR}/bluetooth.o ${OBJECTDIR}/pwm.o ${OBJECTDIR}/hbridge.o ${OBJECTDIR}/pid.o ${OBJECTDIR}/mpx5010.o ${OBJECTDIR}/respira.o
 
 # Source Files
-SOURCEFILES=main.c i2c.c delay.c sci.c system_init.c interrupt.c adc.c timer.c app.c mg811.c bluetooth.c pwm.c hbridge.c pid.c mpx5010.c
+SOURCEFILES=main.c i2c.c delay.c sci.c system_init.c interrupt.c adc.c timer.c app.c mg811.c bluetooth.c pwm.c hbridge.c pid.c mpx5010.c respira.c
 
 
 CFLAGS=
@@ -196,6 +196,12 @@ ${OBJECTDIR}/mpx5010.o: mpx5010.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/mpx5010.o 
 	@${FIXDEPS} "${OBJECTDIR}/mpx5010.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -DICD3PlatformTool=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/mpx5010.o.d" -o ${OBJECTDIR}/mpx5010.o mpx5010.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
+${OBJECTDIR}/respira.o: respira.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/respira.o.d 
+	@${RM} ${OBJECTDIR}/respira.o 
+	@${FIXDEPS} "${OBJECTDIR}/respira.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -DICD3PlatformTool=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/respira.o.d" -o ${OBJECTDIR}/respira.o respira.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	
 else
 ${OBJECTDIR}/main.o: main.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -286,6 +292,12 @@ ${OBJECTDIR}/mpx5010.o: mpx5010.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/mpx5010.o.d 
 	@${RM} ${OBJECTDIR}/mpx5010.o 
 	@${FIXDEPS} "${OBJECTDIR}/mpx5010.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/mpx5010.o.d" -o ${OBJECTDIR}/mpx5010.o mpx5010.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/respira.o: respira.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/respira.o.d 
+	@${RM} ${OBJECTDIR}/respira.o 
+	@${FIXDEPS} "${OBJECTDIR}/respira.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/respira.o.d" -o ${OBJECTDIR}/respira.o respira.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
 endif
 

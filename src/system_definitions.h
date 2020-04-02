@@ -45,6 +45,7 @@
 #include "hbridge.h"
 #include "pid.h"
 #include "mpx5010.h"
+#include "respira.h"
 
 
 /* Provide C++ Compatibility */
