@@ -47,8 +47,8 @@ void APP_init(void){
     respiraData.t_exp = read_int_eeprom(ADDR_EXPIRATION_TIME, INT16);
     
     configData.pwm5_frec = read_int_eeprom(ADDR_PWM5_FREC, INT32);
-    if(configData.pwm5_frec < 10000 && configData.pwm5_frec > 50000){
-        configData.pwm5_frec == 10000;
+    if(configData.pwm5_frec < 10000 || configData.pwm5_frec > 50000){
+        configData.pwm5_frec = 10000;
         write_int_eeprom(ADDR_PWM5_FREC, configData.pwm5_frec, INT32);
     }
     timer_ID2_set_frecuency(configData.pwm5_frec);
@@ -75,6 +75,7 @@ void APP_Task(void){
             appData.test_count = 0;
             appData.test_enable = 0;
             configData.pwm5_duty = 0;
+//            pwm_ID5_duty_set(0);
             appData.state = APP_STATE_SERVICE_TASKS;
             break;
         }
@@ -88,10 +89,13 @@ void APP_Task(void){
 //            if(appData.test_timeout == 0 && appData.test_enable == 1){
 //                adc_get_sample_average();
 //                appData.test_adc[appData.test_count++] = adcData.values_2_prom[0];
+//                if(appData.test_count > 50){
+//                    pwm_ID5_duty_set(configData.pwm5_duty);
+//                }
 //                if(appData.test_count == 1000){
 //                    appData.test_count = 0;
 //                }
-//                appData.test_timeout = 5;
+//                appData.test_timeout = 3;
 //            }
             
 //            if(appData.test_timeout == 0){

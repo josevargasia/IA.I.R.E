@@ -119,7 +119,7 @@ void BLUETOOTH_Task(void){
                 
 //                sprintf(send_frame, "m,A%d,B%d,C%d,T%d,1%0.2f,2%0.2f,3%d,4%d,", adcData.values_2_prom[0], adcData.values_2_prom[0], configData.pressure_max, configData.pwm5_duty, respiraData.sp_insp, respiraData.sp_exp, respiraData.t_insp, respiraData.t_exp);
 //                sprintf(send_frame, "m,A%d,B%d,C%d,", adcData.values_2_prom[0], adcData.values_2_prom[0], configData.pwm5_duty);
-                sprintf(send_frame, "m,A%d.55,B%d.35,C%d,I%0.2f,E%0.2f,", adcData.values_2_prom[0], adcData.values_2_prom[0], configData.pwm5_duty, respiraData.sp_insp, respiraData.sp_exp);
+                sprintf(send_frame, "m,A%0.2f,B%0.2f,C%d,I%0.2f,E%0.2f,", mv2pressure((float)adcData.values_2_prom[0]), mv2pressure((float)adcData.values_2_prom[0]), configData.pwm5_duty, mv2pressure(respiraData.sp_insp), mv2pressure(respiraData.sp_exp));
                 BLUETOOTH_send_frame(send_frame);
                 
                 
@@ -223,6 +223,7 @@ void BLUETOOTH_process_frame(char * frame, uint8_t len){
                             write_int_eeprom(ADDR_PWM5_DUTY, configData.pwm5_duty, INT8);
                             if(configData.pwm5_duty == 10){
                                 TRIG_StateSet(0);
+//                                pwm_ID5_duty_set(configData.pwm5_duty);
 //                                appData.test_enable = 0;
                             }else{
                                 TRIG_StateSet(1);
@@ -242,26 +243,26 @@ void BLUETOOTH_process_frame(char * frame, uint8_t len){
                 {
                     if(index_data != 0){
                         //Save
-                        respiraData.sp_insp = atof(data);
+                        respiraData.sp_insp = pressure2mv(atof(data));
                         write_float_eeprom(ADDR_PRESSURE_INS, respiraData.sp_insp);
                     }
                     //load
                     respiraData.sp_insp = read_float_eeprom(ADDR_PRESSURE_INS);
                     //Response
-                    index_response_frame += sprintf(&response_frame[index_response_frame], "U%0.2f,", respiraData.sp_insp);
+                    index_response_frame += sprintf(&response_frame[index_response_frame], "U%0.2f,", mv2pressure(respiraData.sp_insp));
                     break;
                 }
                 case 'V':
                 {
                     if(index_data != 0){
                         //Save
-                        respiraData.sp_exp = atof(data);
+                        respiraData.sp_exp = pressure2mv(atof(data));
                         write_float_eeprom(ADDR_PRESSURE_EXP, respiraData.sp_exp);
                     }
                     //load
                     respiraData.sp_exp = read_float_eeprom(ADDR_PRESSURE_EXP);
                     //Response
-                    index_response_frame += sprintf(&response_frame[index_response_frame], "V%0.2f,", respiraData.sp_exp);
+                    index_response_frame += sprintf(&response_frame[index_response_frame], "V%0.2f,", mv2pressure(respiraData.sp_exp));
                     break;
                 }
                 default:

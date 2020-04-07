@@ -107,8 +107,8 @@ extern PRESS_DATA pressData;
  */
 void pressure_get_value(uint16_t intVal, uint8_t unit);
 void pressure_prom_int_values(uint16_t *addValue);
-
-
+float pressure2mv(float pressure);
+float mv2pressure(float mv);
 
 
 #endif /* _EXAMPLE_FILE_NAME_H */

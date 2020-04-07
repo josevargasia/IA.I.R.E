@@ -51,11 +51,15 @@ void pid_init(void){
     ti = 120;
     td = 1; 
     
+//    kp = 20;
+//    ti = 120;
+//    td = 15;
+    
     pidData.q0 = (float)kp*(1+(float)T/(2*(float)ti)+(float)td/T);
     pidData.q1 = -(float)kp*(1-(float)T/(2*(float)ti)+(2*(float)td)/T);
     pidData.q2 = ((float)kp*(float)td)/(float)T;
     
-    pidData.timeout = 100;
+    pidData.timeout = T;
 }
 
 

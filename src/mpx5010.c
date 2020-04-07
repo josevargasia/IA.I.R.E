@@ -134,7 +134,25 @@ void pressure_prom_int_values(uint16_t *addValue){
   *addValue = promAcum/PRESS_WINDOW_SIZE;
 }
 
+float pressure2mv(float pressure){
+    float meas_mv;
+    
+    meas_mv = (0.0291*pressure) + 0.132;
+    
+    return meas_mv*1000;
+}
 
+float mv2pressure(float mv){
+    float pressure;
+    
+    if(mv < 132){
+        mv = 132;
+    }
+    
+    pressure = (mv/1000) - 0.132;
+    pressure /= 0.0291;
+    return pressure;
+}
 /* *****************************************************************************
  End of File
  */

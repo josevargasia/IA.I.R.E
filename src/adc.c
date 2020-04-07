@@ -96,7 +96,7 @@ void adc_init (void){
 //    AD1CSSLbits.CSSL4 = 1;      // Select AN4
 //    AD1CSSLbits.CSSL5 = 1;      // Select AN5
     
-//    set_ADC_ports(2, PORT_AN4 | PORT_AN5);
+//    adc_set_ports(2, PORT_AN4 | PORT_AN5);
     
     
     // 11.  Turn the ADC module
