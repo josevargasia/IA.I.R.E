@@ -34,6 +34,8 @@
 #define ADDR_PRESSURE_EXP       INIT_PAGE_0+MAX_PRESSURE_MAX+MAX_INSPIRATION_TIME+MAX_EXPIRATION_TIME+MAX_PWM5_DUTY+MAX_PWM5_FREC+MAX_PRESSURE_INS /**< Address of variable. */
 
 
+void init_eeprom(void);
+
 /**
  * @brief Write integer of 8, 16 or 32 bits
  * @code

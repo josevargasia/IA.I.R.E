@@ -1,13 +1,14 @@
 
 #include "system_definitions.hpp"
 
+CONFIG_DATA configData;    /**< Manage all variables that application can be use to configure system. */
 
 void setup() {
   //LED TEST SETUP
   pinMode(LEDPin, OUTPUT);
 
-  // initialize EEPROM with predefined size
-  EEPROM.begin(EEPROM_SIZE);
+  //EEPROM SETUP 
+  init_eeprom();
 
   //SERIAL SETUP
   sci_init();
@@ -17,6 +18,9 @@ void setup() {
 
   //BLUETOOTH SETUP
   BLUETOOTH_init();
+
+  //PID SETUP
+  pid_init();
   
 }
 
@@ -24,5 +28,8 @@ void loop() {
   
   //BLUETOOTH TASK
   BLUETOOTH_Task();    
+
+  //BREATHE TASK
+  respira_task();
     
 }

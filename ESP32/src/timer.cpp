@@ -34,6 +34,14 @@ void IRAM_ATTR Timer0_ISR(void){    // 1 ms
   if(bluetoothData.timeout)
     bluetoothData.timeout--;
 
+  if(pidData.timeout)
+    pidData.timeout--;
+
+  if(respiraData.t_out_inps)
+    respiraData.t_out_inps--;
+    
+  if(respiraData.t_out_exp)
+    respiraData.t_out_exp--;
 }
 
 void timer_ID1_init_us (uint32_t period_us){
@@ -45,6 +53,6 @@ void timer_ID1_init_us (uint32_t period_us){
 
 }
 
-void IRAM_ATTR Timer1_ISR(void){
-  //Serial.println(String("Timer1_ISR() ")+String(millis()));
+void IRAM_ATTR Timer1_ISR(void){  // 100 us
+  //adc_get_samples(); TODO: descomentar
 }

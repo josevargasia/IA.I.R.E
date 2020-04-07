@@ -1,6 +1,10 @@
 
 #include "system_definitions.hpp"
 
+void init_eeprom(void){
+    EEPROM.begin(EEPROM_SIZE);
+}
+
 void write_int_eeprom(uint32_t address, uint32_t number, uint8_t int_length)
 {	
     uint8_t index;
