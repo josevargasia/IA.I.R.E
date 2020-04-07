@@ -284,12 +284,14 @@ void BLUETOOTH_callback_ISR (esp_spp_cb_event_t event, esp_spp_cb_param_t *param
   }
   
   if(event == ESP_SPP_SRV_OPEN_EVT){
-    Serial.println("Bluetooth Connected");
+    //Serial.println("Bluetooth Connected");
+    bluetoothData.timeout_led_blink = 2000;
     bluetoothData.connection_state = BLUETOOTH_CONNECTED;
   }
  
   if(event == ESP_SPP_CLOSE_EVT ){
-    Serial.println("Bluetooth Disconnected");
+    //Serial.println("Bluetooth Disconnected");
+    bluetoothData.timeout_led_blink = 500;
     bluetoothData.connection_state = BLUETOOTH_DISCONNECTED;
   }
   

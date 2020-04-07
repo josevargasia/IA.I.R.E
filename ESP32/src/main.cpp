@@ -6,6 +6,9 @@ void setup() {
   //LED TEST SETUP
   pinMode(LEDPin, OUTPUT);
 
+  // initialize EEPROM with predefined size
+  EEPROM.begin(EEPROM_SIZE);
+
   //SERIAL SETUP
   sci_init();
   
