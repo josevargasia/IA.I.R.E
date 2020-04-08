@@ -17,7 +17,7 @@
 /* This section lists the other files that are included in this file.
  */
 
-#include "adc.hpp"
+#include "system_definitions.hpp"
 
 
 /* ************************************************************************** */
