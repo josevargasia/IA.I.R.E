@@ -1,5 +1,6 @@
 #include <Arduino.h>
 #include <BluetoothSerial.h>
+#include "system_definitions.hpp"
 
 #if !defined(CONFIG_BT_ENABLED) || !defined(CONFIG_BLUEDROID_ENABLED)
 #error Bluetooth is not enabled! Please run `make menuconfig` to and enable it
@@ -13,8 +14,10 @@ const int LEDPin = 2;
 hw_timer_t * timer = NULL;
 
 void IRAM_ATTR onTimer(){
-  SerialBT.println(String("onTimer() ")+String(millis()));
+  // SerialBT.println(String("onTimer() ")+String(millis()));
   digitalWrite(LEDPin, !digitalRead(LEDPin));
+  adc_get_samples();
+  Serial.printf("ADC: %d\t%d mV\t%d\t%d mV\r",adcData.values[0],adcData.values_mv[0],adcData.values[1],adcData.values_mv[1]);
 }
 
 void setup() {
@@ -29,7 +32,7 @@ void setup() {
   timerAlarmEnable(timer); // enable
   
   //BLUETOOTH SETUP
-  Serial.begin(115200);
+  Serial.begin(9600);
   SerialBT.begin("ESP32test"); //Bluetooth device name
   Serial.println("The device started, now you can pair it with bluetooth!");
 }
