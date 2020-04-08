@@ -104,10 +104,11 @@ void BLUETOOTH_Task(void){
             if(bluetoothData.timeout == 0){
                 char send_frame[50];
                 
-                //adc_get_sample_average();
+                adc_get_sample_average();
                 
-                //sprintf(send_frame, "m,A%0.2f,B%0.2f,C%d,I%0.2f,E%0.2f,", mv2pressure((float)adcData.values_2_prom[0]), mv2pressure((float)adcData.values_2_prom[0]), configData.pwm5_duty, mv2pressure(respiraData.sp_insp), mv2pressure(respiraData.sp_exp));
-                sprintf(send_frame, "m,A15,");
+                //sprintf(send_frame, "m,A%d,B%d,C%d,I%0.2f,E%0.2f,", adcData.values[0], adcData.values_mv[0], adcData.values_2_prom[0], mv2pressure(respiraData.sp_insp), mv2pressure(respiraData.sp_exp));
+                sprintf(send_frame, "m,A%0.2f,B%d,C%d,D%d,I%0.2f,E%0.2f,", mv2pressure((float)adcData.values_2_prom[0]), adcData.values_2_prom[1], configData.pwm5_duty ,adcData.values_2_prom[0], mv2pressure(respiraData.sp_insp), mv2pressure(respiraData.sp_exp));
+                //sprintf(send_frame, "m,A15,");
                 BLUETOOTH_send_frame(send_frame);
                 
                 bluetoothData.timeout = BLUETOOTH_FRAME_SEND_TIME;
@@ -143,12 +144,16 @@ void BLUETOOTH_Task(void){
     }
 }
 
+char buffdisp[50];
+
 void BLUETOOTH_process_frame(char * frame, uint8_t len){
     int i;
     char label;
     char data[20], response_frame[100];
     uint8_t index_data, index_response_frame = 0;
     
+    //Serial.println(frame);
+
     index_response_frame += sprintf(&response_frame[index_response_frame], "p,");
     
     for(i = 0; i < len; i++){
@@ -162,99 +167,108 @@ void BLUETOOTH_process_frame(char * frame, uint8_t len){
             }
             i--;
             switch(label){
+                case 'P':
+                {
+                    if(index_data != 0){
+                        //Save
+                        configData.pressure_max = pressure2mv((float)atof(data));
+                        write_float_eeprom(ADDR_PRESSURE_MAX, configData.pressure_max);
+                    }
+                    //load
+                    configData.pressure_max = read_float_eeprom(ADDR_PRESSURE_MAX);
+                    //Response
+                    index_response_frame += sprintf(&response_frame[index_response_frame], "P%0.2f,", mv2pressure(configData.pressure_max));
+                    break;
+                }
                 case 'Q':
                 {
                     if(index_data != 0){
                         //Save
-                        //respiraData.t_insp = atoi(data);
-                        //write_int_eeprom(ADDR_INSPIRATION_TIME, respiraData.t_insp, INT16);
+                        respiraData.t_insp = atoi(data);
+                        write_int_eeprom(ADDR_INSPIRATION_TIME, respiraData.t_insp, INT16);
                     }
                     //load
-                    //respiraData.t_insp = read_int_eeprom(ADDR_INSPIRATION_TIME, INT16);
+                    respiraData.t_insp = read_int_eeprom(ADDR_INSPIRATION_TIME, INT16);
                     //Response
-                    index_response_frame += sprintf(&response_frame[index_response_frame], "Q,");
+                    index_response_frame += sprintf(&response_frame[index_response_frame], "Q%d,", respiraData.t_insp);
                     break;
                 }
                 case 'R':
                 {
                     if(index_data != 0){
                         //Save
-                        //respiraData.t_exp = atoi(data);
-                        //write_int_eeprom(ADDR_EXPIRATION_TIME, respiraData.t_exp, INT16);
+                        respiraData.t_exp = atoi(data);
+                        write_int_eeprom(ADDR_EXPIRATION_TIME, respiraData.t_exp, INT16);
                     }
                     //load
-                    //respiraData.t_exp = read_int_eeprom(ADDR_EXPIRATION_TIME, INT16);
+                    respiraData.t_exp = read_int_eeprom(ADDR_EXPIRATION_TIME, INT16);
                     //Response
-                    index_response_frame += sprintf(&response_frame[index_response_frame], "R,");
+                    index_response_frame += sprintf(&response_frame[index_response_frame], "R%d,", respiraData.t_exp);
                     break;
                 }
                 case 'S':
                 {
                     if(index_data != 0){
                         //Save
-                        //configData.pwm5_frec = atoi(data);
-                        //if(configData.pwm5_frec >= 1000 && configData.pwm5_frec <= 50000){
-                           // write_int_eeprom(ADDR_PWM5_FREC, configData.pwm5_frec, INT32);
-                            //timer_ID2_set_frecuency(configData.pwm5_frec);
-                        //}
+                        configData.pwm5_frec = atoi(data);
+                        if(configData.pwm5_frec >= 1000 && configData.pwm5_frec <= 50000){
+                            write_int_eeprom(ADDR_PWM5_FREC, configData.pwm5_frec, INT32);
+                            //timer_ID2_set_frecuency(configData.pwm5_frec);    // TODO: descomentar
+                        }
                     }
+                    
                     //load
-                    //configData.pwm5_frec = read_int_eeprom(ADDR_PWM5_FREC, INT32);
+                    configData.pwm5_frec = read_int_eeprom(ADDR_PWM5_FREC, INT32);
                     //Response
-                    index_response_frame += sprintf(&response_frame[index_response_frame], "S,");
+                    index_response_frame += sprintf(&response_frame[index_response_frame], "S%d,", configData.pwm5_frec);
                     break;
                 }
                 case 'T':
                 {
                     if(index_data != 0){
                         //Save
-                        //configData.pwm5_duty = atoi(data);
-                        /*
+                        configData.pwm5_duty = atoi(data);
                         if(configData.pwm5_duty <= 100){
                             write_int_eeprom(ADDR_PWM5_DUTY, configData.pwm5_duty, INT8);
                             if(configData.pwm5_duty == 10){
-                                TRIG_StateSet(0);
-//                                pwm_ID5_duty_set(configData.pwm5_duty);
 //                                appData.test_enable = 0;
                             }else{
-                                TRIG_StateSet(1);
 //                                appData.test_enable = 1;
                             }
                             
-                            pwm_ID5_duty_set(configData.pwm5_duty);
+                            //pwm_ID5_duty_set(configData.pwm5_duty);   // TODO: descomentar
                         }
-                        */
                     }
                     //load
-                    //configData.pwm5_duty = read_int_eeprom(ADDR_PWM5_DUTY, INT8);
+                    configData.pwm5_duty = read_int_eeprom(ADDR_PWM5_DUTY, INT8);
                     //Response
-                    index_response_frame += sprintf(&response_frame[index_response_frame], "T,");
+                    index_response_frame += sprintf(&response_frame[index_response_frame], "T%d,", configData.pwm5_duty);
                     break;
                 }
                 case 'U':
                 {
                     if(index_data != 0){
                         //Save
-                        //respiraData.sp_insp = pressure2mv(atof(data));
-                        //write_float_eeprom(ADDR_PRESSURE_INS, respiraData.sp_insp);
+                        respiraData.sp_insp = pressure2mv(atof(data));
+                        write_float_eeprom(ADDR_PRESSURE_INS, respiraData.sp_insp);
                     }
                     //load
-                    //respiraData.sp_insp = read_float_eeprom(ADDR_PRESSURE_INS);
+                    respiraData.sp_insp = read_float_eeprom(ADDR_PRESSURE_INS);
                     //Response
-                    index_response_frame += sprintf(&response_frame[index_response_frame], "U,");
+                    index_response_frame += sprintf(&response_frame[index_response_frame], "U%0.2f,", mv2pressure(respiraData.sp_insp));
                     break;
                 }
                 case 'V':
                 {
                     if(index_data != 0){
                         //Save
-                        //respiraData.sp_exp = pressure2mv(atof(data));
-                        //write_float_eeprom(ADDR_PRESSURE_EXP, respiraData.sp_exp);
+                        respiraData.sp_exp = pressure2mv(atof(data));
+                        write_float_eeprom(ADDR_PRESSURE_EXP, respiraData.sp_exp);
                     }
                     //load
-                    //respiraData.sp_exp = read_float_eeprom(ADDR_PRESSURE_EXP);
+                    respiraData.sp_exp = read_float_eeprom(ADDR_PRESSURE_EXP);
                     //Response
-                    index_response_frame += sprintf(&response_frame[index_response_frame], "V,");
+                    index_response_frame += sprintf(&response_frame[index_response_frame], "V%0.2f,", mv2pressure(respiraData.sp_exp));
                     break;
                 }
                 default:
@@ -265,6 +279,11 @@ void BLUETOOTH_process_frame(char * frame, uint8_t len){
         }
     }
     
+    /*
+    Serial.print("aa,");
+    Serial.print(response_frame);
+    Serial.println("zz");
+    */
     // Send response frame
     BLUETOOTH_send_frame(response_frame);
     

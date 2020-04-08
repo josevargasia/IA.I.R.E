@@ -30,7 +30,7 @@ typedef struct
     
 } PID_DATA;
 
-extern PID_DATA pidData;    /**< Manage all variables that bluetooth can use. */
+extern PID_DATA pidData;    /**< Manage all variables that PID can use. */
     
 void pid_init(void);
 

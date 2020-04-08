@@ -39,9 +39,9 @@ void pid_task(void){
 
         //Comienzo la ley de control
 
-        //adc_get_sample_average(); // TODO: descometar
+        adc_get_sample_average();
         
-        //pidData.yM = (float)adcData.values_2_prom[0]; // TODO: descometar
+        pidData.yM = (float)adcData.values_2_prom[0];
         pidData.e = pidData.SetP-pidData.yM;
 
         // Controle PID
@@ -66,7 +66,7 @@ void pid_task(void){
 
         //La accion calculada la transformo en PWM
         configData.pwm5_duty = pidData.ctrl_duty;
-        //pwm_ID5_duty_set(configData.pwm5_duty);
+        //pwm_ID5_duty_set(configData.pwm5_duty);   //TODO: descomentar
 
     }
 }

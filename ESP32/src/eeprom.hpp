@@ -2,7 +2,7 @@
 #include <EEPROM.h>
 
 
-#define EEPROM_SIZE     128             /**< EEPROM size address. */
+#define EEPROM_SIZE     64             /**< EEPROM size address. */
 
 //Length in bytes of numeric values 
 #define MAX_32_BITS     4               /**< Length in bytes of 32 bits integer. */
@@ -16,7 +16,7 @@
 
 //-------------------- PAGE 0 ----------------------------------------------
     
-#define MAX_PRESSURE_MAX        MAX_16_BITS     /**< Length in bytes of numeric values. */
+#define MAX_PRESSURE_MAX        MAX_32_BITS     /**< Length in bytes of numeric values. */
 #define MAX_INSPIRATION_TIME    MAX_16_BITS     /**< Length in bytes of numeric values. */
 #define MAX_EXPIRATION_TIME     MAX_16_BITS     /**< Length in bytes of numeric values. */
 #define MAX_PWM5_DUTY           MAX_8_BITS      /**< Length in bytes of numeric values. */
@@ -57,3 +57,24 @@ void write_int_eeprom(uint32_t address, uint32_t number, uint8_t int_length);
  * @return Return integer readed   
  */
 uint32_t read_int_eeprom(uint32_t address, uint8_t int_length);
+
+/**
+     * @brief Write float
+     * Only save 2 decimals
+     * @code
+     *      write_float_eeprom(ADDR_PRESSURE_INS, 100.69);
+     * @endcode
+     * @param  address      Address in EEPROM to write   
+     * @param  number       Float to wirte
+     */
+    void write_float_eeprom(uint32_t address, float number);
+    
+    /**
+     * @brief Read float
+     * @code
+     *      float data = read_float_eeprom(ADDR_PRESSURE_INS);
+     * @endcode
+     * @param  address      Address in EEPROM to read   
+     * @return Return float readed   
+     */
+    float read_float_eeprom(uint32_t address);

@@ -1,6 +1,6 @@
 
 #include <Arduino.h>
-#include <EEPROM.h>
+
 
 #include "bluetooth_IAIRE.hpp"
 #include "sci.hpp"
@@ -17,7 +17,7 @@
  */
 typedef struct
 {
-    uint16_t pressure_max;          /**< Configure pressure. */
+    float pressure_max;          /**< Configure pressure. */
     uint16_t inspiration_time;      /**< Configure inspiration time. */
     uint16_t expiration_time;       /**< Configure expiration time. */
     uint8_t pwm5_duty;              /**< Configure Duty cycle of PWM pump. */
@@ -27,3 +27,6 @@ typedef struct
 extern CONFIG_DATA configData;    /**< Manage all variables that application can be use to configure system. */
 
 const int LEDPin = 2;
+
+
+void APP_init(void);
