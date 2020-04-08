@@ -21,7 +21,6 @@ void setup() {
 
   //PID SETUP
   pid_init();
-  
 }
 
 void loop() {

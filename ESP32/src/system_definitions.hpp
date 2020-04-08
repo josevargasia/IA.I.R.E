@@ -8,6 +8,8 @@
 #include "eeprom.hpp"
 #include "pid.hpp"
 #include "respira.hpp"
+#include "adc.hpp"
+#include "mpx5010.hpp"
 
 
 /**
@@ -25,4 +27,3 @@ typedef struct
 extern CONFIG_DATA configData;    /**< Manage all variables that application can be use to configure system. */
 
 const int LEDPin = 2;
-
