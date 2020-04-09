@@ -1,25 +1,20 @@
+/* ************************************************************************** */
+/**
+ * @file sci.cpp
+ * @author Ingeniería Apropiada
+ * @date 08/04/2020
+ * @brief File containing SCI driver that manage circular buffers.
+ */
+/* ************************************************************************** */
 
 #include "system_definitions.hpp"
 
-
-/* ************************************************************************** */
-/* ************************************************************************** */
-/* Section: File Scope or Global Data                                         */
-/* ************************************************************************** */
-/* ************************************************************************** */
 
 SCI_DATA sciData;   /**< Manage all variables that SCI driver can use. */  
 
 char buffer_tx_sci_ID1[BUFFER_TX_SCI_ID1_SIZE];       /**< SCI buffer TX for UART comunication. */
 char buffer_rx_sci_ID1[BUFFER_RX_SCI_ID1_SIZE];       /**< SCI buffer RX for UART comunication. */
-char buffer_tx_sci_ID2[BUFFER_TX_SCI_ID2_SIZE];       /**< SCI buffer TX for UART comunication. */
-char buffer_rx_sci_ID2[BUFFER_RX_SCI_ID2_SIZE];       /**< SCI buffer RX for UART comunication. */
 
-/* ************************************************************************** */
-/* ************************************************************************** */
-// Section: Local Functions                                                   */
-/* ************************************************************************** */
-/* ************************************************************************** */
 
 uint16_t circBuffGetCount_sci(uint8_t bufferID){
     return sciData.buffer_count[bufferID];
@@ -69,12 +64,6 @@ void clean_buffer_sci(uint8_t bufferID){
     memset(sciData.buffer[bufferID], 0x00, sciData.buffer_size[bufferID]);
 }
 
-/* ************************************************************************** */
-/* ************************************************************************** */
-// Section: Interface Functions                                               */
-/* ************************************************************************** */
-/* ************************************************************************** */
-
 void sci_init(void){
     sciData.buffer[BUFFER_TX_SCI_ID1] = buffer_tx_sci_ID1;
     sciData.buffer[BUFFER_RX_SCI_ID1] = buffer_rx_sci_ID1;
@@ -89,20 +78,6 @@ void sci_init(void){
     
     Serial.begin(115200);
 }
-
-/*
-void sci_ID1_sendbyte(char data){
-    circBuffPush_sci(data, BUFFER_TX_SCI_ID1);
-}
-
-void sci_ID1_send(char * string){	  
-	uint16_t i;
-    uint16_t len = strlen(string);
-	for (i = 0; i < len || (len == 0 && string[i] != 0); i++){
-		sci_ID1_sendbyte(string[i]);
-	}
-}
-*/
 
 uint16_t sci_ID1_get(char * data){
     uint16_t ret;

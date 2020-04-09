@@ -1,7 +1,15 @@
+/* ************************************************************************** */
+/**
+ * @file pid.cpp
+ * @author Ingeniería Apropiada
+ * @date 08/04/2020
+ * @brief File containing PID driver.
+ */
+/* ************************************************************************** */
 
 #include "system_definitions.hpp"
 
-PID_DATA pidData;
+PID_DATA pidData;   /**< Manage all variables that PID can use. */
 
 void pid_init(void){
     

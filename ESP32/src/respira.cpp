@@ -1,8 +1,15 @@
-
+/* ************************************************************************** */
+/**
+ * @file respira.cpp
+ * @author Ingeniería Apropiada
+ * @date 08/04/2020
+ * @brief File containing breathing driver.
+ */
+/* ************************************************************************** */
 #include "system_definitions.hpp"
 
 
-RESPIRA_DATA respiraData;
+RESPIRA_DATA respiraData;       /**< Manage all variables that bluetooth can use. */
 
 void respira_init(void){
     respiraData.state = RESPIRA_INSPIRACION;

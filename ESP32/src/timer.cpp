@@ -1,16 +1,18 @@
-
+/* ************************************************************************** */
+/**
+ * @file timer.cpp
+ * @author Ingeniería Apropiada
+ * @date 08/04/2020
+ * @brief File containing Timers driver.
+ */
+/* ************************************************************************** */
 #include "system_definitions.hpp"
 
 
 //TIMER ISR
-hw_timer_t * timer0 = NULL;
-hw_timer_t * timer1 = NULL;
+hw_timer_t * timer0 = NULL;   /**< Handle timer ISR. */
+hw_timer_t * timer1 = NULL;   /**< Handle timer ISR. */
 
-/* ************************************************************************** */
-/* ************************************************************************** */
-// Section: Interface Functions                                               */
-/* ************************************************************************** */
-/* ************************************************************************** */
 
 void timer_init(void){
     timer_ID0_init_us(1000);       // For timeouts

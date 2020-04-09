@@ -1,3 +1,12 @@
+/* ************************************************************************** */
+/**
+ * @file eeprom.hpp
+ * @author Ingeniería Apropiada
+ * @date 08/04/2020
+ * @brief File containing Bluetooth driver.
+ */
+/* ************************************************************************** */
+
 #include <Arduino.h>
 #include <EEPROM.h>
 
@@ -34,6 +43,9 @@
 #define ADDR_PRESSURE_EXP       INIT_PAGE_0+MAX_PRESSURE_MAX+MAX_INSPIRATION_TIME+MAX_EXPIRATION_TIME+MAX_PWM5_DUTY+MAX_PWM5_FREC+MAX_PRESSURE_INS /**< Address of variable. */
 
 
+/**
+ * @brief EEPROM setup 
+ */
 void init_eeprom(void);
 
 /**
@@ -59,22 +71,22 @@ void write_int_eeprom(uint32_t address, uint32_t number, uint8_t int_length);
 uint32_t read_int_eeprom(uint32_t address, uint8_t int_length);
 
 /**
-     * @brief Write float
-     * Only save 2 decimals
-     * @code
-     *      write_float_eeprom(ADDR_PRESSURE_INS, 100.69);
-     * @endcode
-     * @param  address      Address in EEPROM to write   
-     * @param  number       Float to wirte
-     */
-    void write_float_eeprom(uint32_t address, float number);
-    
-    /**
-     * @brief Read float
-     * @code
-     *      float data = read_float_eeprom(ADDR_PRESSURE_INS);
-     * @endcode
-     * @param  address      Address in EEPROM to read   
-     * @return Return float readed   
-     */
-    float read_float_eeprom(uint32_t address);
+* @brief Write float
+* Only save 2 decimals
+* @code
+*      write_float_eeprom(ADDR_PRESSURE_INS, 100.69);
+* @endcode
+* @param  address      Address in EEPROM to write   
+* @param  number       Float to wirte
+*/
+void write_float_eeprom(uint32_t address, float number);
+
+/**
+* @brief Read float
+* @code
+*      float data = read_float_eeprom(ADDR_PRESSURE_INS);
+* @endcode
+* @param  address      Address in EEPROM to read   
+* @return Return float readed   
+*/
+float read_float_eeprom(uint32_t address);

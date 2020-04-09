@@ -1,54 +1,22 @@
 /* ************************************************************************** */
 /**
- * @file adc.c
+ * @file adc.cpp
  * @author Ingeniería Apropiada
- * @date 26/03/2020
+ * @date 08/04/2020
  * @brief File containing ADC driver.
  */
 /* ************************************************************************** */
 
-
-/* ************************************************************************** */
-/* ************************************************************************** */
-/* Section: Included Files                                                    */
-/* ************************************************************************** */
-/* ************************************************************************** */
-
-/* This section lists the other files that are included in this file.
- */
-
 #include <esp_adc_cal.h>
-
 #include "system_definitions.hpp"
 
+#define REF_VOLTAGE 3600  /**< ADC reference voltage in mV. */
 
-/* ************************************************************************** */
-/* ************************************************************************** */
-/* Section: File Scope or Global Data                                         */
-/* ************************************************************************** */
-/* ************************************************************************** */
+esp_adc_cal_characteristics_t *adc_chars = new esp_adc_cal_characteristics_t; /**< ESP characteristics. */
 
-ADC_DATA adcData;
+esp_adc_cal_value_t val_type;   /**< ESP characterize. */
 
-/* ************************************************************************** */
-/* ************************************************************************** */
-// Section: Local Functions                                                   */
-/* ************************************************************************** */
-/* ************************************************************************** */
-
-
-
-/* ************************************************************************** */
-/* ************************************************************************** */
-// Section: Interface Functions                                               */
-/* ************************************************************************** */
-/* ************************************************************************** */
-
-#define REF_VOLTAGE 3600
-
-esp_adc_cal_characteristics_t *adc_chars = new esp_adc_cal_characteristics_t;
-
-esp_adc_cal_value_t val_type;
+ADC_DATA adcData;   /**< Manage all variables that ADC driver can use. */
 
 void adc_init(void){
     // Calibration function
@@ -167,7 +135,3 @@ uint32_t analogRead_cal(uint8_t channel, adc_atten_t attenuation) {
   adc1_config_channel_atten(channelNum, attenuation);
   return esp_adc_cal_raw_to_voltage(analogRead(channel), adc_chars);
 }
-
-/* *****************************************************************************
- End of File
- */

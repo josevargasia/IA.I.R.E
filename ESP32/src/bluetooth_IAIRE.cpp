@@ -1,3 +1,11 @@
+/* ************************************************************************** */
+/**
+ * @file bluetooth_IAIRE.hpp
+ * @author Ingeniería Apropiada
+ * @date 08/04/2020
+ * @brief File containing Bluetooth driver.
+ */
+/* ************************************************************************** */
 
 #include "system_definitions.hpp"
 
@@ -5,7 +13,7 @@
 #error Bluetooth is not enabled! Please run `make menuconfig` to and enable it
 #endif
 
-BluetoothSerial SerialBT;
+BluetoothSerial SerialBT;       /**< Manage bluetooth serial comunication. */
 
 BLUETOOTH_DATA bluetoothData;    /**< Manage all variables that bluetooth can use. */
 
@@ -143,8 +151,6 @@ void BLUETOOTH_Task(void){
         }
     }
 }
-
-char buffdisp[50];
 
 void BLUETOOTH_process_frame(char * frame, uint8_t len){
     int i;

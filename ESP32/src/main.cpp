@@ -1,8 +1,40 @@
+/* ************************************************************************** */
+/**
+ * @file main.cpp
+ * @author Ingeniería Apropiada
+ * @date 08/04/2020
+ * @brief File containing main function.
+ */
+/* ************************************************************************** */
+/** @mainpage IA.I.R.E - Ingeniería Apropiada
+ *
+ * @section intro_sec Introduction
+ * Project for implement low cost mechanical ventilators.
+ *
+ * @subsection inspiramed_subsec - #InnspiraMED
+ * We are part of the initiative in Colombia called #InnspiraMED, in which we are 
+ * working on the implementation of ventilation equipment for COVID-19 patients.
+ * 
+ * @section components_sec Components Used
+ * List of components used:
+ * 
+ * @subsection microcontroller_subsec - Microcontroller
+ * - ESP-WROOM-32 (ESP32)
+ * 
+ * @subsection sensors_subsec - Sensors
+ * - Gauge pressure: MPX5010
+ * - CO2: MG811
+ * - Pulse oximetry and heart-rate: MAX30102
+ */
+
 
 #include "system_definitions.hpp"
 
 CONFIG_DATA configData;    /**< Manage all variables that application can be use to configure system. */
 
+/**
+ * @brief Setup system 
+ */
 void setup() {
   //LED TEST SETUP
   pinMode(LEDPin, OUTPUT);
@@ -32,6 +64,9 @@ void setup() {
   respira_init();
 }
 
+/**
+ * @brief Loop to handle tasks 
+ */
 void loop() {
   
   //ADC TASK
@@ -45,6 +80,9 @@ void loop() {
 
 }
 
+/**
+ * @brief Initialize variables from EEPROM 
+ */
 void APP_init(void){
     
     respiraData.sp_insp = read_float_eeprom(ADDR_PRESSURE_INS);

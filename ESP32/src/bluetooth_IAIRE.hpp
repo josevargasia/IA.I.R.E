@@ -1,23 +1,25 @@
+/* ************************************************************************** */
+/**
+ * @file bluetooth_IAIRE.cpp
+ * @author Ingeniería Apropiada
+ * @date 08/04/2020
+ * @brief File containing Bluetooth driver.
+ */
+/* ************************************************************************** */
 
 #include <Arduino.h>
 #include <BluetoothSerial.h>
 
-/* ************************************************************************** */
-/* ************************************************************************** */
-/* Section: Constants                                                         */
-/* ************************************************************************** */
-/* ************************************************************************** */
-#define BLUETOOTH_FRAME_SEND_TIME   100 //50       /**< Send time to bluetooth in miliseconds. */
 
-#define BLUETOOTH_DISCONNECTED      0
-#define BLUETOOTH_CONNECTED         1
+#define BLUETOOTH_FRAME_SEND_TIME   100             /**< Send time to bluetooth in miliseconds. */
+#define BLUETOOTH_DISCONNECTED      0               /**< Bluetooth disconnected state. */
+#define BLUETOOTH_CONNECTED         1               /**< Bluetooth connected state. */
 
 /**
 * @brief Use enum for define states of states machine.
 */
 typedef enum
 {
-    /* Application's state machine's initial state. */
     BLUETOOTH_STATE_INIT=0,           /**< Initial state. */
     BLUETOOTH_STATE_WRITE,            /**< State to write frames to bluetooth. */
     BLUETOOTH_STATE_READ,             /**< State to read frames from bluetooth. */
@@ -29,18 +31,11 @@ typedef enum
     FRAME_STATE_HEADER_END_1,           /**< State to read header end 1. */
 } BLUETOOTH_STATES;
 
-// *****************************************************************************
-// *****************************************************************************
-// Section: Data Types
-// *****************************************************************************
-// *****************************************************************************
-
 /**
  * @brief Bluetooth data structure.
  */
 typedef struct
 {
-    /* The application's current state */
     BLUETOOTH_STATES state;             /**< States of state machine. */
         
     BLUETOOTH_STATES frame_state;       /**< States of read frame state machine. */
@@ -57,12 +52,6 @@ typedef struct
 } BLUETOOTH_DATA;
 
 extern BLUETOOTH_DATA bluetoothData;    /**< Manage all variables that bluetooth can use. */
-
-// *****************************************************************************
-// *****************************************************************************
-// Section: Interface Functions
-// *****************************************************************************
-// *****************************************************************************
 
 /**
  * @brief Init bluetooth state machine
@@ -90,4 +79,15 @@ void BLUETOOTH_process_frame(char * frame, uint8_t len);
  */
 void BLUETOOTH_send_frame(char * data);
 
+/**
+ * @brief Send string to bluetooth
+ * @param  data Pointer of string to read from bluetooth  
+ * @return 1 if read, 0 if not read   
+ */
+uint16_t BLUETOOTH_receive_frame(char * data);
+
+/**
+ * @brief Bluetooth ISR
+ * To handle data input and connection state  
+ */
 void BLUETOOTH_callback_ISR (esp_spp_cb_event_t event, esp_spp_cb_param_t *param);
