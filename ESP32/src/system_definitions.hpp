@@ -18,6 +18,9 @@
 #include "respira.hpp"
 #include "adc.hpp"
 #include "mpx5010.hpp"
+#include "i2c_IAIRE.hpp"
+#include "mg811.hpp"
+#include "max30102.hpp"
 
 
 /**

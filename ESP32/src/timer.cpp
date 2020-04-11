@@ -45,6 +45,9 @@ void IRAM_ATTR Timer0_ISR(void){    // 1 ms
     
   if(respiraData.t_out_exp)
     respiraData.t_out_exp--;
+
+  if(MAX30102.timeout_wait_sample)
+    MAX30102.timeout_wait_sample--;
 }
 
 void timer_ID1_init_us (uint32_t period_us){

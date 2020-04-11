@@ -62,6 +62,9 @@ void setup() {
 
   //BREATHE SETUP
   respira_init();
+
+  //MAX30102 SETUP
+  MAX30102_Init();
 }
 
 /**
@@ -71,6 +74,9 @@ void loop() {
   
   //ADC TASK
   adc_task();
+
+  //MAX30102 TASK
+  MAX30102_Tasks();
 
   //BLUETOOTH TASK
   BLUETOOTH_Task();    

@@ -56,7 +56,7 @@ void adc_get_sample_average(void){
     }
     adcData.values_2_prom[0] /= ADC_MAX_NUM_SAMPLE_PROM; 
     adcData.values_2_prom[1] /= ADC_MAX_NUM_SAMPLE_PROM; 
-    // get_sample_ppm_CO2();    //TODO: descomentar
+    get_sample_ppm_CO2();  
     
 }
 
