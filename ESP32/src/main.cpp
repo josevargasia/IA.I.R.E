@@ -48,6 +48,9 @@ void setup() {
   //TIMER SETUP
   timer_init();
 
+  //PWM SETUP
+  pwm_init();
+
   //ADC SETUP
   adc_init();
 
