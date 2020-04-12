@@ -5,6 +5,7 @@ typedef struct{
     int pwmLedCh;
     int pwmResolution;
     int pwmPin;
+    int pwmEnablePin;
 }PWM_DATA;
 
 extern PWM_DATA pwmData;
