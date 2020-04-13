@@ -16,7 +16,7 @@ void pwm_duty_set(uint32_t duty_value){
     ledcWrite(pwmData.pwmLedCh,duty_raw);
 }
 
-void pwm_set_frec(uint16_t frec_value){
+void pwm_set_frec(uint32_t frec_value){
     pwmData.pwmFreq = frec_value;
     ledcSetup(pwmData.pwmLedCh,pwmData.pwmFreq,pwmData.pwmResolution);
     // uint32_t period_us = 1000000/frec_value; 

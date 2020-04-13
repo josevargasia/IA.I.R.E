@@ -116,7 +116,8 @@ void BLUETOOTH_Task(void){
                 
                 //sprintf(send_frame, "m,A%d,B%d,C%d,I%0.2f,E%0.2f,", adcData.values[0], adcData.values_mv[0], adcData.values_2_prom[0], mv2pressure(respiraData.sp_insp), mv2pressure(respiraData.sp_exp));
                 //sprintf(send_frame, "m,A%0.2f,B%d,C%d,D%d,I%0.2f,E%0.2f,", mv2pressure((float)adcData.values_2_prom[0]), adcData.values_2_prom[1], configData.pwm5_duty ,adcData.values_2_prom[0], mv2pressure(respiraData.sp_insp), mv2pressure(respiraData.sp_exp));
-                sprintf(send_frame, "m,A%0.2f,B%lu,C%d,D%d,I%0.2f,E%0.2f,", mv2pressure((float)adcData.values_2_prom[0]), value_ppm_CO2, MAX30102.data_HR, MAX30102.data_SpO2, mv2pressure(respiraData.sp_insp), mv2pressure(respiraData.sp_exp));
+                // sprintf(send_frame, "m,A%0.2f,B%lu,C%d,D%d,I%0.2f,E%0.2f,", mv2pressure((float)adcData.values_2_prom[0]), value_ppm_CO2, MAX30102.data_HR, MAX30102.data_SpO2, mv2pressure(respiraData.sp_insp), mv2pressure(respiraData.sp_exp));
+                sprintf(send_frame, "m,A%0.2f,B%lu,C%d,D%d,I%0.2f,E%0.2f,F%d,G%0.2f,", mv2pressure((float)adcData.values_2_prom[0]), value_ppm_CO2, MAX30102.data_HR, MAX30102.data_SpO2, mv2pressure(respiraData.sp_insp), mv2pressure(respiraData.sp_exp),respiraData.mode,respiraData.sensib);
                 //sprintf(send_frame, "m,A15,");
                 BLUETOOTH_send_frame(send_frame);
                 
@@ -220,7 +221,7 @@ void BLUETOOTH_process_frame(char * frame, uint8_t len){
                         configData.pwm5_frec = atoi(data);
                         if(configData.pwm5_frec >= 1000 && configData.pwm5_frec <= 50000){
                             write_int_eeprom(ADDR_PWM5_FREC, configData.pwm5_frec, INT32);
-                            //timer_ID2_set_frecuency(configData.pwm5_frec);    // TODO: descomentar
+                            pwm_set_frec(configData.pwm5_frec);
                         }
                     }
                     
@@ -243,7 +244,7 @@ void BLUETOOTH_process_frame(char * frame, uint8_t len){
 //                                appData.test_enable = 1;
                             }
                             
-                            //pwm_ID5_duty_set(configData.pwm5_duty);   // TODO: descomentar
+                            pwm_duty_set(configData.pwm5_duty);
                         }
                     }
                     //load
@@ -276,6 +277,32 @@ void BLUETOOTH_process_frame(char * frame, uint8_t len){
                     respiraData.sp_exp = read_float_eeprom(ADDR_PRESSURE_EXP);
                     //Response
                     index_response_frame += sprintf(&response_frame[index_response_frame], "V%0.2f,", mv2pressure(respiraData.sp_exp));
+                    break;
+                }
+                case 'W':
+                {
+                    if(index_data != 0){
+                        //Save
+                        respiraData.mode = (RESPIRA_MODES)atoi(data);
+                        write_int_eeprom(ADDR_RESPIRA_MODES,respiraData.mode,INT8);
+                    }
+                    //load
+                    respiraData.mode = (RESPIRA_MODES)read_int_eeprom(ADDR_RESPIRA_MODES,INT8);
+                    //Response
+                    index_response_frame += sprintf(&response_frame[index_response_frame], "W%d,", respiraData.mode);
+                    break;
+                }
+                case 'X':
+                {
+                    if(index_data != 0){
+                        //Save
+                        respiraData.sensib = atof(data);
+                        write_float_eeprom(ADDR_SENSITIVITY, respiraData.sensib);
+                    }
+                    //load
+                    respiraData.sensib = read_float_eeprom(ADDR_SENSITIVITY);
+                    //Response
+                    index_response_frame += sprintf(&response_frame[index_response_frame], "X%0.2f,", respiraData.sensib);
                     break;
                 }
                 default:
