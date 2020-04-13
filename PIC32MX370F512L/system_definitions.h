@@ -46,6 +46,7 @@
 #include "pid.h"
 #include "mpx5010.h"
 #include "respira.h"
+#include "max30102.h"
 
 
 /* Provide C++ Compatibility */

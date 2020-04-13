@@ -21,6 +21,8 @@
       <itemPath>pid.h</itemPath>
       <itemPath>mpx5010.h</itemPath>
       <itemPath>respira.h</itemPath>
+      <itemPath>max30102.h</itemPath>
+      <itemPath>newxc32_header.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -45,6 +47,7 @@
       <itemPath>pid.c</itemPath>
       <itemPath>mpx5010.c</itemPath>
       <itemPath>respira.c</itemPath>
+      <itemPath>max30102.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

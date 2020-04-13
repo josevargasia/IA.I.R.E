@@ -119,7 +119,8 @@ void BLUETOOTH_Task(void){
                 
 //                sprintf(send_frame, "m,A%d,B%d,C%d,T%d,1%0.2f,2%0.2f,3%d,4%d,", adcData.values_2_prom[0], adcData.values_2_prom[0], configData.pressure_max, configData.pwm5_duty, respiraData.sp_insp, respiraData.sp_exp, respiraData.t_insp, respiraData.t_exp);
 //                sprintf(send_frame, "m,A%d,B%d,C%d,", adcData.values_2_prom[0], adcData.values_2_prom[0], configData.pwm5_duty);
-                sprintf(send_frame, "m,A%0.2f,B%0.2f,C%d,I%0.2f,E%0.2f,", mv2pressure((float)adcData.values_2_prom[0]), mv2pressure((float)adcData.values_2_prom[0]), configData.pwm5_duty, mv2pressure(respiraData.sp_insp), mv2pressure(respiraData.sp_exp));
+                //sprintf(send_frame, "m,A%0.2f,B%0.2f,C%d,I%0.2f,E%0.2f,", mv2pressure((float)adcData.values_2_prom[0]), mv2pressure((float)adcData.values_2_prom[0]), configData.pwm5_duty, mv2pressure(respiraData.sp_insp), mv2pressure(respiraData.sp_exp));
+                sprintf(send_frame, "m,A%0.2f,B%lu,C%d,D%d,I%0.2f,E%0.2f,", mv2pressure((float)adcData.values_2_prom[0]), value_ppm_CO2, MAX30102.data_HR, MAX30102.data_SpO2, mv2pressure(respiraData.sp_insp), mv2pressure(respiraData.sp_exp));
                 BLUETOOTH_send_frame(send_frame);
                 
                 
