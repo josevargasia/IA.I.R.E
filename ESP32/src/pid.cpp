@@ -74,7 +74,7 @@ void pid_task(void){
 
         //La accion calculada la transformo en PWM
         configData.pwm5_duty = pidData.ctrl_duty;
-        //pwm_ID5_duty_set(configData.pwm5_duty);   //TODO: descomentar
+        pwm_duty_set(configData.pwm5_duty);
 
     }
 }

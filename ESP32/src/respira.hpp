@@ -18,6 +18,14 @@ typedef enum
     RESPIRA_STAND_BY,
 }RESPIRA_STATES;
 
+typedef enum
+{
+    RESPIRA_MODE_CONTROL = 0,
+    RESPIRA_MODE_ASIST,
+    RESPIRA_MODE_CPAP,
+    RESPIRA_MODE_CPAP_ASIST,
+}RESPIRA_MODES;
+
 /**
  * @brief Respira ata structure.
  */
@@ -33,6 +41,9 @@ typedef struct
 
     uint16_t t_out_inps;        /**< Inspiration timeout. */
     uint16_t t_out_exp;         /**< Expiration timeout. */
+
+    RESPIRA_MODES mode;
+    float sensib;
 
 } RESPIRA_DATA;
 

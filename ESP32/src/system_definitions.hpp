@@ -21,6 +21,7 @@
 #include "i2c_IAIRE.hpp"
 #include "mg811.hpp"
 #include "max30102.hpp"
+#include "pwm.hpp"
 
 
 /**
