@@ -1,8 +1,9 @@
 /* ************************************************************************** */
 /** Library for application of MPX5010 Pressure Sensor
- * 
- * @Company Ingenier�a Apropiada
- * 
+ * @file mpx5010.cpp
+ * @author Ingeniería Apropiada
+ * @date 08/04/2020
+ * @brief File containing MPX5010 sensor driver.
  */
 /* ************************************************************************** */
 
@@ -39,13 +40,8 @@
  */
 typedef struct
 {
-    float measValue; /**< Saves the pressure data value. */
+    float measValue; /**< Saves the pressure measured value. */
     uint16_t valuesWindow[PRESS_WINDOW_SIZE]; /**< Buffer with the last measured ADC values. */
-    uint16_t values_mv[5];      /**< Save values sampled for ADC in mV. */
-    
-    //uint16_t values_2[5][ADC_MAX_NUM_SAMPLE_PROM]; /**< Save values sampled for avergae. */
-    uint16_t values_2_count;    /**< Count samples for avergae. */
-    uint32_t values_2_prom[5];  /**< Save the average of sample. */
 
 } PRESS_DATA;
 
@@ -58,13 +54,31 @@ extern PRESS_DATA pressData;
 // *****************************************************************************
 
 
-void pressure_get_value(uint16_t intVal, uint8_t unit);
-void pressure_prom_int_values(uint16_t *addValue);
+// void pressure_get_value(uint16_t intVal, uint8_t unit);
+// void pressure_prom_int_values(uint16_t *addValue);
+
+/**
+ * @brief Converts pressures values to miliVolts values for MPX5010 sensor
+ * @code 
+ *      my_mv_value = pressure2mv(my_press_value);
+ * @endcode
+ * @param pressure Float that represents a pressure value.
+ * @return The function returns a float value that represents the mV value for the entered pressure in the MPX5010 sensor.
+ */
 float pressure2mv(float pressure);
+
+/**
+ * @brief Converts miliVolts values to pressures values for MPX5010 sensor
+ * @code 
+ *      my_press_value = mv2pressure(my_mv_value)
+ * @endcode
+ * @param mv Float that represents a mv value.
+ * @return The function returns a float value that represents the pressure value for the entered mv in the MPX5010.
+ */
 float mv2pressure(float mv);
 
 
-#endif /* _EXAMPLE_FILE_NAME_H */
+#endif /* MPX5010_HPP */
 
 /* *****************************************************************************
  End of File
