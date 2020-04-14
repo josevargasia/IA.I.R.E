@@ -82,7 +82,7 @@ void APP_Task(void){
         case APP_STATE_SERVICE_TASKS:
         {
             BLUETOOTH_Task();
-            
+            MAX30102_Tasks();
             respira_task();
 //            pid_task();
             

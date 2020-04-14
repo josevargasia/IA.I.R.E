@@ -78,6 +78,9 @@ void __ISR(_TIMER_4_VECTOR, ipl3) IntTimer4Handler(void)    // 1ms
     if(respiraData.t_out_exp)
         respiraData.t_out_exp--;
     
+    if(MAX30102.timeout_wait_sample)
+        MAX30102.timeout_wait_sample--;
+    
     IFS0bits.T4IF = 0; //Reset Timer4 interrupt flag and Return from ISR
 }
 

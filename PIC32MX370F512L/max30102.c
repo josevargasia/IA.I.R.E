@@ -1,13 +1,30 @@
 /* ************************************************************************** */
 /**
- * @file max30102.cpp
- * @author IngenierÃ­a Apropiada
- * @date 09/04/2020
+ * @file max30102.c
+ * @author Ingeniería Apropiada
+ * @date 13/04/2020
  * @brief File containing MAX30102 driver.
  */
 /* ************************************************************************** */
 
-#include "system_definitions.hpp"
+
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* Section: Included Files                                                    */
+/* ************************************************************************** */
+/* ************************************************************************** */
+
+/* This section lists the other files that are included in this file.
+ */
+
+#include "system_definitions.h"
+
+
+/* ************************************************************************** */
+/* ************************************************************************** */
+/* Section: File Scope or Global Data                                         */
+/* ************************************************************************** */
+/* ************************************************************************** */
 
 
 uint8_t max_sample_counter, writePointer, readPointer, numberOfSamples, activeLEDs, bytesLeftToRead, toGet; /**< General-purpose variables. */
@@ -17,7 +34,6 @@ int32_t bufferLength;             /**< Data buffer length. */
 int32_t spo2 = 0;                 /**< SPO2 value calculated. */
 int32_t heartRate = 0;            /**< Heart-Rate value calculated. */
 
-/**< uch_spo2_table is approximated as: -45.060*ratioAverage*ratioAverage + 30.354*ratioAverage + 94.845. */
 uint8_t uch_spo2_table[184] = {  
     95,  95,  95,  96,  96,  96,  97,  97,  97,  97,  97,  98,  98,  98,  98,  98,  99,  99,  99,  99, 
     99,  99,  99,  99, 100, 100, 100, 100, 100, 100,  94,  95,  96,  96,  96,  80,  96,  87,  93,  95, 
@@ -37,59 +53,119 @@ uint8_t count_SpO2;                   /**< Determine the case by calculating the
 uint8_t count_HR;                     /**< Determine the case by calculating the average of 5 Heart-Rate samples. */
 MAX30102_DATA MAX30102;               /**< Manage variables that MAX30102 can use. */
 
-boolean max30102_ready(){
-    if (readRegister8(MAX30102_ADDRESS, MAX30102_PARTID) == MAX30102_EXPECTEDPARTID) return true; /**< Sensor ready to use. */
+
+/* ************************************************************************** */
+/* ************************************************************************** */
+// Section: Interface Functions                                               */
+/* ************************************************************************** */
+/* ************************************************************************** */
+
+uint8_t max30102_ready(){
+    i2c_ID_1_startp();
+    i2c_ID_1_writep(MAX30102_ADDRESS_WRITING);
+    i2c_ID_1_writep(MAX30102_PARTID);
+    i2c_ID_1_startp();
+    i2c_ID_1_writep(MAX30102_ADDRESS_READING);
+    uint8_t partID = i2c_ID_1_readp(0); //NACK Master
+    i2c_ID_1_stopp(); 
+    
+    if (partID == MAX30102_EXPECTEDPARTID) return true; /**< Sensor ready to use. */
     else return false; /**< Sensor not available. */
 }
+
 void max30102_bitMask(uint8_t reg, uint8_t mask, uint8_t thing){
     /**< Grab current register context. */
-    uint8_t originalContents = readRegister8(MAX30102_ADDRESS, reg);
+    i2c_ID_1_startp();
+    i2c_ID_1_writep(MAX30102_ADDRESS_WRITING);
+    i2c_ID_1_writep(reg);
+    i2c_ID_1_startp();
+    i2c_ID_1_writep(MAX30102_ADDRESS_READING);
+    uint8_t originalContents = i2c_ID_1_readp(0); //NACK Master
+    i2c_ID_1_stopp();
+
     /**< Zero-out the portions of the register we're interested in. */
     originalContents &= mask;
+
     /**< Change contents. */
-    writeRegister8(MAX30102_ADDRESS, reg, originalContents|thing);
+    i2c_ID_1_startp();
+    i2c_ID_1_writep(MAX30102_ADDRESS_WRITING);
+    i2c_ID_1_writep(reg);
+    i2c_ID_1_writep(originalContents|thing);
+    i2c_ID_1_stopp();  
 }
+
 void max30102_softReset(){
     max30102_bitMask(REG_MODE_CONFIG, MAX30102_RESET_MASK, MAX30102_RESET);
 }
-void MAX30102_Init(){   
-    I2C_Init(Wire, I2C_SPEED); 
+
+void MAX30102_Init(){    
     while(!max30102_ready());
     max30102_softReset();
     
     /**< REG_FIFO_CONFIG - REG_MODE_CONFIG - REG_SPO2_CONFIG. */
-    writeRegister8(MAX30102_ADDRESS, REG_FIFO_CONFIG, 0x5E); /**< Average of 4 samples; Enable FIFO Rollover; Set to 18 samples to trigger an 'Almost Full' interrupt. */
-    writeRegister8(MAX30102_ADDRESS, REG_MODE_CONFIG, 0x03); /**< No Shutdown; No Reset; SpO2 Mode. */
-    writeRegister8(MAX30102_ADDRESS, REG_SP02_CONFIG, 0x27); /**< Full scale: 4096; 100 Samples Per Second; ADC resolution 18 Bits. */
+    i2c_ID_1_startp();
+    i2c_ID_1_writep(MAX30102_ADDRESS_WRITING);
+    i2c_ID_1_writep(REG_FIFO_CONFIG);
+    i2c_ID_1_writep(0x5E); /**< Average of 4 samples; Enable FIFO Rollover; Set to 18 samples to trigger an 'Almost Full' interrupt. */
+    i2c_ID_1_writep(0x03); /**< No Shutdown; No Reset; SpO2 Mode. */
+    i2c_ID_1_writep(0x27); /**< Full scale: 4096; 100 Samples Per Second; ADC resolution 18 Bits. */
+    i2c_ID_1_stopp();
     
     /**< LED1(RED)_PULSE_AMPLITUDE - LED2(IR)_PULSE_AMPLITUDE. */
-    writeRegister8(MAX30102_ADDRESS, REG_LED1_PA, 0x3C); /**< 12mA LED CURRENT. */
-    writeRegister8(MAX30102_ADDRESS, REG_LED2_PA, 0x3C); /**< 12mA LED CURRENT. */
+    i2c_ID_1_startp();
+    i2c_ID_1_writep(MAX30102_ADDRESS_WRITING);
+    i2c_ID_1_writep(REG_LED1_PA);
+    i2c_ID_1_writep(0x3C); /**< 12mA LED CURRENT. */
+    i2c_ID_1_writep(0x3C); /**< 12mA LED CURRENT. */
+    i2c_ID_1_stopp();
     
     /**< Multi-LED Mode Configuration. */
     max30102_bitMask(REG_MULTILED_CONFIG1, MAX30102_SLOT1_MASK, (uint8_t)(SLOT_RED_LED));
     max30102_bitMask(REG_MULTILED_CONFIG1, MAX30102_SLOT2_MASK, (uint8_t)(SLOT_IR_LED<<4));
     
     /**< Clear FIFO (Counter and pointers). */
-    writeRegister8(MAX30102_ADDRESS, REG_FIFO_WR_PTR, 0x00);
-    writeRegister8(MAX30102_ADDRESS, REG_OVF_COUNTER, 0x00);
-    writeRegister8(MAX30102_ADDRESS, REG_FIFO_RD_PTR, 0x00);
+    i2c_ID_1_startp();
+    i2c_ID_1_writep(MAX30102_ADDRESS_WRITING);
+    i2c_ID_1_writep(REG_FIFO_WR_PTR);
+    i2c_ID_1_writep(0x00);
+    i2c_ID_1_writep(0x00);
+    i2c_ID_1_writep(0x00);
+    i2c_ID_1_stopp();
     
     MAX30102.state = MAX30102_STATE_INIT;    
 }
 
 void max30102_read_temperature(){
     while(!max30102_ready());
-    writeRegister8(MAX30102_ADDRESS, REG_TEMP_EN, 0x01);            /**< TEMP_EN. */
-    writeRegister8(MAX30102_ADDRESS, REG_INTERRUPT_ENABLE_2, 0x02); /**< DIE_TEMP_RDY_EN. */     
-    delay(30);
     
-    MAX30102.temp_int = readRegister8(MAX30102_ADDRESS, REG_TINT);
-    MAX30102.temp_frac = readRegister8(MAX30102_ADDRESS, REG_TFRAC);  
+    /**< TEMP_EN. */
+    i2c_ID_1_startp();
+    i2c_ID_1_writep(MAX30102_ADDRESS_WRITING);
+    i2c_ID_1_writep(REG_TEMP_EN);
+    i2c_ID_1_writep(0x01); 
+    i2c_ID_1_stopp();
+    /**< DIE_TEMP_RDY_EN. */ 
+    i2c_ID_1_startp();
+    i2c_ID_1_writep(MAX30102_ADDRESS_WRITING);
+    i2c_ID_1_writep(REG_INTERRUPT_ENABLE_2);
+    i2c_ID_1_writep(0x02); 
+    i2c_ID_1_stopp();       
+    delay_ms(30);
+    
+    i2c_ID_1_startp();
+    i2c_ID_1_writep(MAX30102_ADDRESS_WRITING);
+    i2c_ID_1_writep(REG_TINT);
+    i2c_ID_1_startp();
+    i2c_ID_1_writep(MAX30102_ADDRESS_READING);
+    MAX30102.temp_int = i2c_ID_1_readp(1);  //ACK Master
+    MAX30102.temp_frac = i2c_ID_1_readp(0); //NACK Master
+    i2c_ID_1_stopp();    
     MAX30102.data_temp = (float)(MAX30102.temp_int) + ((float)(MAX30102.temp_frac)*0.0625);     
 }
 
 void max30102_average_samples(){
+    uint8_t j;
+    
     if (MAX30102.valid_SpO2) {
         switch (count_SpO2){
             case 1: /**< Average when there is only one sample. */
@@ -100,36 +176,36 @@ void max30102_average_samples(){
             case 2: /**< Average when there are 2 samples */
                 MAX30102.data_SpO2 = 0;
                 MAX30102.samples_SpO2[MAX30102.samples_SpO2_index++] = spo2;
-                for (uint8_t j=0; j<count_SpO2; j++) MAX30102.data_SpO2 += MAX30102.samples_SpO2[j];
+                for (j=0; j<count_SpO2; j++) MAX30102.data_SpO2 += MAX30102.samples_SpO2[j];
                 MAX30102.data_SpO2 = (uint8_t)(MAX30102.data_SpO2/2);
                 count_SpO2++;
             break; 
             case 3: /**< Average when there are 3 samples. */
                 MAX30102.data_SpO2 = 0;
                 MAX30102.samples_SpO2[MAX30102.samples_SpO2_index++] = spo2;
-                for (uint8_t j=0; j<count_SpO2; j++) MAX30102.data_SpO2 += MAX30102.samples_SpO2[j];
+                for (j=0; j<count_SpO2; j++) MAX30102.data_SpO2 += MAX30102.samples_SpO2[j];
                 MAX30102.data_SpO2 = (uint8_t)(MAX30102.data_SpO2/3);
                 count_SpO2++;
             break;
             case 4: /**< Average when there are 4 samples. */
                 MAX30102.data_SpO2 = 0;
                 MAX30102.samples_SpO2[MAX30102.samples_SpO2_index++] = spo2;
-                for (uint8_t j=0; j<count_SpO2; j++) MAX30102.data_SpO2 += MAX30102.samples_SpO2[j];
+                for (j=0; j<count_SpO2; j++) MAX30102.data_SpO2 += MAX30102.samples_SpO2[j];
                 MAX30102.data_SpO2 = (uint8_t)(MAX30102.data_SpO2/4);
                 count_SpO2++;
             break;
             case 5: /**< Average when there are 5 samples. */
                 MAX30102.data_SpO2 = 0;
                 MAX30102.samples_SpO2[MAX30102.samples_SpO2_index] = spo2;
-                for (uint8_t j=0; j<count_SpO2; j++) MAX30102.data_SpO2 += MAX30102.samples_SpO2[j];
+                for (j=0; j<count_SpO2; j++) MAX30102.data_SpO2 += MAX30102.samples_SpO2[j];
                 MAX30102.data_SpO2 = (uint8_t)(MAX30102.data_SpO2/5);
                 count_SpO2++;
             break;
             case 6: /**< Moving average of 5 samples. */
-                for (uint8_t j=1; j<5; j++) MAX30102.samples_SpO2[j-1] = MAX30102.samples_SpO2[j];
+                for (j=1; j<5; j++) MAX30102.samples_SpO2[j-1] = MAX30102.samples_SpO2[j];
                 MAX30102.samples_SpO2[4] = spo2;
                 MAX30102.data_SpO2 = 0;
-                for (uint8_t j=0; j<5; j++) MAX30102.data_SpO2 += MAX30102.samples_SpO2[j];
+                for (j=0; j<5; j++) MAX30102.data_SpO2 += MAX30102.samples_SpO2[j];
                 MAX30102.data_SpO2 = (uint8_t)(MAX30102.data_SpO2/5);
             break;
                 
@@ -147,36 +223,36 @@ void max30102_average_samples(){
             case 2: /**< Average when there are 2 samples. */
                 MAX30102.data_HR = 0;
                 MAX30102.samples_HR[MAX30102.samples_HR_index++] = heartRate;
-                for (uint8_t j=0; j<count_HR; j++) MAX30102.data_HR += MAX30102.samples_HR[j];
+                for (j=0; j<count_HR; j++) MAX30102.data_HR += MAX30102.samples_HR[j];
                 MAX30102.data_HR = (uint8_t)(MAX30102.data_HR/2);
                 count_HR++;
             break; 
             case 3: /**< Average when there are 3 samples. */
                 MAX30102.data_HR = 0;
                 MAX30102.samples_HR[MAX30102.samples_HR_index++] = heartRate;
-                for (uint8_t j=0; j<count_HR; j++) MAX30102.data_HR += MAX30102.samples_HR[j];
+                for (j=0; j<count_HR; j++) MAX30102.data_HR += MAX30102.samples_HR[j];
                 MAX30102.data_HR = (uint8_t)(MAX30102.data_HR/3);
                 count_HR++;
             break;
             case 4: /**< Average when there are 4 samples. */
                 MAX30102.data_HR = 0;
                 MAX30102.samples_HR[MAX30102.samples_HR_index++] = heartRate;
-                for (uint8_t j=0; j<count_HR; j++) MAX30102.data_HR += MAX30102.samples_HR[j];
+                for (j=0; j<count_HR; j++) MAX30102.data_HR += MAX30102.samples_HR[j];
                 MAX30102.data_HR = (uint8_t)(MAX30102.data_HR/4);
                 count_HR++;
             break;
             case 5: /**< Average when there are 5 samples. */
                 MAX30102.data_HR = 0;
                 MAX30102.samples_HR[MAX30102.samples_HR_index] = heartRate;
-                for (uint8_t j=0; j<count_HR; j++) MAX30102.data_HR += MAX30102.samples_HR[j];
+                for (j=0; j<count_HR; j++) MAX30102.data_HR += MAX30102.samples_HR[j];
                 MAX30102.data_HR = (uint8_t)(MAX30102.data_HR/5);
                 count_HR++;
             break;
             case 6: /**< Moving average of 5 samples. */
-                for (uint8_t j=1; j<5; j++) MAX30102.samples_HR[j-1] = MAX30102.samples_HR[j];
+                for (j=1; j<5; j++) MAX30102.samples_HR[j-1] = MAX30102.samples_HR[j];
                 MAX30102.samples_HR[4] = heartRate;
                 MAX30102.data_HR = 0;
-                for (uint8_t j=0; j<5; j++) MAX30102.data_HR += MAX30102.samples_HR[j];
+                for (j=0; j<5; j++) MAX30102.data_HR += MAX30102.samples_HR[j];
                 MAX30102.data_HR = (uint8_t)(MAX30102.data_HR/5);
             break;
                 
@@ -186,7 +262,8 @@ void max30102_average_samples(){
 }
 
 void MAX30102_Tasks(){
-     
+    char data[150]; uint8_t len;
+    
     switch(MAX30102.state){
         case MAX30102_STATE_INIT:
             bufferLength = BUFFER_SIZE;
@@ -205,12 +282,20 @@ void MAX30102_Tasks(){
         case MAX30102_STATE_MEASUREMENT_REQUEST:
             writePointer=0; readPointer=0; numberOfSamples=0; bytesLeftToRead=0; toGet=0;
             //Clear FIFO (Counter and pointers)
-            writeRegister8(MAX30102_ADDRESS, REG_FIFO_WR_PTR, 0x00);
-            writeRegister8(MAX30102_ADDRESS, REG_OVF_COUNTER, 0x00);
-            writeRegister8(MAX30102_ADDRESS, REG_FIFO_RD_PTR, 0x00);
+            i2c_ID_1_startp();
+            i2c_ID_1_writep(MAX30102_ADDRESS_WRITING);
+            i2c_ID_1_writep(REG_FIFO_WR_PTR);
+            i2c_ID_1_writep(0x00);
+            i2c_ID_1_writep(0x00);
+            i2c_ID_1_writep(0x00);
+            i2c_ID_1_stopp();
 
             //A_FULL_EN
-            writeRegister8(MAX30102_ADDRESS, REG_INTERRUPT_ENABLE_1, 0x80);
+            i2c_ID_1_startp();
+            i2c_ID_1_writep(MAX30102_ADDRESS_WRITING);
+            i2c_ID_1_writep(REG_INTERRUPT_ENABLE_1);
+            i2c_ID_1_writep(0x80); 
+            i2c_ID_1_stopp(); 
             
             MAX30102.timeout_wait_sample = 50; //50ms
             MAX30102.state = MAX30102_STATE_RECEIVED_DATA;
@@ -218,41 +303,48 @@ void MAX30102_Tasks(){
         
         case MAX30102_STATE_RECEIVED_DATA:
             if (MAX30102.timeout_wait_sample == 0){
-                writePointer = readRegister8(MAX30102_ADDRESS, REG_FIFO_WR_PTR);
-                readPointer = readRegister8(MAX30102_ADDRESS, REG_FIFO_RD_PTR);
+                i2c_ID_1_startp();
+                i2c_ID_1_writep(MAX30102_ADDRESS_WRITING);
+                i2c_ID_1_writep(REG_FIFO_WR_PTR);
+                i2c_ID_1_startp();
+                i2c_ID_1_writep(MAX30102_ADDRESS_READING);
+                writePointer = i2c_ID_1_readp(1);//ACK Master
+                i2c_ID_1_readp(1);               //ACK Master
+                readPointer = i2c_ID_1_readp(0); //NACK Master
+                i2c_ID_1_stopp();
 
                 if (readPointer != writePointer){
                     numberOfSamples = writePointer - readPointer;
-                    if (numberOfSamples < 0) numberOfSamples += 32; 
+                    if (numberOfSamples < 0) numberOfSamples += 32;
 
                     bytesLeftToRead = numberOfSamples * activeLEDs * 3;
                     //Get ready to read a burst of data from the FIFO register
-                    _i2cPort->beginTransmission(MAX30102_ADDRESS);
-                    _i2cPort->write(REG_FIFO_DATA);
-                    _i2cPort->endTransmission();
-
                     while (bytesLeftToRead > 0){
                         toGet = bytesLeftToRead;
-                        if (toGet > I2C_BUFFER_LEN){                            
+                        if (toGet > I2C_BUFFER_LEN){
                             toGet = I2C_BUFFER_LEN - (I2C_BUFFER_LEN % (activeLEDs * 3)); //Trim toGet to be a multiple of the samples we need to read
                         }
 
                         bytesLeftToRead -= toGet;
-                        //Request toGet number of bytes from sensor
-                        _i2cPort->requestFrom(MAX30102_ADDRESS, (int)toGet);
 
                         //Get ready to read a burst of data from the FIFO register
                         while (toGet > 0){
                             uint8_t tempRED[3], tempIR[3]; //Array of 3 bytes that we will convert into long
-                           
+
+                            i2c_ID_1_startp();
+                            i2c_ID_1_writep(MAX30102_ADDRESS_WRITING);
+                            i2c_ID_1_writep(REG_FIFO_DATA);
+                            i2c_ID_1_startp();
+                            i2c_ID_1_writep(MAX30102_ADDRESS_READING);
                             //Burst read three bytes - RED
-                            tempRED[2] = _i2cPort->read();  
-                            tempRED[1] = _i2cPort->read();  
-                            tempRED[0] = _i2cPort->read();
+                            tempRED[2] = i2c_ID_1_readp(1);  //ACK Master
+                            tempRED[1] = i2c_ID_1_readp(1);  //ACK Master
+                            tempRED[0] = i2c_ID_1_readp(1);  //ACK Master
                             //Burst read three more bytes - IR
-                            tempIR[2] = _i2cPort->read();
-                            tempIR[1] = _i2cPort->read();
-                            tempIR[0] = _i2cPort->read();
+                            tempIR[2] = i2c_ID_1_readp(1);  //ACK Master
+                            tempIR[1] = i2c_ID_1_readp(1);  //ACK Master
+                            tempIR[0] = i2c_ID_1_readp(0);  //NACK Master
+                            i2c_ID_1_stopp();
 
                             //Convert array to long
                             memcpy(&tempLongRED, tempRED, sizeof(tempLongRED));
@@ -266,11 +358,11 @@ void MAX30102_Tasks(){
                 } //End readPtr != writePtr 
                 
                 if (numberOfSamples!=0 && tempLongRED>3100 && tempLongIR>1900){
-                    redBuffer[max_sample_counter] = (uint32_t)(round(((float)tempLongRED)/14.2835));
-                    irBuffer[max_sample_counter]  = (uint32_t)(round(((float)tempLongIR)/6.6137));               
+                    redBuffer[max_sample_counter] = (uint32_t)(((float)tempLongRED)/14.2835);
+                    irBuffer[max_sample_counter]  = (uint32_t)(((float)tempLongIR)/6.6137);
                     max_sample_counter++;
                     if (max_sample_counter<bufferLength) MAX30102.state = MAX30102_STATE_MEASUREMENT_REQUEST;
-                    else                                 MAX30102.state = MAX30102_STATE_DATA_PROCESSING;      
+                    else                                 MAX30102.state = MAX30102_STATE_DATA_PROCESSING;     
                 } else {
                     MAX30102.state = MAX30102_STATE_MEASUREMENT_REQUEST;
                     MAX30102.valid_SpO2 = 0;
@@ -287,16 +379,16 @@ void MAX30102_Tasks(){
         
         case MAX30102_STATE_DATA_PROCESSING:
             //calculate heart rate and SpO2 after first 100 samples (first 4 seconds of samples)
-            maxim_heart_rate_and_oxygen_saturation(irBuffer, bufferLength, redBuffer, &spo2, &MAX30102.valid_SpO2, &heartRate, &MAX30102.valid_HR);           
+            maxim_heart_rate_and_oxygen_saturation(irBuffer, bufferLength, redBuffer, &spo2, &MAX30102.valid_SpO2, &heartRate, &MAX30102.valid_HR);                      
             max30102_average_samples();
-
+            
             //dumping the first 25 sets of samples in the memory and shift the last 75 sets of samples to the top
             for (max_sample_counter = 25; max_sample_counter < bufferLength; max_sample_counter++){
                 redBuffer[max_sample_counter - 25] = redBuffer[max_sample_counter];
                 irBuffer[max_sample_counter - 25] = irBuffer[max_sample_counter];
             }
             max_sample_counter = 75; //Take 25 sets of samples before calculating the heart rate again.
-            MAX30102.state = MAX30102_STATE_MEASUREMENT_REQUEST; //After gathering 25 new samples recalculate HR and SP02           
+            MAX30102.state = MAX30102_STATE_MEASUREMENT_REQUEST; //After gathering 25 new samples recalculate HR and SP02          
         break;
         
         default: break;
@@ -352,7 +444,7 @@ void maxim_heart_rate_and_oxygen_saturation(uint32_t *pun_ir_buffer, int32_t n_i
     if (n_npks>=2){
         for (k=1; k<n_npks; k++) n_peak_interval_sum += (an_ir_valley_locs[k] - an_ir_valley_locs[k -1]);
         n_peak_interval_sum = (int32_t)(n_peak_interval_sum/(n_npks-1));
-        float aux = ((FreqS*60)/n_peak_interval_sum);
+        float aux = (float)(((int32_t)(FreqS*60))/n_peak_interval_sum);
         if(aux<78){ *pn_heart_rate = (int32_t)aux; } 
         else if (aux>=78 && aux<=93){ *pn_heart_rate = (int32_t)(0.4*aux + 46.8); }
         else if (aux>93 && aux<115){ *pn_heart_rate = (int32_t)(0.2727*aux + 58.6364); }
@@ -431,7 +523,8 @@ void maxim_find_peaks( int32_t *pn_locs, int32_t *n_npks,  int32_t  *pn_x, int32
                 int32_t n_min_distance, int32_t n_max_num ){
     maxim_peaks_above_min_height( pn_locs, n_npks, pn_x, n_size, n_min_height );
     maxim_remove_close_peaks( pn_locs, n_npks, pn_x, n_min_distance );
-    *n_npks = min( *n_npks, n_max_num );    
+    if (*n_npks>n_max_num) *n_npks = n_max_num;
+    //*n_npks = min( *n_npks, n_max_num );    
 }
 void maxim_peaks_above_min_height( int32_t *pn_locs, int32_t *n_npks,  int32_t  *pn_x, int32_t n_size, int32_t n_min_height ){
     int32_t i = 1, n_width;
@@ -488,3 +581,7 @@ void maxim_sort_ascend(int32_t  *pn_x, int32_t n_size) {
         pn_x[j] = n_temp;
     }    
 }
+
+/* *****************************************************************************
+ End of File
+ */

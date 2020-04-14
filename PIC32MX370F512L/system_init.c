@@ -67,6 +67,9 @@ void system_init (void){
     
     // APP init
     APP_init();
+    
+    // MAX30102 Init
+    MAX30102_Init();
 }
 
 void ports_init (void){
