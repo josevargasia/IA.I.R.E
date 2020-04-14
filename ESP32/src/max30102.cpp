@@ -239,7 +239,7 @@ void MAX30102_Tasks(){
 
                         bytesLeftToRead -= toGet;
                         //Request toGet number of bytes from sensor
-                        _i2cPort->requestFrom(MAX30102_ADDRESS, toGet);
+                        _i2cPort->requestFrom(MAX30102_ADDRESS, (int)toGet);
 
                         //Get ready to read a burst of data from the FIFO register
                         while (toGet > 0){
