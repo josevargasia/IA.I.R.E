@@ -42,6 +42,9 @@ void setup() {
   //EEPROM SETUP 
   init_eeprom();
 
+  //APLICATION SETUP
+  APP_init();
+
   //SERIAL SETUP
   sci_init();
   
@@ -57,9 +60,6 @@ void setup() {
   //BLUETOOTH SETUP
   BLUETOOTH_init();
 
-  //APLICATION SETUP
-  APP_init();
-
   //PID SETUP
   pid_init();
 
@@ -74,7 +74,7 @@ void setup() {
  * @brief Loop to handle tasks 
  */
 void loop() {
-  
+
   //ADC TASK
   adc_task();
 
