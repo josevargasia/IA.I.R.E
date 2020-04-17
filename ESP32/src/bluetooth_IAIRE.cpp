@@ -93,6 +93,8 @@ void BLUETOOTH_Task(void){
                         if(data == 'z'){
                             bluetoothData.readBuff[bluetoothData.index_readBuff++] = data;
                             BLUETOOTH_process_frame(bluetoothData.readBuff, bluetoothData.index_readBuff);
+                            BLUETOOTH_process_chksum(bluetoothData.readBuff, bluetoothData.index_readBuff);
+
                         }
                         bluetoothData.frame_state = FRAME_STATE_HEADER_INIT_1;
                         break;
@@ -156,11 +158,14 @@ void BLUETOOTH_Task(void){
 
 void BLUETOOTH_process_frame(char * frame, uint8_t len){
     int i;
+    uint8_t chkSum;
+    char chkSum_str[2];
+    uint8_t ack;
     char label;
     char data[20], response_frame[100];
     uint8_t index_data, index_response_frame = 0;
     
-    //Serial.println(frame);
+    Serial.println(frame);
 
     index_response_frame += sprintf(&response_frame[index_response_frame], "p,");
     
@@ -289,7 +294,7 @@ void BLUETOOTH_process_frame(char * frame, uint8_t len){
                     //load
                     respiraData.mode = (RESPIRA_MODES)read_int_eeprom(ADDR_RESPIRA_MODES,INT8);
                     //Response
-                    index_response_frame += sprintf(&response_frame[index_response_frame], "W%d,", respiraData.mode);
+                    index_response_frame += sprintf(&response_frame[index_response_frame], "F%d,", respiraData.mode);
                     break;
                 }
                 case 'G':
@@ -302,7 +307,32 @@ void BLUETOOTH_process_frame(char * frame, uint8_t len){
                     //load
                     respiraData.sensib = read_float_eeprom(ADDR_SENSITIVITY);
                     //Response
-                    index_response_frame += sprintf(&response_frame[index_response_frame], "X%0.2f,", respiraData.sensib);
+                    index_response_frame += sprintf(&response_frame[index_response_frame], "G%0.2f,", respiraData.sensib);
+                    break;
+                }
+                case 'Z':
+                {
+                    if(index_data != 0 && index_data > 0){
+                        chkSum_str[0] = frame[0];
+                        chkSum_str[1] = frame[1];
+                    }
+
+                    chkSum = BLUETOOTH_process_chksum(frame,len);
+
+                    if(chkSum == (uint8_t)strtol(chkSum_str,NULL,16)){
+                        ack = 1;
+                    }
+                    else{
+                        ack = 0;
+                    }
+
+                    index_response_frame += sprintf(&response_frame[index_response_frame], "Y%d,Z", ack);
+
+                    chkSum = BLUETOOTH_process_chksum(response_frame,index_response_frame);
+
+                    //response
+                    index_response_frame += sprintf(&response_frame[index_response_frame], "%X,",chkSum);
+
                     break;
                 }
                 default:
@@ -313,15 +343,39 @@ void BLUETOOTH_process_frame(char * frame, uint8_t len){
         }
     }
     
-    /*
+    
     Serial.print("aa,");
     Serial.print(response_frame);
     Serial.println("zz");
-    */
+    
     // Send response frame
     BLUETOOTH_send_frame(response_frame);
     
 }
+
+uint8_t BLUETOOTH_process_chksum(char * frame, uint8_t len){
+    int i;
+    int sw = 0;
+    uint8_t chkSum = 0;
+    
+    i = 0;
+    while(i < len && frame[i] != 'Z')
+    {
+        if(frame[i] == 'p'){
+            sw = 1;
+        }
+
+        if(sw == 1){
+            chkSum ^= frame[i];
+        }
+    
+        i++;
+    }
+    
+    return chkSum;
+}
+
+
 
 void BLUETOOTH_callback_ISR (esp_spp_cb_event_t event, esp_spp_cb_param_t *param){
 

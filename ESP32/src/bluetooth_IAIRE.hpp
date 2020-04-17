@@ -71,6 +71,14 @@ void BLUETOOTH_Task(void);
 void BLUETOOTH_process_frame(char * frame, uint8_t len);
 
 /**
+ * @brief   Process checksum in bluetooth frame
+ * @param   frame     Frame to process
+ * @param   len       Length of frame to process
+ * @return  Char value corresponding the checksum
+ */
+uint8_t BLUETOOTH_process_chksum(char * frame, uint8_t len);
+
+/**
  * @brief Send string to bluetooth
  * @code
  *      BLUETOOTH_send_frame("Hello...");
