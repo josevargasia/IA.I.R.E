@@ -113,14 +113,17 @@ void BLUETOOTH_Task(void){
         {
             if(bluetoothData.timeout == 0){
                 char send_frame[100];
+                uint8_t index_send_frame = 0;
                 
                 adc_get_sample_average();
                 
                 //sprintf(send_frame, "m,A%d,B%d,C%d,I%0.2f,E%0.2f,", adcData.values[0], adcData.values_mv[0], adcData.values_2_prom[0], mv2pressure(respiraData.sp_insp), mv2pressure(respiraData.sp_exp));
                 //sprintf(send_frame, "m,A%0.2f,B%d,C%d,D%d,I%0.2f,E%0.2f,", mv2pressure((float)adcData.values_2_prom[0]), adcData.values_2_prom[1], configData.pwm5_duty ,adcData.values_2_prom[0], mv2pressure(respiraData.sp_insp), mv2pressure(respiraData.sp_exp));
                 // sprintf(send_frame, "m,A%0.2f,B%lu,C%d,D%d,I%0.2f,E%0.2f,", mv2pressure((float)adcData.values_2_prom[0]), value_ppm_CO2, MAX30102.data_HR, MAX30102.data_SpO2, mv2pressure(respiraData.sp_insp), mv2pressure(respiraData.sp_exp));
-                sprintf(send_frame, "m,A%0.2f,B%d,C%d,D%d,I%0.2f,E%0.2f,F%d,G%0.2f,M%d,", mv2pressure((float)adcData.values_2_prom[0]), value_ppm_CO2, MAX30102.data_HR, MAX30102.data_SpO2, mv2pressure(respiraData.sp_insp), mv2pressure(respiraData.sp_exp), (uint8_t)respiraData.mode, respiraData.sensib, configData.pwm5_duty);
+                index_send_frame += sprintf(&send_frame[index_send_frame], "m,A%0.2f,B%d,C%d,D%d,I%0.2f,E%0.2f,F%d,G%0.2f,Z", mv2pressure((float)adcData.values_2_prom[0]), value_ppm_CO2, MAX30102.data_HR, MAX30102.data_SpO2, mv2pressure(respiraData.sp_insp), mv2pressure(respiraData.sp_exp), (uint8_t)respiraData.mode, respiraData.sensib, configData.pwm5_duty);
                 //sprintf(send_frame, "m,A15,");
+                
+                sprintf(&send_frame[index_send_frame],"%02X,",BLUETOOTH_process_chksum(send_frame,index_send_frame));
                 BLUETOOTH_send_frame(send_frame);
                 
                 bluetoothData.timeout = BLUETOOTH_FRAME_SEND_TIME;
@@ -180,6 +183,23 @@ void BLUETOOTH_process_frame(char * frame, uint8_t len){
             }
             i--;
             switch(label){
+                
+                case 'O':
+                {
+                    if(index_data != 0){
+                        //Save
+                        if(atoi(data) == 1){
+                            respiraData.state = RESPIRA_INSPIRACION;
+                        }
+                        else{
+                            respiraData.state = RESPIRA_STAND_BY;
+                        }
+                    }
+                    //Response
+                    index_response_frame += sprintf(&response_frame[index_response_frame], "O%d,", atoi(data));
+                    break;
+                }
+
                 case 'P':
                 {
                     if(index_data != 0){
@@ -331,7 +351,7 @@ void BLUETOOTH_process_frame(char * frame, uint8_t len){
                     chkSum = BLUETOOTH_process_chksum(response_frame,index_response_frame);
 
                     //response
-                    index_response_frame += sprintf(&response_frame[index_response_frame], "%X,",chkSum);
+                    index_response_frame += sprintf(&response_frame[index_response_frame], "%02X,",chkSum);
 
                     break;
                 }
@@ -361,7 +381,7 @@ uint8_t BLUETOOTH_process_chksum(char * frame, uint8_t len){
     i = 0;
     while(i < len && frame[i] != 'Z')
     {
-        if(frame[i] == 'p'){
+        if(frame[i] == 'p' || frame[i] == 'm'){
             sw = 1;
         }
 

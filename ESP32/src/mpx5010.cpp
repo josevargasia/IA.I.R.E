@@ -68,6 +68,14 @@ float mv2pressure(float mv){
     pressure /= 0.0291;
     return pressure;
 }
+
+float mv2flow(float mv){
+    float Kflow = (sqrt(2)*3.14*IN_DIAMETER);
+
+    Kflow /= (4*sqrt(1-(pow(IN_DIAMETER,4)/pow(OUT_DIAMETER,4))));
+
+    return Kflow*sqrt(mv/AIR_DENSITY);
+}
 /* *****************************************************************************
  End of File
  */
