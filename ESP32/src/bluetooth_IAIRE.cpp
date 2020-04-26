@@ -120,7 +120,7 @@ void BLUETOOTH_Task(void){
                 //sprintf(send_frame, "m,A%d,B%d,C%d,I%0.2f,E%0.2f,", adcData.values[0], adcData.values_mv[0], adcData.values_2_prom[0], mv2pressure(respiraData.sp_insp), mv2pressure(respiraData.sp_exp));
                 //sprintf(send_frame, "m,A%0.2f,B%d,C%d,D%d,I%0.2f,E%0.2f,", mv2pressure((float)adcData.values_2_prom[0]), adcData.values_2_prom[1], configData.pwm5_duty ,adcData.values_2_prom[0], mv2pressure(respiraData.sp_insp), mv2pressure(respiraData.sp_exp));
                 // sprintf(send_frame, "m,A%0.2f,B%lu,C%d,D%d,I%0.2f,E%0.2f,", mv2pressure((float)adcData.values_2_prom[0]), value_ppm_CO2, MAX30102.data_HR, MAX30102.data_SpO2, mv2pressure(respiraData.sp_insp), mv2pressure(respiraData.sp_exp));
-                index_send_frame += sprintf(&send_frame[index_send_frame], "m,A%0.2f,B%d,C%d,D%d,I%0.2f,E%0.2f,F%d,G%0.2f,Z", mv2pressure((float)adcData.values_2_prom[0]), value_ppm_CO2, MAX30102.data_HR, MAX30102.data_SpO2, mv2pressure(respiraData.sp_insp), mv2pressure(respiraData.sp_exp), (uint8_t)respiraData.mode, respiraData.sensib, configData.pwm5_duty);
+                index_send_frame += sprintf(&send_frame[index_send_frame], "m,A%0.2f,B%d,C%d,D%d,I%0.2f,E%0.2f,F%d,G%0.2f,Z", mv2pressure((float)adcData.values_2_prom[0]), value_ppm_CO2, MAX30102.data_HR, MAX30102.data_SpO2, mv2pressure(respiraData.sp_insp), mv2pressure(respiraData.sp_exp), (uint8_t)respiraData.mode, respiraData.sensib);
                 //sprintf(send_frame, "m,A15,");
                 
                 sprintf(&send_frame[index_send_frame],"%02X,",BLUETOOTH_process_chksum(send_frame,index_send_frame));
@@ -308,11 +308,11 @@ void BLUETOOTH_process_frame(char * frame, uint8_t len){
                 {
                     if(index_data != 0){
                         //Save
-                        respiraData.mode = (RESPIRA_MODES)atoi(data);
+                        respiraData.mode = (uint8_t)atoi(data);
                         write_int_eeprom(ADDR_RESPIRA_MODES,respiraData.mode,INT8);
                     }
                     //load
-                    respiraData.mode = (RESPIRA_MODES)read_int_eeprom(ADDR_RESPIRA_MODES,INT8);
+                    respiraData.mode = read_int_eeprom(ADDR_RESPIRA_MODES,INT8);
                     //Response
                     index_response_frame += sprintf(&response_frame[index_response_frame], "F%d,", respiraData.mode);
                     break;
@@ -321,13 +321,13 @@ void BLUETOOTH_process_frame(char * frame, uint8_t len){
                 {
                     if(index_data != 0){
                         //Save
-                        respiraData.sensib = atof(data);
+                        respiraData.sensib = pressure2mv(atof(data));
                         write_float_eeprom(ADDR_SENSITIVITY, respiraData.sensib);
                     }
                     //load
                     respiraData.sensib = read_float_eeprom(ADDR_SENSITIVITY);
                     //Response
-                    index_response_frame += sprintf(&response_frame[index_response_frame], "G%0.2f,", respiraData.sensib);
+                    index_response_frame += sprintf(&response_frame[index_response_frame], "G%0.2f,", mv2pressure(respiraData.sensib));
                     break;
                 }
                 case 'Z':

@@ -81,6 +81,7 @@ float pressure2mv(float pressure);
 float mv2pressure(float mv);
 
 float mv2flow(float mv);
+
 #endif /* MPX5010_HPP */
 
 /* *****************************************************************************

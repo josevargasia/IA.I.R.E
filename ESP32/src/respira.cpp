@@ -20,23 +20,42 @@ void respira_task(void){
         case RESPIRA_INSPIRACION:
         {
             pwmData.pwmEnablePin = 1;
-            pidData.SetP = respiraData.sp_insp;
-            pid_task();
+
+            if(respiraData.mode == RESPIRA_MODE_CPAP ){
+
+                pidData.SetP = configData.pressure_max;
+            }
+            else{
+                pidData.SetP = respiraData.sp_insp;
+            }
+
             if(respiraData.mode == RESPIRA_MODE_CONTROL ||
                respiraData.mode == RESPIRA_MODE_ASIST || 
                respiraData.mode == RESPIRA_MODE_CPAP_ASIST){
+                
                 if(respiraData.t_out_inps == 0){
                     respiraData.t_out_exp = respiraData.t_exp;
                     respiraData.state = RESPIRA_EXPIRACION;
                 }  
             }
+
+            pid_task();
             break;
         }
         
         case RESPIRA_EXPIRACION:
         {
-            pidData.SetP = respiraData.sp_exp;
+            if (respiraData.mode == RESPIRA_MODE_CPAP ||
+                respiraData.mode == RESPIRA_MODE_CPAP_ASIST){
+                
+                pidData.SetP = configData.pressure_max;
+            }
+            else{
+                pidData.SetP = respiraData.sp_exp;
+            }
+
             pid_task();
+
             if (respiraData.mode == RESPIRA_MODE_CONTROL ||
               respiraData.mode == RESPIRA_MODE_ASIST){
                 if(respiraData.t_out_exp == 0){
@@ -47,6 +66,7 @@ void respira_task(void){
             
             if (respiraData.mode == RESPIRA_MODE_ASIST ||
               respiraData.mode == RESPIRA_MODE_CPAP_ASIST){
+
                 adc_get_sample_average();  
                 if((float)adcData.values_2_prom[0] <= respiraData.sp_exp - respiraData.sensib){
                     respiraData.t_out_inps = respiraData.t_insp;

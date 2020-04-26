@@ -8,6 +8,11 @@
 /* ************************************************************************** */
 #include <Arduino.h>
 
+#define RESPIRA_MODE_CONTROL  0
+#define RESPIRA_MODE_ASIST 1
+#define RESPIRA_MODE_CPAP 2
+#define RESPIRA_MODE_CPAP_ASIST 3
+
 /**
 * @brief Use enum for define states of states machine.
 */
@@ -17,17 +22,6 @@ typedef enum
     RESPIRA_EXPIRACION,
     RESPIRA_STAND_BY,
 }RESPIRA_STATES;
-
-/**
- * @brief Breath modes data structure.
- */
-typedef enum
-{
-    RESPIRA_MODE_CONTROL = 0,
-    RESPIRA_MODE_ASIST,
-    RESPIRA_MODE_CPAP,
-    RESPIRA_MODE_CPAP_ASIST,
-}RESPIRA_MODES;
 
 /**
  * @brief Respira data structure.
@@ -45,7 +39,7 @@ typedef struct
     uint16_t t_out_inps;        /**< Inspiration timeout. */
     uint16_t t_out_exp;         /**< Expiration timeout. */
 
-    RESPIRA_MODES mode;         /**< Respiration modes. */
+    uint8_t mode;         /**< Respiration modes. */
     float sensib;               /**< Sensivity value. */
 
 } RESPIRA_DATA;
