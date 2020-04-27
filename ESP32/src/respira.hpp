@@ -39,8 +39,11 @@ typedef struct
     uint16_t t_out_inps;        /**< Inspiration timeout. */
     uint16_t t_out_exp;         /**< Expiration timeout. */
 
-    uint8_t mode;         /**< Respiration modes. */
+    uint8_t mode;               /**< Respiration modes. */
     float sensib;               /**< Sensivity value. */
+
+    float lim_alarm_h;          /**< Limit for high pressure alarm. */
+    float lim_alarm_l;          /**< Limit for low pressure alarm. */
 
 } RESPIRA_DATA;
 

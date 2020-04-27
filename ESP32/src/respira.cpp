@@ -19,7 +19,7 @@ void respira_task(void){
     switch(respiraData.state){
         case RESPIRA_INSPIRACION:
         {
-            pwmData.pwmEnablePin = 1;
+            digitalWrite(pwmData.pwmEnablePin,H_BRIDGE_ENABLE);
 
             if(respiraData.mode == RESPIRA_MODE_CPAP ){
 
@@ -79,7 +79,7 @@ void respira_task(void){
         
         case RESPIRA_STAND_BY:
         {
-            pwmData.pwmEnablePin = 0;
+            digitalWrite(pwmData.pwmEnablePin,H_BRIDGE_DISABLE);
         }
         
         default:

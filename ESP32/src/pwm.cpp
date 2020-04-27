@@ -3,17 +3,21 @@
 PWM_DATA pwmData;
 
 void pwm_init(void){
+    pwmData.pwmEnablePin = 18;
+    pinMode(pwmData.pwmEnablePin,OUTPUT);
+    
     pwmData.pwmFreq = 500;
     pwmData.pwmLedCh = 5;
     pwmData.pwmResolution = 8;
     pwmData.pwmPin = 5;
+
     ledcSetup(pwmData.pwmLedCh,pwmData.pwmFreq,pwmData.pwmResolution);
     ledcAttachPin(pwmData.pwmPin,pwmData.pwmLedCh);
 }
 
 void pwm_duty_set(uint32_t duty_value){
-    // uint32_t duty_raw = (255 / 100) * (1 - duty_value);
-    uint32_t duty_raw = (255 / 100) * duty_value;
+    uint32_t duty_raw = (255 / 100) * (100 - duty_value);
+    // uint32_t duty_raw = (255 / 100) * duty_value;
     ledcWrite(pwmData.pwmLedCh,duty_raw);
 }
 

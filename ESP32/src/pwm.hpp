@@ -10,6 +10,9 @@
 
 #include "Arduino.h"
 
+#define H_BRIDGE_ENABLE      0
+#define H_BRIDGE_DISABLE     1
+
 /**
  * @brief PWM data structure.
  */
