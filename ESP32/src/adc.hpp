@@ -16,6 +16,8 @@
 
 const int ADC_PRESS_SENSOR = 35;            /**< ADC sensor pin. */
 const int ADC_CO2_SENSOR = 34;              /**< ADC sensor pin. */
+const int ADC_FLOW1_SENSOR = 32;            /**< ADC sensor pin. */
+const int ADC_TEMP1_SENSOR = 39;
 
 /**
 * @brief Use enum for define states of states machine in ADC task.

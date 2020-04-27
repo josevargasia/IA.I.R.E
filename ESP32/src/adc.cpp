@@ -28,6 +28,8 @@ void adc_get_samples(void){
     
     adcData.values_mv[0] = analogRead_cal(ADC_PRESS_SENSOR, ADC_ATTEN_DB_11);
     adcData.values_mv[1] = analogRead_cal(ADC_CO2_SENSOR, ADC_ATTEN_DB_11);
+    adcData.values_mv[2] = analogRead_cal(ADC_FLOW1_SENSOR, ADC_ATTEN_DB_11);
+    adcData.values_mv[3] = analogRead_cal(ADC_TEMP1_SENSOR, ADC_ATTEN_DB_11);
 
     /*
     adcData.values[0] = analogRead(ADC_PRESS_SENSOR);
@@ -39,6 +41,8 @@ void adc_get_samples(void){
 
     adcData.values_2[0][adcData.values_2_count] = adcData.values_mv[0];
     adcData.values_2[1][adcData.values_2_count++] = adcData.values_mv[1];
+    adcData.values_2[2][adcData.values_2_count++] = adcData.values_mv[2];
+    adcData.values_2[3][adcData.values_2_count++] = adcData.values_mv[3];
     
     if(adcData.values_2_count >= ADC_MAX_NUM_SAMPLE_PROM){
         adcData.values_2_count = 0;
@@ -49,13 +53,19 @@ void adc_get_sample_average(void){
     
     adcData.values_2_prom[0] = 0;
     adcData.values_2_prom[1] = 0;
+    adcData.values_2_prom[2] = 0;
+    adcData.values_2_prom[3] = 0;
     int i;
     for(i = 0; i < ADC_MAX_NUM_SAMPLE_PROM; i++){
         adcData.values_2_prom[0] += adcData.values_2[0][i];
         adcData.values_2_prom[1] += adcData.values_2[1][i];
+        adcData.values_2_prom[2] += adcData.values_2[2][i];
+        adcData.values_2_prom[3] += adcData.values_2[3][i];
     }
     adcData.values_2_prom[0] /= ADC_MAX_NUM_SAMPLE_PROM; 
     adcData.values_2_prom[1] /= ADC_MAX_NUM_SAMPLE_PROM; 
+    adcData.values_2_prom[2] /= ADC_MAX_NUM_SAMPLE_PROM; 
+    adcData.values_2_prom[3] /= ADC_MAX_NUM_SAMPLE_PROM; 
     get_sample_ppm_CO2();  
     
 }
@@ -129,6 +139,10 @@ uint32_t analogRead_cal(uint8_t channel, adc_atten_t attenuation) {
 
     case (33):
       channelNum = ADC1_CHANNEL_5;
+      break;
+    
+    default:
+      channelNum = ADC1_CHANNEL_0;
       break;
   }
 
