@@ -120,7 +120,16 @@ void BLUETOOTH_Task(void){
                 //sprintf(send_frame, "m,A%d,B%d,C%d,I%0.2f,E%0.2f,", adcData.values[0], adcData.values_mv[0], adcData.values_2_prom[0], mv2pressure(respiraData.sp_insp), mv2pressure(respiraData.sp_exp));
                 //sprintf(send_frame, "m,A%0.2f,B%d,C%d,D%d,I%0.2f,E%0.2f,", mv2pressure((float)adcData.values_2_prom[0]), adcData.values_2_prom[1], configData.pwm5_duty ,adcData.values_2_prom[0], mv2pressure(respiraData.sp_insp), mv2pressure(respiraData.sp_exp));
                 // sprintf(send_frame, "m,A%0.2f,B%lu,C%d,D%d,I%0.2f,E%0.2f,", mv2pressure((float)adcData.values_2_prom[0]), value_ppm_CO2, MAX30102.data_HR, MAX30102.data_SpO2, mv2pressure(respiraData.sp_insp), mv2pressure(respiraData.sp_exp));
-                index_send_frame += sprintf(&send_frame[index_send_frame], "m,A%0.2f,B%d,C%d,D%d,I%0.2f,E%0.2f,F%d,G%0.2f,Z", mv2pressure((float)adcData.values_2_prom[0]), value_ppm_CO2, MAX30102.data_HR, MAX30102.data_SpO2, mv2pressure(respiraData.sp_insp), mv2pressure(respiraData.sp_exp), (uint8_t)respiraData.mode, respiraData.sensib);
+                index_send_frame += sprintf(&send_frame[index_send_frame], "m,A%0.2f,B%d,C%d,D%d,E%d,F%d,G%0.2f,H%0.2f,I%d,Z", 
+                                                                            mv2pressure((float)adcData.values_2_prom[0]), 
+                                                                            value_ppm_CO2, 
+                                                                            MAX30102.data_HR, 
+                                                                            MAX30102.data_SpO2, 
+                                                                            configData.pwm5_duty,
+                                                                            (uint8_t)respiraData.mode, 
+                                                                            respiraData.sensib,
+                                                                            mv2flow((float)adcData.values_2_prom[2]),
+                                                                            respiraData.alarm_state);
                 //sprintf(send_frame, "m,A15,");
                 
                 sprintf(&send_frame[index_send_frame],"%02X,",BLUETOOTH_process_chksum(send_frame,index_send_frame));
@@ -184,15 +193,46 @@ void BLUETOOTH_process_frame(char * frame, uint8_t len){
             i--;
             switch(label){
                 
+                case 'M':
+                {
+                    if(index_data != 0){
+                        //Save
+                        respiraData.lim_alarm_h = pressure2mv(atof(data));
+                        write_float_eeprom(ADDR_ALARM_HIGH, respiraData.lim_alarm_h);
+                    }
+                    //load
+                    respiraData.lim_alarm_h = read_float_eeprom(ADDR_ALARM_HIGH);
+                    //Response
+                    index_response_frame += sprintf(&response_frame[index_response_frame], "M%0.2f,", mv2pressure(respiraData.lim_alarm_h));
+                    break;
+                }
+
+                case 'N':
+                {
+                    if(index_data != 0){
+                        //Save
+                        respiraData.lim_alarm_l = pressure2mv(atof(data));
+                        printf("\nAL_L: %0.2f\n",respiraData.lim_alarm_l);
+                        write_float_eeprom(ADDR_ALARM_LOW, respiraData.lim_alarm_l);
+                    }
+                    //load
+                    respiraData.lim_alarm_l = read_float_eeprom(ADDR_ALARM_LOW);
+                    //Response
+                    index_response_frame += sprintf(&response_frame[index_response_frame], "N%0.2f,", mv2pressure(respiraData.lim_alarm_l));
+                    break;
+                }
+                
                 case 'O':
                 {
                     if(index_data != 0){
                         //Save
                         if(atoi(data) == 1){
                             respiraData.state = RESPIRA_INSPIRACION;
+                            digitalWrite(STAND_BY_PIN,LOW);
                         }
                         else{
                             respiraData.state = RESPIRA_STAND_BY;
+                            digitalWrite(STAND_BY_PIN,HIGH);
                         }
                     }
                     //Response
@@ -355,6 +395,7 @@ void BLUETOOTH_process_frame(char * frame, uint8_t len){
 
                     break;
                 }
+
                 default:
                 {
                     break;

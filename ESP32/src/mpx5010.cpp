@@ -60,9 +60,9 @@ float pressure2mv(float pressure){
 float mv2pressure(float mv){
     float pressure;
     
-    if(mv < 132){
-        mv = 132;
-    }
+    // if(mv < 132){
+    //     mv = 132;
+    // }
     
     pressure = (mv/1000) - 0.132;
     pressure /= 0.0291;

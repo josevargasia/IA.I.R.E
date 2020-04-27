@@ -98,6 +98,8 @@ void APP_init(void){
     respiraData.sp_exp = read_float_eeprom(ADDR_PRESSURE_EXP);
     respiraData.t_insp = read_int_eeprom(ADDR_INSPIRATION_TIME, INT16);
     respiraData.t_exp = read_int_eeprom(ADDR_EXPIRATION_TIME, INT16);
+    respiraData.lim_alarm_h = read_float_eeprom(ADDR_ALARM_HIGH);
+    respiraData.lim_alarm_l = read_float_eeprom(ADDR_ALARM_LOW);
     
     configData.pwm5_frec = read_int_eeprom(ADDR_PWM5_FREC, INT32);
     if(configData.pwm5_frec < 10000 || configData.pwm5_frec > 50000){
