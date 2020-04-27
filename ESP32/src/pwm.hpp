@@ -12,6 +12,8 @@
 
 #define H_BRIDGE_ENABLE      0
 #define H_BRIDGE_DISABLE     1
+#define PWM_PIN              5
+#define PWM_ENABLE_PIN       18
 
 /**
  * @brief PWM data structure.
@@ -20,8 +22,6 @@ typedef struct{
     int pwmFreq;        /**< PWM Frequency. */
     int pwmLedCh;       /**< PWM Channel. */
     int pwmResolution;  /**< PWM Resolution. */
-    int pwmPin;         /**< PWM Control Pin. */
-    int pwmEnablePin;   /**< PWM Enable Pin. */
 }PWM_DATA;
 
 extern PWM_DATA pwmData;

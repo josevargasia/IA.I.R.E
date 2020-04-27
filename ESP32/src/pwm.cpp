@@ -3,16 +3,14 @@
 PWM_DATA pwmData;
 
 void pwm_init(void){
-    pwmData.pwmEnablePin = 18;
-    pinMode(pwmData.pwmEnablePin,OUTPUT);
+    pinMode(PWM_ENABLE_PIN,OUTPUT);
     
     pwmData.pwmFreq = 500;
     pwmData.pwmLedCh = 5;
     pwmData.pwmResolution = 8;
-    pwmData.pwmPin = 5;
 
     ledcSetup(pwmData.pwmLedCh,pwmData.pwmFreq,pwmData.pwmResolution);
-    ledcAttachPin(pwmData.pwmPin,pwmData.pwmLedCh);
+    ledcAttachPin(PWM_PIN,pwmData.pwmLedCh);
 }
 
 void pwm_duty_set(uint32_t duty_value){

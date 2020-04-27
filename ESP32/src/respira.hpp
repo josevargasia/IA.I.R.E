@@ -13,6 +13,24 @@
 #define RESPIRA_MODE_CPAP 2
 #define RESPIRA_MODE_CPAP_ASIST 3
 
+#define ALARM_PIN           12
+#define ASSISTED_PIN        13
+#define CPAP_PIN            10
+#define CONTROL_PIN         10
+#define STAND_BY_PIN        11
+#define INSPIRATION_PIN     9
+#define EXPIRATION_PIN      9
+#define BUZZER_PIN          20
+
+#define CONTROL_ON          1
+#define CONTROL_OFF         0
+#define CPAP_ON             0
+#define CPAP_OFF            1
+#define INSPIRATION_ON      1
+#define INSPIRATION_OFF     0
+#define EXPIRATION_ON       0
+#define EXPIRATION_OFF      1
+
 /**
 * @brief Use enum for define states of states machine.
 */
@@ -42,6 +60,7 @@ typedef struct
     uint8_t mode;               /**< Respiration modes. */
     float sensib;               /**< Sensivity value. */
 
+    uint8_t alarm_state;        /**< Parameter that define the alarm code */
     float lim_alarm_h;          /**< Limit for high pressure alarm. */
     float lim_alarm_l;          /**< Limit for low pressure alarm. */
 

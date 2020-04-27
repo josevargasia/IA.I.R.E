@@ -19,7 +19,8 @@ void respira_task(void){
     switch(respiraData.state){
         case RESPIRA_INSPIRACION:
         {
-            digitalWrite(pwmData.pwmEnablePin,H_BRIDGE_ENABLE);
+            digitalWrite(PWM_ENABLE_PIN,H_BRIDGE_ENABLE);
+            digitalWrite(INSPIRATION_PIN,INSPIRATION_ON);
 
             if(respiraData.mode == RESPIRA_MODE_CPAP ){
 
@@ -45,6 +46,8 @@ void respira_task(void){
         
         case RESPIRA_EXPIRACION:
         {
+            digitalWrite(EXPIRATION_PIN,EXPIRATION_ON);
+            
             if (respiraData.mode == RESPIRA_MODE_CPAP ||
                 respiraData.mode == RESPIRA_MODE_CPAP_ASIST){
                 
@@ -53,8 +56,6 @@ void respira_task(void){
             else{
                 pidData.SetP = respiraData.sp_exp;
             }
-
-            pid_task();
 
             if (respiraData.mode == RESPIRA_MODE_CONTROL ||
               respiraData.mode == RESPIRA_MODE_ASIST){
@@ -74,12 +75,14 @@ void respira_task(void){
                 }    
             }
             
+            pid_task();
             break;
         }
         
         case RESPIRA_STAND_BY:
         {
-            digitalWrite(pwmData.pwmEnablePin,H_BRIDGE_DISABLE);
+            digitalWrite(PWM_ENABLE_PIN,H_BRIDGE_DISABLE);
+            break;
         }
         
         default:
@@ -87,6 +90,38 @@ void respira_task(void){
             respiraData.state = RESPIRA_STAND_BY;
             break;
         }
+    }
+
+    if(respiraData.mode == RESPIRA_MODE_CONTROL || respiraData.mode == RESPIRA_MODE_ASIST){
+        digitalWrite(CONTROL_PIN,CONTROL_ON);
+    }
+    else{
+        digitalWrite(CONTROL_PIN,CONTROL_OFF);
+    }
+
+    if(respiraData.mode == RESPIRA_MODE_ASIST || respiraData.mode == RESPIRA_MODE_CPAP_ASIST){
+        digitalWrite(ASSISTED_PIN,HIGH);
+    }
+    else
+    {
+        digitalWrite(ASSISTED_PIN,LOW);
+    }
+    
+
+    respiraData.alarm_state = 0;
+    if((float)adcData.values_2_prom[0] >= respiraData.lim_alarm_h){
+        respiraData.alarm_state = 1;
+        digitalWrite(ALARM_PIN,HIGH);
+        digitalWrite(BUZZER_PIN,HIGH);
+    }
+    else if ((float)adcData.values_2_prom[0] <= respiraData.lim_alarm_l){
+        respiraData.alarm_state = 2;
+        digitalWrite(ALARM_PIN,HIGH);
+        digitalWrite(BUZZER_PIN,HIGH);
+    }
+    else{
+        digitalWrite(ALARM_PIN,LOW);
+        digitalWrite(BUZZER_PIN,LOW);
     }
     
 }
