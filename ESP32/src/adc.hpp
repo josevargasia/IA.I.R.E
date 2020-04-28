@@ -11,7 +11,7 @@
 #include <esp_adc_cal.h>
 
 
-#define ADC_MAX_NUM_SAMPLE_PROM  30         /**< Maximum number of samples to calculate average. */
+#define ADC_MAX_NUM_SAMPLE_PROM   8        /**< Maximum number of samples to calculate average. */
 
 
 const int ADC_PRESS_SENSOR = 35;            /**< ADC sensor pin. */

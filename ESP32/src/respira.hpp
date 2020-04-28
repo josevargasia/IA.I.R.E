@@ -8,24 +8,24 @@
 /* ************************************************************************** */
 #include <Arduino.h>
 
-#define RESPIRA_MODE_CONTROL  0
-#define RESPIRA_MODE_ASIST 1
-#define RESPIRA_MODE_CPAP 2
+#define RESPIRA_MODE_CONTROL    0
+#define RESPIRA_MODE_ASIST      1
+#define RESPIRA_MODE_CPAP       2
 #define RESPIRA_MODE_CPAP_ASIST 3
 
-#define ALARM_PIN           12
-#define ASSISTED_PIN        13
-#define CPAP_PIN            10
-#define CONTROL_PIN         10
-#define STAND_BY_PIN        11
-#define INSPIRATION_PIN     9
-#define EXPIRATION_PIN      9
+#define ALARM_PIN           26
+#define ASSISTED_PIN        14
+#define CPAP_PIN            13
+#define CONTROL_PIN         13
+#define STAND_BY_PIN        27
+#define INSPIRATION_PIN     12
+#define EXPIRATION_PIN      12
 #define BUZZER_PIN          20
 
-#define CONTROL_ON          1
-#define CONTROL_OFF         0
-#define CPAP_ON             0
-#define CPAP_OFF            1
+#define CONTROL_ON          0
+#define CONTROL_OFF         1
+#define CPAP_ON             1
+#define CPAP_OFF            0
 #define INSPIRATION_ON      1
 #define INSPIRATION_OFF     0
 #define EXPIRATION_ON       0

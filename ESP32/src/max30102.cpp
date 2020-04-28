@@ -353,10 +353,10 @@ void maxim_heart_rate_and_oxygen_saturation(uint32_t *pun_ir_buffer, int32_t n_i
         for (k=1; k<n_npks; k++) n_peak_interval_sum += (an_ir_valley_locs[k] - an_ir_valley_locs[k -1]);
         n_peak_interval_sum = (int32_t)(n_peak_interval_sum/(n_npks-1));
         float aux = ((FreqS*60)/n_peak_interval_sum);
-        if(aux<78){ *pn_heart_rate = (int32_t)aux; } 
-        else if (aux>=78 && aux<=93){ *pn_heart_rate = (int32_t)(0.4*aux + 46.8); }
-        else if (aux>93 && aux<115){ *pn_heart_rate = (int32_t)(0.2727*aux + 58.6364); }
-        else if (aux>=115){ *pn_heart_rate = (int32_t)(0.6154*aux + 19.2308); }
+        if(aux<=60){ *pn_heart_rate = (int32_t)aux; } 
+        else if (aux>60 && aux<=78){ *pn_heart_rate = (int32_t)(0.5*aux + 30); }
+        else if (aux>78 && aux<=118){ *pn_heart_rate = (int32_t)(0.25*aux + 49.5); }
+        else if (aux>118){ *pn_heart_rate = (int32_t)(0.375*aux + 34.75); }
         *pch_hr_valid  = 1;
     } else { 
         *pn_heart_rate = -999; // unable to calculate because # of peaks are too small
