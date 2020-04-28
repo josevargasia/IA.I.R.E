@@ -40,11 +40,11 @@ void adc_get_samples(void){
     */  
 
     adcData.values_2[0][adcData.values_2_count] = adcData.values_mv[0];
-    adcData.values_2[1][adcData.values_2_count++] = adcData.values_mv[1];
-    adcData.values_2[2][adcData.values_2_count++] = adcData.values_mv[2];
-    adcData.values_2[3][adcData.values_2_count++] = adcData.values_mv[3];
+    adcData.values_2[1][adcData.values_2_count] = adcData.values_mv[1];
+    adcData.values_2[2][adcData.values_2_count] = adcData.values_mv[2];
+    adcData.values_2[3][adcData.values_2_count] = adcData.values_mv[3];
     
-    if(adcData.values_2_count >= ADC_MAX_NUM_SAMPLE_PROM){
+    if(++adcData.values_2_count >= ADC_MAX_NUM_SAMPLE_PROM){
         adcData.values_2_count = 0;
     }
 }
