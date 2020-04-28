@@ -13,6 +13,12 @@ RESPIRA_DATA respiraData;       /**< Manage all variables that respira can use. 
 
 void respira_init(void){
     respiraData.state = RESPIRA_INSPIRACION;
+    pinMode(ASSISTED_PIN,OUTPUT);
+    pinMode(ALARM_PIN,OUTPUT);
+    pinMode(CPAP_PIN,OUTPUT);
+    pinMode(STAND_BY_PIN,OUTPUT);
+    pinMode(INSPIRATION_PIN,OUTPUT);
+    pinMode(BUZZER_PIN,OUTPUT);
 }
 
 void respira_task(void){
@@ -29,6 +35,7 @@ void respira_task(void){
             else{
                 pidData.SetP = respiraData.sp_insp;
             }
+            pid_task();
 
             if(respiraData.mode == RESPIRA_MODE_CONTROL ||
                respiraData.mode == RESPIRA_MODE_ASIST || 
@@ -39,8 +46,7 @@ void respira_task(void){
                     respiraData.state = RESPIRA_EXPIRACION;
                 }  
             }
-
-            pid_task();
+            
             break;
         }
         
@@ -56,6 +62,7 @@ void respira_task(void){
             else{
                 pidData.SetP = respiraData.sp_exp;
             }
+            pid_task();
 
             if (respiraData.mode == RESPIRA_MODE_CONTROL ||
               respiraData.mode == RESPIRA_MODE_ASIST){
@@ -75,7 +82,6 @@ void respira_task(void){
                 }    
             }
             
-            pid_task();
             break;
         }
         
