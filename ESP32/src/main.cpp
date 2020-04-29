@@ -39,6 +39,9 @@ void setup() {
   //LED TEST SETUP
   pinMode(BT_LED_PIN, OUTPUT);
 
+  pinMode(PWM_ENABLE_PIN,OUTPUT);
+  digitalWrite(PWM_ENABLE_PIN,HIGH);
+
   //EEPROM SETUP 
   init_eeprom();
 

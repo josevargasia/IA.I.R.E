@@ -212,7 +212,6 @@ void BLUETOOTH_process_frame(char * frame, uint8_t len){
                     if(index_data != 0){
                         //Save
                         respiraData.lim_alarm_l = pressure2mv(atof(data));
-                        printf("\nAL_L: %0.2f\n",respiraData.lim_alarm_l);
                         write_float_eeprom(ADDR_ALARM_LOW, respiraData.lim_alarm_l);
                     }
                     //load
@@ -227,7 +226,7 @@ void BLUETOOTH_process_frame(char * frame, uint8_t len){
                     if(index_data != 0){
                         //Save
                         if(atoi(data) == 1){
-                            respiraData.state = RESPIRA_INSPIRACION;
+                            respiraData.state = RESPIRA_EXPIRATION;
                             digitalWrite(STBY_LED_PIN,LOW);
                         }
                         else{
@@ -403,8 +402,7 @@ void BLUETOOTH_process_frame(char * frame, uint8_t len){
             }
         }
     }
-    
-    
+        
     Serial.print("aa,");
     Serial.print(response_frame);
     Serial.println("zz");
@@ -435,8 +433,6 @@ uint8_t BLUETOOTH_process_chksum(char * frame, uint8_t len){
     
     return chkSum;
 }
-
-
 
 void BLUETOOTH_callback_ISR (esp_spp_cb_event_t event, esp_spp_cb_param_t *param){
 

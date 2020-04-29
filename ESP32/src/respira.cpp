@@ -12,7 +12,7 @@
 RESPIRA_DATA respiraData;       /**< Manage all variables that respira can use. */
 
 void respira_init(void){
-    respiraData.state = RESPIRA_INSPIRACION;
+    respiraData.state = RESPIRA_EXPIRATION;
     pinMode(ASSISTED_LED_PIN,OUTPUT);
     pinMode(ALARM_LED_PIN,OUTPUT);
     pinMode(CPAP_LED_PIN,OUTPUT);
@@ -23,7 +23,7 @@ void respira_init(void){
 
 void respira_task(void){
     switch(respiraData.state){
-        case RESPIRA_INSPIRACION:
+        case RESPIRA_INSPIRATION:
         {
             digitalWrite(PWM_ENABLE_PIN,H_BRIDGE_ENABLE);
             digitalWrite(INSPIRATION_LED_PIN,INSPIRATION_ON);
@@ -43,14 +43,14 @@ void respira_task(void){
                 
                 if(respiraData.t_out_inps == 0){
                     respiraData.t_out_exp = respiraData.t_exp;
-                    respiraData.state = RESPIRA_EXPIRACION;
+                    respiraData.state = RESPIRA_EXPIRATION;
                 }  
             }
             
             break;
         }
         
-        case RESPIRA_EXPIRACION:
+        case RESPIRA_EXPIRATION:
         {
             digitalWrite(EXPIRATION_LED_PIN,EXPIRATION_ON);
             
@@ -68,7 +68,7 @@ void respira_task(void){
               respiraData.mode == RESPIRA_MODE_ASIST){
                 if(respiraData.t_out_exp == 0){
                     respiraData.t_out_inps = respiraData.t_insp;
-                    respiraData.state = RESPIRA_INSPIRACION;
+                    respiraData.state = RESPIRA_INSPIRATION;
                 }    
             }
             
@@ -78,7 +78,7 @@ void respira_task(void){
                 adc_get_sample_average();  
                 if((float)adcData.values_2_prom[0] <= respiraData.sp_exp - respiraData.sensib){
                     respiraData.t_out_inps = respiraData.t_insp;
-                    respiraData.state = RESPIRA_INSPIRACION;
+                    respiraData.state = RESPIRA_INSPIRATION;
                 }    
             }
             

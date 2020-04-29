@@ -5,7 +5,7 @@ PWM_DATA pwmData;
 void pwm_init(void){
     pinMode(PWM_ENABLE_PIN,OUTPUT);
     
-    pwmData.pwmFreq = 5000;
+    pwmData.pwmFreq = 1000;
     pwmData.pwmLedCh = 5;
     pwmData.pwmResolution = 8;
 

@@ -38,7 +38,7 @@ typedef struct
 
 extern CONFIG_DATA configData;    /**< Manage all variables that application can be use to configure system. */
 
-#define PCB
+// #define PCB
 
 #ifdef PCB
     #define ALARM_LED_PIN           12
