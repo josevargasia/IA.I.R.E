@@ -95,8 +95,7 @@ void loop() {
 /**
  * @brief Initialize variables from EEPROM 
  */
-void APP_init(void){
-    
+void APP_init(void){   
     respiraData.sp_insp = read_float_eeprom(ADDR_PRESSURE_INS);
     respiraData.sp_exp = read_float_eeprom(ADDR_PRESSURE_EXP);
     respiraData.t_insp = read_int_eeprom(ADDR_INSPIRATION_TIME, INT16);
@@ -117,4 +116,10 @@ void APP_init(void){
         write_int_eeprom(ADDR_PWM5_FREC, configData.pwm5_duty, INT8);
     }
     //pwm_ID5_duty_set(0);
+
+    CO2_Zero_Point_Volt = read_float_eeprom(ADDR_C02_ZP_VOLT);
+    if(CO2_Zero_Point_Volt < 1.45 || CO2_Zero_Point_Volt > 4.45){
+        CO2_Zero_Point_Volt = 2.01;
+        write_float_eeprom(ADDR_C02_ZP_VOLT, CO2_Zero_Point_Volt);
+    }
 }
