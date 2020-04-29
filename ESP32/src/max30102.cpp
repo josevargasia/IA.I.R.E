@@ -9,7 +9,6 @@
 
 #include "system_definitions.hpp"
 
-
 uint8_t max_sample_counter, writePointer, readPointer, numberOfSamples, activeLEDs, bytesLeftToRead, toGet; /**< General-purpose variables. */
 uint32_t redBuffer[BUFFER_SIZE];  /**< Red LED sensor data. */
 uint32_t irBuffer[BUFFER_SIZE];   /**< Infrared LED sensor data. */  
@@ -37,10 +36,6 @@ uint8_t count_SpO2;                   /**< Determine the case by calculating the
 uint8_t count_HR;                     /**< Determine the case by calculating the average of 5 Heart-Rate samples. */
 MAX30102_DATA MAX30102;               /**< Manage variables that MAX30102 can use. */
 
-boolean max30102_ready(){
-    if (readRegister8(MAX30102_ADDRESS, MAX30102_PARTID) == MAX30102_EXPECTEDPARTID) return true; /**< Sensor ready to use. */
-    else return false; /**< Sensor not available. */
-}
 void max30102_bitMask(uint8_t reg, uint8_t mask, uint8_t thing){
     /**< Grab current register context. */
     uint8_t originalContents = readRegister8(MAX30102_ADDRESS, reg);
@@ -54,32 +49,12 @@ void max30102_softReset(){
 }
 void MAX30102_Init(){   
     I2C_Init(Wire, I2C_SPEED); 
-    while(!max30102_ready());
-    max30102_softReset();
-    
-    /**< REG_FIFO_CONFIG - REG_MODE_CONFIG - REG_SPO2_CONFIG. */
-    writeRegister8(MAX30102_ADDRESS, REG_FIFO_CONFIG, 0x5E); /**< Average of 4 samples; Enable FIFO Rollover; Set to 18 samples to trigger an 'Almost Full' interrupt. */
-    writeRegister8(MAX30102_ADDRESS, REG_MODE_CONFIG, 0x03); /**< No Shutdown; No Reset; SpO2 Mode. */
-    writeRegister8(MAX30102_ADDRESS, REG_SP02_CONFIG, 0x27); /**< Full scale: 4096; 100 Samples Per Second; ADC resolution 18 Bits. */
-    
-    /**< LED1(RED)_PULSE_AMPLITUDE - LED2(IR)_PULSE_AMPLITUDE. */
-    writeRegister8(MAX30102_ADDRESS, REG_LED1_PA, 0x3C); /**< 12mA LED CURRENT. */
-    writeRegister8(MAX30102_ADDRESS, REG_LED2_PA, 0x3C); /**< 12mA LED CURRENT. */
-    
-    /**< Multi-LED Mode Configuration. */
-    max30102_bitMask(REG_MULTILED_CONFIG1, MAX30102_SLOT1_MASK, (uint8_t)(SLOT_RED_LED));
-    max30102_bitMask(REG_MULTILED_CONFIG1, MAX30102_SLOT2_MASK, (uint8_t)(SLOT_IR_LED<<4));
-    
-    /**< Clear FIFO (Counter and pointers). */
-    writeRegister8(MAX30102_ADDRESS, REG_FIFO_WR_PTR, 0x00);
-    writeRegister8(MAX30102_ADDRESS, REG_OVF_COUNTER, 0x00);
-    writeRegister8(MAX30102_ADDRESS, REG_FIFO_RD_PTR, 0x00);
-    
+    bufferLength = BUFFER_SIZE;
+    activeLEDs = 2;
     MAX30102.state = MAX30102_STATE_INIT;    
 }
 
 void max30102_read_temperature(){
-    while(!max30102_ready());
     writeRegister8(MAX30102_ADDRESS, REG_TEMP_EN, 0x01);            /**< TEMP_EN. */
     writeRegister8(MAX30102_ADDRESS, REG_INTERRUPT_ENABLE_2, 0x02); /**< DIE_TEMP_RDY_EN. */     
     delay(30);
@@ -189,17 +164,30 @@ void MAX30102_Tasks(){
      
     switch(MAX30102.state){
         case MAX30102_STATE_INIT:
-            bufferLength = BUFFER_SIZE;
-            max_sample_counter = 0;
-            activeLEDs = 2;
+            max30102_softReset();           
+            max_sample_counter = 0;           
             MAX30102.samples_SpO2_index = 0;
             MAX30102.samples_HR_index = 0;
             count_SpO2 = 1;
             count_HR = 1;
             MAX30102.valid_SpO2 = 0;
             MAX30102.valid_HR = 0;
-            while(!max30102_ready());
-            MAX30102.state = MAX30102_STATE_MEASUREMENT_REQUEST;         
+            if (readRegister8(MAX30102_ADDRESS, MAX30102_PARTID) == MAX30102_EXPECTEDPARTID){
+                /**< REG_FIFO_CONFIG - REG_MODE_CONFIG - REG_SPO2_CONFIG. */
+                writeRegister8(MAX30102_ADDRESS, REG_FIFO_CONFIG, 0x5E); /**< Average of 4 samples; Enable FIFO Rollover; Set to 18 samples to trigger an 'Almost Full' interrupt. */
+                writeRegister8(MAX30102_ADDRESS, REG_MODE_CONFIG, 0x03); /**< No Shutdown; No Reset; SpO2 Mode. */
+                writeRegister8(MAX30102_ADDRESS, REG_SP02_CONFIG, 0x27); /**< Full scale: 4096; 100 Samples Per Second; ADC resolution 18 Bits. */
+                
+                /**< LED1(RED)_PULSE_AMPLITUDE - LED2(IR)_PULSE_AMPLITUDE. */
+                writeRegister8(MAX30102_ADDRESS, REG_LED1_PA, 0x3C); /**< 12mA LED CURRENT. */
+                writeRegister8(MAX30102_ADDRESS, REG_LED2_PA, 0x3C); /**< 12mA LED CURRENT. */
+                
+                /**< Multi-LED Mode Configuration. */
+                max30102_bitMask(REG_MULTILED_CONFIG1, MAX30102_SLOT1_MASK, (uint8_t)(SLOT_RED_LED));
+                max30102_bitMask(REG_MULTILED_CONFIG1, MAX30102_SLOT2_MASK, (uint8_t)(SLOT_IR_LED<<4));               
+
+                MAX30102.state = MAX30102_STATE_MEASUREMENT_REQUEST;
+            } else { MAX30102.state = MAX30102_STATE_INIT; }                     
         break;
         
         case MAX30102_STATE_MEASUREMENT_REQUEST:
@@ -265,20 +253,14 @@ void MAX30102_Tasks(){
                     } //End while (bytesLeftToRead > 0)
                 } //End readPtr != writePtr 
                 
-                if (numberOfSamples!=0 && tempLongRED>3100 && tempLongIR>1900){
+                if (numberOfSamples!=0 && tempLongRED>7800 && tempLongIR>8000){
                     redBuffer[max_sample_counter] = (uint32_t)(round(((float)tempLongRED)/14.2835));
                     irBuffer[max_sample_counter]  = (uint32_t)(round(((float)tempLongIR)/6.6137));               
                     max_sample_counter++;
                     if (max_sample_counter<bufferLength) MAX30102.state = MAX30102_STATE_MEASUREMENT_REQUEST;
                     else                                 MAX30102.state = MAX30102_STATE_DATA_PROCESSING;      
-                } else {
-                    MAX30102.state = MAX30102_STATE_MEASUREMENT_REQUEST;
-                    MAX30102.valid_SpO2 = 0;
-                    MAX30102.valid_HR = 0;
-                    MAX30102.samples_SpO2_index = 0;
-                    MAX30102.samples_HR_index = 0;
-                    count_SpO2 = 1;
-                    count_HR = 1;
+                } else { //Son los datos que no corresponden a una medida valida, Limpia todas las variables para iniciar una medición desde cero
+                    MAX30102.state = MAX30102_STATE_INIT;
                     MAX30102.data_SpO2 = 0;
                     MAX30102.data_HR = 0;
                 }

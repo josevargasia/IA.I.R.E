@@ -98,12 +98,6 @@ extern uint8_t count_SpO2;                  /**< Determine the case by calculati
 extern uint8_t count_HR;                    /**< Determine the case by calculating the average of 5 Heart-Rate samples. */
 
 /**
- * @brief MAX30102 is ready to use?
- * @return Return sensor state  
- */
-boolean max30102_ready();
-
-/**
 * @brief Clear and Setup Register
 * @code
 *      max30102_bitMask(REG_MODE_CONFIG, MAX30102_RESET_MASK, MAX30102_RESET);

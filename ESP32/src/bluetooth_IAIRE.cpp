@@ -193,6 +193,20 @@ void BLUETOOTH_process_frame(char * frame, uint8_t len){
             i--;
             switch(label){
                 
+                case 'L':
+                {
+                    if(index_data != 0){
+                        //Save
+                        CO2_Zero_Point_Volt = atof(data);
+                        write_float_eeprom(ADDR_C02_ZP_VOLT, CO2_Zero_Point_Volt);
+                    }
+                    //load
+                    CO2_Zero_Point_Volt = read_float_eeprom(ADDR_C02_ZP_VOLT);
+                    //Response
+                    index_response_frame += sprintf(&response_frame[index_response_frame], "L%0.2f,", CO2_Zero_Point_Volt);
+                    break;
+                }
+
                 case 'M':
                 {
                     if(index_data != 0){
