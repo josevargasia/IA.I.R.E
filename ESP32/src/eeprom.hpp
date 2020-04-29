@@ -36,6 +36,7 @@
 #define MAX_SENSITIVITY         MAX_32_BITS     /**< Length in bytes of numeric values. */
 #define MAX_ALARM_HIGH          MAX_32_BITS     /**< Length in bytes of numeric values. */
 #define MAX_ALARM_LOW           MAX_32_BITS     /**< Length in bytes of numeric values. */
+#define MAX_C02_ZP_VOLT         MAX_32_BITS     /**< Length in bytes of numeric values. */
 
 #define INIT_PAGE_0             0               /**< Start address of page 0 in EEPROM. */ 
 #define ADDR_PRESSURE_MAX       INIT_PAGE_0     /**< Address of variable. */                    
@@ -49,6 +50,7 @@
 #define ADDR_SENSITIVITY        INIT_PAGE_0+MAX_PRESSURE_MAX+MAX_INSPIRATION_TIME+MAX_EXPIRATION_TIME+MAX_PWM5_DUTY+MAX_PWM5_FREC+MAX_PRESSURE_INS+MAX_PRESSURE_EXP+MAX_RESPIRA_MODES /**< Address of variable. */
 #define ADDR_ALARM_HIGH         INIT_PAGE_0+MAX_PRESSURE_MAX+MAX_INSPIRATION_TIME+MAX_EXPIRATION_TIME+MAX_PWM5_DUTY+MAX_PWM5_FREC+MAX_PRESSURE_INS+MAX_PRESSURE_EXP+MAX_RESPIRA_MODES+MAX_SENSITIVITY /**< Address of variable. */
 #define ADDR_ALARM_LOW          INIT_PAGE_0+MAX_PRESSURE_MAX+MAX_INSPIRATION_TIME+MAX_EXPIRATION_TIME+MAX_PWM5_DUTY+MAX_PWM5_FREC+MAX_PRESSURE_INS+MAX_PRESSURE_EXP+MAX_RESPIRA_MODES+MAX_SENSITIVITY+MAX_ALARM_HIGH /**< Address of variable. */
+#define ADDR_C02_ZP_VOLT        INIT_PAGE_0+MAX_PRESSURE_MAX+MAX_INSPIRATION_TIME+MAX_EXPIRATION_TIME+MAX_PWM5_DUTY+MAX_PWM5_FREC+MAX_PRESSURE_INS+MAX_PRESSURE_EXP+MAX_RESPIRA_MODES+MAX_SENSITIVITY+MAX_ALARM_HIGH+MAX_ALARM_LOW /**< Address of variable. */
 
 
 /**
