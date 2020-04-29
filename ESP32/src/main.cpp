@@ -37,7 +37,7 @@ CONFIG_DATA configData;    /**< Manage all variables that application can be use
  */
 void setup() {
   //LED TEST SETUP
-  pinMode(LEDPin, OUTPUT);
+  pinMode(BT_LED_PIN, OUTPUT);
 
   //EEPROM SETUP 
   init_eeprom();

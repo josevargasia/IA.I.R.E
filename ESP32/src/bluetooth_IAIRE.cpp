@@ -149,18 +149,18 @@ void BLUETOOTH_Task(void){
 
     if(bluetoothData.connection_state == BLUETOOTH_CONNECTED){
         if(bluetoothData.timeout_led_blink > 1800){
-            digitalWrite(LEDPin, HIGH);
+            digitalWrite(BT_LED_PIN, HIGH);
         }else{
-            digitalWrite(LEDPin, LOW);
+            digitalWrite(BT_LED_PIN, LOW);
         }
         if(bluetoothData.timeout_led_blink == 0){
             bluetoothData.timeout_led_blink = 2000;
         }
     }else{
         if(bluetoothData.timeout_led_blink > 250){
-            digitalWrite(LEDPin, HIGH);
+            digitalWrite(BT_LED_PIN, HIGH);
         }else{
-            digitalWrite(LEDPin, LOW);
+            digitalWrite(BT_LED_PIN, LOW);
         }  
         if(bluetoothData.timeout_led_blink == 0){
             bluetoothData.timeout_led_blink = 500;
@@ -228,11 +228,11 @@ void BLUETOOTH_process_frame(char * frame, uint8_t len){
                         //Save
                         if(atoi(data) == 1){
                             respiraData.state = RESPIRA_INSPIRACION;
-                            digitalWrite(STAND_BY_PIN,LOW);
+                            digitalWrite(STBY_LED_PIN,LOW);
                         }
                         else{
                             respiraData.state = RESPIRA_STAND_BY;
-                            digitalWrite(STAND_BY_PIN,HIGH);
+                            digitalWrite(STBY_LED_PIN,HIGH);
                         }
                     }
                     //Response

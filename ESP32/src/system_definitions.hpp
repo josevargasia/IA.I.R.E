@@ -38,7 +38,32 @@ typedef struct
 
 extern CONFIG_DATA configData;    /**< Manage all variables that application can be use to configure system. */
 
-const int LEDPin = 2;               /**< Led pin configuration. */
+#define PCB
+
+#ifdef PCB
+    #define ALARM_LED_PIN           12
+    #define ASSISTED_LED_PIN        13
+    #define CPAP_LED_PIN            27
+    #define CONTROL_LED_PIN         27
+    #define STBY_LED_PIN            14
+    #define INSPIRATION_LED_PIN     26
+    #define EXPIRATION_LED_PIN      26
+    #define BUZZER_PIN              20
+    #define BT_LED_PIN              25               /**< Led pin configuration. */
+
+#else
+    #define ALARM_LED_PIN           26
+    #define ASSISTED_LED_PIN        14
+    #define CPAP_LED_PIN            13
+    #define CONTROL_LED_PIN         13
+    #define STBY_LED_PIN            27
+    #define INSPIRATION_LED_PIN     12
+    #define EXPIRATION_LED_PIN      12
+    #define BUZZER_PIN              20
+    #define BT_LED_PIN              2
+
+#endif
+
 
 /**
  * @brief Initialize variables from EEPROM 
