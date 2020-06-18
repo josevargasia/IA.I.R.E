@@ -17,10 +17,10 @@
 #define CONTROL_OFF         1
 #define CPAP_ON             1
 #define CPAP_OFF            0
-#define INSPIRATION_ON      1
-#define INSPIRATION_OFF     0
-#define EXPIRATION_ON       0
-#define EXPIRATION_OFF      1
+#define INSPIRATION_ON      0
+#define INSPIRATION_OFF     1
+#define EXPIRATION_ON       1
+#define EXPIRATION_OFF      0
 
 /**
 * @brief Use enum for define states of states machine.
@@ -55,6 +55,8 @@ typedef struct
     float lim_alarm_h;          /**< Limit for high pressure alarm. */
     float lim_alarm_l;          /**< Limit for low pressure alarm. */
 
+    uint8_t n_stand_by;         /**< Negated value that indicates if the ventilator is in stand by state */
+    uint8_t stdby_sw_last_state;     /**< Indicates the state of stand by switch */
 } RESPIRA_DATA;
 
 extern RESPIRA_DATA respiraData;    /**< Manage all variables that bluetooth can use. */
@@ -68,3 +70,8 @@ void respira_init(void);
  * @brief Respira task
  */
 void respira_task(void);
+
+/**
+ * @brief Respira status
+ */
+void respira_status(void);

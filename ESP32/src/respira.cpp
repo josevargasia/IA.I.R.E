@@ -13,19 +13,24 @@ RESPIRA_DATA respiraData;       /**< Manage all variables that respira can use. 
 
 void respira_init(void){
     respiraData.state = RESPIRA_EXPIRATION;
+    respiraData.n_stand_by = 0;
     pinMode(ASSISTED_LED_PIN,OUTPUT);
     pinMode(ALARM_LED_PIN,OUTPUT);
     pinMode(CPAP_LED_PIN,OUTPUT);
     pinMode(STBY_LED_PIN,OUTPUT);
     pinMode(INSPIRATION_LED_PIN,OUTPUT);
     pinMode(BUZZER_PIN,OUTPUT);
+    pinMode(START_STOP_PIN,INPUT);
 }
 
 void respira_task(void){
+    uint8_t break_sw;
+
     switch(respiraData.state){
         case RESPIRA_INSPIRATION:
         {
-            digitalWrite(PWM_ENABLE_PIN,H_BRIDGE_ENABLE);
+            // digitalWrite(PWM_ENABLE_PIN,H_BRIDGE_ENABLE);
+            digitalWrite(PWM_BREAK_PIN,PWM_BREAK_OFF);
             digitalWrite(INSPIRATION_LED_PIN,INSPIRATION_ON);
 
             if(respiraData.mode == RESPIRA_MODE_CPAP ){
@@ -35,7 +40,7 @@ void respira_task(void){
             else{
                 pidData.SetP = respiraData.sp_insp;
             }
-            pid_task();
+            pid_insp_task();
 
             if(respiraData.mode == RESPIRA_MODE_CONTROL ||
                respiraData.mode == RESPIRA_MODE_ASIST || 
@@ -44,6 +49,7 @@ void respira_task(void){
                 if(respiraData.t_out_inps == 0){
                     respiraData.t_out_exp = respiraData.t_exp;
                     respiraData.state = RESPIRA_EXPIRATION;
+                    break_sw = 0;
                 }  
             }
             
@@ -52,17 +58,31 @@ void respira_task(void){
         
         case RESPIRA_EXPIRATION:
         {
+            
+            
+            digitalWrite(PWM_ENABLE_PIN,H_BRIDGE_ENABLE);
             digitalWrite(EXPIRATION_LED_PIN,EXPIRATION_ON);
             
             if (respiraData.mode == RESPIRA_MODE_CPAP ||
-                respiraData.mode == RESPIRA_MODE_CPAP_ASIST){
-                
-                pidData.SetP = configData.pressure_max;
+                respiraData.mode == RESPIRA_MODE_CPAP_ASIST){                
+                pidExpData.SetP = configData.pressure_max;
             }
             else{
-                pidData.SetP = respiraData.sp_exp;
+                pidExpData.SetP = respiraData.sp_exp;
             }
-            pid_task();
+            if((float)adcData.values_mv[0] <= respiraData.sp_exp + pressure2mv(5)){
+                if(!break_sw){
+                    break_sw = 1;
+                    pwm_duty_set((uint32_t)(4.21*mv2pressure(respiraData.sp_exp)-1.4316));
+                }
+                else{
+                    pid_exp_task();
+                }
+                digitalWrite(PWM_BREAK_PIN,PWM_BREAK_OFF);
+            }
+            else{
+                digitalWrite(PWM_BREAK_PIN,PWM_BREAK_ON);
+            }
 
             if (respiraData.mode == RESPIRA_MODE_CONTROL ||
               respiraData.mode == RESPIRA_MODE_ASIST){
@@ -82,6 +102,7 @@ void respira_task(void){
                 }    
             }
             
+            
             break;
         }
         
@@ -96,6 +117,34 @@ void respira_task(void){
             respiraData.state = RESPIRA_STAND_BY;
             break;
         }
+    }
+
+    respira_status();
+}
+
+void respira_status(void){
+    uint8_t chkSum, index_response_frame=0;
+    char response_frame[20];
+
+    if(digitalRead(START_STOP_PIN) != respiraData.stdby_sw_last_state){
+        respiraData.stdby_sw_last_state = digitalRead(START_STOP_PIN);
+        respiraData.n_stand_by = !respiraData.n_stand_by;
+        index_response_frame += sprintf(&response_frame[index_response_frame], "p,O%d,Z", respiraData.n_stand_by);
+        chkSum = BLUETOOTH_process_chksum(response_frame,index_response_frame);
+
+        //response
+        index_response_frame += sprintf(&response_frame[index_response_frame], "%02X,",chkSum);
+        BLUETOOTH_send_frame(response_frame);
+    }
+
+    if(respiraData.n_stand_by && respiraData.state == RESPIRA_STAND_BY){
+        respiraData.state = RESPIRA_EXPIRATION;
+        digitalWrite(STBY_LED_PIN,LOW);
+    }
+
+    else if(!respiraData.n_stand_by && respiraData.state != RESPIRA_STAND_BY){
+        respiraData.state = RESPIRA_STAND_BY;
+        digitalWrite(STBY_LED_PIN,HIGH);
     }
 
     if(respiraData.mode == RESPIRA_MODE_CONTROL || respiraData.mode == RESPIRA_MODE_ASIST){

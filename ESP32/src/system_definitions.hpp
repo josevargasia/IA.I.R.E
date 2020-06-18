@@ -37,6 +37,7 @@ typedef struct
 } CONFIG_DATA;
 
 extern CONFIG_DATA configData;    /**< Manage all variables that application can be use to configure system. */
+extern uint16_t carac_timeout;
 
 // #define PCB
 
@@ -50,18 +51,19 @@ extern CONFIG_DATA configData;    /**< Manage all variables that application can
     #define EXPIRATION_LED_PIN      26
     #define BUZZER_PIN              20
     #define BT_LED_PIN              25               /**< Led pin configuration. */
+    #define START_STOP_PIN          19
 
 #else
-    #define ALARM_LED_PIN           26
-    #define ASSISTED_LED_PIN        14
-    #define CPAP_LED_PIN            13
-    #define CONTROL_LED_PIN         13
-    #define STBY_LED_PIN            27
-    #define INSPIRATION_LED_PIN     12
-    #define EXPIRATION_LED_PIN      12
+    #define ALARM_LED_PIN           12
+    #define ASSISTED_LED_PIN        27
+    #define CPAP_LED_PIN            14
+    #define CONTROL_LED_PIN         14
+    #define STBY_LED_PIN            26
+    #define INSPIRATION_LED_PIN     25
+    #define EXPIRATION_LED_PIN      25
     #define BUZZER_PIN              20
-    #define BT_LED_PIN              2
-
+    #define BT_LED_PIN              13
+    #define START_STOP_PIN          19
 #endif
 
 

@@ -4,6 +4,7 @@ PWM_DATA pwmData;
 
 void pwm_init(void){
     pinMode(PWM_ENABLE_PIN,OUTPUT);
+    pinMode(PWM_BREAK_PIN,OUTPUT);
     
     pwmData.pwmFreq = 1000;
     pwmData.pwmLedCh = 5;
@@ -14,6 +15,7 @@ void pwm_init(void){
 }
 
 void pwm_duty_set(uint32_t duty_value){
+    // printf("%d",duty_value);
     volatile uint32_t duty_raw = 255 * (100 - duty_value)/100;
     // uint32_t duty_raw = (255 / 100) * duty_value;
     ledcWrite(pwmData.pwmLedCh,duty_raw);

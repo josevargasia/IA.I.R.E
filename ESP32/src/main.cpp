@@ -32,13 +32,13 @@
 
 CONFIG_DATA configData;    /**< Manage all variables that application can be use to configure system. */
 
+
 /**
  * @brief Setup system 
  */
 void setup() {
   //LED TEST SETUP
   pinMode(BT_LED_PIN, OUTPUT);
-
   pinMode(PWM_ENABLE_PIN,OUTPUT);
   digitalWrite(PWM_ENABLE_PIN,HIGH);
 
@@ -77,7 +77,6 @@ void setup() {
  * @brief Loop to handle tasks 
  */
 void loop() {
-
   //ADC TASK
   adc_task();
 
@@ -100,8 +99,16 @@ void APP_init(void){
     respiraData.sp_exp = read_float_eeprom(ADDR_PRESSURE_EXP);
     respiraData.t_insp = read_int_eeprom(ADDR_INSPIRATION_TIME, INT16);
     respiraData.t_exp = read_int_eeprom(ADDR_EXPIRATION_TIME, INT16);
+    respiraData.mode = read_int_eeprom(ADDR_RESPIRA_MODES,INT8);
     respiraData.lim_alarm_h = read_float_eeprom(ADDR_ALARM_HIGH);
     respiraData.lim_alarm_l = read_float_eeprom(ADDR_ALARM_LOW);
+    pressData.adjustValue = read_float_eeprom(ADDR_PRESSURE_ADJUST);
+    pidData.kp = read_float_eeprom(ADDR_PID_KP_INSP);
+    pidData.ti = read_float_eeprom(ADDR_PID_TI_INSP);
+    pidData.td = read_float_eeprom(ADDR_PID_TD_INSP);
+    pidExpData.kp = read_float_eeprom(ADDR_PID_KP_EXP);
+    pidExpData.ti = read_float_eeprom(ADDR_PID_TI_EXP);
+    pidExpData.td = read_float_eeprom(ADDR_PID_TD_EXP);
     
     configData.pwm5_frec = read_int_eeprom(ADDR_PWM5_FREC, INT32);
     if(configData.pwm5_frec < 10000 || configData.pwm5_frec > 50000){

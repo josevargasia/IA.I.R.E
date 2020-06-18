@@ -52,7 +52,7 @@ PRESS_DATA pressData;
 float pressure2mv(float pressure){
     float meas_mv;
     
-    meas_mv = (0.0291*pressure) + 0.132;
+    meas_mv = (0.0291*pressure)/pressData.adjustValue + 0.132;
     
     return meas_mv*1000;
 }
@@ -66,7 +66,7 @@ float mv2pressure(float mv){
     
     pressure = (mv/1000) - 0.132;
     pressure /= 0.0291;
-    return pressure;
+    return pressure*pressData.adjustValue;
 }
 
 

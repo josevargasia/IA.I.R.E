@@ -45,7 +45,7 @@ typedef struct
 {
     float measValue; /**< Saves the pressure measured value. */
     uint16_t valuesWindow[PRESS_WINDOW_SIZE]; /**< Buffer with the last measured ADC values. */
-
+    float adjustValue; /**< Adjustment value for pressure measure */
 } PRESS_DATA;
 
 extern PRESS_DATA pressData;

@@ -14,6 +14,9 @@
 #define H_BRIDGE_DISABLE     1
 #define PWM_PIN              5
 #define PWM_ENABLE_PIN       18
+#define PWM_BREAK_PIN        15
+#define PWM_BREAK_ON         0
+#define PWM_BREAK_OFF        1
 
 /**
  * @brief PWM data structure.

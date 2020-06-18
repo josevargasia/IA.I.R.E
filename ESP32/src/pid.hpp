@@ -34,10 +34,15 @@ typedef struct
     float SetP;         /**< System set point. */
     
     uint16_t timeout;    /**< Timeout. */
+
+    float   kp;
+    float   ti;
+    float   td;
     
 } PID_DATA;
 
 extern PID_DATA pidData;    /**< Manage all variables that PID can use. */
+extern PID_DATA pidExpData;    /**< Manage all variables that PID can use. */
     
 /**
  * @brief Setup PID 
@@ -45,6 +50,11 @@ extern PID_DATA pidData;    /**< Manage all variables that PID can use. */
 void pid_init(void);
 
 /**
- * @brief Handle PID task 
+ * @brief Handle Inspiration PID task 
  */
-void pid_task(void);
+void pid_insp_task(void);
+
+/**
+ * @brief Handle Expiration PID task 
+ */
+void pid_exp_task(void);
